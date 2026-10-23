@@ -1553,6 +1553,337 @@
       display: block;
     }
 
+    /* ==========================================================================
+       關西美食踩點小地圖 (Food Map Widget)
+       ========================================================================== */
+    .foodmap-section {
+      width: 100%;
+      margin-bottom: 30px;
+    }
+    .food-map-banner {
+      background-color: var(--card-white);
+      border: var(--border-width) solid var(--border-ink);
+      border-radius: var(--radius-xl);
+      padding: clamp(14px, 3.5vw, 22px);
+      box-shadow: var(--shadow-comic);
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .food-map-banner-header {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding-bottom: 16px;
+      border-bottom: 2px dashed var(--border-ink);
+      margin-bottom: 18px;
+    }
+    @media (min-width: 620px) {
+      .food-map-banner-header {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+    .gmaps-direct-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background-color: var(--yamabuki-yellow);
+      color: var(--text-main);
+      border: 2px solid var(--border-ink);
+      border-radius: var(--radius-md);
+      padding: 8px 16px;
+      font-weight: 900;
+      font-size: 0.88rem;
+      text-decoration: none;
+      box-shadow: var(--shadow-comic-sm);
+      transition: transform 0.1s ease;
+      white-space: nowrap;
+    }
+    .gmaps-direct-btn:hover {
+      transform: translate(1px, 1px);
+      box-shadow: 1px 1px 0 var(--border-ink);
+    }
+
+    /* 區域地圖看板 */
+    .food-mini-map-board {
+      background-color: var(--card-warm);
+      border: 2px solid var(--border-ink);
+      border-radius: var(--radius-lg);
+      padding: 14px 16px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow-comic-sm);
+    }
+    .food-board-title {
+      font-weight: 900;
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .food-region-pins {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .food-region-pin {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: var(--card-white);
+      border: 2px solid var(--border-ink);
+      border-radius: var(--radius-md);
+      padding: 6px 12px;
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: var(--shadow-comic-sm);
+      transition: background-color 0.15s ease, transform 0.1s ease;
+    }
+    .food-region-pin .pin-badge {
+      background-color: var(--water-blue);
+      color: var(--text-main);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.72rem;
+    }
+    .food-region-pin:hover {
+      background-color: var(--card-warm);
+    }
+    .food-region-pin.active {
+      background-color: var(--yamabuki-yellow);
+      border-color: var(--border-ink);
+      transform: translate(1px, 1px);
+      box-shadow: 1px 1px 0 var(--border-ink);
+    }
+    .food-region-pin.active .pin-badge {
+      background-color: var(--border-ink);
+      color: #FFFFFF;
+    }
+
+    /* 美食進度條 */
+    .food-progress-box {
+      background-color: var(--card-warm);
+      border: 2px solid var(--border-ink);
+      border-radius: var(--radius-lg);
+      padding: 12px 16px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow-comic-sm);
+    }
+    .food-progress-encourage {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 4px;
+    }
+
+    /* 狀態過濾 */
+    .food-filter-bar {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .food-filter-btn {
+      border: 2px solid var(--border-ink);
+      background-color: var(--card-white);
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: var(--shadow-comic-sm);
+      transition: background-color 0.15s ease, transform 0.1s ease;
+    }
+    .food-filter-btn:hover {
+      background-color: var(--card-warm);
+    }
+    .food-filter-btn.active {
+      background-color: var(--coral-pink);
+      color: #FFFFFF;
+      transform: translate(1px, 1px);
+      box-shadow: 1px 1px 0 var(--border-ink);
+    }
+
+    /* 美食卡片網格 */
+    .food-cards-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .food-item-card {
+      background-color: var(--card-white);
+      border: 2px solid var(--border-ink);
+      border-radius: var(--radius-lg);
+      padding: 14px 16px;
+      box-shadow: var(--shadow-comic-sm);
+      transition: background-color 0.2s ease, transform 0.15s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      position: relative;
+    }
+    .food-item-card:hover {
+      transform: translateY(-2px);
+    }
+    .food-item-card.eaten {
+      background-color: #F3F8F1;
+      border-color: #6C8E68;
+    }
+    .food-item-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .food-checkbox-btn {
+      width: 28px;
+      height: 28px;
+      border: 2px solid var(--border-ink);
+      border-radius: 8px;
+      background-color: var(--card-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      font-weight: 900;
+      font-size: 1.1rem;
+      transition: background-color 0.15s ease, transform 0.1s ease;
+      user-select: none;
+      box-shadow: 1px 1px 0 var(--border-ink);
+    }
+    .food-item-card.eaten .food-checkbox-btn {
+      background-color: var(--wakatake-green);
+      color: var(--border-ink);
+    }
+    .food-content-wrap {
+      flex: 1;
+      min-width: 0;
+    }
+    .food-tags-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 4px;
+    }
+    .food-pill {
+      font-size: 0.72rem;
+      font-weight: 900;
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1.5px solid var(--border-ink);
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .food-pill-area { background-color: var(--water-blue); }
+    .food-pill-cat { background-color: var(--yamabuki-yellow); }
+    .food-pill-eaten { background-color: var(--wakatake-green); color: var(--border-ink); }
+    
+    .food-name-title {
+      font-size: 1.05rem;
+      font-weight: 900;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .food-item-card.eaten .food-name-title {
+      text-decoration: line-through;
+      color: var(--text-muted);
+    }
+    .food-highlight-text {
+      font-size: 0.85rem;
+      color: var(--text-main);
+      margin-top: 4px;
+      line-height: 1.45;
+    }
+    .food-address-text {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+      word-break: break-all;
+    }
+
+    /* 完食日系印章 */
+    .eaten-stamp {
+      display: none;
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      border: 2px solid #D9483B;
+      color: #D9483B;
+      border-radius: 6px;
+      padding: 2px 8px;
+      font-size: 0.75rem;
+      font-weight: 900;
+      transform: rotate(6deg);
+      pointer-events: none;
+      background-color: rgba(255, 255, 255, 0.85);
+      box-shadow: 1px 1px 0 #D9483B;
+      animation: stampIn 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    @keyframes stampIn {
+      0% { transform: scale(1.6) rotate(-15deg); opacity: 0; }
+      100% { transform: scale(1) rotate(6deg); opacity: 1; }
+    }
+    .food-item-card.eaten .eaten-stamp {
+      display: inline-block;
+    }
+
+    .food-action-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 4px;
+      padding-top: 8px;
+      border-top: 1px dashed #E2DACB;
+      flex-wrap: wrap;
+    }
+    .food-nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background-color: var(--card-warm);
+      border: 1.5px solid var(--border-ink);
+      border-radius: var(--radius-md);
+      padding: 4px 10px;
+      font-size: 0.78rem;
+      font-weight: 900;
+      text-decoration: none;
+      color: var(--text-main);
+      box-shadow: 1px 1px 0 var(--border-ink);
+      transition: background-color 0.15s ease;
+    }
+    .food-nav-link:hover {
+      background-color: var(--water-blue);
+    }
+    .food-copy-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: none;
+      border: 1.5px solid var(--border-ink);
+      border-radius: var(--radius-md);
+      padding: 4px 10px;
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: background-color 0.15s ease;
+    }
+    .food-copy-btn:hover {
+      background-color: var(--card-warm);
+      color: var(--text-main);
+    }
+
     /* Footer */
     .site-footer {
       text-align: center;
@@ -1591,6 +1922,7 @@
         <li class="nav-item"><a href="#spotZone">🏛️ 景點區域</a></li>
         <li class="nav-item"><a href="#flights">✈️ 航班</a></li>
         <li class="nav-item"><a href="#hotel">🏨 住宿</a></li>
+        <li class="nav-item"><a href="#foodmap">🍴 美食地圖</a></li>
         <li class="nav-item"><a href="#checklist">✅ 待辦</a></li>
         <li class="nav-item"><a href="#toolbox">🧰 工具</a></li>
       </ul>
@@ -2311,6 +2643,95 @@
     </section>
 
     <!-- ==========================================================================
+         🍴 關西必吃美食踩點小地圖 (Google 地圖清單小工具)
+         ========================================================================== -->
+    <section id="foodmap" class="foodmap-section">
+      <div class="section-title-wrap">
+        <h2 class="section-title">
+          <span>🍴</span> 關西美食踩點小地圖
+        </h2>
+        <span class="section-badge" id="foodCounterBadge">已吃過 0 / 22 間</span>
+      </div>
+
+      <!-- Google Maps 官方清單連結卡片 -->
+      <div class="food-map-banner">
+        <div class="food-map-banner-header">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="font-size: 1.8rem; flex-shrink: 0;">🗺️</span>
+            <div>
+              <strong style="font-size: 1.1rem; color: var(--text-main);">【來關西花錢就都沒關係・來都來了美食】</strong>
+              <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 2px;">
+                收錄 Google 地圖清單精選 22 間大阪、神戶超人氣名店・品嚐後打勾紀錄！
+              </div>
+            </div>
+          </div>
+          <a href="https://maps.app.goo.gl/GEVZCL8bznFbceJF8" target="_blank" rel="noopener noreferrer" class="gmaps-direct-btn" title="在 Google Maps App 中打開清單">
+            <span>🗺️ 開啟 Google Maps 清單 ↗</span>
+          </a>
+        </div>
+
+        <!-- 繪本風關西美食區域地圖看板 -->
+        <div class="food-mini-map-board">
+          <div class="food-board-title">
+            <span>📍</span> <span>快速依區域篩選美食地標</span>
+          </div>
+          <div class="food-region-pins">
+            <button type="button" class="food-region-pin active" data-region="all">
+              <span class="pin-badge">全區域</span>
+              <span class="pin-name">全部 22 間</span>
+            </button>
+            <button type="button" class="food-region-pin" data-region="nanba">
+              <span class="pin-badge">大阪南區</span>
+              <span class="pin-name">難波・道頓堀・千日前 (11間)</span>
+            </button>
+            <button type="button" class="food-region-pin" data-region="shinsaibashi">
+              <span class="pin-badge">心齋橋</span>
+              <span class="pin-name">大丸・美國村 (2間)</span>
+            </button>
+            <button type="button" class="food-region-pin" data-region="umeda">
+              <span class="pin-badge">大阪北區</span>
+              <span class="pin-name">梅田商圈・天神橋 (5間)</span>
+            </button>
+            <button type="button" class="food-region-pin" data-region="kobe">
+              <span class="pin-badge">神戶港區</span>
+              <span class="pin-name">三宮・元町・北野 (4間)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 美食進度條 -->
+        <div class="food-progress-box">
+          <div style="display: flex; justify-content: space-between; font-weight: 900; font-size: 0.92rem; margin-bottom: 6px;">
+            <span>🍽️ 關西美食攻略進度</span>
+            <span id="foodProgressPercent">0%</span>
+          </div>
+          <div class="progress-bar-outer">
+            <div class="progress-bar-inner" id="foodProgressBar" style="width: 0%;"></div>
+          </div>
+          <div class="food-progress-encourage" id="foodEncourageText">
+            準備開動！吃過的美食記得打勾標記，留下滿滿回憶～😋
+          </div>
+        </div>
+
+        <!-- 狀態過濾標籤 -->
+        <div class="food-filter-bar">
+          <button type="button" class="food-filter-btn active" data-status="all">全部 (<span id="countAll">22</span>)</button>
+          <button type="button" class="food-filter-btn" data-status="uneaten">尚未品嚐 (<span id="countUneaten">22</span>)</button>
+          <button type="button" class="food-filter-btn" data-status="eaten">已完食 🎉 (<span id="countEaten">0</span>)</button>
+        </div>
+
+        <!-- 美食卡片清單列表 -->
+        <div class="food-cards-container" id="foodCardsContainer"></div>
+
+        <!-- 新增自訂美食店家 -->
+        <form id="addFoodForm" class="add-task-form" style="margin-top: 18px;">
+          <input type="text" id="newFoodName" class="add-task-input" placeholder="＋ 想吃的其他私房名單（例：木地大阪燒、HARBS水果千層）..." required>
+          <button type="submit" class="add-task-btn">加入踩點清單</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
          旅行實用工具箱
          ========================================================================== -->
     <section id="toolbox">
@@ -2421,6 +2842,7 @@
 
   <script>
     const ITINERARY_DATA = [{"day": 1, "date": "10/26", "weekday": "週一", "title": "抵達關西・花園町周邊生活圈巡禮", "highlightName": "關西機場 & 花園町商圈", "category": "抵達採買", "illuType": "plane", "notes": "台北組（樂桃 MM24）與高雄組（亞航 AK170）皆於 13:10 同步降落關西國際機場！出關後搭乘南海電鐵至民宿花園町 Check-in。傍晚採買生活用品、大國藥妝、三大生鮮超市與難波中心街漫步。", "items": [{"time": "13:10", "title": "關西機場 (雙航班同刻抵達會師)", "category": "交通樞紐", "type": "stay", "duration": "停留 00 時 40 分", "must": false, "desc": "台北組搭乘樂桃 MM24（第二航廈 T2）與高雄組搭乘亞航 AK170（第一航廈 T1）於 13:10 同步降落關西國際機場（KIX），辦理入境手續後於關西機場車站領取車票相見歡，搭乘南海電鐵前往大阪市區！", "transitNext": {"type": "train", "text": "搭乘電車 01 時 08 分"}}, {"time": "14:58", "title": "パラゴン花園町 (民宿)", "category": "住宿入宿", "type": "stay", "duration": "停留 01 時 00 分", "must": false, "desc": "抵達本次關西10天的溫馨大本營，辦理入住放下大件行李，整理稍作休息。", "transitNext": {"type": "walk", "text": "步行 00 時 04 分"}}, {"time": "16:02", "title": "大國藥妝 地下鐵花園町站前店", "category": "購物採買", "type": "shop", "duration": "停留 01 時 00 分", "must": false, "desc": "就近採買日本旅行必備休足時間、常備藥品與免稅零食伴手禮。", "transitNext": {"type": "walk", "text": "步行 00 時 04 分"}}, {"time": "17:05", "title": "Daily Qanat Izumiya 花園店", "category": "生鮮超市", "type": "shop", "duration": "停留 01 時 00 分", "must": false, "desc": "大型生鮮超市，採買這幾天的日本當季新鮮水果（麝香葡萄、蜜柑）、鮮奶優格與飲用水。", "transitNext": {"type": "walk", "text": "步行 00 時 03 分"}}, {"time": "18:09", "title": "全家便利商店 花園町店", "category": "便利商店", "type": "food", "duration": "停留 01 時 00 分", "must": false, "desc": "來日本全家必買 Famichiki 脆皮多汁大炸雞排與熱咖啡點心充飢。", "transitNext": {"type": "walk", "text": "步行 00 時 05 分"}}, {"time": "19:12", "title": "玉出超市 花園店", "category": "平價超市", "type": "shop", "duration": "停留 01 時 00 分", "must": false, "desc": "大阪最有名的招牌黃色霓虹燈24小時平價超市，感受濃濃的大阪庶民活力。", "transitNext": {"type": "train", "text": "搭乘地下鐵 00 時 10 分"}}, {"time": "20:29", "title": "難波中心街", "category": "熱鬧市街", "type": "spot", "duration": "自由漫步", "must": false, "desc": "晚餐在難波熱鬧街區享用大阪在地美食，感受夜間大阪市區的蓬勃朝氣。"}], "spots": [{"num": "1", "name": "關西國際機場 (KIX)", "subTitle": "漂浮在大阪灣的人工島海上奇蹟・關西空運大門戶", "tag": "交通名勝", "must": false, "illu": "plane", "story": "世界上第一座完全以人工填海造陸建成的海上國際機場！於1994年正式啟用，徹底解決了都市噪音限制並實現24小時全天候營運。旅客下機通關後，可直接在機場車站無縫銜接南海電鐵特急列車直奔大阪市區。", "insider": "入境大廳一樓設有旅遊服務中心可領取各類交通地圖，二樓美食街與三樓購物區匯集了關西代表美食。推薦直接搭乘南海電鐵急行或特急Rapi:t，約40分鐘即可抵達天下茶屋轉乘地鐵前往花園町！"}, {"num": "2", "name": "大國藥妝 地下鐵花園町站前店", "subTitle": "免稅補貨第一站・在地採買免排隊秘密基地", "tag": "購物補給", "must": false, "illu": "shop", "story": "位於大阪地下鐵四橋線「花園町站」出口旁的大國藥妝，相比心齋橋與道頓堀觀光客摩肩擦踵的擁擠分店，這裡空間更加寬敞舒適，各類熱門藥妝、零食、保養品貨源充足且價格極為親民。", "insider": "抵達第一天先買好「休足時間」涼感貼布、花王蒸氣眼罩與提神維他命B群，為接下來九天每日破萬步的精彩關西散策做好最充分的腿部保養與體力準備！"}, {"num": "3", "name": "Daily Qanat Izumiya 花園店", "subTitle": "大阪在地老牌大型生鮮超市・產地直送鮮果與熟食", "tag": "生鮮市場", "must": false, "illu": "food", "story": "大阪在地老牌連鎖超市 Izumiya 旗下的優質旗艦店，提供極為豐富的日本產地直送鮮果、優質鮮奶、烘焙麵包以及種類繁多的現做日式熟食便當。", "insider": "傍晚5點過後，熟食區會陸續貼上「割引（特價折扣標籤）」，能用超級划算的價格品嚐到剛出爐的炸蝦天婦羅、和牛可樂餅與鮮甜多汁的長野或岡山當季麝香葡萄！"}, {"num": "4", "name": "玉出超市 花園店", "subTitle": "大阪傳奇黃色招牌・超狂24H平價庶民超市", "tag": "平價傳奇", "must": false, "illu": "shop", "story": "大阪最具代表性的傳奇黃色霓虹燈24小時平價超市！店面閃爍著如同柏青哥遊樂場般的歡樂燈飾，充滿濃濃的大阪底層庶民熱情與豪爽生命力。", "insider": "飲料、零食、便當價格便宜到令人難以置信！推薦買幾瓶伊藤園綠茶或午後紅茶冰在民宿冰箱，體驗最地道純樸的大阪家庭日常採買氣氛。"}, {"num": "5", "name": "難波中心街", "subTitle": "大阪南區繁華心臟・居酒屋與美食探索", "tag": "夜之市街", "must": false, "illu": "namba", "story": "連接難波車站、高島屋百貨與千日前的核心市街，林立著無數居酒屋、拉麵老店與章魚燒攤販，是感受大阪越夜越熱鬧的不二之選。", "insider": "第一晚在此放慢腳步散步，吃一份熱呼呼外酥內軟、柴魚片舞動的元祖章魚燒，搭配冰涼生啤酒，宣告關西十日漫遊正式啟程！"}]}, {"day": 2, "date": "10/27", "weekday": "週二", "title": "大阪經典老靈魂・黑門市場與日本橋", "highlightName": "難波八阪神社 & 黑門市場", "category": "老街市集", "illuType": "namba", "notes": "早晨到木津市場享用生魚片海鮮，參拜巨型獅子殿難波八阪神社吸走厄運，法善寺青苔不動明王潑水祈福，黑門市場吃和牛，漫步電器街。", "items": [{"time": "07:30", "title": "パラゴン花園町 出發", "category": "出發", "type": "stay", "duration": "晨間整裝", "must": false, "transitNext": {"type": "taxi", "text": "車程約 00 時 10 分 (¥180)"}}, {"time": "07:40", "title": "木津批發市場", "category": "市場美食", "type": "food", "duration": "停留 01 時 30 分", "must": true, "desc": "超過300年歷史！早在江戶時代就是水運樞紐，品嚐新鮮生魚片海鮮丼、現烤鰻魚。", "transitNext": {"type": "walk", "text": "步行 00 時 09 分"}}, {"time": "09:19", "title": "難波八阪神社", "category": "能量景點", "type": "spot", "duration": "停留 00 時 30 分", "must": true, "desc": "高達12公尺的巨大獅子殿，巨口張開象徵吸走所有厄運，招來勝利好運！", "transitNext": {"type": "walk", "text": "步行 00 時 06 分"}}, {"time": "10:01", "title": "難波南海通", "category": "熱門商街", "type": "shop", "duration": "停留 01 時 00 分", "must": false, "desc": "從古代刑場轉型成如今充滿美食點心的繁華拱廊街。", "transitNext": {"type": "walk", "text": "步行 00 時 01 分"}}, {"time": "11:07", "title": "法善寺 (水掛不動明王)", "category": "祈願古寺", "type": "spot", "duration": "停留 01 時 00 分", "must": true, "desc": "戰火中奇蹟生還的「青苔不動明王」，舀水澆灌祈福，長年累月覆蓋翠綠厚青苔。", "transitNext": {"type": "walk", "text": "步行 00 時 03 分"}}, {"time": "12:08", "title": "千日前商店街", "category": "商店街", "type": "shop", "duration": "停留 01 時 00 分", "must": false, "desc": "千日念佛之所演變成歡樂劇場繁華街，廚具街與老店林立。", "transitNext": {"type": "walk", "text": "步行 00 時 08 分"}}, {"time": "13:17", "title": "黑門市場", "category": "美食天國", "type": "food", "duration": "停留 01 時 00 分", "must": true, "desc": "170年歷史！因圓明寺黑色大門得名，享用現煎和牛、烤扇貝、海膽海鮮饗宴。", "transitNext": {"type": "walk", "text": "步行 00 時 05 分"}}, {"time": "14:25", "title": "大阪日本橋電器街 (Denden Town)", "category": "動漫電器", "type": "shop", "duration": "停留 03 時 00 分", "must": false, "desc": "大阪秋葉原！從戰後黑市發展成電器與動漫公仔扭蛋御宅族天堂。", "transitNext": {"type": "train", "text": "搭乘電車 00 時 19 分"}}, {"time": "17:44", "title": "パラゴン花園町", "category": "歸宿休息", "type": "stay", "duration": "晚上放鬆", "must": false, "desc": "回民宿放戰利品，晚上可在附近品嚐老牌鶴屋壽喜燒或高島屋美食街。"}], "spots": [{"num": "1", "name": "木津批發市場", "subTitle": "超過300年的批發歷史與清晨生鮮海產", "tag": "批發海鮮", "must": true, "illu": "food", "story": "大家都知道黑門市場，但其實木津市場的歷史更悠久，已經超過300年！早在江戶時代（約1715年），這裡就因為官國為私人設立跟官方指定的市場打過官司。經歷了兩次世界大戰的戰火與無數大火，木津市場依然屹立不搖。", "insider": "直到今天它仍然保留了濃厚的「批發」老靈魂，是許多大阪米其林名店大廚清晨親自來批貨的聖地。清晨來此享用新鮮生魚片海鮮丼與現烤鰻魚，價格親民又道地！"}, {"num": "2", "name": "難波八阪神社", "subTitle": "高達12公尺的巨大獅子殿・吸入厄運招來好運", "tag": "名勝神社", "must": true, "illu": "namba", "story": "這座神社的起源非常古老，據傳在平安時代就已經存在，當時還是個神佛習合（神道教與佛教混合）的大型寺廟群，但後來經歷了「神佛分離」運動加上二戰的大阪大空襲，整個神社幾乎被夷為平地。", "insider": "你去現場一定會被那顆高12公尺、寬11公尺的巨大「獅子頭」震撼！這其實是1974年（昭和49年）才做成獅子的，巨大的獅象徵著「將厄運、煞氣一口吞下」，並為信徒招來好運與商機。現在很多祈求學業進步、公司發展的人都會特地來此參拜！"}, {"num": "3", "name": "南海通", "subTitle": "千日前與難波南海通：從「刑場」到娛樂天堂的重生", "tag": "歷史街區", "must": false, "illu": "shop", "story": "當你走在熱鬧的「千日前商店街」和「南海通」時，可能很難想像——這裡在江戶時代，其實是大阪的刑場與大型墓地！", "insider": "明治維新之後，墓地搬遷，街道才逐漸轉變為商業街。如今滿布名產伴手禮店、老牌咖啡店與人氣蓬萊551包子，象徵了大阪無與倫比的重生生命力。"}, {"num": "4", "name": "千日前商店街", "subTitle": "千日念佛之所演變成歡樂劇場繁華街", "tag": "特色商街", "must": false, "illu": "shop", "story": "「千日前」這個名字，是因為過去這裡有兩座寺廟（法善寺與竹林寺），僧侶們在這裡進行「千日念佛」來超渡亡魂。到了明治時期，這裡開始蓋起了劇場、戲院和落語表演場，逐漸轉型為娛樂區。", "insider": "1912年一場被稱為「千日前大火」的災難燒毀了這一帶，但也促成了市街的重新規劃與現代化，造就了今天你看到的繁華商圈。漫步其中可以找到許多昭和風味老道具街與廚具行！"}, {"num": "5", "name": "法善寺", "subTitle": "戰火中奇蹟生還的「青苔不動明王」", "tag": "祈願古剎", "must": true, "illu": "temple", "story": "法善寺建於1637年，見證了千日前一帶的歷史變遷。在二戰的大阪大空襲中，整個寺廟幾乎全毀，唯獨這尊「水掛不動明王」奇蹟般地在戰火中倖存下來。", "insider": "不動明王本來是沒有青苔的。據說戰後有一位來參拜的女性，因為手邊沒有供品，就舀起旁邊的水澆在神像上祈求。後來大家紛紛效仿，長年累月下來，神像就長滿了厚厚的綠色青苔，連原本的面貌都看不清了。這裡也象徵著大阪人在戰後重建的韌性！"}, {"num": "6", "name": "黑門市場", "subTitle": "「黑門」其實是一扇不存在的門", "tag": "美食天國", "must": true, "illu": "food", "story": "黑門市場有170年以上的歷史，江戶時代末期這裡原本叫做「圓明寺市場」，因為市場附近有一座名叫圓明寺的大寺廟。這座寺廟有一扇非常顯眼的「黑色大門」。雖然圓明寺在1912年的千日前大火中被燒毀再也沒建，但「黑門」這個名字卻深深烙印在心裡，市場也正式改名為「黑門市場」。", "insider": "過去它是供應大阪高級料亭食材的「大阪的廚房」，現在則轉型為觀光客的美食聖地。現烤神戶牛串、活烤海膽、超大烤帆立貝與白草莓，香氣四溢！"}, {"num": "7", "name": "日本橋電器街 (Denden Town)", "subTitle": "大阪的秋葉原發展史・御宅族文化聖地", "tag": "動漫電玩", "must": false, "illu": "shop", "story": "日本橋在江戶時代是個熱鬧的「宿場町」（驛站）。到了二戰後，這裡最初是販賣二手衣物、舊書的黑市，隨著時代進步販賣電子零件和生活家電，這裡漸漸聚集了販賣電子零件和工具的商家。到了1970~80年代，日本橋正式成為與東京秋葉原齊名的「電器街（Denden Town）」。", "insider": "隨著大型連鎖家電量販店崛起，傳統電器街轉型引進動漫、模型、女僕咖啡廳等次文化產業，成為今天大阪最知名的「御宅族天堂」！尋找復古電玩或限量公仔絕不可錯過！"}]}, {"day": 3, "date": "10/28", "weekday": "週三", "title": "泉州古社尋幽・大鳥大社散策", "highlightName": "大鳥大社", "category": "靜謐古社", "illuType": "torii", "notes": "前往和泉國一之宮大鳥大社，漫步在千年森林與古老木造大鳥造建築之中，度過悠閒靜心的大阪近郊上午。", "items": [{"time": "09:00", "title": "パラゴン花園町 出發", "category": "出發", "type": "stay", "duration": "準備出發", "must": false, "transitNext": {"type": "train", "text": "搭乘電車 00 時 40 分"}}, {"time": "09:40", "title": "大鳥大社", "category": "一之宮古社", "type": "spot", "duration": "停留 01 時 00 分", "must": true, "desc": "坐落在靜謐森林裡的宏偉神道教神社！採用日本最古老「大鳥造」木造建築工法，參道上有大型木造鳥居與神馬銅像。", "transitNext": {"type": "train", "text": "搭乘電車 00 時 39 分"}}, {"time": "11:19", "title": "パラゴン花園町 / 市區彈性行程", "category": "休息與自由漫步", "type": "stay", "duration": "午後放鬆", "must": false, "desc": "返回市區午餐，下午悠閒散步喝咖啡，儲備充沛體力迎接接下來滿滿的神戶與京都名所行程！"}], "spots": [{"num": "1", "name": "大鳥大社", "subTitle": "和泉國一之宮・日本最古木造大鳥造建築樣式", "tag": "古社殿堂", "must": true, "illu": "torii", "story": "作為和泉國最尊貴的神社「一之宮」，相傳由日本武尊化身為白鳥降臨於此而創建。本殿建築採用日本極古老特殊的「大鳥造」樣式，切妻造、妻入、千木與鰹木古樸優雅，是日本神道建築史上的國寶級瑰寶。", "insider": "穿過木造大鳥居進入神域，參道被高聳千年的千種森綠林環抱，空氣瞬間清爽靜謐，是遠離大阪都會喧囂、沉澱心靈的最佳古社！"}, {"num": "2", "name": "大鳥大社 神馬銅像與神聖之森", "subTitle": "守護旅人交通安全與神願開運", "tag": "祈願亮點", "must": false, "illu": "torii", "story": "境內佇立著雄姿煥發的神馬銅像，神道教中神馬被視為神明乘騎傳遞神諭之聖物。信徒常前來祈求心願成就與出入平安。", "insider": "參拜後可求取一枚大鳥大社知名的「開運厄除神鳥御守」，細細感受神聖森林中的鳥鳴與微風。"}, {"num": "3", "name": "難波高島屋散策・市區慢活充電", "subTitle": "老牌百貨品味洋菓子與優雅生活", "tag": "慢活散策", "must": false, "illu": "shop", "story": "結束上午參拜返回市區，下午留出充裕的彈性時光。前往老牌高島屋百貨與難波City漫步，欣賞精緻洋菓子與設計良品。", "insider": "外國遊客在高島屋服務中心出示護照可免費領取「高島屋Hello Kitty購物卡」，享受95折購物優惠！"}]}, {"day": 4, "date": "10/29", "weekday": "週四", "title": "神戶港都一日遊・異人館與神戶港塔", "highlightName": "北野異人館 & 神戶港塔", "category": "洋風港都", "illuType": "kobe", "notes": "從大阪出發前往優雅的神戶！漫步北野異人館街洋風老洋房，參拜神戶之名起源生田神社，走訪元町老街，登上紅色神戶港塔眺望港灣，享用MIYAKOYA頂級燒肉！", "items": [{"time": "09:00", "title": "パラゴン花園町 出發", "category": "出發", "type": "stay", "duration": "準時出發", "must": false, "transitNext": {"type": "train", "text": "搭乘阪神/JR電車直達神戶 00 時 58 分"}}, {"time": "09:58", "title": "神戶北野異人館街", "category": "洋風古蹟群", "type": "spot", "duration": "停留 02 時 00 分", "must": true, "desc": "1868年神戶港開放異人居住地，風見雞館、萌黃之館洋式古蹟群，品嚐六甲山霜淇淋。", "transitNext": {"type": "walk", "text": "步行 00 時 11 分"}}, {"time": "12:09", "title": "生田神社", "category": "結緣古社", "type": "spot", "duration": "停留 01 時 00 分", "must": true, "desc": "1800年以上歷史，神戶地名由來「神封」守護，生田之森小溪「水籤」占卜靈驗！", "transitNext": {"type": "walk", "text": "步行 00 時 05 分"}}, {"time": "13:20", "title": "三宮本通商店街", "category": "特色商街", "type": "shop", "duration": "停留 01 時 00 分", "must": false, "desc": "昭和拱廊街道，品嚐烘焙咖啡豆老店手沖咖啡，感受日本早期復古風情。", "transitNext": {"type": "walk", "text": "步行 00 時 05 分"}}, {"time": "14:25", "title": "神戶元町商店街", "category": "百年商街", "type": "shop", "duration": "停留 01 時 00 分", "must": false, "desc": "原本的城鎮，排隊買森谷商店剛炸好的神戶牛可樂餅，散步南京町中華街。", "transitNext": {"type": "train", "text": "搭乘電車 00 時 09 分"}}, {"time": "15:34", "title": "神戶港塔 (Kobe Port Tower)", "category": "港都地標", "type": "spot", "duration": "停留 01 時 00 分", "must": true, "desc": "日本傳統樂器「鼓」雙曲面網狀結構，2024全新露天觀景台吹海風看港灣夕陽！", "transitNext": {"type": "walk", "text": "步行 00 時 10 分"}}, {"time": "16:47", "title": "燒肉 MIYAKOYA 三宮", "category": "神戶牛美味", "type": "food", "duration": "停留 01 時 00 分", "must": true, "desc": "在神戶不可錯過的極品燒肉！鮮嫩多汁神戶黑毛和牛炭火現烤。", "transitNext": {"type": "train", "text": "搭乘電車回大阪 00 時 49 分"}}, {"time": "18:36", "title": "パラゴン花園町", "category": "歸宿", "type": "stay", "duration": "晚間休息", "must": false, "desc": "回到花園町公寓，整理神戶伴手禮，洗去一日步行疲勞。"}], "spots": [{"num": "1", "name": "神戶北野異人館", "subTitle": "神戶近代歷史的起點・浪漫西洋建築群", "tag": "異國風情", "must": true, "illu": "kobe", "story": "是神戶近代歷史的起點。1868年神戶港開放後，為了安置大量湧入的外國商人和外交官，政府劃設了這片居住留地。「異人」在日文指的就是外國人。當時的老外們因為思鄉，特意選擇了能俯瞰海港的「北野」半山腰，建起了充滿各國風情的洋房。這裡不僅是拍照聖地，更是日本近代西洋文化（如西式甜點、麵包、洋服）的發源地。", "insider": "兩小時的時間，建議挑選最具代表性的「風見雞館（德國建築）」與「萌黃之館（美國建築）」參觀，並順道在石板坡道上品嚐六甲山牧場直送的濃郁鮮奶霜淇淋！"}, {"num": "2", "name": "生田神社", "subTitle": "1800年以上古老神社・「神戶」之名的起源", "tag": "結緣名社", "must": true, "illu": "temple", "story": "這可是擁有1800年以上歷史的古老神社！你可能不知道，「神戶」這個地名的由來，其實就是源自於生田神社。以前保護、供奉這座神社的幾十戶人家被稱為「神封（Kambe）」，後來發音演變，才成為今天神戶（Kobe）的名字。這座神社經歷了洪水、二戰大空襲與阪神大地震，每次都奇蹟般地重建，被當地人視為生命力與復甦的象徵。", "insider": "這裡現在以「祈求良緣」聞名。記得去買特殊的「水籤（水みくじ）」，把它放到生田之森的小溪裡，占卜的文字就會慢慢浮現出來，非常靈驗與神奇！"}, {"num": "3", "name": "三宮本通商店街", "subTitle": "從古代郊區到神戶心臟・洋風咖啡老店香氣", "tag": "特色老街", "must": false, "illu": "shop", "story": "三宮地區在古代其實只是郊區，直到近代鐵路開通後，才取代元町成為神戶的心臟地帶。這條商店街見證了日本昭和時代「拱廊式街道」的興起，讓居民買東西不用日曬雨淋。", "insider": "既然這趟你喜歡深度歷史，不妨在這裡留意那些融合了洋風特色的咖啡老店。神戶人非常講究咖啡豆的烘焙，感受一下日本早期咖啡廳的復古氣氛！"}, {"num": "4", "name": "神戶元町商店街", "subTitle": "原本的城鎮・大正昭和風情與神戶牛可樂餅", "tag": "百年街道", "must": false, "illu": "shop", "story": "「元町」顧名思義就是「原本的城鎮」，在三宮繁華之前，這裡曾是神戶最頂級的購物街，也是古代「西國街道」的必經之路。這裡保留了比三宮更多的大正、昭和復古風情，也是許多百年老字號和菓子、洋菓子店的發跡地。", "insider": "這裡很適合買伴手禮。別忘了去「森谷商店」排隊買一個剛炸好的「神戶牛可樂餅」，邊走邊吃是神戶人的經典日常！走到元町的盡頭附近，你還會經過「南京町（神戶中華街）」，可以順道感受一下日本三大中華街的獨特氣氛。"}, {"num": "5", "name": "神戶港塔", "subTitle": "神戶的永恆象徵・紅色雙曲面鼓型塔身", "tag": "港都地標", "must": true, "illu": "kobe", "story": "就是神戶的象徵神戶港塔。建於1963年，它的外型設計靈感來自日本傳統樂器「鼓（Tsuzumi）」，這種雙曲面網狀結構在當時是世界首創！它挺過了阪神大地震，並在2024年春天剛完成大規模翻修重新開放，頂樓新增了可以吹海風的露天觀景台！", "insider": "下午15:30到海邊剛好可以看到日落前的港灣風光，光線最柔和，拍塔最好看。塔旁邊的「美利堅公園」有一處「神戶港震災紀念公園」，保留了1995年地震時震歪破壞的碼頭原貌，非常值得一看，會讓你對神戶的重生感到由衷敬佩！"}]}, {"day": 5, "date": "10/30", "weekday": "週五", "title": "大阪之魂・天守閣、四天王寺與通天閣", "highlightName": "大阪城 & 通天閣遊艇", "category": "歷史名城", "illuType": "osaka", "notes": "大阪最重量級的經典一日！征服豐臣秀吉天下名城大阪城，參觀西之丸庭園與海洋堂公仔博物館，巡禮最古官方佛教四天王寺，探索昭和通天閣與道頓堀觀光遊艇。", "items": [{"time": "08:30", "title": "パラゴン花園町 出發", "category": "出發", "type": "stay", "duration": "準時啟程", "must": false, "transitNext": {"type": "train", "text": "搭乘電車 00 時 32 分"}}, {"time": "09:02", "title": "大阪城 (天守閣)", "category": "日本三大名城", "type": "spot", "duration": "停留 01 時 00 分", "must": true, "desc": "豐臣秀吉天下人名城，德川掩蓋重建城牆，城牆櫻門口「蛸石」巨石軍備競賽！", "transitNext": {"type": "walk", "text": "步行 00 時 10 分"}}, {"time": "10:12", "title": "大阪城 西之丸庭園", "category": "名園美景", "type": "spot", "duration": "停留 01 時 00 分", "must": false, "desc": "豐臣秀吉正室寧寧的住所，寬闊草坪無遮蔽拍攝天守閣完美角度。", "transitNext": {"type": "walk", "text": "步行 00 時 05 分"}}, {"time": "11:19", "title": "海洋堂模型博物館 MIRAIZA 大阪城", "category": "模型聖地", "type": "spot", "duration": "停留 00 時 35 分", "must": false, "desc": "1931年陸軍第四師團司令部羅馬式古蹟建築，展示日本最強模型公仔展覽！", "transitNext": {"type": "train", "text": "搭乘電車 00 時 20 分"}}, {"time": "12:14", "title": "四天王寺", "category": "日本最古官寺", "type": "spot", "duration": "停留 00 時 35 分", "must": true, "desc": "聖德太子西元593年建，四天王寺式伽藍一直線排列，罕見佛寺石鳥居神佛習合。", "transitNext": {"type": "train", "text": "搭乘電車 00 時 11 分"}}, {"time": "13:00", "title": "通天閣本通商店街", "category": "昭和懷舊", "type": "shop", "duration": "停留 01 時 00 分", "must": false, "desc": "走入大阪昭和懷舊宇宙，摸摸店門前比利肯神像腳底板招來好運！", "transitNext": {"type": "walk", "text": "步行 00 時 08 分"}}, {"time": "14:17", "title": "大阪市天王寺動物園", "category": "百年動物園", "type": "spot", "duration": "停留 02 時 00 分", "must": false, "desc": "1915年開園日本第三座動物園，改造成重現棲地的生態展示區。", "transitNext": {"type": "walk", "text": "步行 00 時 13 分"}}, {"time": "16:30", "title": "通天閣 (Tsutenkaku)", "category": "新世界靈魂", "type": "spot", "duration": "停留 02 時 00 分", "must": true, "desc": "凱旋門+艾菲爾鐵塔超狂合體，頂部霓虹燈氣象站，俯瞰新世界繁華！", "transitNext": {"type": "walk", "text": "步行至道頓堀 / 電車約 00 時 15 分"}}, {"time": "18:30", "title": "大阪觀光遊艇 Wonder Cruise (道頓堀)", "category": "水都夜航", "type": "spot", "duration": "停留 01 時 00 分", "must": true, "desc": "從水上仰角感受水都夜景，穿過橋墩近距離瘋狂搶拍固力果跑跑人！", "transitNext": {"type": "train", "text": "搭乘電車 00 時 20 分"}}, {"time": "19:51", "title": "パラゴン花園町", "category": "歸宿休息", "type": "stay", "duration": "返回飯店", "must": false, "desc": "結束收穫滿滿的一天，回飯店敷面膜放鬆腳步。"}], "spots": [{"num": "1", "name": "大阪城 (天守閣)", "subTitle": "三個時代縮影疊加・城牆巨石軍備競賽", "tag": "名城瑰寶", "must": true, "illu": "osaka", "story": "雖然是由豐臣秀吉在1583年下令建造，但你現在看到的高聳城牆和護城河，其實是後來德川幕府為了掩蓋豐臣家痕跡而重新填土築起的！而最頂端的鋼筋混凝土天守閣，則是1931年由大阪市民募資重建的。它身上疊加了三個時代的縮影。", "insider": "記得留意城牆上那些巨大的「巨石」（如櫻門口的蛸石），當年可都是靠人力從瀨戶內海運過來的，是各大名為了向幕府表忠誠的軍備競賽產物！"}, {"num": "2", "name": "大阪城 西之丸庭園", "subTitle": "寧寧正室的幽靜居所・茶會與無遮蔽絕景", "tag": "名園景致", "must": false, "illu": "osaka", "story": "原本是豐臣秀吉的正室「北政所（寧寧）」的住所，現在則是一片擁有廣闊草坪的優美庭園。相比於天守閣前的喧囂，這裡保留了難得的安靜。從這裡拍大阪城天守閣非常完美，沒有雜亂的建築遮擋。", "insider": "歷史餘韻：這裡春天是絕佳的賞櫻勝地，走在修剪整齊的草皮上，可以想像當年大名將領們在此地觀見、舉行茶會的風雅場景。"}, {"num": "3", "name": "海洋堂模型博物館 MIRAIZA 大阪城", "subTitle": "昭和陸軍司令部古蹟內的公仔模型聖地", "tag": "模型藝術", "must": false, "illu": "shop", "story": "所在的「MIRAIZA」建築本身就是古蹟，前身是1931年建造的「大日本帝國陸軍第四師團司令部」，外觀是充滿威嚴的羅馬式風格，裡面卻藏著日本最強模型製造商的展覽。", "insider": "這裡展示了極其精緻的微縮模型，從充滿日本復古美學的食玩、精巧的黏土人像，到拿著綠色光劍的星際大戰絕地武士公仔，各種精細的微縮世界絕對會讓你驚豔！"}, {"num": "4", "name": "四天王寺", "subTitle": "日本最古官方佛教寺院・四天王寺式伽藍與石鳥居", "tag": "古寺文化", "must": true, "illu": "temple", "story": "日本最古老的官方佛教寺院，由聖德太子在西元593年建立，已有1400多年歷史。它的建築佈局被稱為「四天王寺式伽藍」，中門、五重塔、金堂、講堂呈一直線排列，是受到古代中國與朝鮮半島影響的最早期建築樣式。", "insider": "寺內有一個「石鳥居」，雖然鳥居通常是神道教神社的象徵，但這裡卻出現在佛教寺廟，完美展現了日本早期「神佛習合」的獨特信仰文化。"}, {"num": "5", "name": "通天閣本通商店街", "subTitle": "走入昭和懷舊宇宙・摸摸比利肯神像招好運", "tag": "昭和懷舊", "must": false, "illu": "shop", "story": "帶領你走入大阪「昭和懷舊宇宙」的隧道！這裡連接了天王寺與新世界，過去是勞動階級與庶民的娛樂中心，保留了非常濃厚的「底層生命力」。", "insider": "非常適合用相機捕捉那種帶有日式濾鏡的復古街拍感。邊走邊找找各家店門口擺放的「比利肯（Billiken）」神像，據說摸摸祂的腳底板就能帶來好運！"}, {"num": "6", "name": "大阪市天王寺動物園", "subTitle": "1915年開園百年老牌動物園・生態展示園區", "tag": "動物自然", "must": false, "illu": "food", "story": "天王寺動物園是日本第三座動物園（1915年開園），歷史非常悠久。", "insider": "這裡近年來改造成「生態展示區」，讓動物盡量在重現原始棲地的自然環境中生活，近距離觀賞可愛動物。"}, {"num": "7", "name": "通天閣", "subTitle": "新世界商圈靈魂・凱旋門與鐵塔結合・霓虹燈天氣預報", "tag": "大阪象徵", "must": true, "illu": "kobe", "story": "新世界商圈的靈魂。1912年初建時，它可是當時東方最高的建築，設計理念超狂：下半部模仿巴黎凱旋門，上半部模仿艾菲爾鐵塔！雖然一代塔在二戰時被大火燒毀並拆解煉鋼，但現在這座1956年重建的二代塔，依然是大阪不屈不撓的象徵。", "insider": "塔頂會用不同顏色的霓虹燈來預報明天的天氣（白色是晴天、藍色是雨天），這是在沒有手機APP的年代，當地人最依賴的氣象站！"}, {"num": "8", "name": "大阪觀光遊艇 Wonder Cruise", "subTitle": "從水上仰角感受水都繁華夜景・與跑跑人同框", "tag": "夜航巡禮", "must": true, "illu": "bridge", "story": "出發的遊船，是從水上視角感受大阪這座「水都」繁華夜景的最佳方式。", "insider": "從新世界一帶，可以搭乘地鐵堺筋線到「日本橋站」走過去，非常順路。晚上搭船時，兩岸的霓虹燈倒影在水面上非常迷人，當船開到道頓堀經典的「固力果跑跑人」看板前時，導覽員通常會放慢速度讓大家瘋狂拍照，記得提早準備好相機！"}]}, {"day": 6, "date": "10/31", "weekday": "週六", "title": "梅田雲端天際線・任天堂旗艦與大阪港", "highlightName": "梅田空中庭園 & 聖瑪麗亞號", "category": "現代展望", "illuType": "wheel", "notes": "登頂梅田藍天大樓俯瞰雲端，參觀天空美術館，朝聖大丸梅田Nintendo OSAKA旗艦店，午後到大阪港搭乘聖瑪麗亞帆船與天保山大摩天輪看夕陽！", "items": [{"time": "09:00", "title": "パラゴン花園町 出發", "category": "出發", "type": "stay", "duration": "早晨出發", "must": false, "transitNext": {"type": "train", "text": "搭乘地下鐵 00 時 25 分"}}, {"time": "09:25", "title": "梅田藍天大樓 (空中庭園展望台)", "category": "現代建築", "type": "spot", "duration": "停留 01 時 00 分", "must": true, "desc": "泡沫經濟頂峰「空中城市」，提升工法千噸吊升，圓形鏤空空中庭園如星艦般震撼！", "transitNext": {"type": "walk", "text": "步行 00 時 00 分 (館內直達)"}}, {"time": "10:25", "title": "絹谷幸二 天空美術館", "category": "藝術殿堂", "type": "spot", "duration": "停留 01 時 00 分", "must": false, "desc": "國寶大師古典濕壁畫 Fresco 技法千年不褪色，融合3D立體影像技術色彩爆發！", "transitNext": {"type": "walk", "text": "步行 00 時 08 分"}}, {"time": "11:41", "title": "炸豬排 KYK 阪急三番街店", "category": "排隊美食", "type": "food", "duration": "停留 01 時 41 分", "must": true, "desc": "金黃酥脆黑豬肉炸豬排，搭配清甜高麗菜絲與秘傳豬排醬汁。", "transitNext": {"type": "walk", "text": "步行 00 時 08 分"}}, {"time": "13:30", "title": "Nintendo OSAKA (大丸梅田店 13F)", "category": "任天堂旗艦", "type": "shop", "duration": "停留 01 時 00 分", "must": true, "desc": "任天堂官方旗艦店！巨大瑪利歐、林克雕像，限定周邊一次買齊！", "transitNext": {"type": "train", "text": "搭乘電車至大阪港 00 時 32 分"}}, {"time": "15:02", "title": "帆船型觀光船 聖瑪麗亞號", "category": "港灣航行", "type": "spot", "duration": "停留 01 時 00 分", "must": true, "desc": "哥倫布旗艦2倍放大復刻，航行大阪灣呼應難波津遣唐使水都海棲歷史！", "transitNext": {"type": "walk", "text": "步行 00 時 05 分"}}, {"time": "16:07", "title": "天保山大摩天輪", "category": "高空夕陽", "type": "spot", "duration": "停留 01 時 00 分", "must": true, "desc": "天保二年疏浚挖出20米人工山，歌川廣重浮世繪名景，112.5米眺望明石海峽落日！", "transitNext": {"type": "train", "text": "搭乘電車 00 時 20 分"}}, {"time": "17:27", "title": "咲洲宇宙塔展望台 (WTC)", "category": "夜景展望", "type": "spot", "duration": "停留 01 時 00 分", "must": false, "desc": "高達252公尺摩天大樓，如同身處太空站俯瞰人工島與港灣璀璨燈火！", "transitNext": {"type": "train", "text": "搭乘電車 00 時 36 分"}}, {"time": "19:03", "title": "パラゴン花園町", "category": "歸宿", "type": "stay", "duration": "夜間休息", "must": false, "desc": "滿載 Nintendo 戰利品回到飯店休息。"}], "spots": [{"num": "1", "name": "梅田藍天大樓", "subTitle": "泡沫經濟巔峰的空中城市・提升工法千噸吊升創舉", "tag": "世界建築", "must": true, "illu": "wheel", "story": "這棟建築的誕生背景充滿了戲劇性！它孕育於1980年代末期日本「泡沫經濟」的最顛峰，最初的宏偉計畫被稱為「City of Air（空中城市）」，原本打算建造四棟摩天大樓，並在頂部用巨大的空中庭園將它們全部相連。但隨著90年代泡沫破裂，資金銳減，計畫最終縮水成了現在的「雙塔」結構。即使如此，建築大師原廣司的設計依然極具前瞻性。頂部那個有著巨大圓形鏤空的空中庭園，看起來就像是星際大戰星艦！", "insider": "當時為了建造頂部，工程團隊使用了極其罕見的「提升工法（Lift-up）」，在地面將重達上千噸的觀景台組裝好後，用鋼纜一口氣拉升到150公尺的高空與兩棟大樓接合，這在當年的建築界是一大創舉！"}, {"num": "2", "name": "絹谷幸二 天空美術館", "subTitle": "國寶大師的濕壁畫古典技法與3D視覺震撼", "tag": "現代藝術", "must": false, "illu": "shop", "story": "這座美術館的靈魂人物「絹谷幸二」是日本現代藝術界的國寶級大師。他在年輕時前往義大利留學，深入鑽研了古典的「濕壁畫（Fresco，日文稱『壁畫古典技法』）」。這種技法必須在牆壁的灰泥還未乾透時迅速作畫，讓顏料與壁完滿融合，色彩能歷經千年不褪色！", "insider": "絹谷幸二把這種歐洲古老的技法帶回日本，並融合了日本傳統神話、佛教神祇與現代風景。美術館內那些充滿立體感與濃烈色彩的作品，完美展現了和洋折衷的美學極致！"}, {"num": "3", "name": "Nintendo OSAKA (大丸梅田店 13F)", "subTitle": "任天堂直營官方旗艦店・瑪利歐與薩爾達天堂", "tag": "動漫旗艦", "must": true, "illu": "shop", "story": "關西第一家任天堂官方旗艦店！店門口矗立著超巨大的瑪利歐、薩爾達傳說林克、卡比與漆彈大作戰雕像，現場滿滿原創獨家限定商品。", "insider": "店內採整理券或人潮管控，建議提早前往領券。各式各樣的文具、T-Shirt、限定玩偶與旅行配件是送禮自用的首選！"}, {"num": "4", "name": "觀光船 聖瑪麗亞號", "subTitle": "哥倫布旗艦兩倍復刻・水都悠久海棲歷史", "tag": "港灣航行", "must": true, "illu": "bridge", "story": "這艘船是按照1492年哥倫布發現美洲新大陸時所搭乘的旗艦「聖瑪麗亞號」，以兩倍的比例放大復刻建造的！", "insider": "雖然它的外觀是西洋帆船，但航行在大阪灣上，呼應的卻是大阪作為「水都」的悠久海棲歷史。從古代被稱為「難波津」開始，大阪一直都是遣唐使、遣隋使出發前往亞洲大陸的門戶。搭乘這艘船，可以從海上的視角重新認識這座海洋都市！"}, {"num": "5", "name": "天保山大摩天輪", "subTitle": "天保二年疏浚挖出的人工山・歌川廣重浮世繪名景", "tag": "海灣地標", "must": true, "illu": "wheel", "story": "「天保山」這個地名有著非常嚴肅有趣的歷史。在江戶時代（1831年，天保2年），為了解決安治川河口泥沙淤積、導致大型商船無法駛入大阪城下的問題，政府下令大規模疏浚河道。當時挖出來的龐大泥沙堆積在岸邊，就一畝形建了一座高約20公尺的「人工山」，並以年號命名為「天保山」。", "insider": "這裡在江戶時代就已經是大阪市民賞櫻、看海的休閒勝地，浮世繪大師歌川廣重都曾畫過這裡的繁華景象。1997年建成的大摩天輪曾經是世界最高，它承接了江戶時代以來的娛樂血脈，繼續作為俯瞰現代化大阪港的最佳地標！"}, {"num": "6", "name": "咲洲宇宙塔展望台 (WTC)", "subTitle": "252公尺高空・泡沫經濟征服天空與海洋之夢", "tag": "極致夜景", "must": false, "illu": "wheel", "story": "這棟高達252公尺的摩天大樓，最初的名字是「大阪世界貿易中心（WTC）」，它同樣是日本泡沫經濟時期極度樂觀下的產物。當時大阪市政府規劃了龐大的「Technoport Osaka」海灣造鎮計畫，希望能打造一個全新的副都心，這棟大樓就是計畫的核心地標。然而隨著泡沫經濟破裂，招商困難加上交通配套未及時跟上，這棟建築一度面臨嚴重的財務危機，後來才由大阪府廳（市政府）收購部分樓層作為辦公室，並改名為咲洲宇宙塔。", "insider": "如今站在展望台上，看著腳下人工島為咲洲宇宙塔（木工島），腳下的人工島與港區燈火，那種居高臨下的視野宛如身處太空站的指揮樓，同時也能深刻感受到日本在80年代那股想要征服天空與海洋的強大野心！"}]}, {"day": 7, "date": "11/01", "weekday": "週日", "title": "水都綠洲與天下廚房・天神橋筋與中之島", "highlightName": "天滿宮 & 中之島水岸", "category": "老街漫步", "illuType": "bridge", "notes": "早晨探訪在地天滿市場與日本最長天神橋筋商店街，參拜大阪天滿宮星合池祈福，午後在浪漫的中之島公園河畔野餐看紅磚洋館公會堂。", "items": [{"time": "09:00", "title": "パラゴン花園町 出發", "category": "出發", "type": "stay", "duration": "早晨啟程", "must": false, "transitNext": {"type": "train", "text": "搭乘電車 00 時 28 分"}}, {"time": "09:28", "title": "天滿市場", "category": "傳統市場", "type": "food", "duration": "停留 01 時 00 分", "must": false, "desc": "大阪市民的後廚房！滿滿接地氣的水果、漬物與海產乾貨，體驗真正的大阪主婦早市氣氛。", "transitNext": {"type": "walk", "text": "步行 00 時 07 分"}}, {"time": "10:35", "title": "天神橋筋商店街", "category": "日本第一長街", "type": "shop", "duration": "停留 01 時 00 分", "must": true, "desc": "長達2.6公里、橫跨六個地鐵站！大川蔬菜船湧現自然膨脹，保留江戶草根商業基因。", "transitNext": {"type": "walk", "text": "步行 00 時 06 分"}}, {"time": "11:56", "title": "大阪天滿宮", "category": "學問之神", "type": "spot", "duration": "停留 01 時 00 分", "must": true, "desc": "菅原道真神靈發光梅樹由來，日本三大祭「天神祭」發祥地，水上船渡御壯麗！", "transitNext": {"type": "walk", "text": "步行 00 時 12 分"}}, {"time": "13:08", "title": "中之島公園", "category": "河畔水景", "type": "spot", "duration": "停留 01 時 00 分", "must": false, "desc": "星合池七夕相親地，各國大名藏屋敷天下米市金融中心，中央公會堂紅磚洋館。", "transitNext": {"type": "train", "text": "搭乘電車 00 時 32 分"}}, {"time": "14:40", "title": "パラゴン花園町", "category": "歸宿休息", "type": "stay", "duration": "午後放鬆", "must": false, "desc": "下午回到花園町享受悠閒時光，整理行李與休息，準備明天一早前往京都古都！"}], "spots": [{"num": "1", "name": "天滿市場・天神橋筋商店街", "subTitle": "長達2.6公里、橫跨六個地鐵站的日本第一長街", "tag": "第一長街", "must": true, "illu": "shop", "story": "天神橋筋商店街之所以能長達2.6公里、橫跨六個地鐵站，並非現代都市計畫的產物，而是自然膨脹的歷史結果！它的前身是大阪天滿宮的「門前町（參拜道）」。在江戶時代，大阪被譽為「天下廚房」，全國的物資都透過水路運送到此。當時的幕府在天滿宮附近設立了「天滿青物市場（蔬菜市場）」，與堂島的米市、雜貨州的魚市並列為大阪三大市場。", "insider": "這個蔬菜市場掌握了全大阪的農產品定價權。每天清晨，運送蔬菜的船隻擠滿了旁邊的大川，成千上萬的批發商、零售商與前來天滿宮參拜的信徒匯聚於此。為了解決這龐大人流的吃喝拉撒與購物需求，參拜道路兩旁的攤販與店家不斷向南延伸，最終長成了這條全日本最長的商店街，至今仍保留著江戶時代那種充滿活力、甚至帶點草根性的商業基因！"}, {"num": "2", "name": "大阪天滿宮", "subTitle": "發出奇異光芒的梅樹・天神祭發祥地", "tag": "學問總社", "must": true, "illu": "temple", "story": "這座神社的起源，必須追溯到平安時代的政治鬥爭。西元901年，一代奇才菅原道真在政爭中落敗，被貶謫至九州太宰府。在他淒涼的流放旅途中，曾途經大阪的「大將軍社」稍作休息與祈福。菅原道真過世約50年（西元949年），當時的村上天皇聽聞大將軍社前突然長出一棵「每晚都會發出奇異光芒的梅樹」。天皇認為這是菅原道真真的神靈顯靈，便下令在此地建立社殿，這就是大阪天滿宮的由來。這也是為什麼天滿宮的代表紋是「梅花」，且境內種滿梅樹的原因！", "insider": "此外，這裡也是日本三大祭典之一「天神祭」的誕生地。西元951年，為了驅除當時肆虐的瘟疫，神職人員將一把名為「神鉾」的兵器放入河中流放，兵器漂流到哪，就在哪裡設立祭壇。這項結合了大阪水都特性的儀式，演變成了今日每年七月吸引百萬人的華麗水上船渡御！"}, {"num": "3", "name": "中之島公園", "subTitle": "星合池七夕浪漫相親地・天下米市藏屋敷金融中心", "tag": "水都綠洲", "must": false, "illu": "bridge", "story": "位於天滿宮北側的「星合池」，名字充滿浪漫色彩。「星合」在日文中指的是七夕時牛郎與織女星相會。江戶時代的大阪人非常重視七夕，當時的信徒會在池畔舉辦盛大的歌會與祈福儀式，甚至相傳這裡曾是許多未婚男女藉由祭典「相親」的秘密場所！而往南步行的「中之島」，則是堂島川與土佐堀川沖積出的狹長沙洲。在江戶時代，這裡密密麻麻地建滿了各國大名的「藏屋敷」（兼具倉庫與宅邸功能的建築），全日本的稻米與財富都在此進行期貨交易，是當時日本真正的金融中心！", "insider": "到了明治與大正時代，隨著文明開化，藏屋敷被拆除，取而代之的是由當地富商（如股票經紀人岩本榮之助）捐款建造的大阪市中央公會堂、日本銀行大阪分行等紅磚西洋建築。中之島的這段轉變，完美濃縮了日本從封建商業過渡到近代資本主義的歷史軌跡！"}]}, {"day": 8, "date": "11/02", "weekday": "週一", "title": "千載古都風華・清水寺、二三年坂與祇園", "highlightName": "清水寺 & 祇園花見小路", "category": "京都古都", "illuType": "kiyomizu", "notes": "清晨從大阪搭車前往京都！參觀西元778年清水寺清水舞台與音羽瀑布，漫步二年坂、三年坂、八坂神社，穿梭花見小路，下午參觀京都鐵道博物館與京都塔！", "items": [{"time": "07:00", "title": "パラゴン花園町 出發前往京都", "category": "早起出發", "type": "stay", "duration": "出發", "must": false, "desc": "步行至車站搭車，搭乘市巴士206號至「馬町站」下車，步行上清水坂。", "transitNext": {"type": "train", "text": "電車加巴士 01 時 29 分 (¥230)"}}, {"time": "08:29", "title": "清水寺 (Kiyomizu-dera)", "category": "世界文化遺產", "type": "spot", "duration": "停留 01 時 00 分", "must": true, "desc": "懸造工法139根櫸木柱懸崖支撐，不使用一根釘子的木造結構抗震奇蹟！", "transitNext": {"type": "walk", "text": "步行 00 時 10 分"}}, {"time": "09:39", "title": "二寧坂 (二年坂)", "category": "石板古街", "type": "spot", "duration": "停留 01 時 00 分", "must": true, "desc": "豐臣秀吉妻子寧寧祈安產道，大正昭和傳統木造町家建築群，3:4復古視角拍照！", "transitNext": {"type": "walk", "text": "步行 00 時 05 分"}}, {"time": "10:41", "title": "一念坂 (一年坂)", "category": "寧靜步道", "type": "spot", "duration": "停留 01 時 00 分", "must": false, "desc": "相較熱鬧的二年坂與三年坂，一念坂更幽靜雅緻，傳統茶屋與手工藝小店。", "transitNext": {"type": "walk", "text": "步行 00 時 07 分"}}, {"time": "11:50", "title": "京都八坂神社", "category": "祇園總本社", "type": "spot", "duration": "停留 01 時 00 分", "must": true, "desc": "超過1350年歷史！美御前社美容水滴兩三滴美化容顏心靈，舞殿掛滿商家奉納燈籠！", "transitNext": {"type": "walk", "text": "步行 00 時 05 分"}}, {"time": "12:57", "title": "祇園花見小路通", "category": "花街茶屋", "type": "spot", "duration": "停留 01 時 00 分", "must": true, "desc": "京都最知名花街！格子窗暗色木造町家，偶遇藝伎穿梭，私巷嚴禁拍照守護隱私。", "transitNext": {"type": "train", "text": "搭乘巴士/電車 00 時 20 分"}}, {"time": "14:21", "title": "京都鐵道博物館", "category": "鐵道殿堂", "type": "spot", "duration": "停留 02 時 00 分", "must": true, "desc": "1914年古老扇形車庫，從蒸汽機關車連桿機械到新幹線流體力學文明開化！", "transitNext": {"type": "train", "text": "搭乘電車 00 時 15 分"}}, {"time": "16:36", "title": "京都塔 (Kyoto Tower)", "category": "古都燈塔", "type": "spot", "duration": "停留 01 時 00 分", "must": true, "desc": "高達131公尺京都最高地標，無鋼骨單殼圓筒結構，宛如沒有海的京都燈塔！", "transitNext": {"type": "train", "text": "搭乘電車返回大阪 00 時 54 分"}}, {"time": "18:30", "title": "パラゴン花園町", "category": "歸宿", "type": "stay", "duration": "夜間休息", "must": false, "desc": "順利完成京都朝聖之旅，回花園町舒服休息。"}], "spots": [{"num": "1", "name": "清水寺", "subTitle": "懸造工法139根櫸木支撐・不用一根釘子的木造奇蹟", "tag": "世界遺產", "must": true, "illu": "kiyomizu", "story": "建於西元778年的清水寺，歷史比平安京遷都還要早。它是延鎮上人在尋找清澈水源（音羽之瀑）時所開創，後來在征夷大將軍坂上田村麻呂的資助下擴建。經歷過十次以上的祝融之災，現在的建築多是1633年由德川家光重建。", "insider": "最具代表性的「清水舞台」，採用了名為「懸造（懸造り）」的傳統工法。它依靠139根巨大的櫸木柱子支撐在陡峭的懸崖上，整座結構沒有使用任何一顆釘子，完全透過木材的卡榫與精密計算的力學結構來抗震。邏輯若化作純粹的技術圖，其幾何對稱與承重設計絕對會令人著迷！"}, {"num": "2", "name": "二寧坂", "subTitle": "豐臣秀吉之妻寧寧的安產道・3:4復古視角拍照", "tag": "町家古道", "must": true, "illu": "temple", "story": "這幾條坡道是連接清水寺與高台寺、八坂神社的重要參拜道。「二寧坂」據傳是因為豐臣秀吉的妻子「寧寧（北政所）」常走這條路前往清水寺祈求安產而得名。這裡完整保留了京都大正時代到昭和初期的傳統町家建築群。", "insider": "這裡的光影與木造建築非常適合拍照。建議持相機畫面切換成3:4的復古比例，捕捉狹窄石板路與遠處八坂塔的襯托深感。溫潤的巷弄裡偶爾能遇見早起散步的在地居民，悠閒地走在青石板上的日常！"}, {"num": "3", "name": "京都八坂神社", "subTitle": "超過1350年歷史・美御前社美容水滴面生光", "tag": "祇園總社", "must": true, "illu": "torii", "story": "擁有超過1350年歷史，是日本全國八坂神社的總本社，在明治時期「神佛分離」前被稱為「祇園社」，如今是日本三大祭典之一「祇園祭」的主辦神社。", "insider": "來到這裡，別忘了去拜訪境內的「美御前社」，這裡供奉著守護美貌的女神。門前自然湧出的「美容水」，據說只要在臉上滴上兩三滴，不僅能美化肌膚，連心靈也會變得美麗。而巨大的舞殿上掛滿了無數由在地商家獻納的燈籠，黃昏點燈時格外壯觀！"}, {"num": "4", "name": "祇園花見小路通", "subTitle": "京都最具代表的花街茶屋・暗色木造町家與藝伎禮儀", "tag": "花街風華", "must": true, "illu": "temple", "story": "這裡是京都最知名的花街（Geisha District），也是體現京都傳統「藝伎文化」的中心。在江戶時代，這一帶曾是八坂神社與建仁寺的領地，後來逐漸發展成茶屋（Ochaya）與娛樂場所匯成的街道，兩旁是保存良好、帶有格子窗的暗色木造町家建築。", "insider": "傍晚時分，你可能有機會看見盛裝打扮、步履匆忙的藝伎（藝子與舞伎）穿梭茶屋之間。請注意：為了保護隱私，祇園的私有巷弄內嚴禁拍照，僅能在「花見小路」主街上拍照。細細觀察町家建築弄罐排護的傳統智慧！"}, {"num": "5", "name": "京都鐵道博物館", "subTitle": "1914年扇形車庫・從蒸汽機關車到新幹線的文明開化", "tag": "鐵道聖地", "must": true, "illu": "plane", "story": "這裡的前身是「梅小路蒸汽機關車館」，保存了日本鐵道發展史上最重要的火車頭，是鐵道迷與機械結構控的聖地。這裡完整保留了建於1914年的扇形車庫，是日本現存最古老完整的鋼筋混凝土扇形庫！", "insider": "從明治維新時期第一條連接新橋與橫濱的鐵路開始，鐵道就象徵著日本的「文明開化」。館內展示的不僅是火車，更是日本百年間的工業設計演進，從蒸汽機車的連桿機械構造，到新幹線流體力學的車頭設計！"}, {"num": "6", "name": "京都塔", "subTitle": "京都最高建築・無鋼骨單殼結構・古都夜景燈塔", "tag": "古都地標", "must": true, "illu": "kobe", "story": "於1964年落成的京都塔，高達131公尺，是京都市區最高的建築。它的建造時間剛好迎來了東海道新幹線開通與東京奧運（也有人說是象徵沒有海的京都之中的燈塔）。", "insider": "由於京都嚴格的歷史景觀保護法規（美觀地區限制），當時這座鋼骨與紅白相間的現代塔曾引發巨大爭議，然而它採用了極為獨特的「無鋼骨單殼結構」，將鋼板焊接成圓筒狀來支撐，矗立半世紀守護這座古老都城！"}]}, {"day": 9, "date": "11/03", "weekday": "週二", "title": "勝運達摩與道頓堀跑跑人・勝尾寺與心齋橋", "highlightName": "箕面勝尾寺 & 戎橋道頓堀", "category": "必勝許願", "illuType": "daruma", "notes": "早晨搭乘御堂筋線延長線至箕面萱野站，轉乘計程車抵達祈求勝運的勝尾寺，滿山遍野遍布數以萬計的紅色達摩不倒翁！午後回心齋橋、戎橋跑跑人打卡、吃一蘭拉麵！", "items": [{"time": "07:00 / 08:00", "title": "パラゴン花園町 出門", "category": "出發", "type": "stay", "duration": "晨間出發", "must": false, "desc": "從難波站搭乘御堂筋線到「箕面萱野站」（42分鐘），於南口搭計程車15分鐘直達勝尾寺（約3200円）。", "transitNext": {"type": "train", "text": "電車+計程車 00 時 58 分"}}, {"time": "08:58", "title": "Yuzuru Kids Park", "category": "公園綠意", "type": "spot", "duration": "停留 00 時 25 分", "must": false, "desc": "箕面當地的可愛吉祥物公園，短暫停步拍照呼吸秋晨新鮮空氣。", "transitNext": {"type": "taxi", "text": "車程 00 時 20 分"}}, {"time": "09:43", "title": "勝尾寺 (Katsuo-ji)", "category": "勝運之寺", "type": "spot", "duration": "停留 03 時 00 分", "must": true, "desc": "名震全日本求勝之寺！戰勝自我，滿山遍野岩石樹蔭塞滿數千紅色達摩不倒翁！", "transitNext": {"type": "taxi", "text": "搭車返回市區 00 時 40 分"}}, {"time": "13:01", "title": "Yuzuru Kids Park / 回程", "category": "途經", "type": "spot", "duration": "停留 00 時 25 分", "must": false, "transitNext": {"type": "train", "text": "搭乘御堂筋線直達心齋橋 00 時 25 分"}}, {"time": "13:26", "title": "心齋橋筋商店街", "category": "購物天國", "type": "shop", "duration": "停留 01 時 00 分", "must": true, "desc": "運河填平留其名，長達數百公尺拱廊街，傳承大阪商人郡（Akindo）平民商業文化！", "transitNext": {"type": "walk", "text": "步行 00 時 05 分"}}, {"time": "14:32", "title": "鈍屋拉麵 心齋橋店 (Zundoya)", "category": "濃郁拉麵", "type": "food", "duration": "停留 01 時 00 分", "must": true, "desc": "姬路超人氣背脂豚骨拉麵！醇厚大骨高湯配特製細麵、炙燒叉燒與辛子高菜。", "transitNext": {"type": "walk", "text": "步行 00 時 06 分"}}, {"time": "15:38", "title": "戎橋 (Ebisubashi)", "category": "跑跑人地標", "type": "spot", "duration": "停留 01 時 00 分", "must": true, "desc": "興建於1615年搭訕橋、球迷跳河慶祝聖地，1935年便在此守候的「固力果跑跑人」合影！", "transitNext": {"type": "walk", "text": "步行 00 時 01 分"}}, {"time": "16:39", "title": "道頓堀 (Dotonbori)", "category": "美食百老匯", "type": "spot", "duration": "停留 01 時 00 分", "must": true, "desc": "安井道頓開鑿運河，吃到倒在大阪（Kuidaore），巨大會動巨蟹與章魚立體招牌！", "transitNext": {"type": "walk", "text": "步行 00 時 03 分"}}, {"time": "17:42", "title": "一蘭 道頓堀店別館", "category": "天然豚骨拉麵", "type": "food", "duration": "停留 01 時 00 分", "must": true, "desc": "經典一人一格味集中座位，天然豚骨高湯與赤紅秘傳醬汁熱騰騰暖胃！", "transitNext": {"type": "train", "text": "搭乘電車 00 時 15 分"}}, {"time": "18:56", "title": "パラゴン花園町", "category": "歸宿整理", "type": "stay", "duration": "最後打包", "must": false, "desc": "返回民宿打包行李箱，將十天來的紀念品與零食妥善裝箱，準備明天返程。"}], "spots": [{"num": "1", "name": "勝尾寺", "subTitle": "以「求勝」聞名的古老佛寺・數以千計的必勝達摩不倒翁", "tag": "勝運勝地", "must": true, "illu": "daruma", "story": "這是一座以「求勝」聞名的古老寺廟。建於西元727年，因清和天皇在此祈願病癒，便御賜「勝王寺」之名，後來寺方為表達謙遜，將「王」改為音近的「尾」，意為「戰勝自我」，從此成為歷代將領與平民祈求勝運的聖地。", "insider": "寺內無處不在、密密麻麻的紅色「達摩（Daruma）」是這裡最震撼的奇景！信徒會買達摩來許願，並在願望達成後將其畫上雙眼。你可以看到岩石、燈籠甚至樹蔭下都塞滿了無數象徵百折不撓的小達摩，充滿了特殊的信仰生命力！"}, {"num": "2", "name": "心齋橋", "subTitle": "運河填平留其名・長達數百公尺的商人郡拱廊街", "tag": "購物商圈", "must": true, "illu": "shop", "story": "這裡曾是一條繁忙的運河與橋樑，名字源於1622年由商人岡田心齋在此建造的「心齋橋」。當時是為了連結商圈與住宅區，雖然運河在二戰後被填平，橋樑也已不復存在，但「心齋橋」這個名字卻作為大阪最具代表性的商業聖地被保留了下來。", "insider": "這條長達數百公尺的「拱廊式」商店街，繼承了大阪「商人郡（Akindo）」的歷史基因。街道上方覆蓋的棚頂能遮風避雨，兩旁則聚集了無數百年老鋪、百貨與潮流名店。走在這裡，可以深刻感受到大阪從江戶時代延續至今、極具活力與韌性的平民商業文化！"}, {"num": "3", "name": "戎橋", "subTitle": "道頓堀最靈魂地標・今宮戎神社參道・固力果跑跑人", "tag": "打卡地標", "must": true, "illu": "namba", "story": "興建於1615年，是橫跨道頓堀川最著名的步道橋。這座橋最初是為了方便北邊的商人與百姓，跨河前往南邊的「今宮戎神社」參拜商賣之神（惠比壽，Ebisu）而建造，因而得名「戎橋」。", "insider": "這裡現在是大阪最繁華的交叉點，俗稱「搭訕橋」或「慶祝聖地」（如棒球奪冠時球迷會集體跳河慶祝）。站在橋上，你可以用絕佳的角度與1935年便在此守候的「固力果跑跑人」看板合影。這座橋見證了大阪人幾百年的歡樂、狂歡與日常，是道頓堀川最具靈魂的地標！"}, {"num": "4", "name": "道頓堀", "subTitle": "安井道頓開鑿運河・吃倒在大阪與巨大會動招牌", "tag": "美食天堂", "must": true, "illu": "food", "story": "這是一條開鑿於1612年的人工運河。當時富商安井道頓傾盡家產與生命開挖，雖然在1615年的大阪之役中戰死，其族人仍完成了這項壯舉。領主為感念他，便以「道頓堀」命名。幕府後來將此地規劃為戲院與娛樂區，造就了「吃到倒在大阪（Kuidaore）」的飲食與庶民文化！", "insider": "兩岸五彩繽紛、巨大無比且會動的立體招牌（如巨蟹、大章魚）是這裡的經典招牌。可以漫步在繁華的河岸，或在法善寺橫丁的石板小路間尋找江戶時代的「大阪廚房」兼娛樂天堂的獨特魅力！"}, {"num": "5", "name": "鈍屋拉麵 心齋橋店", "subTitle": "姬路極濃背脂豚骨・炙燒叉燒與辛子高菜絕品", "tag": "排隊名店", "must": true, "illu": "food", "story": "誕生於兵庫姬路的濃厚拉麵霸王！使用精選豬大骨長達二十小時以上熬煮出濃郁膠質高湯，炙燒叉燒香氣四溢。", "insider": "可依個人喜好自選背脂油脂厚度（清爽、普通、濃厚），大口吃麵同時夾入隨桌附贈的辛子高菜，微辣提鮮直衝味蕾！"}, {"num": "6", "name": "一蘭 道頓堀店別館", "subTitle": "一人一格味集中座位・天然豚骨與赤紅秘傳醬汁", "tag": "拉麵傳奇", "must": true, "illu": "food", "story": "全球最具代表性的日本豚骨拉麵之一，以一人一格的「味集中座位」專注品嚐拉麵原味。", "insider": "別館座位多且空間舒適，推薦勾選麵條超硬、大蒜特量、赤紅秘傳辣醬一倍，感受豚骨油脂與唐辛子在舌尖交織的完美平衡！"}]}, {"day": 10, "date": "11/04", "weekday": "週三", "title": "美好返程・關西機場與滿載回憶", "highlightName": "關西國際機場 KIX", "category": "平安返航", "illuType": "plane", "notes": "上午 10:00 退房前往關西機場。高雄組搭乘 AirAsia AK171（14:10 起飛）返航小港，台北組搭乘樂桃航空 MM27（15:25 起飛）返航桃園。在第一與第二航廈免稅店最後衝刺採買伴手禮，帶著滿載美好回憶平安返家！", "items": [{"time": "10:00", "title": "パラゴン花園町 (退房)", "category": "退房出發", "type": "stay", "duration": "準時退房", "must": false, "desc": "檢查隨身貴重物品、護照、充電線，鎖上門鎖告別住了九晚的溫馨公寓，前往天下茶屋搭乘南海電鐵。", "transitNext": {"type": "train", "text": "搭乘南海特急/急行電車 00 時 59 分"}}, {"time": "11:40", "title": "關西國際機場 (雙航線返航報到)", "category": "班機報到", "type": "stay", "duration": "停留 02 時 30 分", "must": true, "desc": "【高雄組】第一航廈 (T1) 辦理 AirAsia AK171 班機報到（14:10 日本起飛 ➔ 16:30 抵高雄）。\n【台北組】第二航廈 (T2) 辦理樂桃航空 MM27 班機報到（15:25 日本起飛 ➔ 17:55 抵桃園）。通關後採買生巧克力與名產，平安返抵台灣！"}], "spots": [{"num": "1", "name": "パラゴン花園町 (退房感念)", "subTitle": "九晚溫馨歸宿・花園町早晨漫步道別", "tag": "告別溫宿", "must": false, "illu": "stay", "story": "陪伴了整整十天關西探索的溫暖據點。走出公寓，看著花園町站前的大阪居民騎著自行車通勤，感受最後一份大阪晨間日常。", "insider": "10:00 前辦理退房，檢查隨身護照、錢包與所有充電器，步行至天下茶屋站搭乘南海電鐵特急前往關西機場。"}, {"num": "2", "name": "關西國際機場 (雙班機返程與伴手禮最後衝刺)", "subTitle": "T1 亞航 AK171 ＋ T2 樂桃 MM27・幸福滿載平安返航", "tag": "伴手禮掃貨", "must": true, "illu": "plane", "story": "旅途的終點也是美好回憶的起點！高雄組於第一航廈辦理 AirAsia AK171 班機報到（14:10 起飛）；台北組搭乘接駁車前往第二航廈辦理樂桃航空 MM27 班機報到（15:25 起飛）。兩組人在十天滿滿足跡後互道珍重！", "insider": "進入管制區後前往免稅商店街，ROYCE 生巧克力、白色戀人、東京香蕉、關西限定宇治抹茶年輪蛋糕一應俱全。用滿滿的伴手禮和十天豐富的相片回憶，為本次關西之旅畫下最完美的句點！"}]}];
+    const DEFAULT_FOOD_LIST = [{"id": "food_1", "name": "Shake Shack 大丸心齋橋店", "address": "大阪市中央區心齋橋筋1-7-1 大丸心齋橋本館 1F", "lat": 34.673088, "lng": 135.500815, "region": "shinsaibashi", "area": "大阪・心齋橋", "category": "美式漢堡", "icon": "🍔", "highlight": "大丸心齋橋 1F 紐約人氣頂級波浪薯條與香濃奶昔漢堡，逛街必吃！", "maps_link": "https://www.google.com/maps/search/?api=1&query=Shake%20Shack%20%E5%A4%A7%E4%B8%B8%E5%BF%83%E9%BD%8B%E6%A9%8B%E5%BA%97"}, {"id": "food_2", "name": "千代松勝蓋飯 (千代松)", "address": "大阪市中央區千日前1-1-10", "lat": 34.668266, "lng": 135.505293, "region": "nanba", "area": "大阪・千日前", "category": "超厚切炸豬排丼", "icon": "🥩", "highlight": "日本社群爆紅！5cm 巨無霸特厚低溫熟成24小時炸豬排蓋飯，肉汁狂溢！", "maps_link": "https://www.google.com/maps/search/?api=1&query=%E5%8D%83%E4%BB%A3%E6%9D%BE%E5%8B%9D%E8%93%8B%E9%A3%AF"}, {"id": "food_3", "name": "Shabuzen Umedaten (しゃぶ善 梅田店)", "address": "大阪市北區堂島1-6-20 堂島アバンザ B1F", "lat": 34.696904, "lng": 135.496397, "region": "umeda", "area": "大阪・梅田商圈", "category": "壽喜燒・涮涮鍋", "icon": "🍲", "highlight": "梅田商圈頂級黑毛和牛與霜降牛壽喜燒/涮涮鍋吃到飽，肉質入口即化！", "maps_link": "https://www.google.com/maps/search/?api=1&query=Shabuzen%20Umedaten"}, {"id": "food_4", "name": "一蘭 道頓堀店別館", "address": "大阪市中央區道頓堀1-4-16", "lat": 34.668422, "lng": 135.503224, "region": "nanba", "area": "大阪・道頓堀", "category": "天然豚骨拉麵", "icon": "🍜", "highlight": "道頓堀河畔經典豚骨湯頭＋專屬味集中座位＋客製化秘傳辣醬！", "maps_link": "https://www.google.com/maps/search/?api=1&query=%E4%B8%80%E8%98%AD%20%E9%81%93%E9%A0%93%E5%A0%80%E5%BA%97%E5%88%A5%E9%A4%A8"}, {"id": "food_5", "name": "烤肉力丸 難波湊町店", "address": "大阪市浪速區難波中1-10-4 南海野村大樓 4F", "lat": 34.666943, "lng": 135.497004, "region": "nanba", "area": "大阪・難波/湊町", "category": "人氣燒肉吃到飽", "icon": "🥩", "highlight": "關西自由行必訪平價炭火和牛燒肉，名物厚切牛舌與極上牛五花狂點！", "maps_link": "https://www.google.com/maps/search/?api=1&query=%E7%83%A4%E8%82%89%E5%8A%9B%E4%B8%B8%20%E9%9B%A3%E6%B3%A2%E6%B9%8A%E7%94%BA%E5%BA%97"}, {"id": "food_6", "name": "燒肉力丸 千日前店", "address": "大阪市中央區千日前2-9-17 アムザ1000 2F", "lat": 34.666755, "lng": 135.503472, "region": "nanba", "area": "大阪・千日前", "category": "人氣燒肉吃到飽", "icon": "🥩", "highlight": "千日前商店街熱門分店，高品質現切牛肉、冷麵與甜點吃到飽。", "maps_link": "https://www.google.com/maps/search/?api=1&query=%E7%87%92%E8%82%89%E5%8A%9B%E4%B8%B8_%E5%8D%83%E6%97%A5%E5%89%8D%E5%BA%97"}, {"id": "food_7", "name": "Taishu Sukiyaki Hokuto GEMS 難波店", "address": "大阪市中央區難波3-7-19 GEMS難波 7F", "lat": 34.666173, "lng": 135.500683, "region": "nanba", "area": "大阪・難波", "category": "大眾壽喜燒", "icon": "🍲", "highlight": "大眾壽喜燒北斗！平實價格大啖頂級牛肉、特調醬汁沾新鮮生蛋黃超滿足。", "maps_link": "https://www.google.com/maps/search/?api=1&query=Taishu%20Sukiyaki%20Hokuto%20GEMS%20Namba%20Branch"}, {"id": "food_8", "name": "Unagi Nosuke Tenjinbashi (鰻の成瀬 天神橋店)", "address": "大阪市北區天神橋3-2-22", "lat": 34.699223, "lng": 135.511696, "region": "umeda", "area": "大阪・天神橋筋", "category": "炭火鰻魚飯", "icon": "🍱", "highlight": "平價炭火鰻魚飯奇蹟！外皮烤至金黃微焦，魚肉肥美厚嫩無細刺，淋滿鹹甜醬汁。", "maps_link": "https://www.google.com/maps/search/?api=1&query=Unagi%20Nosuke%20Tenjinbashi"}, {"id": "food_9", "name": "Okonomiyaki AT THE 21 Namba (お好み焼き AT THE 21)", "address": "大阪市中央區難波千日前13-10", "lat": 34.664251, "lng": 135.505289, "region": "nanba", "area": "大阪・難波/千日前", "category": "大阪燒・炒麵", "icon": "🥞", "highlight": "在地人極推的鐵板大阪燒！厚實高麗菜絲香脆鮮甜，特製醬汁香氣四溢。", "maps_link": "https://www.google.com/maps/search/?api=1&query=Okonomiyaki%20AT%20THE%2021%20Namba"}, {"id": "food_10", "name": "BOTEJYU 道頓堀總本店 (ぼてぢゅう)", "address": "大阪市中央區道頓堀1-6-15 ドウトンビル 2F", "lat": 34.668828, "lng": 135.501762, "region": "nanba", "area": "大阪・道頓堀", "category": "元祖大阪燒老店", "icon": "🥞", "highlight": "1946年創業元祖名店！首創將美乃滋淋在大阪燒上的傳奇老店，摩登燒必吃！", "maps_link": "https://www.google.com/maps/search/?api=1&query=BOTEJYU%20Flagship%20Store%20Dotonbori"}, {"id": "food_11", "name": "北野坂にしむら(西村)珈琲店", "address": "兵庫縣神戶市中央區山本通2-1-20", "lat": 34.698318, "lng": 135.191122, "region": "kobe", "area": "神戶・北野坂", "category": "復古名門咖啡館", "icon": "☕", "highlight": "日本第一家引進自家烘焙的傳奇會員制紅磚洋樓，精緻歐風早餐與極品咖啡。", "maps_link": "https://www.google.com/maps/search/?api=1&query=%E5%8C%97%E9%87%8E%E5%9D%82%E3%81%AB%E3%81%97%E3%82%80%E3%82%89%28%E8%A5%BF%E6%9D%91%29%E7%8F%88%E7%90%B2%E5%BA%97"}, {"id": "food_12", "name": "next shikaku (NEXT□ 難波店)", "address": "大阪市中央區難波千日前9-12", "lat": 34.664265, "lng": 135.503486, "region": "nanba", "area": "大阪・難波/千日前", "category": "潮流牡蠣白湯拉麵", "icon": "🍜", "highlight": "新潮系牡蠣湯頭濃縮拉麵！視覺震撼的方形設計與炙燒低溫熟成叉燒。", "maps_link": "https://www.google.com/maps/search/?api=1&query=next%20shikaku%20%E9%9B%A3%E6%B3%A2"}, {"id": "food_13", "name": "Sukiyaki Syabu-Syabu 日本橋鶴屋", "address": "大阪市中央區日本橋2-5-4", "lat": 34.665008, "lng": 135.505924, "region": "nanba", "area": "大阪・日本橋", "category": "壽喜燒・涮涮鍋", "icon": "🍲", "highlight": "黑門市場周邊老饕隱藏版壽喜燒，油花細密均勻的黑毛和牛大滿足！", "maps_link": "https://www.google.com/maps/search/?api=1&query=Sukiyaki%20Syabu-Syabu%20Nihonbashi%20Tsuruya"}, {"id": "food_14", "name": "可樂餅 中村屋 (コロッケの中村屋)", "address": "大阪市北區天神橋2-3-21", "lat": 34.6971, "lng": 135.511647, "region": "umeda", "area": "大阪・天神橋筋", "category": "排隊銅板可樂餅", "icon": "🥔", "highlight": "日本搞笑天王濱田雅功激讚！一顆百圓日幣現炸牛肉洋蔥可樂餅，外酥內甜。", "maps_link": "https://www.google.com/maps/search/?api=1&query=%E5%8F%AF%E6%A8%82%E9%A4%85%20%E4%B8%AD%E6%9D%91%E5%B1%8B"}, {"id": "food_15", "name": "神戶六甲牧場 北野本店", "address": "兵庫縣神戶市中央區北野町3-11-4", "lat": 34.701042, "lng": 135.189865, "region": "kobe", "area": "神戶・北野異人館", "category": "特濃牛乳冰淇淋", "icon": "🍦", "highlight": "走訪風見雞館必嚐！全日本知名六甲山純淨特濃生乳與白巧克力綜合霜淇淋。", "maps_link": "https://www.google.com/maps/search/?api=1&query=%E7%A5%9E%E6%88%B6%E5%85%AD%E7%94%B2%E7%89%A7%E5%A0%B4%20%E5%8C%97%E9%87%8E%E6%9C%AC%E5%BA%97"}, {"id": "food_16", "name": "Premium All-You-Can-Eat Wagyu Yakiniku 298 (燒肉298 難波店)", "address": "大阪市中央區千日前1-7-9 あじびる南 4F", "lat": 34.6681, "lng": 135.503607, "region": "nanba", "area": "大阪・千日前", "category": "超平價和牛燒肉", "icon": "🥩", "highlight": "難波千日前超高CP值燒肉吃到飽！狂嗑牛五花、牛舌與咖哩飯毫無負擔。", "maps_link": "https://www.google.com/maps/search/?api=1&query=Wagyu%20Yakiniku%20298%20Namba"}, {"id": "food_17", "name": "Takoyaki Tachibana (明石燒 たちばな 三宮店)", "address": "兵庫縣神戶市中央區三宮町1-8-1 さんプラザ B1F", "lat": 34.691792, "lng": 135.19315, "region": "kobe", "area": "神戶・三宮", "category": "明石燒 (玉子燒)", "icon": "🐙", "highlight": "神戶在地三宮地下街現煎鬆軟蛋香明石燒！吸飽金黃熱高湯的滑嫩章魚料理。", "maps_link": "https://www.google.com/maps/search/?api=1&query=Takoyaki%20Tachibana%20Kobe"}, {"id": "food_18", "name": "Shabucho (しゃぶ長 心齋橋)", "address": "大阪市中央區東心齋橋1-15-25", "lat": 34.672668, "lng": 135.503416, "region": "shinsaibashi", "area": "大阪・心齋橋", "category": "單人黑毛和牛涮涮鍋", "icon": "🍲", "highlight": "心齋橋巷弄內低調老鋪！一人一鍋銅鍋涮頂級和牛，芝麻醬與柑橘醋香氣撲鼻。", "maps_link": "https://www.google.com/maps/search/?api=1&query=Shabucho%20Shinsaibashi"}, {"id": "food_19", "name": "Rikuro’s Namba (りくろーおじさんの店 難波本店)", "address": "大阪市中央區難波3-2-28", "lat": 34.666127, "lng": 135.501566, "region": "nanba", "area": "大阪・難波", "category": "現烤老爺爺起司蛋糕", "icon": "🧀", "highlight": "難波總本店搖鈴出爐！底部鋪滿糖漬葡萄乾的蓬鬆空氣感舒芙蕾乳酪蛋糕。", "maps_link": "https://www.google.com/maps/search/?api=1&query=Rikuro%E2%80%99s%20Namba%20Japanese%20Cheese%20Cake"}, {"id": "food_20", "name": "grenier 梅田店 (グルニエ)", "address": "大阪市北區角田町8-47 阪急格蘭大廈 1F", "lat": 34.703542, "lng": 135.499191, "region": "umeda", "area": "大阪・梅田商圈", "category": "爆餡千層酥專門店", "icon": "🥐", "highlight": "梅田排隊甜點第一把交椅！現烤超酥脆法式千層酥擠入爆漿香草烤布蕾卡士達！", "maps_link": "https://www.google.com/maps/search/?api=1&query=grenier%20%E6%A2%85%E7%94%B0%E5%BA%97"}, {"id": "food_21", "name": "belle-ville pancake cafe Whity梅田店", "address": "大阪市北區小松原町梅田地下街4-5 Whity梅田 East Mall H-22", "lat": 34.701932, "lng": 135.500662, "region": "umeda", "area": "大阪・梅田商圈", "category": "8層搖晃厚舒芙蕾鬆餅", "icon": "🥞", "highlight": "現點現煎的浮誇八層搖晃厚鬆餅！淋上楓糖漿與鮮奶油，如雲朵般入口即化。", "maps_link": "https://www.google.com/maps/search/?api=1&query=belle-ville%20pancake%20cafe%20%E3%83%9B%E3%83%AF%E3%82%A4%E3%83%86%E3%82%A3%E3%81%86%E3%82%81%E3%81%A0%E5%BA%97"}, {"id": "food_22", "name": "森谷商店 元町本店 (本神戶肉森谷商店)", "address": "兵庫縣神戶市中央區元町通1-7-2", "lat": 34.689186, "lng": 135.189387, "region": "kobe", "area": "神戶・元町", "category": "百年神戶牛排隊肉鋪", "icon": "🥩", "highlight": "創業超過150年！每天排隊人潮不斷的平價現炸神戶牛肉可樂餅與多汁肉餅。", "maps_link": "https://www.google.com/maps/search/?api=1&query=%E6%9C%AC%E7%A5%9E%E6%88%B6%E8%82%89%E6%A3%AE%E8%B0%B7%E5%95%86%E5%BA%97"}];
 
     const DEFAULT_CHECKLIST = [
       { id: "c1", text: "護照正本（效期 6 個月以上）", group: "證件與票券", checked: true },
@@ -2882,6 +3304,214 @@
       });
     }
 
+    // ==========================================================================
+    // 關西美食踩點小地圖 (Google 地圖清單小工具)
+    // ==========================================================================
+    let foodListData = [];
+    let currentFoodRegion = "all";
+    let currentFoodStatus = "all";
+
+    function loadFoodList() {
+      const saved = localStorage.getItem("kansai_food_checklist_v1");
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved);
+          const savedMap = new Map(parsed.map(item => [item.id || item.name, item]));
+          foodListData = DEFAULT_FOOD_LIST.map(def => {
+            const s = savedMap.get(def.id) || savedMap.get(def.name);
+            return s ? { ...def, eaten: !!s.eaten } : { ...def, eaten: false };
+          });
+          parsed.forEach(p => {
+            if (p.isCustom && !foodListData.some(f => f.id === p.id)) {
+              foodListData.push(p);
+            }
+          });
+        } catch(e) {
+          foodListData = DEFAULT_FOOD_LIST.map(f => ({ ...f, eaten: false }));
+        }
+      } else {
+        foodListData = DEFAULT_FOOD_LIST.map(f => ({ ...f, eaten: false }));
+      }
+    }
+
+    function saveFoodList() {
+      localStorage.setItem("kansai_food_checklist_v1", JSON.stringify(foodListData));
+      updateFoodStats();
+    }
+
+    function toggleFoodEaten(id) {
+      const target = foodListData.find(f => f.id === id);
+      if (target) {
+        target.eaten = !target.eaten;
+        saveFoodList();
+        renderFoodCards();
+      }
+    }
+
+    function updateFoodStats() {
+      const total = foodListData.length;
+      const eatenCount = foodListData.filter(f => f.eaten).length;
+      const percent = total > 0 ? Math.round((eatenCount / total) * 100) : 0;
+
+      const badge = document.getElementById("foodCounterBadge");
+      const percentEl = document.getElementById("foodProgressPercent");
+      const barEl = document.getElementById("foodProgressBar");
+      const encourageEl = document.getElementById("foodEncourageText");
+      const countAll = document.getElementById("countAll");
+      const countUneaten = document.getElementById("countUneaten");
+      const countEaten = document.getElementById("countEaten");
+
+      if (badge) badge.textContent = `已吃過 ${eatenCount} / ${total} 間`;
+      if (percentEl) percentEl.textContent = `${percent}%`;
+      if (barEl) barEl.style.width = `${percent}%`;
+      if (countAll) countAll.textContent = total;
+      if (countUneaten) countUneaten.textContent = total - eatenCount;
+      if (countEaten) countEaten.textContent = eatenCount;
+
+      if (encourageEl) {
+        if (eatenCount === 0) {
+          encourageEl.textContent = "準備開動！每吃過一家就打勾標記，留下滿滿回憶～😋";
+        } else if (eatenCount < 5) {
+          encourageEl.textContent = `太棒了！已品嚐 ${eatenCount} 間關西美食，吃貨之旅持續前進！🎉`;
+        } else if (eatenCount < 12) {
+          encourageEl.textContent = `美食達人就是你！已征服 ${eatenCount} 間，肚子裝滿幸福！✨`;
+        } else if (eatenCount < total) {
+          encourageEl.textContent = `太厲害了！已完成 ${eatenCount} 間，距離關西美食大滿貫不遠啦！🍢`;
+        } else {
+          encourageEl.textContent = `🎊 恭喜達成關西美食大滿貫！22 間人氣名店全部征服完食！🈵`;
+        }
+      }
+    }
+
+    function renderFoodCards() {
+      const container = document.getElementById("foodCardsContainer");
+      if (!container) return;
+
+      let filtered = foodListData;
+
+      // Filter by Region
+      if (currentFoodRegion !== "all") {
+        filtered = filtered.filter(f => f.region === currentFoodRegion);
+      }
+
+      // Filter by Status
+      if (currentFoodStatus === "eaten") {
+        filtered = filtered.filter(f => f.eaten);
+      } else if (currentFoodStatus === "uneaten") {
+        filtered = filtered.filter(f => !f.eaten);
+      }
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div style="text-align: center; padding: 24px 16px; background-color: var(--card-warm); border: 2px dashed var(--border-ink); border-radius: var(--radius-lg); color: var(--text-muted); font-size: 0.9rem;">
+            🍴 目前這個分類沒有符合的店家喔～可以切換看看其他區域！
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filtered.map(item => `
+        <div class="food-item-card ${item.eaten ? 'eaten' : ''}" id="card_${item.id}">
+          <div class="eaten-stamp">完食・ごちそうさま</div>
+          <div class="food-item-header">
+            <button type="button" class="food-checkbox-btn" onclick="toggleFoodEaten('${item.id}')" aria-label="標記為已吃過">
+              ${item.eaten ? '✓' : ''}
+            </button>
+            <div class="food-content-wrap">
+              <div class="food-tags-row">
+                <span class="food-pill food-pill-area">📍 ${item.area}</span>
+                <span class="food-pill food-pill-cat">${item.icon} ${item.category}</span>
+                ${item.eaten ? '<span class="food-pill food-pill-eaten">已完食 🎉</span>' : ''}
+              </div>
+              <div class="food-name-title">
+                <span>${item.name}</span>
+              </div>
+              <div class="food-highlight-text">${item.highlight}</div>
+              ${item.address ? `<div class="food-address-text">🏠 ${item.address}</div>` : ''}
+              <div class="food-action-row">
+                <a href="${item.maps_link}" target="_blank" rel="noopener noreferrer" class="food-nav-link" title="在 Google Maps 開啟">
+                  <span>🗺️ Google 導航</span>
+                </a>
+                ${item.address ? `
+                  <button type="button" class="food-copy-btn" onclick="copyFoodAddress(this, '${item.address.replace(/'/g, "\\'")}')">
+                    <span>📋 複製地址</span>
+                  </button>
+                ` : ''}
+              </div>
+            </div>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function initFoodMapWidget() {
+      loadFoodList();
+
+      const regionBtns = document.querySelectorAll(".food-region-pin");
+      regionBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+          regionBtns.forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          currentFoodRegion = btn.getAttribute("data-region");
+          renderFoodCards();
+        });
+      });
+
+      const statusBtns = document.querySelectorAll(".food-filter-btn");
+      statusBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+          statusBtns.forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          currentFoodStatus = btn.getAttribute("data-status");
+          renderFoodCards();
+        });
+      });
+
+      const form = document.getElementById("addFoodForm");
+      if (form) {
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const input = document.getElementById("newFoodName");
+          const name = input.value.trim();
+          if (!name) return;
+
+          const newPlace = {
+            id: "food_custom_" + Date.now(),
+            name: name,
+            address: "",
+            lat: null,
+            lng: null,
+            area: "自訂私房清單",
+            category: "私房美食",
+            icon: "🍴",
+            region: "all",
+            highlight: "旅途中發掘的專屬美食店家",
+            maps_link: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(name + ' 大阪')}`,
+            eaten: false,
+            isCustom: true
+          };
+
+          foodListData.push(newPlace);
+          saveFoodList();
+          renderFoodCards();
+          input.value = "";
+        });
+      }
+
+      renderFoodCards();
+      updateFoodStats();
+    }
+
+    function copyFoodAddress(btn, address) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(address).then(() => {
+          const orig = btn.innerHTML;
+          btn.innerHTML = "<span>✅ 已複製！</span>";
+          setTimeout(() => { btn.innerHTML = orig; }, 1500);
+        });
+      }
+    }
+
     // 吉伊卡哇互動懸浮小夥伴
     function initChiikawaMascot() {
       const btn = document.getElementById("chiikawaBtn");
@@ -2923,6 +3553,7 @@
       renderDayContent();
       renderChecklist();
       initChecklistForm();
+      initFoodMapWidget();
       initCurrencyConverter();
       initMotionToggle();
       initChiikawaMascot();
