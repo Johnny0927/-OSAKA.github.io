@@ -41,16 +41,7 @@
       --font-family: 'Huninn', 'Zen Maru Gothic', 'Hiragino Maru Gothic ProN', 'Microsoft JhengHei', sans-serif;
     }
 
-    /* 支援減少動態效果 (prefers-reduced-motion) 與手動切換開關 */
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.001s !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.001s !important;
-        scroll-behavior: auto !important;
-      }
-    }
-
+    /* 支援減少動態效果手動切換開關 (預設保持流暢動畫) */
     body.reduce-motion *, 
     body.reduce-motion *::before, 
     body.reduce-motion *::after {
@@ -69,6 +60,9 @@
     html {
       scroll-behavior: smooth;
       background-color: var(--bg-washi);
+      width: 100%;
+      max-width: 100vw;
+      overflow-x: hidden;
     }
 
     body {
@@ -77,57 +71,65 @@
       color: var(--text-main);
       line-height: 1.6;
       font-size: 16px;
-      padding-top: 76px;
+      padding-top: 66px;
       min-height: 100vh;
+      width: 100%;
+      max-width: 100vw;
       overflow-x: hidden;
       background-image: radial-gradient(#3E3A39 0.75px, transparent 0.75px);
       background-size: 24px 24px;
       background-color: var(--bg-washi);
     }
 
-    /* 頂端固定選單 (Sticky Header) */
+    /* 頂端固定選單 (Sticky Header - 手機版安全置中防破版) */
     .top-nav {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
-      height: 72px;
+      height: 64px;
       background-color: var(--bg-washi);
       border-bottom: var(--border-width) solid var(--border-ink);
       z-index: 1000;
       display: flex;
       align-items: center;
-      padding: 0 16px;
+      padding: 0 10px;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     .nav-container {
-      max-width: 1024px;
+      max-width: 960px;
       margin: 0 auto;
       width: 100%;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 10px;
+      gap: 8px;
+      min-width: 0;
     }
 
     .brand-logo {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       text-decoration: none;
       color: var(--text-main);
       font-weight: 900;
-      font-size: 1.15rem;
+      font-size: 1rem;
       letter-spacing: 0.5px;
       flex-shrink: 0;
     }
+    .brand-logo span {
+      white-space: nowrap;
+    }
 
     .brand-badge {
-      width: 36px;
-      height: 36px;
+      width: 34px;
+      height: 34px;
       border: var(--border-width) solid var(--border-ink);
       border-radius: 50%;
-      background-color: var(--coral-pink);
+      background-color: #FFF2EB;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -135,11 +137,13 @@
       flex-shrink: 0;
     }
     .brand-badge svg {
-      width: 20px;
-      height: 20px;
+      width: 24px;
+      height: 24px;
     }
 
     .nav-menu {
+      flex: 1 1 auto;
+      min-width: 0;
       display: flex;
       align-items: center;
       gap: 6px;
@@ -147,6 +151,7 @@
       overflow-x: auto;
       padding: 4px 2px;
       scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
     }
     .nav-menu::-webkit-scrollbar {
       display: none;
@@ -154,11 +159,11 @@
 
     .nav-item a {
       display: inline-block;
-      padding: 6px 12px;
+      padding: 5px 10px;
       text-decoration: none;
       color: var(--text-main);
       font-weight: 700;
-      font-size: 0.88rem;
+      font-size: 0.82rem;
       border: var(--border-width) solid var(--border-ink);
       border-radius: var(--radius-lg);
       background-color: var(--card-white);
@@ -179,12 +184,12 @@
       color: var(--text-main);
       font-family: inherit;
       font-weight: 700;
-      font-size: 0.78rem;
-      padding: 6px 10px;
+      font-size: 0.75rem;
+      padding: 5px 8px;
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: 3px;
       box-shadow: var(--shadow-comic-sm);
       white-space: nowrap;
       transition: transform 0.15s ease, box-shadow 0.15s ease;
@@ -195,11 +200,23 @@
       box-shadow: 1px 1px 0 #3E3A39;
     }
 
-    /* Container */
+    /* Container - 手機優先置中容器 */
     .app-container {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 16px 14px 60px;
+      width: 100%;
+      max-width: 820px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 12px 10px 60px;
+      box-sizing: border-box;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .app-container > section {
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
     }
 
     /* Comic Card Base */
@@ -208,37 +225,48 @@
       border: var(--border-width) solid var(--border-ink);
       border-radius: var(--radius-xl);
       box-shadow: var(--shadow-comic);
-      padding: 22px 18px;
-      margin-bottom: 24px;
+      padding: 18px 14px;
+      margin: 0 auto 24px;
+      width: 100%;
+      box-sizing: border-box;
       position: relative;
     }
 
     /* ==========================================================================
-       Hero Section & Cover
+       Hero Section & Cover (手機全面置中排版)
        ========================================================================== */
     .hero-banner {
       background-color: var(--card-warm);
       text-align: center;
-      padding: 24px 16px 20px;
+      padding: 20px 12px 18px;
       overflow: hidden;
+      width: 100%;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
     }
 
     .hero-tags {
-      display: inline-flex;
+      display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 8px;
-      margin-bottom: 12px;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 10px;
+      width: 100%;
     }
 
     .pill-tag {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 5px 14px;
+      gap: 5px;
+      padding: 4px 12px;
       border: var(--border-width) solid var(--border-ink);
       border-radius: 999px;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 700;
       box-shadow: var(--shadow-comic-sm);
     }
@@ -248,36 +276,44 @@
     .pill-green { background-color: var(--wakatake-green); }
 
     .hero-title {
-      font-size: 2.2rem;
+      font-size: clamp(1.55rem, 5.2vw, 2.2rem);
       font-weight: 900;
-      line-height: 1.25;
+      line-height: 1.3;
       color: var(--text-main);
       margin-bottom: 6px;
       letter-spacing: 0.5px;
+      text-align: center;
+      width: 100%;
+      word-break: break-word;
     }
 
     .hero-subtitle {
-      font-size: 1.25rem;
+      font-size: clamp(1rem, 3.6vw, 1.25rem);
       font-weight: 700;
       color: var(--text-main);
       margin-bottom: 4px;
+      text-align: center;
+      width: 100%;
     }
 
     .hero-desc {
-      font-size: 0.95rem;
+      font-size: clamp(0.82rem, 3vw, 0.95rem);
       color: var(--text-muted);
-      margin-bottom: 18px;
+      margin-bottom: 16px;
+      text-align: center;
+      width: 100%;
     }
 
     .hero-svg-wrapper {
       width: 100%;
-      max-width: 680px;
-      margin: 0 auto 18px;
+      max-width: 660px;
+      margin: 0 auto 16px;
       border: var(--border-width) solid var(--border-ink);
       border-radius: var(--radius-lg);
       background-color: var(--card-white);
       overflow: hidden;
       box-shadow: var(--shadow-comic);
+      box-sizing: border-box;
     }
     .hero-svg-wrapper svg {
       width: 100%;
@@ -290,34 +326,41 @@
       background-color: var(--card-white);
       border: var(--border-width) solid var(--border-ink);
       border-radius: var(--radius-lg);
-      padding: 16px 12px;
-      margin-top: 14px;
+      padding: 14px 10px;
+      margin: 12px auto 0;
+      width: 100%;
+      max-width: 440px;
       box-shadow: var(--shadow-comic-sm);
+      box-sizing: border-box;
+      text-align: center;
     }
 
     .countdown-header {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 6px;
       font-weight: 900;
-      font-size: 1.05rem;
-      margin-bottom: 12px;
+      font-size: clamp(0.88rem, 3.2vw, 1.05rem);
+      margin-bottom: 10px;
       flex-wrap: wrap;
+      text-align: center;
+      width: 100%;
     }
 
     .countdown-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      max-width: 480px;
+      gap: 6px;
+      max-width: 320px;
       margin: 0 auto;
+      width: 100%;
     }
 
     .countdown-item {
       border: var(--border-width) solid var(--border-ink);
       border-radius: var(--radius-md);
-      padding: 8px 4px;
+      padding: 6px 3px;
       text-align: center;
       box-shadow: var(--shadow-comic-sm);
     }
@@ -327,38 +370,52 @@
     .countdown-item:nth-child(4) { background-color: var(--wakatake-green); }
 
     .countdown-num {
-      font-size: 1.6rem;
+      font-size: clamp(1.25rem, 4.2vw, 1.6rem);
       font-weight: 900;
       line-height: 1;
       margin-bottom: 2px;
     }
     .countdown-label {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 700;
     }
     .countdown-status {
-      font-size: 0.85rem;
+      font-size: clamp(0.78rem, 2.8vw, 0.85rem);
       font-weight: 700;
       color: var(--text-muted);
-      margin-top: 10px;
+      margin-top: 8px;
+      text-align: center;
+      width: 100%;
     }
 
-    /* Section Titles */
+    /* Section Titles - 手機版居中對齊 */
     .section-title-wrap {
+      width: 100%;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
+      text-align: center;
       margin-bottom: 16px;
-      flex-wrap: wrap;
-      gap: 8px;
+      gap: 6px;
+      box-sizing: border-box;
+    }
+    @media (min-width: 600px) {
+      .section-title-wrap {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+      }
     }
 
     .section-title {
-      font-size: 1.45rem;
+      font-size: clamp(1.25rem, 4.2vw, 1.45rem);
       font-weight: 900;
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 8px;
+      text-align: center;
     }
 
     .section-badge {
@@ -369,21 +426,25 @@
       border-radius: var(--radius-lg);
       background-color: var(--yamabuki-yellow);
       font-weight: 700;
+      text-align: center;
     }
 
     /* ==========================================================================
-       Flight Card (日系雙登機證票根設計 - 上下兩張登機證)
+       Flight Card (日系雙登機證票根設計 - 上下兩張登機證・手機置中防溢出)
        ========================================================================== */
     .flight-sync-banner {
       background-color: var(--card-yellow);
       border: var(--border-width) solid var(--border-ink);
       border-radius: var(--radius-lg);
-      padding: 14px 18px;
-      margin-bottom: 22px;
+      padding: 12px 14px;
+      margin: 0 auto 18px;
+      width: 100%;
+      box-sizing: border-box;
       box-shadow: var(--shadow-comic-sm);
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
+      text-align: left;
     }
 
     .ticket-card {
@@ -392,19 +453,31 @@
       border-radius: var(--radius-xl);
       box-shadow: var(--shadow-comic);
       overflow: hidden;
-      margin-bottom: 28px;
+      margin: 0 auto 24px;
+      width: 100%;
+      box-sizing: border-box;
       position: relative;
     }
 
     .ticket-header {
-      padding: 12px 18px;
+      padding: 10px 14px;
       border-bottom: var(--border-width) solid var(--border-ink);
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
       align-items: center;
+      justify-content: center;
+      text-align: center;
       font-weight: 900;
-      flex-wrap: wrap;
-      gap: 10px;
+      gap: 8px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    @media (min-width: 600px) {
+      .ticket-header {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+      }
     }
     .ticket-header-peach {
       background-color: var(--coral-pink);
@@ -436,42 +509,51 @@
     }
 
     .ticket-body {
-      padding: 18px;
+      padding: 12px 10px;
       display: grid;
       grid-template-columns: 1fr;
-      gap: 16px;
+      gap: 14px;
+      width: 100%;
+      box-sizing: border-box;
     }
     @media (min-width: 680px) {
       .ticket-body {
+        padding: 18px;
         grid-template-columns: 1fr 1fr;
+        gap: 16px;
       }
     }
 
     .ticket-flight-box {
       border: var(--border-width) solid var(--border-ink);
       border-radius: var(--radius-lg);
-      padding: 14px;
+      padding: 12px 10px;
       background-color: var(--card-warm);
       box-shadow: var(--shadow-comic-sm);
+      width: 100%;
+      box-sizing: border-box;
     }
 
     .flight-route {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin: 10px 0 14px;
+      margin: 8px 0 12px;
       text-align: center;
+      width: 100%;
+      gap: 4px;
     }
 
     .airport-code {
-      font-size: 1.6rem;
+      font-size: clamp(1.3rem, 4.5vw, 1.6rem);
       font-weight: 900;
       line-height: 1;
     }
     .airport-name {
-      font-size: 0.8rem;
+      font-size: clamp(0.72rem, 2.4vw, 0.8rem);
       font-weight: 700;
       color: var(--text-muted);
+      white-space: nowrap;
     }
 
     .flight-arrow {
@@ -480,7 +562,8 @@
       align-items: center;
       gap: 2px;
       flex: 1;
-      padding: 0 10px;
+      padding: 0 4px;
+      min-width: 70px;
     }
     .flight-arrow-line {
       width: 100%;
@@ -503,26 +586,32 @@
     .flight-info-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      font-size: 0.85rem;
+      gap: 6px;
+      font-size: 0.82rem;
       background-color: var(--card-white);
       border: 2px solid var(--border-ink);
       border-radius: var(--radius-md);
-      padding: 8px 10px;
+      padding: 8px 6px;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     .flight-detail-item {
       display: flex;
       flex-direction: column;
+      min-width: 0;
+      text-align: left;
     }
     .flight-detail-label {
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       color: var(--text-muted);
       font-weight: 700;
     }
     .flight-detail-val {
       font-weight: 900;
-      font-size: 0.86rem;
+      font-size: clamp(0.75rem, 2.6vw, 0.86rem);
+      line-height: 1.35;
+      word-break: break-word;
     }
 
     .ticket-perforated {
@@ -545,13 +634,15 @@
     .notch-right { right: -14px; }
 
     .ticket-tips {
-      padding: 12px 18px;
-      font-size: 0.85rem;
+      padding: 10px 14px;
+      font-size: clamp(0.78rem, 2.8vw, 0.85rem);
       font-weight: 700;
       display: flex;
       align-items: center;
-      gap: 10px;
-      line-height: 1.5;
+      gap: 8px;
+      line-height: 1.45;
+      width: 100%;
+      box-sizing: border-box;
     }
     .ticket-tips-peach {
       background-color: #FFF2EB;
@@ -563,34 +654,39 @@
     }
 
     /* ==========================================================================
-       每日行程與景點區域 (Daily Tabs + View Mode + Timeline + Spot Zone)
+       每日行程與景點區域 (Daily Tabs + View Mode + Timeline + Spot Zone - 手機優先置中)
        ========================================================================== */
     .date-nav-wrapper {
-      margin-bottom: 16px;
+      margin: 0 auto 16px;
       position: sticky;
-      top: 72px;
+      top: 64px;
       z-index: 900;
       background-color: var(--bg-washi);
       padding: 8px 0;
       border-bottom: var(--border-width) solid var(--border-ink);
+      width: 100%;
+      box-sizing: border-box;
     }
 
     .date-tabs-scroll {
       display: flex;
-      gap: 10px;
+      gap: 8px;
       overflow-x: auto;
       padding: 4px 6px 8px;
       scrollbar-width: thin;
       -webkit-overflow-scrolling: touch;
+      justify-content: flex-start;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     .date-tab-btn {
       flex: 0 0 auto;
-      min-width: 86px;
+      min-width: 82px;
       background-color: var(--card-white);
       border: var(--border-width) solid var(--border-ink);
       border-radius: var(--radius-lg);
-      padding: 8px 10px;
+      padding: 6px 8px;
       text-align: center;
       cursor: pointer;
       box-shadow: var(--shadow-comic-sm);
@@ -610,23 +706,23 @@
       font-weight: 900;
     }
     .tab-day {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 900;
       display: block;
     }
     .tab-date {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       font-weight: 900;
       display: block;
       margin: 1px 0;
     }
     .tab-name {
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       color: var(--text-muted);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      max-width: 84px;
+      max-width: 80px;
       display: block;
     }
     .date-tab-btn.active .tab-name {
@@ -634,15 +730,24 @@
       font-weight: 700;
     }
 
-    /* 檢視模式切換器 (時間軸 vs 景點專欄) */
+    /* 檢視模式切換器 (時間軸 vs 景點專欄 - 手機置中) */
     .view-mode-bar {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
       gap: 8px;
-      margin-bottom: 14px;
-      flex-wrap: wrap;
+      margin: 0 auto 14px;
+      width: 100%;
+      box-sizing: border-box;
     }
+    @media (min-width: 600px) {
+      .view-mode-bar {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+
     .mode-switch-group {
       display: inline-flex;
       background-color: var(--card-warm);
@@ -650,13 +755,14 @@
       border-radius: var(--radius-lg);
       padding: 3px;
       box-shadow: var(--shadow-comic-sm);
+      margin: 0 auto;
     }
     .mode-switch-btn {
       border: none;
       background: none;
       padding: 6px 14px;
       font-family: inherit;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 900;
       border-radius: var(--radius-md);
       cursor: pointer;
@@ -670,19 +776,22 @@
       transform: translateY(-1px);
     }
 
-    /* Filter Chips */
+    /* Filter Chips - 手機置中 */
     .filter-chips-bar {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 6px;
       align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      width: 100%;
     }
     .filter-chip {
-      padding: 5px 12px;
+      padding: 4px 10px;
       border: 2px solid var(--border-ink);
       border-radius: 999px;
       background-color: var(--card-white);
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 700;
       cursor: pointer;
       box-shadow: 2px 2px 0 var(--border-ink);
@@ -699,6 +808,7 @@
     /* Daily Content View */
     .daily-schedule-view {
       animation: bounceTabIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      width: 100%;
     }
     @keyframes bounceTabIn {
       0% { opacity: 0; transform: scale(0.96) translateY(10px); }
@@ -706,47 +816,75 @@
       100% { opacity: 1; transform: scale(1) translateY(0); }
     }
 
-    /* Day Banner Card */
+    /* Day Banner Card - 手機置中 */
     .day-overview-card {
       background-color: var(--card-warm);
       border: var(--border-width) solid var(--border-ink);
       border-radius: var(--radius-xl);
-      padding: 18px;
-      margin-bottom: 22px;
+      padding: 16px 12px;
+      margin: 0 auto 20px;
       box-shadow: var(--shadow-comic);
       display: flex;
       flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
       gap: 12px;
+      width: 100%;
+      box-sizing: border-box;
     }
     @media (min-width: 640px) {
       .day-overview-card {
         flex-direction: row;
         align-items: center;
+        text-align: left;
         justify-content: space-between;
+        padding: 18px;
       }
     }
-    .day-overview-main { flex: 1; }
+    .day-overview-main {
+      flex: 1;
+      width: 100%;
+    }
     .day-badge-row {
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 8px;
       margin-bottom: 6px;
       flex-wrap: wrap;
     }
+    @media (min-width: 640px) {
+      .day-badge-row {
+        justify-content: flex-start;
+      }
+    }
     .day-title-text {
-      font-size: 1.4rem;
+      font-size: clamp(1.2rem, 4.2vw, 1.4rem);
       font-weight: 900;
       margin-bottom: 4px;
+      text-align: center;
+    }
+    @media (min-width: 640px) {
+      .day-title-text {
+        text-align: left;
+      }
     }
     .day-notes-text {
-      font-size: 0.9rem;
+      font-size: clamp(0.84rem, 2.9vw, 0.9rem);
       color: var(--text-muted);
       line-height: 1.5;
+      text-align: center;
+    }
+    @media (min-width: 640px) {
+      .day-notes-text {
+        text-align: left;
+      }
     }
 
     .day-highlight-illu {
-      width: 110px;
-      height: 110px;
+      width: 100px;
+      height: 100px;
       border: var(--border-width) solid var(--border-ink);
       border-radius: var(--radius-lg);
       background-color: var(--card-white);
@@ -760,17 +898,19 @@
     }
     .day-highlight-illu svg { width: 100%; height: 100%; }
 
-    /* Timeline Section */
+    /* Timeline Section - 手機版安全置中平衡 */
     .timeline-container {
       position: relative;
-      padding-left: 28px;
-      margin-top: 10px;
-      margin-bottom: 30px;
+      padding-left: 22px;
+      padding-right: 0px;
+      margin: 10px auto 24px;
+      width: 100%;
+      box-sizing: border-box;
     }
     .timeline-line {
       position: absolute;
-      left: 11px;
-      top: 15px;
+      left: 8px;
+      top: 14px;
       bottom: 25px;
       width: 4px;
       background-color: var(--border-ink);
@@ -778,14 +918,16 @@
     }
     .timeline-node {
       position: relative;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
+      width: 100%;
+      box-sizing: border-box;
     }
     .timeline-dot {
       position: absolute;
-      left: -28px;
-      top: 14px;
-      width: 26px;
-      height: 26px;
+      left: -22px;
+      top: 12px;
+      width: 22px;
+      height: 22px;
       border: var(--border-width) solid var(--border-ink);
       border-radius: 50%;
       background-color: var(--yamabuki-yellow);
@@ -793,7 +935,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 900;
       z-index: 2;
     }
@@ -801,10 +943,12 @@
       background-color: var(--card-white);
       border: var(--border-width) solid var(--border-ink);
       border-radius: var(--radius-lg);
-      padding: 16px 14px;
+      padding: 14px 12px;
       box-shadow: var(--shadow-comic);
       position: relative;
       transition: transform 0.15s ease;
+      width: 100%;
+      box-sizing: border-box;
     }
     .timeline-card:hover { transform: translateY(-2px); }
     .card-top-row {
@@ -1273,7 +1417,41 @@
       outline: none;
     }
 
-    /* Micro Animations */
+    /* Chiikawa Micro Animations (Separated from coordinate translation) */
+    @keyframes chiikawaHop {
+      0%, 100% { transform: translateY(0px) scale(1, 1); }
+      30% { transform: translateY(-14px) scale(0.96, 1.05); }
+      50% { transform: translateY(0px) scale(1.05, 0.95); }
+      70% { transform: translateY(-4px) scale(0.98, 1.02); }
+    }
+    @keyframes hachiwareBounce {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      25% { transform: translateY(-10px) rotate(-3deg); }
+      50% { transform: translateY(0px) rotate(0deg); }
+      75% { transform: translateY(-6px) rotate(2deg); }
+    }
+    @keyframes usagiJump {
+      0%, 100% { transform: translateY(0px) scale(1, 1) rotate(0deg); }
+      20% { transform: translateY(-18px) scale(0.92, 1.08) rotate(4deg); }
+      40% { transform: translateY(0px) scale(1.06, 0.94) rotate(0deg); }
+      60% { transform: translateY(-8px) scale(0.97, 1.03) rotate(-3deg); }
+    }
+    @keyframes sparkleFloat {
+      0%, 100% { transform: translateY(0) scale(1) rotate(0deg); opacity: 0.85; }
+      50% { transform: translateY(-8px) scale(1.25) rotate(45deg); opacity: 1; }
+    }
+    @keyframes leafDrift {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      50% { transform: translate(12px, 8px) rotate(25deg); }
+    }
+    @keyframes trainGlide {
+      0%, 100% { transform: translateX(0px); }
+      50% { transform: translateX(20px); }
+    }
+    @keyframes cloudGlide {
+      0%, 100% { transform: translateX(0px); }
+      50% { transform: translateX(18px); }
+    }
     @keyframes floatGentle {
       0%, 100% { transform: translateY(0px); }
       50% { transform: translateY(-6px); }
@@ -1283,23 +1461,97 @@
       25% { transform: rotate(2deg); }
       75% { transform: rotate(-2deg); }
     }
-    @keyframes trainMove {
-      0%, 100% { transform: translateX(0px); }
-      50% { transform: translateX(5px); }
-    }
-    @keyframes cloudFloat {
-      0%, 100% { transform: translateX(0); }
-      50% { transform: translateX(12px); }
-    }
     @keyframes pulseSoft {
       0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
+      50% { transform: scale(1.06); }
     }
+
+    .anim-chiikawa-hop { animation: chiikawaHop 2.4s cubic-bezier(0.28, 0.84, 0.42, 1) infinite; transform-origin: bottom center; }
+    .anim-hachiware-bounce { animation: hachiwareBounce 2.6s ease-in-out infinite; transform-origin: bottom center; }
+    .anim-usagi-jump { animation: usagiJump 2.1s cubic-bezier(0.25, 0.75, 0.5, 1.25) infinite; transform-origin: bottom center; }
+    .anim-sparkle { animation: sparkleFloat 2s ease-in-out infinite; transform-origin: center; }
+    .anim-leaf-drift { animation: leafDrift 3.5s ease-in-out infinite; transform-origin: center; }
+    .anim-train-glide { animation: trainGlide 3s ease-in-out infinite; }
+    .anim-cloud-glide { animation: cloudGlide 5s ease-in-out infinite; }
     .anim-float { animation: floatGentle 3s ease-in-out infinite; }
     .anim-sway { animation: swayGentle 4s ease-in-out infinite; transform-origin: bottom center; }
-    .anim-train { animation: trainMove 2.2s ease-in-out infinite; }
-    .anim-cloud { animation: cloudFloat 6s ease-in-out infinite; }
+    .anim-train { animation: trainGlide 2.4s ease-in-out infinite; }
+    .anim-cloud { animation: cloudGlide 5s ease-in-out infinite; }
     .anim-pulse { animation: pulseSoft 2.5s ease-in-out infinite; }
+
+    /* Interactive Floating Chiikawa Mascot */
+    .chiikawa-mascot-fab {
+      position: fixed;
+      bottom: 24px;
+      right: 18px;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px;
+      pointer-events: none;
+    }
+    .chiikawa-mascot-fab * {
+      pointer-events: auto;
+    }
+    .chiikawa-bubble {
+      background-color: var(--card-white);
+      border: var(--border-width) solid var(--border-ink);
+      border-radius: var(--radius-lg);
+      padding: 8px 14px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-main);
+      box-shadow: var(--shadow-comic-sm);
+      white-space: nowrap;
+      position: relative;
+      animation: floatGentle 2.6s ease-in-out infinite;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.15s ease;
+      max-width: 240px;
+    }
+    .chiikawa-bubble:hover {
+      transform: scale(1.05);
+    }
+    .chiikawa-bubble::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      right: 24px;
+      width: 0;
+      height: 0;
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      border-top: 8px solid var(--border-ink);
+    }
+    .chiikawa-btn {
+      width: 62px;
+      height: 62px;
+      background: #FFFDF9;
+      border: var(--border-width) solid var(--border-ink);
+      border-radius: 50%;
+      box-shadow: var(--shadow-comic);
+      cursor: pointer;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .chiikawa-btn:hover {
+      transform: translateY(-4px) scale(1.08);
+      box-shadow: 4px 6px 0 var(--border-ink);
+    }
+    .chiikawa-btn:active {
+      transform: translateY(2px) scale(0.96);
+      box-shadow: 1px 1px 0 var(--border-ink);
+    }
+    .chiikawa-btn svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
 
     /* Footer */
     .site-footer {
@@ -1367,20 +1619,47 @@
       <p class="hero-desc">2026 年 10 月 26 日（週一）〜 11 月 04 日（週三）</p>
 
       <div class="hero-svg-wrapper">
-        <svg viewBox="0 0 760 340" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="760" height="340" fill="#FFFDF9"/>
-          <path d="M0 240 Q 120 170 240 220 T 480 200 T 760 230 L 760 340 L 0 340 Z" fill="#A8D3E6" stroke="#3E3A39" stroke-width="3"/>
-          <polygon points="380,100 290,240 470,240" fill="#A8D3E6" stroke="#3E3A39" stroke-width="3"/>
-          <polygon points="380,100 340,160 360,150 380,165 400,150 420,160" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3"/>
-          <circle cx="380" cy="185" r="16" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/>
-          <g class="anim-cloud">
-            <path d="M70 80 Q 90 60 110 80 Q 130 65 145 85 Q 160 85 155 105 Q 150 115 130 115 L 75 115 Q 55 110 60 95 Q 60 85 70 80 Z" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3"/>
-            <path d="M600 65 Q 620 45 640 65 Q 660 50 675 70 Q 690 70 685 90 Q 680 100 660 100 L 605 100 Q 585 95 590 80 Q 590 70 600 65 Z" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3"/>
-          </g>
-          <path d="M-20 260 Q 180 200 400 250 T 800 230 L 800 340 L -20 340 Z" fill="#B9DAA5" stroke="#3E3A39" stroke-width="3"/>
+        <svg viewBox="0 0 760 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Sky and gentle hills -->
+          <rect width="760" height="360" fill="#FFFDF9"/>
           
-          <!-- 大阪城 -->
-          <g transform="translate(100, 130)">
+          <!-- Autumn gentle hills -->
+          <path d="M0 240 Q 140 180 280 230 T 560 210 T 760 240 L 760 360 L 0 360 Z" fill="#A8D3E6" stroke="#3E3A39" stroke-width="3"/>
+          
+          <!-- Mount Fuji / Autumn Peak in center background -->
+          <polygon points="380,105 290,235 470,235" fill="#A8D3E6" stroke="#3E3A39" stroke-width="3"/>
+          <polygon points="380,105 340,165 360,155 380,170 400,155 420,165" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3"/>
+          <circle cx="380" cy="190" r="15" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/>
+
+          <!-- Clouds (nested anim) -->
+          <g transform="translate(60, 60)">
+            <g class="anim-cloud-glide">
+              <path d="M0 20 Q 20 0 40 20 Q 60 5 75 25 Q 90 25 85 45 Q 80 55 60 55 L 5 55 Q -15 50 -10 35 Q -10 25 0 20 Z" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3"/>
+            </g>
+          </g>
+          <g transform="translate(580, 50)">
+            <g class="anim-cloud-glide" style="animation-delay: -3s;">
+              <path d="M0 20 Q 20 0 40 20 Q 60 5 75 25 Q 90 25 85 45 Q 80 55 60 55 L 5 55 Q -15 50 -10 35 Q -10 25 0 20 Z" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3"/>
+            </g>
+          </g>
+
+          <!-- Autumn leaves drifting -->
+          <g transform="translate(180, 70)">
+            <g class="anim-leaf-drift">
+              <path d="M10 0 C2 4 0 12 10 16 C20 12 18 4 10 0 Z" fill="#E26D5C" stroke="#3E3A39" stroke-width="1.5"/>
+            </g>
+          </g>
+          <g transform="translate(480, 60)">
+            <g class="anim-leaf-drift" style="animation-delay: -2s;">
+              <path d="M10 0 C2 4 0 12 10 16 C20 12 18 4 10 0 Z" fill="#F6D27A" stroke="#3E3A39" stroke-width="1.5"/>
+            </g>
+          </g>
+
+          <!-- Green Grass Foreground Hills -->
+          <path d="M-20 270 Q 180 215 380 255 T 800 240 L 800 360 L -20 360 Z" fill="#B9DAA5" stroke="#3E3A39" stroke-width="3"/>
+
+          <!-- Left: Osaka Castle (大阪城) -->
+          <g transform="translate(80, 140)">
             <polygon points="30,100 10,125 110,125 90,100" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/>
             <path d="M15 100 Q 60 88 105 100 L 95 80 L 25 80 Z" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3"/>
             <rect x="35" y="60" width="50" height="20" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3"/>
@@ -1390,65 +1669,194 @@
             <circle cx="60" cy="8" r="4" fill="#F6D27A" stroke="#3E3A39" stroke-width="2"/>
           </g>
 
-          <!-- 鳥居 -->
-          <g transform="translate(510, 155)">
-            <rect x="0" y="0" width="80" height="10" rx="3" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/>
-            <rect x="8" y="10" width="64" height="6" rx="2" fill="#3E3A39"/>
-            <rect x="18" y="16" width="9" height="75" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/>
-            <rect x="53" y="16" width="9" height="75" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/>
-            <rect x="10" y="32" width="60" height="7" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/>
-            <rect x="36" y="16" width="8" height="16" fill="#F6D27A" stroke="#3E3A39" stroke-width="2"/>
+          <!-- Right: Fushimi Inari Torii (京都伏見稻荷鳥居) -->
+          <g transform="translate(580, 155)">
+            <rect x="0" y="0" width="75" height="9" rx="3" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/>
+            <rect x="7" y="9" width="61" height="5" rx="1.5" fill="#3E3A39"/>
+            <rect x="16" y="14" width="8" height="70" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/>
+            <rect x="50" y="14" width="8" height="70" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/>
+            <rect x="9" y="28" width="57" height="6.5" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/>
+            <rect x="34" y="14" width="7" height="14" fill="#F6D27A" stroke="#3E3A39" stroke-width="2"/>
           </g>
 
-          <!-- 神戶港塔 -->
-          <g transform="translate(630, 110)">
-            <path d="M25 35 Q 35 85 22 135 L 48 135 Q 35 85 45 35 Z" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/>
-            <ellipse cx="35" cy="35" rx="14" ry="7" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3"/>
-            <rect x="33" y="10" width="4" height="25" fill="#3E3A39"/>
-            <circle cx="35" cy="8" r="4" fill="#F6D27A" stroke="#3E3A39" stroke-width="2"/>
-            <line x1="24" y1="50" x2="46" y2="120" stroke="#3E3A39" stroke-width="2"/>
-            <line x1="46" y1="50" x2="24" y2="120" stroke="#3E3A39" stroke-width="2"/>
+          <!-- Far Right: Kobe Port Tower (神戶港塔) -->
+          <g transform="translate(680, 130)">
+            <path d="M20 30 Q 28 75 18 120 L 40 120 Q 30 75 38 30 Z" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/>
+            <ellipse cx="29" cy="30" rx="12" ry="6" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2.5"/>
+            <rect x="27" y="10" width="4" height="20" fill="#3E3A39"/>
+            <circle cx="29" cy="8" r="3.5" fill="#F6D27A" stroke="#3E3A39" stroke-width="2"/>
+            <line x1="20" y1="45" x2="38" y2="105" stroke="#3E3A39" stroke-width="1.5"/>
+            <line x1="38" y1="45" x2="20" y2="105" stroke="#3E3A39" stroke-width="1.5"/>
           </g>
 
-          <!-- 電車 -->
-          <g class="anim-train" transform="translate(240, 245)">
-            <line x1="-80" y1="46" x2="240" y2="46" stroke="#3E3A39" stroke-width="4" stroke-dasharray="8 6"/>
-            <rect x="0" y="0" width="130" height="42" rx="12" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/>
-            <rect x="0" y="24" width="130" height="18" rx="6" fill="#A8D3E6" stroke="#3E3A39" stroke-width="3"/>
-            <rect x="15" y="8" width="22" height="14" rx="4" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2"/>
-            <rect x="45" y="8" width="22" height="14" rx="4" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2"/>
-            <rect x="75" y="8" width="22" height="14" rx="4" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2"/>
-            <circle cx="120" cy="20" r="5" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2"/>
-            <polyline points="30,-10 45,0 60,-10" fill="none" stroke="#3E3A39" stroke-width="3"/>
-            <circle cx="25" cy="44" r="7" fill="#3E3A39"/>
-            <circle cx="105" cy="44" r="7" fill="#3E3A39"/>
+          <!-- Railroad Track & Cute Nankai / Hankyu Train -->
+          <g transform="translate(0, 310)">
+            <line x1="0" y1="20" x2="760" y2="20" stroke="#3E3A39" stroke-width="4" stroke-dasharray="8 6"/>
+          </g>
+          <g transform="translate(40, 275)">
+            <g class="anim-train-glide">
+              <rect x="0" y="0" width="115" height="38" rx="10" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/>
+              <rect x="0" y="22" width="115" height="16" rx="5" fill="#A8D3E6" stroke="#3E3A39" stroke-width="3"/>
+              <rect x="12" y="7" width="20" height="12" rx="3" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2"/>
+              <rect x="38" y="7" width="20" height="12" rx="3" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2"/>
+              <rect x="64" y="7" width="20" height="12" rx="3" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2"/>
+              <circle cx="102" cy="18" r="4.5" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2"/>
+              <polyline points="25,-8 38,0 52,-8" fill="none" stroke="#3E3A39" stroke-width="2.5"/>
+              <circle cx="22" cy="40" r="6" fill="#3E3A39"/>
+              <circle cx="92" cy="40" r="6" fill="#3E3A39"/>
+            </g>
           </g>
 
-          <!-- 達摩 -->
-          <g class="anim-sway" transform="translate(50, 235)">
-            <ellipse cx="25" cy="30" rx="22" ry="24" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/>
-            <circle cx="25" cy="24" r="13" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2"/>
-            <circle cx="20" cy="22" r="3" fill="#3E3A39"/>
-            <circle cx="30" cy="22" r="3" fill="#3E3A39"/>
-            <circle cx="21" cy="21" r="1" fill="#FFFFFF"/>
-            <circle cx="31" cy="21" r="1" fill="#FFFFFF"/>
-            <path d="M16 16 Q 20 18 22 17" stroke="#3E3A39" stroke-width="2" stroke-linecap="round"/>
-            <path d="M34 16 Q 30 18 28 17" stroke="#3E3A39" stroke-width="2" stroke-linecap="round"/>
-            <path d="M22 28 Q 25 31 28 28" stroke="#3E3A39" stroke-width="2" stroke-linecap="round"/>
-            <rect x="18" y="38" width="14" height="10" rx="3" fill="#F6D27A" stroke="#3E3A39" stroke-width="1.5"/>
-            <text x="25" y="46" font-size="7" font-weight="900" fill="#3E3A39" text-anchor="middle">勝</text>
+          <!-- ======================================================================
+               CHIIKAWA TRIO (吉伊卡哇三人組・快樂關西行)
+               Positioned proudly in the foreground lawn!
+               ====================================================================== -->
+
+          <!-- 1. HACHIWARE (小八貓) - Left (X: 250, Y: 185) -->
+          <g transform="translate(250, 185)">
+            <g class="anim-hachiware-bounce">
+              <!-- Shadow -->
+              <ellipse cx="40" cy="88" rx="28" ry="7" fill="#3E3A39" opacity="0.15"/>
+              <!-- Body/Head -->
+              <ellipse cx="40" cy="48" rx="36" ry="32" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3"/>
+              <!-- Blue bangs/cap (Hachiware signature blue parted hair) -->
+              <path d="M12 40 Q 40 34 40 18 Q 40 34 68 40 Q 72 20 58 16 Q 40 14 22 16 Q 8 20 12 40 Z" fill="#7BB3E8" stroke="#3E3A39" stroke-width="2.5"/>
+              <!-- Blue Cat Ears -->
+              <polygon points="14,26 4,4 28,16" fill="#7BB3E8" stroke="#3E3A39" stroke-width="3"/>
+              <polygon points="13,22 8,10 22,17" fill="#F8C0CC"/>
+              <polygon points="66,26 76,4 52,16" fill="#7BB3E8" stroke="#3E3A39" stroke-width="3"/>
+              <polygon points="67,22 72,10 58,17" fill="#F8C0CC"/>
+              <!-- Eyes with catchlights -->
+              <ellipse cx="28" cy="46" rx="5" ry="6.5" fill="#3E3A39"/>
+              <circle cx="26.5" cy="43.5" r="2" fill="#FFFFFF"/>
+              <circle cx="29.5" cy="48" r="1.2" fill="#FFFFFF"/>
+              <ellipse cx="52" cy="46" rx="5" ry="6.5" fill="#3E3A39"/>
+              <circle cx="50.5" cy="43.5" r="2" fill="#FFFFFF"/>
+              <circle cx="53.5" cy="48" r="1.2" fill="#FFFFFF"/>
+              <!-- Eyebrows -->
+              <path d="M23 37 Q 28 35 32 38" stroke="#3E3A39" stroke-width="2" stroke-linecap="round" fill="none"/>
+              <path d="M48 38 Q 52 35 57 37" stroke="#3E3A39" stroke-width="2" stroke-linecap="round" fill="none"/>
+              <!-- Blushing Cheeks -->
+              <ellipse cx="20" cy="53" rx="6.5" ry="4" fill="#F8B4B8"/>
+              <ellipse cx="60" cy="53" rx="6.5" ry="4" fill="#F8B4B8"/>
+              <!-- Smiling Cat Mouth '3' -->
+              <path d="M34 52 Q 37 55 40 52 Q 43 55 46 52" stroke="#3E3A39" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+              <!-- Cute Little Camera around neck -->
+              <rect x="31" y="64" width="18" height="13" rx="2.5" fill="#385E72" stroke="#3E3A39" stroke-width="2"/>
+              <circle cx="40" cy="70.5" r="4" fill="#FFFFFF" stroke="#3E3A39" stroke-width="1.5"/>
+              <circle cx="40" cy="70.5" r="2" fill="#7BB3E8"/>
+              <line x1="28" y1="58" x2="33" y2="64" stroke="#3E3A39" stroke-width="1.8"/>
+              <line x1="52" y1="58" x2="47" y2="64" stroke="#3E3A39" stroke-width="1.8"/>
+              <!-- Hands and Feet -->
+              <ellipse cx="14" cy="62" rx="5" ry="4" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2"/>
+              <ellipse cx="66" cy="62" rx="5" ry="4" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2"/>
+              <ellipse cx="28" cy="80" rx="6" ry="5" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2.5"/>
+              <ellipse cx="52" cy="80" rx="6" ry="5" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2.5"/>
+              <!-- Name badge -->
+              <rect x="16" y="88" width="48" height="16" rx="8" fill="#7BB3E8" stroke="#3E3A39" stroke-width="1.5"/>
+              <text x="40" y="99" font-size="9" font-weight="900" fill="#FFFFFF" text-anchor="middle">小八貓</text>
+            </g>
           </g>
 
-          <!-- 柴犬 -->
-          <g class="anim-float" transform="translate(680, 245)">
-            <circle cx="25" cy="20" r="16" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/>
-            <polygon points="12,10 16,0 23,8" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.5"/>
-            <polygon points="38,10 34,0 27,8" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.5"/>
-            <ellipse cx="25" cy="26" rx="9" ry="7" fill="#FFFFFF"/>
-            <circle cx="20" cy="18" r="2" fill="#3E3A39"/>
-            <circle cx="30" cy="18" r="2" fill="#3E3A39"/>
-            <polygon points="25,23 23,21 27,21" fill="#3E3A39"/>
-            <path d="M23 27 Q 25 30 27 27" fill="#F2A497" stroke="#3E3A39" stroke-width="1.5"/>
+          <!-- 2. CHIIKAWA (吉伊卡哇) - Center Hero! (X: 370, Y: 175) -->
+          <g transform="translate(370, 175)">
+            <g class="anim-chiikawa-hop">
+              <!-- Shadow -->
+              <ellipse cx="42" cy="98" rx="30" ry="8" fill="#3E3A39" opacity="0.15"/>
+              <!-- Cute Ears -->
+              <circle cx="16" cy="18" r="11" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3"/>
+              <circle cx="16" cy="18" r="6" fill="#F8C0CC"/>
+              <circle cx="68" cy="18" r="11" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3"/>
+              <circle cx="68" cy="18" r="6" fill="#F8C0CC"/>
+              <!-- Head & Body (Soft round pear) -->
+              <ellipse cx="42" cy="52" rx="38" ry="34" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3"/>
+              <!-- Shiny Watery Catchlight Eyes (Iconic Chiikawa tears of wonder!) -->
+              <ellipse cx="29" cy="48" rx="5.5" ry="7" fill="#3E3A39"/>
+              <circle cx="27" cy="45" r="2.2" fill="#FFFFFF"/>
+              <circle cx="31" cy="50.5" r="1.3" fill="#FFFFFF"/>
+              <ellipse cx="55" cy="48" rx="5.5" ry="7" fill="#3E3A39"/>
+              <circle cx="53" cy="45" r="2.2" fill="#FFFFFF"/>
+              <circle cx="57" cy="50.5" r="1.3" fill="#FFFFFF"/>
+              <!-- Worried/Touched Eyebrows (八字眉) -->
+              <path d="M23 38 Q 28 36 33 40" stroke="#3E3A39" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+              <path d="M51 40 Q 56 36 61 38" stroke="#3E3A39" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+              <!-- Cute Blushing Pink Cheeks -->
+              <ellipse cx="20" cy="56" rx="7" ry="4.5" fill="#F8B4B8"/>
+              <ellipse cx="64" cy="56" rx="7" ry="4.5" fill="#F8B4B8"/>
+              <!-- Gentle open cute mouth 'ㅅ' -->
+              <path d="M38 56 Q 42 61 46 56" stroke="#3E3A39" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+              <!-- Left Hand Waving -->
+              <path d="M10 50 Q 2 40 8 34 Q 14 36 18 46 Z" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2.5"/>
+              <!-- Right Hand holding delicious Osaka Takoyaki! -->
+              <ellipse cx="70" cy="58" rx="5" ry="4.5" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2.5"/>
+              <line x1="72" y1="58" x2="88" y2="35" stroke="#3E3A39" stroke-width="2.5"/>
+              <circle cx="88" cy="33" r="10" fill="#C8703E" stroke="#3E3A39" stroke-width="2.5"/>
+              <path d="M82 30 Q 88 36 94 30" stroke="#FFF9E6" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+              <circle cx="86" cy="30" r="1.5" fill="#B9DAA5"/>
+              <circle cx="90" cy="34" r="1.5" fill="#E26D5C"/>
+              <!-- Feet -->
+              <ellipse cx="30" cy="87" rx="7" ry="5.5" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2.5"/>
+              <ellipse cx="54" cy="87" rx="7" ry="5.5" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2.5"/>
+              <!-- Name badge -->
+              <rect x="14" y="96" width="56" height="17" rx="8.5" fill="#F8B4B8" stroke="#3E3A39" stroke-width="1.5"/>
+              <text x="42" y="108" font-size="9.5" font-weight="900" fill="#3E3A39" text-anchor="middle">吉伊卡哇</text>
+            </g>
+          </g>
+
+          <!-- 3. USAGI (兔兔) - Right (X: 490, Y: 145) -->
+          <g transform="translate(490, 145)">
+            <g class="anim-usagi-jump">
+              <!-- Shadow -->
+              <ellipse cx="40" cy="128" rx="28" ry="7" fill="#3E3A39" opacity="0.15"/>
+              <!-- Long Ears (Usagi signature!) -->
+              <path d="M22 60 Q 14 2 28 0 Q 42 2 34 60 Z" fill="#FFF2A8" stroke="#3E3A39" stroke-width="3"/>
+              <path d="M24 54 Q 18 12 28 10 Q 38 12 32 54 Z" fill="#F8C0CC"/>
+              <path d="M46 60 Q 38 2 52 0 Q 66 2 58 60 Z" fill="#FFF2A8" stroke="#3E3A39" stroke-width="3"/>
+              <path d="M48 54 Q 42 12 52 10 Q 62 12 56 54 Z" fill="#F8C0CC"/>
+              <!-- Body/Head (Warm butter yellow) -->
+              <ellipse cx="40" cy="88" rx="36" ry="32" fill="#FFF2A8" stroke="#3E3A39" stroke-width="3"/>
+              <!-- Sparkling Eyes -->
+              <ellipse cx="28" cy="85" rx="5" ry="6.5" fill="#3E3A39"/>
+              <circle cx="26.5" cy="82.5" r="2" fill="#FFFFFF"/>
+              <circle cx="29.5" cy="87" r="1.2" fill="#FFFFFF"/>
+              <ellipse cx="52" cy="85" rx="5" ry="6.5" fill="#3E3A39"/>
+              <circle cx="50.5" cy="82.5" r="2" fill="#FFFFFF"/>
+              <circle cx="53.5" cy="87" r="1.2" fill="#FFFFFF"/>
+              <!-- Mischievous Eyebrows -->
+              <path d="M22 76 Q 27 78 32 75" stroke="#3E3A39" stroke-width="2" stroke-linecap="round" fill="none"/>
+              <path d="M48 75 Q 53 78 58 76" stroke="#3E3A39" stroke-width="2" stroke-linecap="round" fill="none"/>
+              <!-- Rosy Cheeks -->
+              <ellipse cx="19" cy="92" rx="6.5" ry="4" fill="#F8B4B8"/>
+              <ellipse cx="61" cy="92" rx="6.5" ry="4" fill="#F8B4B8"/>
+              <!-- Iconic Laughing Mouth "D" (ヤハ！/ 呀哈！) -->
+              <path d="M33 92 Q 40 102 47 92 Z" fill="#E26D5C" stroke="#3E3A39" stroke-width="2.5"/>
+              <ellipse cx="40" cy="96" rx="4" ry="2" fill="#FFFFFF"/>
+              <!-- Round Fluffy Tail on right side -->
+              <circle cx="76" cy="98" r="8" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2.5"/>
+              <!-- Left Hand waving a red maple leaf -->
+              <ellipse cx="13" cy="98" rx="5" ry="4.5" fill="#FFF2A8" stroke="#3E3A39" stroke-width="2"/>
+              <path d="M2 88 Q 8 80 12 88 Q 16 80 20 88 Q 16 98 12 96 Q 8 98 2 88 Z" fill="#E26D5C" stroke="#3E3A39" stroke-width="1.8"/>
+              <!-- Right Hand Up -->
+              <path d="M68 86 Q 78 76 72 70 Q 66 74 64 84 Z" fill="#FFF2A8" stroke="#3E3A39" stroke-width="2.5"/>
+              <!-- Feet -->
+              <ellipse cx="28" cy="120" rx="6.5" ry="5" fill="#FFF2A8" stroke="#3E3A39" stroke-width="2.5"/>
+              <ellipse cx="52" cy="120" rx="6.5" ry="5" fill="#FFF2A8" stroke="#3E3A39" stroke-width="2.5"/>
+              <!-- Name badge -->
+              <rect x="18" y="128" width="44" height="16" rx="8" fill="#F6D27A" stroke="#3E3A39" stroke-width="1.5"/>
+              <text x="40" y="139" font-size="9" font-weight="900" fill="#3E3A39" text-anchor="middle">兔兔</text>
+            </g>
+          </g>
+
+          <!-- Sparkles ✨ around Chiikawa crew -->
+          <g transform="translate(325, 175)">
+            <g class="anim-sparkle">
+              <polygon points="10,0 12,8 20,10 12,12 10,20 8,12 0,10 8,8" fill="#F6D27A" stroke="#3E3A39" stroke-width="1.5"/>
+            </g>
+          </g>
+          <g transform="translate(465, 170)">
+            <g class="anim-sparkle" style="animation-delay: -1.2s;">
+              <polygon points="8,0 10,6 16,8 10,10 8,16 6,10 0,8 6,6" fill="#F2A497" stroke="#3E3A39" stroke-width="1.5"/>
+            </g>
           </g>
         </svg>
       </div>
@@ -1954,6 +2362,37 @@
       </div>
     </section>
 
+    <!-- ==========================================================================
+         吉伊卡哇互動懸浮小夥伴 (Chiikawa Floating Mascot)
+         ========================================================================== -->
+    <div class="chiikawa-mascot-fab" id="chiikawaMascot" title="點擊吉伊卡哇！">
+      <div class="chiikawa-bubble" id="chiikawaBubble">わァ…！出發大阪！✨</div>
+      <button class="chiikawa-btn" id="chiikawaBtn" aria-label="吉伊卡哇互動夥伴">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Cute Ears -->
+          <circle cx="16" cy="18" r="8" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2.5"/>
+          <circle cx="16" cy="18" r="4.5" fill="#F8C0CC"/>
+          <circle cx="48" cy="18" r="8" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2.5"/>
+          <circle cx="48" cy="18" r="4.5" fill="#F8C0CC"/>
+          <!-- Head -->
+          <ellipse cx="32" cy="38" rx="26" ry="22" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2.5"/>
+          <!-- Eyes -->
+          <ellipse cx="23" cy="36" rx="3.5" ry="4.5" fill="#3E3A39"/>
+          <circle cx="21.5" cy="34.5" r="1.5" fill="#FFFFFF"/>
+          <ellipse cx="41" cy="36" rx="3.5" ry="4.5" fill="#3E3A39"/>
+          <circle cx="39.5" cy="34.5" r="1.5" fill="#FFFFFF"/>
+          <!-- Cheeks -->
+          <ellipse cx="16" cy="42" rx="4.5" ry="3" fill="#F8B4B8"/>
+          <ellipse cx="48" cy="42" rx="4.5" ry="3" fill="#F8B4B8"/>
+          <!-- Eyebrows -->
+          <path d="M19 29 Q 22 28 25 31" stroke="#3E3A39" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M39 31 Q 42 28 45 29" stroke="#3E3A39" stroke-width="1.8" stroke-linecap="round"/>
+          <!-- Mouth -->
+          <path d="M29 42 Q 32 45 35 42" stroke="#3E3A39" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+
   </main>
 
   <!-- ==========================================================================
@@ -2443,6 +2882,40 @@
       });
     }
 
+    // 吉伊卡哇互動懸浮小夥伴
+    function initChiikawaMascot() {
+      const btn = document.getElementById("chiikawaBtn");
+      const bubble = document.getElementById("chiikawaBubble");
+      if (!btn || !bubble) return;
+
+      const quotes = [
+        "わァ…！出發大阪！✨",
+        "なんとかなれーッ！（一定順利的！）",
+        "ヤハッ！ウラララ！（兔兔狂喜跳跳）",
+        "出發吃道頓堀章魚燒和抹茶甜點！🍡",
+        "雙班機 13:10 在關西機場準時相見！✈️",
+        "秋天京都的楓葉紅通通超漂亮！🍁",
+        "行前清單檢查了沒？要帶護照喔！🎒",
+        "エッ…？（吉伊卡哇感動開心掉眼淚）"
+      ];
+      let quoteIdx = 0;
+
+      function speak() {
+        quoteIdx = (quoteIdx + 1) % quotes.length;
+        bubble.textContent = quotes[quoteIdx];
+        btn.style.transform = "scale(0.88) rotate(-12deg)";
+        setTimeout(() => {
+          btn.style.transform = "scale(1.18) rotate(12deg)";
+          setTimeout(() => {
+            btn.style.transform = "";
+          }, 160);
+        }, 120);
+      }
+
+      btn.addEventListener("click", speak);
+      bubble.addEventListener("click", speak);
+    }
+
     document.addEventListener("DOMContentLoaded", () => {
       initCountdown();
       renderDateTabs();
@@ -2452,6 +2925,7 @@
       initChecklistForm();
       initCurrencyConverter();
       initMotionToggle();
+      initChiikawaMascot();
     });
   </script>
 </body>
