@@ -15,16 +15,16 @@ DAYS_DATA = [
         "highlightName": "關西機場 & 花園町商圈",
         "category": "抵達採買",
         "illuType": "plane",
-        "notes": "下午班機抵達關西國際機場，搭乘南海電鐵至民宿花園町 Check-in。傍晚採買生活用品、大國藥妝、三大生鮮超市與難波中心街漫步。",
+        "notes": "台北組（樂桃 MM24）與高雄組（亞航 AK170）皆於 13:10 同步降落關西國際機場！出關後搭乘南海電鐵至民宿花園町 Check-in。傍晚採買生活用品、大國藥妝、三大生鮮超市與難波中心街漫步。",
         "items": [
             {
                 "time": "13:10",
-                "title": "關西機場",
+                "title": "關西機場 (雙航班同刻抵達會師)",
                 "category": "交通樞紐",
                 "type": "stay",
                 "duration": "停留 00 時 40 分",
                 "must": False,
-                "desc": "搭乘航班順利降落關西國際機場（KIX），辦理入境手續與領取行李，在南海電鐵票閘口搭車。",
+                "desc": "台北組搭乘樂桃 MM24（第二航廈 T2）與高雄組搭乘亞航 AK170（第一航廈 T1）於 13:10 同步降落關西國際機場（KIX），辦理入境手續後於關西機場車站領取車票相見歡，搭乘南海電鐵前往大阪市區！",
                 "transitNext": {"type": "train", "text": "搭乘電車 01 時 08 分"}
             },
             {
@@ -1325,7 +1325,7 @@ DAYS_DATA = [
         "highlightName": "關西國際機場 KIX",
         "category": "平安返航",
         "illuType": "plane",
-        "notes": "上午 10:00 退房前往關西機場，搭乘 AirAsia AK171 班機返台。在第一航廈免稅店最後衝刺採買生巧克力與伴手禮，帶著滿滿歡笑平安回家！",
+        "notes": "上午 10:00 退房前往關西機場。高雄組搭乘 AirAsia AK171（14:10 起飛）返航小港，台北組搭乘樂桃航空 MM27（15:25 起飛）返航桃園。在第一與第二航廈免稅店最後衝刺採買伴手禮，帶著滿載美好回憶平安返家！",
         "items": [
             {
                 "time": "10:00",
@@ -1338,13 +1338,13 @@ DAYS_DATA = [
                 "transitNext": {"type": "train", "text": "搭乘南海特急/急行電車 00 時 59 分"}
             },
             {
-                "time": "12:00",
-                "title": "關西國際機場 (KIX 第一航廈)",
+                "time": "11:40",
+                "title": "關西國際機場 (雙航線返航報到)",
                 "category": "班機報到",
                 "type": "stay",
-                "duration": "停留 02 時 00 分",
+                "duration": "停留 02 時 30 分",
                 "must": True,
-                "desc": "辦理 AirAsia AK171 班機報到與行李託運手續。通關後在免稅大街最後大採購：ROYCE生巧克力、薯條三兄弟、東京香蕉、關西限定宇治抹茶甜品，準備登機飛向台灣！"
+                "desc": "【高雄組】第一航廈 (T1) 辦理 AirAsia AK171 班機報到（14:10 日本起飛 ➔ 16:30 抵高雄）。\n【台北組】第二航廈 (T2) 辦理樂桃航空 MM27 班機報到（15:25 日本起飛 ➔ 17:55 抵桃園）。通關後採買生巧克力與名產，平安返抵台灣！"
             }
         ],
         "spots": [
@@ -1360,13 +1360,13 @@ DAYS_DATA = [
             },
             {
                 "num": "2",
-                "name": "關西國際機場 (免稅伴手禮最後衝刺)",
-                "subTitle": "第一航廈免稅街採買・AirAsia AK171 幸福滿載返航",
+                "name": "關西國際機場 (雙班機返程與伴手禮最後衝刺)",
+                "subTitle": "T1 亞航 AK171 ＋ T2 樂桃 MM27・幸福滿載平安返航",
                 "tag": "伴手禮掃貨",
                 "must": True,
                 "illu": "plane",
-                "story": "旅途的終點也是美好回憶的起點！在第一航廈辦理 AirAsia AK171 班機登機與行李託運手續。",
-                "insider": "進入管制區後前往免稅商店街，ROYCE 生巧克力、白色戀人、東京香蕉、京都宇治抹茶年輪蛋糕一應俱全。用滿滿的伴手禮和十天豐富的相片回憶，為本次關西之旅畫下最完美的句點！"
+                "story": "旅途的終點也是美好回憶的起點！高雄組於第一航廈辦理 AirAsia AK171 班機報到（14:10 起飛）；台北組搭乘接駁車前往第二航廈辦理樂桃航空 MM27 班機報到（15:25 起飛）。兩組人在十天滿滿足跡後互道珍重！",
+                "insider": "進入管制區後前往免稅商店街，ROYCE 生巧克力、白色戀人、東京香蕉、關西限定宇治抹茶年輪蛋糕一應俱全。用滿滿的伴手禮和十天豐富的相片回憶，為本次關西之旅畫下最完美的句點！"
             }
         ]
     }
@@ -1748,26 +1748,67 @@ HTML_TEMPLATE = r'''<!DOCTYPE html>
     }
 
     /* ==========================================================================
-       Flight Card (日系機票票根設計)
+       Flight Card (日系雙登機證票根設計 - 上下兩張登機證)
        ========================================================================== */
+    .flight-sync-banner {
+      background-color: var(--card-yellow);
+      border: var(--border-width) solid var(--border-ink);
+      border-radius: var(--radius-lg);
+      padding: 14px 18px;
+      margin-bottom: 22px;
+      box-shadow: var(--shadow-comic-sm);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
     .ticket-card {
       background-color: var(--card-white);
       border: var(--border-width) solid var(--border-ink);
       border-radius: var(--radius-xl);
       box-shadow: var(--shadow-comic);
       overflow: hidden;
-      margin-bottom: 24px;
+      margin-bottom: 28px;
       position: relative;
     }
 
     .ticket-header {
-      background-color: var(--coral-pink);
       padding: 12px 18px;
       border-bottom: var(--border-width) solid var(--border-ink);
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-weight: 900;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .ticket-header-peach {
+      background-color: var(--coral-pink);
+    }
+    .ticket-header-airasia {
+      background-color: var(--water-blue);
+    }
+
+    .ticket-num-badge {
+      background-color: var(--border-ink);
+      color: #FFFFFF;
+      font-size: 0.72rem;
+      font-weight: 900;
+      padding: 3px 8px;
+      border-radius: var(--radius-sm);
+      letter-spacing: 0.5px;
+      display: inline-block;
+    }
+
+    .airline-brand-tag {
+      background-color: #FFFFFF;
+      border: 2px solid var(--border-ink);
+      border-radius: 999px;
+      padding: 3px 12px;
+      font-size: 0.82rem;
+      font-weight: 900;
+      box-shadow: 2px 2px 0px var(--border-ink);
+      white-space: nowrap;
     }
 
     .ticket-body {
@@ -1851,23 +1892,24 @@ HTML_TEMPLATE = r'''<!DOCTYPE html>
       flex-direction: column;
     }
     .flight-detail-label {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       color: var(--text-muted);
       font-weight: 700;
     }
     .flight-detail-val {
       font-weight: 900;
+      font-size: 0.86rem;
     }
 
     .ticket-perforated {
       border-top: 3px dashed var(--border-ink);
-      margin: 12px 0;
+      margin: 4px 0 0;
       position: relative;
     }
     .ticket-notches {
       position: absolute;
-      width: 24px;
-      height: 24px;
+      width: 26px;
+      height: 26px;
       border-radius: 50%;
       background-color: var(--bg-washi);
       border: var(--border-width) solid var(--border-ink);
@@ -1875,18 +1917,25 @@ HTML_TEMPLATE = r'''<!DOCTYPE html>
       transform: translateY(-50%);
       z-index: 2;
     }
-    .notch-left { left: -30px; }
-    .notch-right { right: -30px; }
+    .notch-left { left: -14px; }
+    .notch-right { right: -14px; }
 
     .ticket-tips {
-      background-color: var(--water-blue);
-      border-top: var(--border-width) solid var(--border-ink);
       padding: 12px 18px;
       font-size: 0.85rem;
       font-weight: 700;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
+      line-height: 1.5;
+    }
+    .ticket-tips-peach {
+      background-color: #FFF2EB;
+      border-top: var(--border-width) solid var(--border-ink);
+    }
+    .ticket-tips-airasia {
+      background-color: #EDF7FB;
+      border-top: var(--border-width) solid var(--border-ink);
     }
 
     /* ==========================================================================
@@ -2784,7 +2833,7 @@ HTML_TEMPLATE = r'''<!DOCTYPE html>
       <div class="countdown-card">
         <div class="countdown-header">
           <span>⏰ 距離關西出發倒數：</span>
-          <span style="color: var(--text-muted); font-size: 0.9rem;">2026/10/26 13:10 抵達 KIX</span>
+          <span style="color: var(--text-muted); font-size: 0.9rem;">2026/10/26 13:10 雙班機抵達 KIX</span>
         </div>
         <div class="countdown-grid" id="countdownGrid">
           <div class="countdown-item">
@@ -2809,23 +2858,39 @@ HTML_TEMPLATE = r'''<!DOCTYPE html>
     </section>
 
     <!-- ==========================================================================
-         航班卡片
+         航班卡片 (雙航線登機證：上方台北桃園 MM24/27 ＋ 下方高雄小港 AK170/171)
          ========================================================================== -->
     <section id="flights">
       <div class="section-title-wrap">
         <h2 class="section-title">
-          <span>✈️</span> 航班資訊卡片
+          <span>✈️</span> 雙航線登機證卡片
         </h2>
         <span class="section-badge">去程 10/26 ➔ 回程 11/04</span>
       </div>
 
-      <div class="ticket-card">
-        <div class="ticket-header">
-          <span>BOARDING PASS / 關西國際機場 往返機票</span>
-          <span>AIRASIA 亞航</span>
+      <!-- 同步抵達關西會師標籤 -->
+      <div class="flight-sync-banner">
+        <span style="font-size: 1.5rem; flex-shrink: 0;">🤝</span>
+        <div>
+          <strong style="color: var(--text-main); font-size: 0.95rem;">【雙路會師・神默契同刻抵達！】</strong><br>
+          <span style="color: var(--text-muted); font-size: 0.85rem;">
+            台北桃園組（樂桃航空 MM24）與 高雄小港組（亞洲航空 AK170）皆於 <strong>2026/10/26 (週一) 13:10</strong> 同步降落大阪關西國際機場！出關後於關西機場車站領取車票相見歡！
+          </span>
+        </div>
+      </div>
+
+      <!-- ==================== 上方登機證：樂桃航空 MM24 / MM27 (台北桃園 TPE ⇄ 大阪關西 KIX) ==================== -->
+      <div class="ticket-card" id="ticketPeach">
+        <div class="ticket-header ticket-header-peach">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span class="ticket-num-badge">上方登機證 01</span>
+            <span>BOARDING PASS / 台北桃園 (TPE) ⇄ 大阪關西 (KIX)</span>
+          </div>
+          <span class="airline-brand-tag">🍑 樂桃航空 Peach Aviation</span>
         </div>
 
         <div class="ticket-body">
+          <!-- 去程 MM24 -->
           <div class="ticket-flight-box">
             <div style="display: flex; justify-content: space-between; align-items: center;">
               <span class="pill-tag pill-pink">去程 DEPARTURE</span>
@@ -2834,38 +2899,47 @@ HTML_TEMPLATE = r'''<!DOCTYPE html>
             <div class="flight-route">
               <div>
                 <div class="airport-code">TPE</div>
-                <div class="airport-name">台北 / 桃園</div>
+                <div class="airport-name">台北桃園 T1</div>
               </div>
               <div class="flight-arrow">
-                <span style="font-size: 0.75rem; font-weight: 700; color: var(--coral-pink);">直飛 約 2h 45m</span>
+                <span style="font-size: 0.75rem; font-weight: 700; color: var(--coral-pink);">直飛 2h 30m</span>
                 <div class="flight-arrow-line"></div>
-                <span style="font-size: 0.7rem; font-weight: 700; color: var(--text-muted);">AirAsia</span>
+                <span style="font-size: 0.75rem; font-weight: 900; color: var(--text-main);">MM 24</span>
               </div>
               <div>
                 <div class="airport-code">KIX</div>
-                <div class="airport-name">大阪 / 關西 T1</div>
+                <div class="airport-name">大阪關西 T2</div>
               </div>
             </div>
             <div class="flight-info-grid">
               <div class="flight-detail-item">
-                <span class="flight-detail-label">抵達時間</span>
-                <span class="flight-detail-val" style="color: #D9483B;">13:10 抵達</span>
+                <span class="flight-detail-label">預定起飛</span>
+                <span class="flight-detail-val" style="color: #2F80ED;">09:40 台北時間</span>
               </div>
               <div class="flight-detail-item">
-                <span class="flight-detail-label">預計通關停留</span>
-                <span class="flight-detail-val">約 40 分鐘</span>
+                <span class="flight-detail-label">預定抵達</span>
+                <span class="flight-detail-val" style="color: #D9483B;">13:10 日本時間</span>
               </div>
               <div class="flight-detail-item">
-                <span class="flight-detail-label">後續交通</span>
-                <span class="flight-detail-val">南海電鐵 1h08m</span>
+                <span class="flight-detail-label">出發地</span>
+                <span class="flight-detail-val">桃園國際機場 T1</span>
               </div>
               <div class="flight-detail-item">
-                <span class="flight-detail-label">直達目的地</span>
-                <span class="flight-detail-val">パラゴン花園町</span>
+                <span class="flight-detail-label">目的地</span>
+                <span class="flight-detail-val">大阪關西機場 T2</span>
+              </div>
+              <div class="flight-detail-item">
+                <span class="flight-detail-label">預計飛行時間</span>
+                <span class="flight-detail-val">2 小時 30 分鐘</span>
+              </div>
+              <div class="flight-detail-item">
+                <span class="flight-detail-label">抵達提醒</span>
+                <span class="flight-detail-val" style="color: var(--coral-pink);">13:10 與高雄組同步抵達！</span>
               </div>
             </div>
           </div>
 
+          <!-- 回程 MM27 -->
           <div class="ticket-flight-box">
             <div style="display: flex; justify-content: space-between; align-items: center;">
               <span class="pill-tag pill-yellow">回程 RETURN</span>
@@ -2874,34 +2948,42 @@ HTML_TEMPLATE = r'''<!DOCTYPE html>
             <div class="flight-route">
               <div>
                 <div class="airport-code">KIX</div>
-                <div class="airport-name">大阪 / 關西 T1</div>
+                <div class="airport-name">大阪關西 T2</div>
               </div>
               <div class="flight-arrow">
-                <span style="font-size: 0.75rem; font-weight: 700; color: var(--yamabuki-yellow);">班機 AK171</span>
+                <span style="font-size: 0.75rem; font-weight: 700; color: var(--yamabuki-yellow);">直飛 約 3h 30m</span>
                 <div class="flight-arrow-line"></div>
-                <span style="font-size: 0.7rem; font-weight: 700; color: var(--text-muted);">經濟艙 Economy</span>
+                <span style="font-size: 0.75rem; font-weight: 900; color: var(--text-main);">MM 27</span>
               </div>
               <div>
                 <div class="airport-code">TPE</div>
-                <div class="airport-name">台北 / 桃園</div>
+                <div class="airport-name">台北桃園 T1</div>
               </div>
             </div>
             <div class="flight-info-grid">
               <div class="flight-detail-item">
-                <span class="flight-detail-label">前往機場時間</span>
-                <span class="flight-detail-val">10:00 出發 (59分)</span>
+                <span class="flight-detail-label">預定起飛</span>
+                <span class="flight-detail-val" style="color: #2F80ED;">15:25 日本時間</span>
               </div>
               <div class="flight-detail-item">
-                <span class="flight-detail-label">抵達機場</span>
-                <span class="flight-detail-val" style="color: #2F80ED;">12:00 報到</span>
+                <span class="flight-detail-label">預定抵達</span>
+                <span class="flight-detail-val" style="color: #D9483B;">17:55 台北時間</span>
               </div>
               <div class="flight-detail-item">
-                <span class="flight-detail-label">預留航廈停留</span>
-                <span class="flight-detail-val">2 小時 (採買伴手禮)</span>
+                <span class="flight-detail-label">出發地</span>
+                <span class="flight-detail-val">關西國際機場 T2</span>
               </div>
               <div class="flight-detail-item">
-                <span class="flight-detail-label">機票航班</span>
-                <span class="flight-detail-val">AirAsia AK171</span>
+                <span class="flight-detail-label">目的地</span>
+                <span class="flight-detail-val">桃園國際機場 T1</span>
+              </div>
+              <div class="flight-detail-item">
+                <span class="flight-detail-label">預計飛行時間</span>
+                <span class="flight-detail-val">約 3 小時 30 分鐘</span>
+              </div>
+              <div class="flight-detail-item">
+                <span class="flight-detail-label">報到叮嚀</span>
+                <span class="flight-detail-val">預留 2.5h 搭接駁至 T2</span>
               </div>
             </div>
           </div>
@@ -2912,9 +2994,130 @@ HTML_TEMPLATE = r'''<!DOCTYPE html>
           <div class="ticket-notches notch-right"></div>
         </div>
 
-        <div class="ticket-tips">
-          <span>💡</span>
-          <span>叮嚀提醒：請務必在出發前填妥「Visit Japan Web」審查 QR Code；回程免稅店採買生巧克力與白色戀人記得留意手提行李重量喔！</span>
+        <div class="ticket-tips ticket-tips-peach">
+          <span style="font-size: 1.1rem; flex-shrink: 0;">💡</span>
+          <span><strong>樂桃航廈重要叮嚀：</strong>樂桃航空在關西機場位於「第二航廈 (T2)」，出發地為桃園第一航廈 (T1)。抵達關西 T2 後需搭乘免費接駁巴士（約 7~9 分鐘）至關西機場車站與高雄組會合；回程請務必提早出發前往 T2 辦理報到喔！</span>
+        </div>
+      </div>
+
+      <!-- ==================== 下方登機證：亞洲航空 AK170 / AK171 (高雄小港 KHH ⇄ 大阪關西 KIX) ==================== -->
+      <div class="ticket-card" id="ticketAirAsia">
+        <div class="ticket-header ticket-header-airasia">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span class="ticket-num-badge">下方登機證 02</span>
+            <span>BOARDING PASS / 高雄國際 (KHH) ⇄ 大阪關西 (KIX)</span>
+          </div>
+          <span class="airline-brand-tag">✈️ 亞洲航空 AirAsia</span>
+        </div>
+
+        <div class="ticket-body">
+          <!-- 去程 AK170 -->
+          <div class="ticket-flight-box">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span class="pill-tag pill-pink">去程 DEPARTURE</span>
+              <span style="font-weight: 900; font-size: 0.85rem;">2026/10/26 (週一)</span>
+            </div>
+            <div class="flight-route">
+              <div>
+                <div class="airport-code">KHH</div>
+                <div class="airport-name">高雄國際機場</div>
+              </div>
+              <div class="flight-arrow">
+                <span style="font-size: 0.75rem; font-weight: 700; color: var(--water-blue);">直飛 約 3h 10m</span>
+                <div class="flight-arrow-line"></div>
+                <span style="font-size: 0.75rem; font-weight: 900; color: var(--text-main);">AK 170</span>
+              </div>
+              <div>
+                <div class="airport-code">KIX</div>
+                <div class="airport-name">大阪關西 T1</div>
+              </div>
+            </div>
+            <div class="flight-info-grid">
+              <div class="flight-detail-item">
+                <span class="flight-detail-label">預定起飛</span>
+                <span class="flight-detail-val" style="color: #2F80ED;">09:00 (UTC+8)</span>
+              </div>
+              <div class="flight-detail-item">
+                <span class="flight-detail-label">預定抵達</span>
+                <span class="flight-detail-val" style="color: #D9483B;">13:10 (UTC+9)</span>
+              </div>
+              <div class="flight-detail-item">
+                <span class="flight-detail-label">出發地</span>
+                <span class="flight-detail-val">高雄國際機場 (KHH)</span>
+              </div>
+              <div class="flight-detail-item">
+                <span class="flight-detail-label">目的地</span>
+                <span class="flight-detail-val">關西第一航廈 (KIX T1)</span>
+              </div>
+              <div class="flight-detail-item">
+                <span class="flight-detail-label">飛行時間</span>
+                <span class="flight-detail-val">約 3 小時 10 分 (190m)</span>
+              </div>
+              <div class="flight-detail-item">
+                <span class="flight-detail-label">出關後會合</span>
+                <span class="flight-detail-val" style="color: var(--water-blue);">13:10 與台北組齊聚！</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 回程 AK171 -->
+          <div class="ticket-flight-box">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span class="pill-tag pill-yellow">回程 RETURN (第一航段)</span>
+              <span style="font-weight: 900; font-size: 0.85rem;">2026/11/04 (週三)</span>
+            </div>
+            <div class="flight-route">
+              <div>
+                <div class="airport-code">KIX</div>
+                <div class="airport-name">大阪關西 T1</div>
+              </div>
+              <div class="flight-arrow">
+                <span style="font-size: 0.75rem; font-weight: 700; color: var(--yamabuki-yellow);">直飛 約 3h 20m</span>
+                <div class="flight-arrow-line"></div>
+                <span style="font-size: 0.75rem; font-weight: 900; color: var(--text-main);">AK 171</span>
+              </div>
+              <div>
+                <div class="airport-code">KHH</div>
+                <div class="airport-name">高雄國際機場</div>
+              </div>
+            </div>
+            <div class="flight-info-grid">
+              <div class="flight-detail-item">
+                <span class="flight-detail-label">預計起飛</span>
+                <span class="flight-detail-val" style="color: #2F80ED;">14:10 日本時間</span>
+              </div>
+              <div class="flight-detail-item">
+                <span class="flight-detail-label">預計抵達</span>
+                <span class="flight-detail-val" style="color: #D9483B;">16:30 台灣時間</span>
+              </div>
+              <div class="flight-detail-item">
+                <span class="flight-detail-label">出發地</span>
+                <span class="flight-detail-val">關西第一航廈 (KIX T1)</span>
+              </div>
+              <div class="flight-detail-item">
+                <span class="flight-detail-label">目的地</span>
+                <span class="flight-detail-val">高雄國際機場 (KHH)</span>
+              </div>
+              <div class="flight-detail-item">
+                <span class="flight-detail-label">飛行時間</span>
+                <span class="flight-detail-val">約 3 小時 20 分鐘</span>
+              </div>
+              <div class="flight-detail-item">
+                <span class="flight-detail-label">報到叮嚀</span>
+                <span class="flight-detail-val">11:40 前抵達 T1 櫃檯</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ticket-perforated">
+          <div class="ticket-notches notch-left"></div>
+          <div class="ticket-notches notch-right"></div>
+        </div>
+
+        <div class="ticket-tips ticket-tips-airasia">
+          <span style="font-size: 1.1rem; flex-shrink: 0;">💡</span>
+          <span><strong>亞航報到重要叮嚀：</strong>AK170 / AK171 班機起降於關西機場「第一航廈 (T1)」，國際線報到大廳位於 4 樓。兩組人馬 10/26 剛好同步於 13:10 落地關西機場，請在出發前皆填妥 Visit Japan Web 快速通關審查 QR Code！</span>
         </div>
       </div>
     </section>
@@ -3159,7 +3362,7 @@ HTML_TEMPLATE = r'''<!DOCTYPE html>
     const DEFAULT_CHECKLIST = [
       { id: "c1", text: "護照正本（效期 6 個月以上）", group: "證件與票券", checked: true },
       { id: "c2", text: "Visit Japan Web 入境審查填寫完畢", group: "證件與票券", checked: true },
-      { id: "c3", text: "機票確認信 / 電子登機證截圖", group: "證件與票券", checked: true },
+      { id: "c3", text: "機票確認信 / 電子登機證截圖 (樂桃 MM24/27、亞航 AK170/171)", group: "證件與票券", checked: true },
       { id: "c4", text: "日本網卡 / eSIM 設定開通", group: "證件與票券", checked: true },
       { id: "c5", text: "日幣現金（木津市場/勝尾寺投錢備用）", group: "隨身物品", checked: false },
       { id: "c6", text: "ICOCA 交通卡（綁定 Apple Pay 或實體卡）", group: "隨身物品", checked: false },

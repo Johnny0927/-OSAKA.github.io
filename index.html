@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>旅遊旅遊 就珠在大阪｜京都大阪神戶 10天繪本行程手帳</title>
-  <meta name="description" content="日系繪本風關西十日漫遊行程網站：京都、大阪、神戶深度旅行指南，包含每日時間軸、地圖交通標籤、必去景點、航班卡片與待辦清單。">
+  <meta name="description" content="日系繪本風關西十日漫遊行程網站：京都、大阪、神戶深度旅行指南，包含每日時間軸、景點深度專欄、地圖交通標籤、必去亮點、航班卡片與待辦清單。">
   <!-- Google Fonts: Huninn & Zen Maru Gothic fallback -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,6 +24,7 @@
       
       --card-white: #FFFFFF;
       --card-warm: #FFF9F2;
+      --card-yellow: #FFF9E6;
       --text-main: #3E3A39;
       --text-muted: #6B6560;
       
@@ -36,7 +37,6 @@
       --shadow-comic: 4px 4px 0px #3E3A39;
       --shadow-comic-sm: 2px 2px 0px #3E3A39;
       --shadow-comic-lg: 6px 6px 0px #3E3A39;
-      --shadow-comic-hover: 1px 1px 0px #3E3A39;
       
       --font-family: 'Huninn', 'Zen Maru Gothic', 'Hiragino Maru Gothic ProN', 'Microsoft JhengHei', sans-serif;
     }
@@ -77,16 +77,15 @@
       color: var(--text-main);
       line-height: 1.6;
       font-size: 16px;
-      padding-top: 76px; /* 頂端固定選單高度 */
+      padding-top: 76px;
       min-height: 100vh;
       overflow-x: hidden;
-      background-image: 
-        radial-gradient(#3E3A39 0.75px, transparent 0.75px);
+      background-image: radial-gradient(#3E3A39 0.75px, transparent 0.75px);
       background-size: 24px 24px;
       background-color: var(--bg-washi);
     }
 
-    /* 頂端固定選單 (Sticky/Fixed Header) */
+    /* 頂端固定選單 (Sticky Header) */
     .top-nav {
       position: fixed;
       top: 0;
@@ -98,7 +97,6 @@
       z-index: 1000;
       display: flex;
       align-items: center;
-      justify-content: space-between;
       padding: 0 16px;
     }
 
@@ -109,23 +107,24 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 10px;
     }
 
     .brand-logo {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       text-decoration: none;
       color: var(--text-main);
       font-weight: 900;
       font-size: 1.15rem;
       letter-spacing: 0.5px;
+      flex-shrink: 0;
     }
 
     .brand-badge {
-      width: 38px;
-      height: 38px;
+      width: 36px;
+      height: 36px;
       border: var(--border-width) solid var(--border-ink);
       border-radius: 50%;
       background-color: var(--coral-pink);
@@ -135,16 +134,15 @@
       box-shadow: var(--shadow-comic-sm);
       flex-shrink: 0;
     }
-
     .brand-badge svg {
-      width: 22px;
-      height: 22px;
+      width: 20px;
+      height: 20px;
     }
 
     .nav-menu {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       list-style: none;
       overflow-x: auto;
       padding: 4px 2px;
@@ -156,11 +154,11 @@
 
     .nav-item a {
       display: inline-block;
-      padding: 6px 14px;
+      padding: 6px 12px;
       text-decoration: none;
       color: var(--text-main);
       font-weight: 700;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       border: var(--border-width) solid var(--border-ink);
       border-radius: var(--radius-lg);
       background-color: var(--card-white);
@@ -168,7 +166,6 @@
       transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
       white-space: nowrap;
     }
-
     .nav-item a:hover, .nav-item a:active {
       transform: translate(2px, 2px);
       box-shadow: 0 0 0 #3E3A39;
@@ -182,7 +179,7 @@
       color: var(--text-main);
       font-family: inherit;
       font-weight: 700;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       padding: 6px 10px;
       cursor: pointer;
       display: flex;
@@ -191,6 +188,7 @@
       box-shadow: var(--shadow-comic-sm);
       white-space: nowrap;
       transition: transform 0.15s ease, box-shadow 0.15s ease;
+      flex-shrink: 0;
     }
     .motion-toggle-btn:hover {
       transform: translate(1px, 1px);
@@ -271,7 +269,6 @@
       margin-bottom: 18px;
     }
 
-    /* Hero SVG Graphic Canvas */
     .hero-svg-wrapper {
       width: 100%;
       max-width: 680px;
@@ -288,7 +285,7 @@
       display: block;
     }
 
-    /* Countdown Section */
+    /* Countdown Card */
     .countdown-card {
       background-color: var(--card-white);
       border: var(--border-width) solid var(--border-ink);
@@ -306,6 +303,7 @@
       font-weight: 900;
       font-size: 1.05rem;
       margin-bottom: 12px;
+      flex-wrap: wrap;
     }
 
     .countdown-grid {
@@ -338,7 +336,6 @@
       font-size: 0.75rem;
       font-weight: 700;
     }
-
     .countdown-status {
       font-size: 0.85rem;
       font-weight: 700;
@@ -346,9 +343,7 @@
       margin-top: 10px;
     }
 
-    /* ==========================================================================
-       Flight Card (日系機票票根設計)
-       ========================================================================== */
+    /* Section Titles */
     .section-title-wrap {
       display: flex;
       align-items: center;
@@ -376,24 +371,68 @@
       font-weight: 700;
     }
 
+    /* ==========================================================================
+       Flight Card (日系雙登機證票根設計 - 上下兩張登機證)
+       ========================================================================== */
+    .flight-sync-banner {
+      background-color: var(--card-yellow);
+      border: var(--border-width) solid var(--border-ink);
+      border-radius: var(--radius-lg);
+      padding: 14px 18px;
+      margin-bottom: 22px;
+      box-shadow: var(--shadow-comic-sm);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
     .ticket-card {
       background-color: var(--card-white);
       border: var(--border-width) solid var(--border-ink);
       border-radius: var(--radius-xl);
       box-shadow: var(--shadow-comic);
       overflow: hidden;
-      margin-bottom: 24px;
+      margin-bottom: 28px;
       position: relative;
     }
 
     .ticket-header {
-      background-color: var(--coral-pink);
       padding: 12px 18px;
       border-bottom: var(--border-width) solid var(--border-ink);
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-weight: 900;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .ticket-header-peach {
+      background-color: var(--coral-pink);
+    }
+    .ticket-header-airasia {
+      background-color: var(--water-blue);
+    }
+
+    .ticket-num-badge {
+      background-color: var(--border-ink);
+      color: #FFFFFF;
+      font-size: 0.72rem;
+      font-weight: 900;
+      padding: 3px 8px;
+      border-radius: var(--radius-sm);
+      letter-spacing: 0.5px;
+      display: inline-block;
+    }
+
+    .airline-brand-tag {
+      background-color: #FFFFFF;
+      border: 2px solid var(--border-ink);
+      border-radius: 999px;
+      padding: 3px 12px;
+      font-size: 0.82rem;
+      font-weight: 900;
+      box-shadow: 2px 2px 0px var(--border-ink);
+      white-space: nowrap;
     }
 
     .ticket-body {
@@ -414,7 +453,6 @@
       padding: 14px;
       background-color: var(--card-warm);
       box-shadow: var(--shadow-comic-sm);
-      position: relative;
     }
 
     .flight-route {
@@ -478,23 +516,24 @@
       flex-direction: column;
     }
     .flight-detail-label {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       color: var(--text-muted);
       font-weight: 700;
     }
     .flight-detail-val {
       font-weight: 900;
+      font-size: 0.86rem;
     }
 
     .ticket-perforated {
       border-top: 3px dashed var(--border-ink);
-      margin: 12px 0;
+      margin: 4px 0 0;
       position: relative;
     }
     .ticket-notches {
       position: absolute;
-      width: 24px;
-      height: 24px;
+      width: 26px;
+      height: 26px;
       border-radius: 50%;
       background-color: var(--bg-washi);
       border: var(--border-width) solid var(--border-ink);
@@ -502,25 +541,32 @@
       transform: translateY(-50%);
       z-index: 2;
     }
-    .notch-left { left: -30px; }
-    .notch-right { right: -30px; }
+    .notch-left { left: -14px; }
+    .notch-right { right: -14px; }
 
     .ticket-tips {
-      background-color: var(--water-blue);
-      border-top: var(--border-width) solid var(--border-ink);
       padding: 12px 18px;
       font-size: 0.85rem;
       font-weight: 700;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
+      line-height: 1.5;
+    }
+    .ticket-tips-peach {
+      background-color: #FFF2EB;
+      border-top: var(--border-width) solid var(--border-ink);
+    }
+    .ticket-tips-airasia {
+      background-color: #EDF7FB;
+      border-top: var(--border-width) solid var(--border-ink);
     }
 
     /* ==========================================================================
-       每日行程 (Daily Itinerary & Timeline)
+       每日行程與景點區域 (Daily Tabs + View Mode + Timeline + Spot Zone)
        ========================================================================== */
     .date-nav-wrapper {
-      margin-bottom: 20px;
+      margin-bottom: 16px;
       position: sticky;
       top: 72px;
       z-index: 900;
@@ -553,19 +599,16 @@
       color: var(--text-main);
       user-select: none;
     }
-
     .date-tab-btn:hover {
       transform: translateY(-2px);
       box-shadow: var(--shadow-comic);
     }
-
     .date-tab-btn.active {
       background-color: var(--yamabuki-yellow);
       transform: translateY(-3px) scale(1.03);
       box-shadow: var(--shadow-comic);
       font-weight: 900;
     }
-
     .tab-day {
       font-size: 0.8rem;
       font-weight: 900;
@@ -591,12 +634,47 @@
       font-weight: 700;
     }
 
+    /* 檢視模式切換器 (時間軸 vs 景點專欄) */
+    .view-mode-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+    .mode-switch-group {
+      display: inline-flex;
+      background-color: var(--card-warm);
+      border: 2px solid var(--border-ink);
+      border-radius: var(--radius-lg);
+      padding: 3px;
+      box-shadow: var(--shadow-comic-sm);
+    }
+    .mode-switch-btn {
+      border: none;
+      background: none;
+      padding: 6px 14px;
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 900;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: background-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
+    }
+    .mode-switch-btn.active {
+      background-color: var(--yamabuki-yellow);
+      color: var(--text-main);
+      box-shadow: 1px 1px 0px var(--border-ink);
+      transform: translateY(-1px);
+    }
+
     /* Filter Chips */
     .filter-chips-bar {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-bottom: 16px;
       align-items: center;
     }
     .filter-chip {
@@ -618,23 +696,14 @@
       box-shadow: 1px 1px 0 var(--border-ink);
     }
 
-    /* Daily Content Container with Bouncy Transition */
+    /* Daily Content View */
     .daily-schedule-view {
       animation: bounceTabIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
-
     @keyframes bounceTabIn {
-      0% {
-        opacity: 0;
-        transform: scale(0.96) translateY(10px);
-      }
-      70% {
-        transform: scale(1.01) translateY(-2px);
-      }
-      100% {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-      }
+      0% { opacity: 0; transform: scale(0.96) translateY(10px); }
+      70% { transform: scale(1.01) translateY(-2px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
     }
 
     /* Day Banner Card */
@@ -656,10 +725,7 @@
         justify-content: space-between;
       }
     }
-
-    .day-overview-main {
-      flex: 1;
-    }
+    .day-overview-main { flex: 1; }
     .day-badge-row {
       display: flex;
       align-items: center;
@@ -692,18 +758,15 @@
       align-self: center;
       flex-shrink: 0;
     }
-    .day-highlight-illu svg {
-      width: 100%;
-      height: 100%;
-    }
+    .day-highlight-illu svg { width: 100%; height: 100%; }
 
-    /* Timeline Structure */
+    /* Timeline Section */
     .timeline-container {
       position: relative;
       padding-left: 28px;
       margin-top: 10px;
+      margin-bottom: 30px;
     }
-
     .timeline-line {
       position: absolute;
       left: 11px;
@@ -713,12 +776,10 @@
       background-color: var(--border-ink);
       border-radius: 2px;
     }
-
     .timeline-node {
       position: relative;
-      margin-bottom: 22px;
+      margin-bottom: 20px;
     }
-
     .timeline-dot {
       position: absolute;
       left: -28px;
@@ -736,7 +797,6 @@
       font-weight: 900;
       z-index: 2;
     }
-
     .timeline-card {
       background-color: var(--card-white);
       border: var(--border-width) solid var(--border-ink);
@@ -746,11 +806,7 @@
       position: relative;
       transition: transform 0.15s ease;
     }
-
-    .timeline-card:hover {
-      transform: translateY(-2px);
-    }
-
+    .timeline-card:hover { transform: translateY(-2px); }
     .card-top-row {
       display: flex;
       align-items: flex-start;
@@ -759,7 +815,6 @@
       margin-bottom: 8px;
       flex-wrap: wrap;
     }
-
     .time-badge {
       display: inline-flex;
       align-items: center;
@@ -771,7 +826,6 @@
       font-size: 0.85rem;
       font-weight: 900;
     }
-
     .must-visit-stamp {
       display: inline-flex;
       align-items: center;
@@ -784,9 +838,8 @@
       font-size: 0.78rem;
       font-weight: 900;
       box-shadow: var(--shadow-comic-sm);
-      transform: rotate(-3deg);
+      transform: rotate(-2deg);
     }
-
     .spot-name {
       font-size: 1.18rem;
       font-weight: 900;
@@ -796,7 +849,6 @@
       align-items: center;
       gap: 6px;
     }
-
     .spot-category-tag {
       font-size: 0.72rem;
       padding: 2px 8px;
@@ -818,7 +870,6 @@
       margin-bottom: 8px;
       display: inline-block;
     }
-
     .spot-story {
       font-size: 0.88rem;
       color: var(--text-main);
@@ -829,8 +880,6 @@
       margin-top: 6px;
       line-height: 1.5;
     }
-
-    /* Transit Segment between items */
     .transit-segment {
       padding: 8px 12px;
       margin: 8px 0 10px 12px;
@@ -847,6 +896,154 @@
     .transit-train { background-color: var(--water-blue); }
     .transit-bus { background-color: var(--yamabuki-yellow); }
     .transit-taxi { background-color: var(--coral-pink); }
+
+    /* ==========================================================================
+       專屬景點區域 (Spot Zone / 繪本專欄卡片 - 每一天都有！)
+       ========================================================================== */
+    .spot-zone-wrapper {
+      margin-top: 24px;
+    }
+
+    .spot-zone-header-card {
+      background-color: var(--yamabuki-yellow);
+      border: var(--border-width) solid var(--border-ink);
+      border-radius: var(--radius-lg);
+      padding: 12px 18px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow-comic-sm);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .spot-zone-title {
+      font-size: 1.25rem;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .spot-cards-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* 仿日系繪本排版的景點卡片 (呼應 PDF 專欄版型) */
+    .spot-book-card {
+      background-color: var(--card-white);
+      border: var(--border-width) solid var(--border-ink);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-comic);
+      overflow: hidden;
+      position: relative;
+      transition: transform 0.15s ease;
+    }
+    .spot-book-card:hover {
+      transform: translateY(-2px);
+    }
+
+    .spot-banner-header {
+      background-color: #8C5338; /* 日系和風茶褐色/朱紅標題條 */
+      color: #FFFFFF;
+      padding: 10px 18px;
+      border-bottom: var(--border-width) solid var(--border-ink);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .spot-banner-header.pink { background-color: #E26D5C; }
+    .spot-banner-header.brown { background-color: #8C5338; }
+    .spot-banner-header.navy { background-color: #385E72; }
+    .spot-banner-header.green { background-color: #4A7A54; }
+
+    .spot-banner-title {
+      font-size: 1.15rem;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .spot-book-body {
+      padding: 18px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    @media (min-width: 680px) {
+      .spot-book-body {
+        grid-template-columns: 140px 1fr;
+      }
+    }
+
+    .spot-illu-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .spot-illu-box {
+      width: 120px;
+      height: 120px;
+      border: var(--border-width) solid var(--border-ink);
+      border-radius: var(--radius-lg);
+      background-color: var(--card-warm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+      box-shadow: var(--shadow-comic-sm);
+    }
+    .spot-illu-box svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .spot-content-col {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .spot-headline-title {
+      font-size: 1.22rem;
+      font-weight: 900;
+      color: var(--text-main);
+      line-height: 1.35;
+      padding-bottom: 4px;
+      border-bottom: 2px dashed var(--coral-pink);
+    }
+
+    .spot-narrative {
+      font-size: 0.92rem;
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    /* 內行看門道 (Pro-Tips / Insider Box) */
+    .spot-insider-box {
+      background-color: var(--card-yellow);
+      border: 2px solid var(--border-ink);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      box-shadow: var(--shadow-comic-sm);
+      margin-top: 6px;
+      font-size: 0.88rem;
+      line-height: 1.55;
+    }
+    .spot-insider-badge {
+      display: inline-block;
+      font-weight: 900;
+      color: #9C381E;
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+    }
 
     /* ==========================================================================
        住宿資訊 (Accommodation Card)
@@ -891,7 +1088,6 @@
       flex-direction: column;
       gap: 10px;
     }
-
     .hotel-info-row {
       display: flex;
       gap: 10px;
@@ -917,7 +1113,6 @@
       gap: 10px;
       margin-top: 14px;
     }
-
     .convenience-item {
       background-color: var(--card-warm);
       border: 2px solid var(--border-ink);
@@ -936,7 +1131,7 @@
     }
 
     /* ==========================================================================
-       待辦清單 (Interactive Checklist)
+       待辦清單 (Checklist)
        ========================================================================== */
     .checklist-progress-box {
       background-color: var(--card-warm);
@@ -946,7 +1141,6 @@
       margin-bottom: 16px;
       box-shadow: var(--shadow-comic-sm);
     }
-
     .progress-bar-outer {
       height: 18px;
       background-color: var(--card-white);
@@ -963,10 +1157,7 @@
       transition: width 0.3s ease;
       border-right: 2px solid var(--border-ink);
     }
-
-    .checklist-group {
-      margin-bottom: 16px;
-    }
+    .checklist-group { margin-bottom: 16px; }
     .checklist-group-title {
       font-size: 1.05rem;
       font-weight: 900;
@@ -975,13 +1166,11 @@
       align-items: center;
       gap: 6px;
     }
-
     .checklist-items {
       display: flex;
       flex-direction: column;
       gap: 8px;
     }
-
     .checklist-label {
       display: flex;
       align-items: center;
@@ -995,15 +1184,12 @@
       transition: background-color 0.15s ease, transform 0.1s ease;
       user-select: none;
     }
-    .checklist-label:hover {
-      background-color: var(--card-warm);
-    }
+    .checklist-label:hover { background-color: var(--card-warm); }
     .checklist-label.checked {
       background-color: #F1F8EE;
       text-decoration: line-through;
       color: var(--text-muted);
     }
-
     .custom-checkbox {
       width: 22px;
       height: 22px;
@@ -1021,7 +1207,6 @@
       background-color: var(--wakatake-green);
       color: var(--border-ink);
     }
-
     .add-task-form {
       display: flex;
       gap: 8px;
@@ -1054,20 +1239,15 @@
       box-shadow: 1px 1px 0 var(--border-ink);
     }
 
-    /* ==========================================================================
-       旅行實用工具箱 (Toolbox: Currency + Weather)
-       ========================================================================== */
+    /* Toolbox */
     .toolbox-grid {
       display: grid;
       grid-template-columns: 1fr;
       gap: 16px;
     }
     @media (min-width: 680px) {
-      .toolbox-grid {
-        grid-template-columns: 1fr 1fr;
-      }
+      .toolbox-grid { grid-template-columns: 1fr 1fr; }
     }
-
     .tool-box-card {
       background-color: var(--card-white);
       border: var(--border-width) solid var(--border-ink);
@@ -1075,7 +1255,6 @@
       padding: 16px;
       box-shadow: var(--shadow-comic);
     }
-
     .converter-row {
       display: flex;
       align-items: center;
@@ -1094,9 +1273,7 @@
       outline: none;
     }
 
-    /* ==========================================================================
-       插圖輕微動畫 (Micro-Animations)
-       ========================================================================== */
+    /* Micro Animations */
     @keyframes floatGentle {
       0%, 100% { transform: translateY(0px); }
       50% { transform: translateY(-6px); }
@@ -1118,23 +1295,11 @@
       0%, 100% { transform: scale(1); }
       50% { transform: scale(1.05); }
     }
-
-    .anim-float {
-      animation: floatGentle 3s ease-in-out infinite;
-    }
-    .anim-sway {
-      animation: swayGentle 4s ease-in-out infinite;
-      transform-origin: bottom center;
-    }
-    .anim-train {
-      animation: trainMove 2.2s ease-in-out infinite;
-    }
-    .anim-cloud {
-      animation: cloudFloat 6s ease-in-out infinite;
-    }
-    .anim-pulse {
-      animation: pulseSoft 2.5s ease-in-out infinite;
-    }
+    .anim-float { animation: floatGentle 3s ease-in-out infinite; }
+    .anim-sway { animation: swayGentle 4s ease-in-out infinite; transform-origin: bottom center; }
+    .anim-train { animation: trainMove 2.2s ease-in-out infinite; }
+    .anim-cloud { animation: cloudFloat 6s ease-in-out infinite; }
+    .anim-pulse { animation: pulseSoft 2.5s ease-in-out infinite; }
 
     /* Footer */
     .site-footer {
@@ -1149,23 +1314,17 @@
       height: 60px;
       margin: 0 auto 12px;
     }
-
-    /* Utilities */
-    .text-center { text-align: center; }
-    .mt-2 { margin-top: 8px; }
-    .mb-2 { margin-bottom: 8px; }
   </style>
 </head>
 <body>
 
   <!-- ==========================================================================
-       頂端固定選單 (Fixed Top Navigation)
+       頂端固定選單
        ========================================================================== -->
   <header class="top-nav" id="topNav">
     <div class="nav-container">
       <a href="#hero" class="brand-logo" title="回到頂端">
         <div class="brand-badge anim-pulse">
-          <!-- 富士山小圖標 -->
           <svg viewBox="0 0 32 32" fill="none">
             <polygon points="16,4 4,26 28,26" fill="#3E3A39"/>
             <polygon points="16,4 10,15 14,14 16,16 19,13 22,15" fill="#FFFFFF"/>
@@ -1177,13 +1336,14 @@
 
       <ul class="nav-menu">
         <li class="nav-item"><a href="#itinerary">🗓️ 每日行程</a></li>
+        <li class="nav-item"><a href="#spotZone">🏛️ 景點區域</a></li>
         <li class="nav-item"><a href="#flights">✈️ 航班</a></li>
         <li class="nav-item"><a href="#hotel">🏨 住宿</a></li>
         <li class="nav-item"><a href="#checklist">✅ 待辦</a></li>
         <li class="nav-item"><a href="#toolbox">🧰 工具</a></li>
       </ul>
 
-      <button id="motionToggle" class="motion-toggle-btn" title="切換是否播放動態效果">
+      <button id="motionToggle" class="motion-toggle-btn" title="切換動態效果">
         <span id="motionIcon">✨</span>
         <span id="motionText">動畫</span>
       </button>
@@ -1193,7 +1353,7 @@
   <main class="app-container">
 
     <!-- ==========================================================================
-         首頁大插圖＋標題＋出發倒數 (Hero Section)
+         首頁大插圖＋標題＋出發倒數
          ========================================================================== -->
     <section id="hero" class="comic-box hero-banner">
       <div class="hero-tags">
@@ -1206,135 +1366,98 @@
       <h2 class="hero-subtitle">日本關西路線：京都大阪十天深度之旅</h2>
       <p class="hero-desc">2026 年 10 月 26 日（週一）〜 11 月 04 日（週三）</p>
 
-      <!-- 原創日系繪本大插畫 SVG (手繪日式景緻、大阪城、神戶塔、電車與達摩) -->
       <div class="hero-svg-wrapper">
         <svg viewBox="0 0 760 340" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- 晴朗天空和紙底 -->
           <rect width="760" height="340" fill="#FFFDF9"/>
-          
-          <!-- 遠山 (水色平塗) -->
           <path d="M0 240 Q 120 170 240 220 T 480 200 T 760 230 L 760 340 L 0 340 Z" fill="#A8D3E6" stroke="#3E3A39" stroke-width="3"/>
-          
-          <!-- 富士山/神山意象 (背景) -->
           <polygon points="380,100 290,240 470,240" fill="#A8D3E6" stroke="#3E3A39" stroke-width="3"/>
           <polygon points="380,100 340,160 360,150 380,165 400,150 420,160" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3"/>
           <circle cx="380" cy="185" r="16" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/>
-
-          <!-- 緩緩飄動白雲 (anim-cloud) -->
           <g class="anim-cloud">
             <path d="M70 80 Q 90 60 110 80 Q 130 65 145 85 Q 160 85 155 105 Q 150 115 130 115 L 75 115 Q 55 110 60 95 Q 60 85 70 80 Z" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3"/>
             <path d="M600 65 Q 620 45 640 65 Q 660 50 675 70 Q 690 70 685 90 Q 680 100 660 100 L 605 100 Q 585 95 590 80 Q 590 70 600 65 Z" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3"/>
           </g>
-
-          <!-- 前景綠色草丘 (若竹綠平塗) -->
           <path d="M-20 260 Q 180 200 400 250 T 800 230 L 800 340 L -20 340 Z" fill="#B9DAA5" stroke="#3E3A39" stroke-width="3"/>
           
-          <!-- 大阪城剪影 (左側) -->
+          <!-- 大阪城 -->
           <g transform="translate(100, 130)">
-            <!-- 城基石垣 -->
             <polygon points="30,100 10,125 110,125 90,100" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/>
-            <!-- 一層屋簷 -->
             <path d="M15 100 Q 60 88 105 100 L 95 80 L 25 80 Z" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3"/>
-            <!-- 二層樓 -->
             <rect x="35" y="60" width="50" height="20" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3"/>
-            <!-- 二層屋簷 -->
             <path d="M25 60 Q 60 48 95 60 L 85 45 L 35 45 Z" fill="#B9DAA5" stroke="#3E3A39" stroke-width="3"/>
-            <!-- 天守閣頂層金鯱 -->
             <rect x="42" y="30" width="36" height="15" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3"/>
             <polygon points="60,10 40,30 80,30" fill="#B9DAA5" stroke="#3E3A39" stroke-width="3"/>
             <circle cx="60" cy="8" r="4" fill="#F6D27A" stroke="#3E3A39" stroke-width="2"/>
           </g>
 
-          <!-- 朱紅鳥居 (居中偏右) -->
+          <!-- 鳥居 -->
           <g transform="translate(510, 155)">
-            <!-- 笠木與島木 -->
             <rect x="0" y="0" width="80" height="10" rx="3" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/>
             <rect x="8" y="10" width="64" height="6" rx="2" fill="#3E3A39"/>
-            <!-- 柱子兩根 -->
             <rect x="18" y="16" width="9" height="75" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/>
             <rect x="53" y="16" width="9" height="75" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/>
-            <!-- 貫 (橫木) -->
             <rect x="10" y="32" width="60" height="7" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/>
-            <!-- 額束 -->
             <rect x="36" y="16" width="8" height="16" fill="#F6D27A" stroke="#3E3A39" stroke-width="2"/>
           </g>
 
-          <!-- 神戶港塔剪影 (右側) -->
+          <!-- 神戶港塔 -->
           <g transform="translate(630, 110)">
-            <!-- 雙曲面鼓型塔身 -->
             <path d="M25 35 Q 35 85 22 135 L 48 135 Q 35 85 45 35 Z" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/>
             <ellipse cx="35" cy="35" rx="14" ry="7" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3"/>
             <rect x="33" y="10" width="4" height="25" fill="#3E3A39"/>
             <circle cx="35" cy="8" r="4" fill="#F6D27A" stroke="#3E3A39" stroke-width="2"/>
-            <!-- 網格裝飾線 -->
             <line x1="24" y1="50" x2="46" y2="120" stroke="#3E3A39" stroke-width="2"/>
             <line x1="46" y1="50" x2="24" y2="120" stroke="#3E3A39" stroke-width="2"/>
           </g>
 
-          <!-- 鐵道與向前行駛的可愛電車 (anim-train) -->
+          <!-- 電車 -->
           <g class="anim-train" transform="translate(240, 245)">
-            <!-- 軌道鐵路 -->
             <line x1="-80" y1="46" x2="240" y2="46" stroke="#3E3A39" stroke-width="4" stroke-dasharray="8 6"/>
-            <!-- 電車車身 (山吹黃與水色雙色平塗) -->
             <rect x="0" y="0" width="130" height="42" rx="12" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/>
             <rect x="0" y="24" width="130" height="18" rx="6" fill="#A8D3E6" stroke="#3E3A39" stroke-width="3"/>
-            <!-- 車窗 -->
             <rect x="15" y="8" width="22" height="14" rx="4" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2"/>
             <rect x="45" y="8" width="22" height="14" rx="4" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2"/>
             <rect x="75" y="8" width="22" height="14" rx="4" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2"/>
-            <!-- 車頭大燈 -->
             <circle cx="120" cy="20" r="5" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2"/>
-            <!-- 車頂集電弓 -->
             <polyline points="30,-10 45,0 60,-10" fill="none" stroke="#3E3A39" stroke-width="3"/>
-            <!-- 車輪 -->
             <circle cx="25" cy="44" r="7" fill="#3E3A39"/>
             <circle cx="105" cy="44" r="7" fill="#3E3A39"/>
           </g>
 
-          <!-- 搖擺達摩不倒翁 (勝尾寺特色，anim-sway) -->
+          <!-- 達摩 -->
           <g class="anim-sway" transform="translate(50, 235)">
             <ellipse cx="25" cy="30" rx="22" ry="24" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/>
-            <!-- 臉部白色圓圈 -->
             <circle cx="25" cy="24" r="13" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2"/>
-            <!-- 眼睛 (萌萌黑豆眼) -->
             <circle cx="20" cy="22" r="3" fill="#3E3A39"/>
             <circle cx="30" cy="22" r="3" fill="#3E3A39"/>
             <circle cx="21" cy="21" r="1" fill="#FFFFFF"/>
             <circle cx="31" cy="21" r="1" fill="#FFFFFF"/>
-            <!-- 眉毛鬍鬚 (仙鶴濃眉) -->
             <path d="M16 16 Q 20 18 22 17" stroke="#3E3A39" stroke-width="2" stroke-linecap="round"/>
             <path d="M34 16 Q 30 18 28 17" stroke="#3E3A39" stroke-width="2" stroke-linecap="round"/>
-            <!-- 嘴巴笑瞇瞇 -->
             <path d="M22 28 Q 25 31 28 28" stroke="#3E3A39" stroke-width="2" stroke-linecap="round"/>
-            <!-- 金色「勝」字牌 -->
             <rect x="18" y="38" width="14" height="10" rx="3" fill="#F6D27A" stroke="#3E3A39" stroke-width="1.5"/>
             <text x="25" y="46" font-size="7" font-weight="900" fill="#3E3A39" text-anchor="middle">勝</text>
           </g>
 
-          <!-- 可愛小柴犬 (PDF 第3天出現的萌犬，anim-float) -->
+          <!-- 柴犬 -->
           <g class="anim-float" transform="translate(680, 245)">
-            <!-- 柴犬頭 -->
             <circle cx="25" cy="20" r="16" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/>
-            <!-- 耳朵 -->
             <polygon points="12,10 16,0 23,8" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.5"/>
             <polygon points="38,10 34,0 27,8" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.5"/>
-            <!-- 臉頰白斑 -->
             <ellipse cx="25" cy="26" rx="9" ry="7" fill="#FFFFFF"/>
-            <!-- 眼睛與鼻子 -->
             <circle cx="20" cy="18" r="2" fill="#3E3A39"/>
             <circle cx="30" cy="18" r="2" fill="#3E3A39"/>
             <polygon points="25,23 23,21 27,21" fill="#3E3A39"/>
-            <!-- 吐小舌頭 -->
             <path d="M23 27 Q 25 30 27 27" fill="#F2A497" stroke="#3E3A39" stroke-width="1.5"/>
           </g>
         </svg>
       </div>
 
-      <!-- 出發倒數計時器 -->
+      <!-- 倒數計時 -->
       <div class="countdown-card">
         <div class="countdown-header">
           <span>⏰ 距離關西出發倒數：</span>
-          <span style="color: var(--text-muted); font-size: 0.9rem;">2026/10/26 13:10 抵達 KIX</span>
+          <span style="color: var(--text-muted); font-size: 0.9rem;">2026/10/26 13:10 雙班機抵達 KIX</span>
         </div>
         <div class="countdown-grid" id="countdownGrid">
           <div class="countdown-item">
@@ -1359,105 +1482,132 @@
     </section>
 
     <!-- ==========================================================================
-         航班卡片 (Flight Card - 日系手繪機票票根設計)
+         航班卡片 (雙航線登機證：上方台北桃園 MM24/27 ＋ 下方高雄小港 AK170/171)
          ========================================================================== -->
     <section id="flights">
       <div class="section-title-wrap">
         <h2 class="section-title">
-          <span>✈️</span> 航班資訊卡片
+          <span>✈️</span> 雙航線登機證卡片
         </h2>
         <span class="section-badge">去程 10/26 ➔ 回程 11/04</span>
       </div>
 
-      <div class="ticket-card">
-        <div class="ticket-header">
-          <span>BOARDING PASS / 關西國際機場 往返機票</span>
-          <span>AIRASIA 亞航</span>
+      <!-- 同步抵達關西會師標籤 -->
+      <div class="flight-sync-banner">
+        <span style="font-size: 1.5rem; flex-shrink: 0;">🤝</span>
+        <div>
+          <strong style="color: var(--text-main); font-size: 0.95rem;">【雙路會師・神默契同刻抵達！】</strong><br>
+          <span style="color: var(--text-muted); font-size: 0.85rem;">
+            台北桃園組（樂桃航空 MM24）與 高雄小港組（亞洲航空 AK170）皆於 <strong>2026/10/26 (週一) 13:10</strong> 同步降落大阪關西國際機場！出關後於關西機場車站領取車票相見歡！
+          </span>
+        </div>
+      </div>
+
+      <!-- ==================== 上方登機證：樂桃航空 MM24 / MM27 (台北桃園 TPE ⇄ 大阪關西 KIX) ==================== -->
+      <div class="ticket-card" id="ticketPeach">
+        <div class="ticket-header ticket-header-peach">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span class="ticket-num-badge">上方登機證 01</span>
+            <span>BOARDING PASS / 台北桃園 (TPE) ⇄ 大阪關西 (KIX)</span>
+          </div>
+          <span class="airline-brand-tag">🍑 樂桃航空 Peach Aviation</span>
         </div>
 
         <div class="ticket-body">
-          <!-- 去程航班 -->
+          <!-- 去程 MM24 -->
           <div class="ticket-flight-box">
             <div style="display: flex; justify-content: space-between; align-items: center;">
               <span class="pill-tag pill-pink">去程 DEPARTURE</span>
               <span style="font-weight: 900; font-size: 0.85rem;">2026/10/26 (週一)</span>
             </div>
-
             <div class="flight-route">
               <div>
                 <div class="airport-code">TPE</div>
-                <div class="airport-name">台北 / 桃園</div>
+                <div class="airport-name">台北桃園 T1</div>
               </div>
               <div class="flight-arrow">
-                <span style="font-size: 0.75rem; font-weight: 700; color: var(--coral-pink);">直飛 約 2h 45m</span>
+                <span style="font-size: 0.75rem; font-weight: 700; color: var(--coral-pink);">直飛 2h 30m</span>
                 <div class="flight-arrow-line"></div>
-                <span style="font-size: 0.7rem; font-weight: 700; color: var(--text-muted);">AirAsia</span>
+                <span style="font-size: 0.75rem; font-weight: 900; color: var(--text-main);">MM 24</span>
               </div>
               <div>
                 <div class="airport-code">KIX</div>
-                <div class="airport-name">大阪 / 關西 T1</div>
+                <div class="airport-name">大阪關西 T2</div>
               </div>
             </div>
-
             <div class="flight-info-grid">
               <div class="flight-detail-item">
-                <span class="flight-detail-label">抵達時間</span>
-                <span class="flight-detail-val" style="color: #D9483B;">13:10 抵達</span>
+                <span class="flight-detail-label">預定起飛</span>
+                <span class="flight-detail-val" style="color: #2F80ED;">09:40 台北時間</span>
               </div>
               <div class="flight-detail-item">
-                <span class="flight-detail-label">預計通關停留</span>
-                <span class="flight-detail-val">約 40 分鐘</span>
+                <span class="flight-detail-label">預定抵達</span>
+                <span class="flight-detail-val" style="color: #D9483B;">13:10 日本時間</span>
               </div>
               <div class="flight-detail-item">
-                <span class="flight-detail-label">後續交通</span>
-                <span class="flight-detail-val">南海電鐵 1h08m</span>
+                <span class="flight-detail-label">出發地</span>
+                <span class="flight-detail-val">桃園國際機場 T1</span>
               </div>
               <div class="flight-detail-item">
-                <span class="flight-detail-label">直達目的地</span>
-                <span class="flight-detail-val">パラゴン花園町</span>
+                <span class="flight-detail-label">目的地</span>
+                <span class="flight-detail-val">大阪關西機場 T2</span>
+              </div>
+              <div class="flight-detail-item">
+                <span class="flight-detail-label">預計飛行時間</span>
+                <span class="flight-detail-val">2 小時 30 分鐘</span>
+              </div>
+              <div class="flight-detail-item">
+                <span class="flight-detail-label">抵達提醒</span>
+                <span class="flight-detail-val" style="color: var(--coral-pink);">13:10 與高雄組同步抵達！</span>
               </div>
             </div>
           </div>
 
-          <!-- 回程航班 (PDF 第54頁 AirAsia AK171) -->
+          <!-- 回程 MM27 -->
           <div class="ticket-flight-box">
             <div style="display: flex; justify-content: space-between; align-items: center;">
               <span class="pill-tag pill-yellow">回程 RETURN</span>
               <span style="font-weight: 900; font-size: 0.85rem;">2026/11/04 (週三)</span>
             </div>
-
             <div class="flight-route">
               <div>
                 <div class="airport-code">KIX</div>
-                <div class="airport-name">大阪 / 關西 T1</div>
+                <div class="airport-name">大阪關西 T2</div>
               </div>
               <div class="flight-arrow">
-                <span style="font-size: 0.75rem; font-weight: 700; color: var(--yamabuki-yellow);">班機 AK171</span>
+                <span style="font-size: 0.75rem; font-weight: 700; color: var(--yamabuki-yellow);">直飛 約 3h 30m</span>
                 <div class="flight-arrow-line"></div>
-                <span style="font-size: 0.7rem; font-weight: 700; color: var(--text-muted);">經濟艙 Economy</span>
+                <span style="font-size: 0.75rem; font-weight: 900; color: var(--text-main);">MM 27</span>
               </div>
               <div>
                 <div class="airport-code">TPE</div>
-                <div class="airport-name">台北 / 桃園</div>
+                <div class="airport-name">台北桃園 T1</div>
               </div>
             </div>
-
             <div class="flight-info-grid">
               <div class="flight-detail-item">
-                <span class="flight-detail-label">前往機場時間</span>
-                <span class="flight-detail-val">10:00 出發 (59分)</span>
+                <span class="flight-detail-label">預定起飛</span>
+                <span class="flight-detail-val" style="color: #2F80ED;">15:25 日本時間</span>
               </div>
               <div class="flight-detail-item">
-                <span class="flight-detail-label">抵達機場</span>
-                <span class="flight-detail-val" style="color: #2F80ED;">12:00 報到</span>
+                <span class="flight-detail-label">預定抵達</span>
+                <span class="flight-detail-val" style="color: #D9483B;">17:55 台北時間</span>
               </div>
               <div class="flight-detail-item">
-                <span class="flight-detail-label">預留航廈停留</span>
-                <span class="flight-detail-val">2 小時 (採買伴手禮)</span>
+                <span class="flight-detail-label">出發地</span>
+                <span class="flight-detail-val">關西國際機場 T2</span>
               </div>
               <div class="flight-detail-item">
-                <span class="flight-detail-label">機票航班</span>
-                <span class="flight-detail-val">AirAsia AK171</span>
+                <span class="flight-detail-label">目的地</span>
+                <span class="flight-detail-val">桃園國際機場 T1</span>
+              </div>
+              <div class="flight-detail-item">
+                <span class="flight-detail-label">預計飛行時間</span>
+                <span class="flight-detail-val">約 3 小時 30 分鐘</span>
+              </div>
+              <div class="flight-detail-item">
+                <span class="flight-detail-label">報到叮嚀</span>
+                <span class="flight-detail-val">預留 2.5h 搭接駁至 T2</span>
               </div>
             </div>
           </div>
@@ -1468,48 +1618,176 @@
           <div class="ticket-notches notch-right"></div>
         </div>
 
-        <div class="ticket-tips">
-          <span>💡</span>
-          <span>叮嚀提醒：請務必在出發前填妥「Visit Japan Web」審查 QR Code；回程免稅店採買生巧克力與白色戀人記得留意手提行李重量喔！</span>
+        <div class="ticket-tips ticket-tips-peach">
+          <span style="font-size: 1.1rem; flex-shrink: 0;">💡</span>
+          <span><strong>樂桃航廈重要叮嚀：</strong>樂桃航空在關西機場位於「第二航廈 (T2)」，出發地為桃園第一航廈 (T1)。抵達關西 T2 後需搭乘免費接駁巴士（約 7~9 分鐘）至關西機場車站與高雄組會合；回程請務必提早出發前往 T2 辦理報到喔！</span>
+        </div>
+      </div>
+
+      <!-- ==================== 下方登機證：亞洲航空 AK170 / AK171 (高雄小港 KHH ⇄ 大阪關西 KIX) ==================== -->
+      <div class="ticket-card" id="ticketAirAsia">
+        <div class="ticket-header ticket-header-airasia">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span class="ticket-num-badge">下方登機證 02</span>
+            <span>BOARDING PASS / 高雄國際 (KHH) ⇄ 大阪關西 (KIX)</span>
+          </div>
+          <span class="airline-brand-tag">✈️ 亞洲航空 AirAsia</span>
+        </div>
+
+        <div class="ticket-body">
+          <!-- 去程 AK170 -->
+          <div class="ticket-flight-box">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span class="pill-tag pill-pink">去程 DEPARTURE</span>
+              <span style="font-weight: 900; font-size: 0.85rem;">2026/10/26 (週一)</span>
+            </div>
+            <div class="flight-route">
+              <div>
+                <div class="airport-code">KHH</div>
+                <div class="airport-name">高雄國際機場</div>
+              </div>
+              <div class="flight-arrow">
+                <span style="font-size: 0.75rem; font-weight: 700; color: var(--water-blue);">直飛 約 3h 10m</span>
+                <div class="flight-arrow-line"></div>
+                <span style="font-size: 0.75rem; font-weight: 900; color: var(--text-main);">AK 170</span>
+              </div>
+              <div>
+                <div class="airport-code">KIX</div>
+                <div class="airport-name">大阪關西 T1</div>
+              </div>
+            </div>
+            <div class="flight-info-grid">
+              <div class="flight-detail-item">
+                <span class="flight-detail-label">預定起飛</span>
+                <span class="flight-detail-val" style="color: #2F80ED;">09:00 (UTC+8)</span>
+              </div>
+              <div class="flight-detail-item">
+                <span class="flight-detail-label">預定抵達</span>
+                <span class="flight-detail-val" style="color: #D9483B;">13:10 (UTC+9)</span>
+              </div>
+              <div class="flight-detail-item">
+                <span class="flight-detail-label">出發地</span>
+                <span class="flight-detail-val">高雄國際機場 (KHH)</span>
+              </div>
+              <div class="flight-detail-item">
+                <span class="flight-detail-label">目的地</span>
+                <span class="flight-detail-val">關西第一航廈 (KIX T1)</span>
+              </div>
+              <div class="flight-detail-item">
+                <span class="flight-detail-label">飛行時間</span>
+                <span class="flight-detail-val">約 3 小時 10 分 (190m)</span>
+              </div>
+              <div class="flight-detail-item">
+                <span class="flight-detail-label">出關後會合</span>
+                <span class="flight-detail-val" style="color: var(--water-blue);">13:10 與台北組齊聚！</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 回程 AK171 -->
+          <div class="ticket-flight-box">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span class="pill-tag pill-yellow">回程 RETURN (第一航段)</span>
+              <span style="font-weight: 900; font-size: 0.85rem;">2026/11/04 (週三)</span>
+            </div>
+            <div class="flight-route">
+              <div>
+                <div class="airport-code">KIX</div>
+                <div class="airport-name">大阪關西 T1</div>
+              </div>
+              <div class="flight-arrow">
+                <span style="font-size: 0.75rem; font-weight: 700; color: var(--yamabuki-yellow);">直飛 約 3h 20m</span>
+                <div class="flight-arrow-line"></div>
+                <span style="font-size: 0.75rem; font-weight: 900; color: var(--text-main);">AK 171</span>
+              </div>
+              <div>
+                <div class="airport-code">KHH</div>
+                <div class="airport-name">高雄國際機場</div>
+              </div>
+            </div>
+            <div class="flight-info-grid">
+              <div class="flight-detail-item">
+                <span class="flight-detail-label">預計起飛</span>
+                <span class="flight-detail-val" style="color: #2F80ED;">14:10 日本時間</span>
+              </div>
+              <div class="flight-detail-item">
+                <span class="flight-detail-label">預計抵達</span>
+                <span class="flight-detail-val" style="color: #D9483B;">16:30 台灣時間</span>
+              </div>
+              <div class="flight-detail-item">
+                <span class="flight-detail-label">出發地</span>
+                <span class="flight-detail-val">關西第一航廈 (KIX T1)</span>
+              </div>
+              <div class="flight-detail-item">
+                <span class="flight-detail-label">目的地</span>
+                <span class="flight-detail-val">高雄國際機場 (KHH)</span>
+              </div>
+              <div class="flight-detail-item">
+                <span class="flight-detail-label">飛行時間</span>
+                <span class="flight-detail-val">約 3 小時 20 分鐘</span>
+              </div>
+              <div class="flight-detail-item">
+                <span class="flight-detail-label">報到叮嚀</span>
+                <span class="flight-detail-val">11:40 前抵達 T1 櫃檯</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ticket-perforated">
+          <div class="ticket-notches notch-left"></div>
+          <div class="ticket-notches notch-right"></div>
+        </div>
+
+        <div class="ticket-tips ticket-tips-airasia">
+          <span style="font-size: 1.1rem; flex-shrink: 0;">💡</span>
+          <span><strong>亞航報到重要叮嚀：</strong>AK170 / AK171 班機起降於關西機場「第一航廈 (T1)」，國際線報到大廳位於 4 樓。兩組人馬 10/26 剛好同步於 13:10 落地關西機場，請在出發前皆填妥 Visit Japan Web 快速通關審查 QR Code！</span>
         </div>
       </div>
     </section>
 
     <!-- ==========================================================================
-         每日行程 (Daily Itinerary - 日期切換 + 時間軸)
+         每日行程與景點區域 (含 10 天日期切換 + 時間軸 + 每一天專屬景點區域)
          ========================================================================== -->
     <section id="itinerary">
       <div class="section-title-wrap">
         <h2 class="section-title">
-          <span>📅</span> 每日行程手帳
+          <span>📅</span> 每日行程手帳 ＆ 景點區域
         </h2>
-        <span class="section-badge" id="itinerarySummaryBadge">10 天精彩漫遊</span>
+        <span class="section-badge" id="itinerarySummaryBadge">10 天完整收錄</span>
       </div>
 
       <!-- 上方日期切換列 (Sticky Day Navigation) -->
       <div class="date-nav-wrapper">
-        <div class="date-tabs-scroll" id="dateTabsContainer">
-          <!-- 由 JS 動態產生 Day 1 ~ Day 10 按鈕 -->
+        <div class="date-tabs-scroll" id="dateTabsContainer"></div>
+      </div>
+
+      <!-- 檢視模式切換器 ＆ 分類過濾 -->
+      <div class="view-mode-bar">
+        <div class="mode-switch-group">
+          <button class="mode-switch-btn active" data-mode="both">✨ 全部一覽</button>
+          <button class="mode-switch-btn" data-mode="spots">🏛️ 景點區域</button>
+          <button class="mode-switch-btn" data-mode="timeline">⏱️ 行程時間軸</button>
+        </div>
+
+        <div class="filter-chips-bar" id="filterBar">
+          <button class="filter-chip active" data-filter="all">全部</button>
+          <button class="filter-chip" data-filter="must">★ 必去亮點</button>
+          <button class="filter-chip" data-filter="food">🍜 美食</button>
+          <button class="filter-chip" data-filter="spot">⛩️ 名勝</button>
+          <button class="filter-chip" data-filter="shop">🛍️ 採買</button>
         </div>
       </div>
 
-      <!-- 景點分類篩選標籤 -->
-      <div class="filter-chips-bar" id="filterBar">
-        <button class="filter-chip active" data-filter="all">全部行程</button>
-        <button class="filter-chip" data-filter="must">★ 必去精選</button>
-        <button class="filter-chip" data-filter="food">🍜 美食名店</button>
-        <button class="filter-chip" data-filter="spot">⛩️ 名所古蹟</button>
-        <button class="filter-chip" data-filter="shop">🛍️ 商店採買</button>
-      </div>
-
-      <!-- 每日行程切換容器 (帶彈跳動畫) -->
-      <div id="dayContentArea" class="daily-schedule-view">
-        <!-- 內容由 JS 根據選中日期即時渲染 -->
-      </div>
+      <!-- 每日主內容渲染區 -->
+      <div id="dayContentArea" class="daily-schedule-view"></div>
     </section>
 
+    <!-- 景點區域專用錨點 -->
+    <div id="spotZone" style="position: relative; top: -60px;"></div>
+
     <!-- ==========================================================================
-         住宿資訊 (Accommodation Section)
+         住宿資訊
          ========================================================================== -->
     <section id="hotel">
       <div class="section-title-wrap">
@@ -1522,26 +1800,18 @@
       <div class="hotel-card">
         <div class="hotel-hero-grid">
           <div class="hotel-illu-box">
-            <!-- 房間手繪插畫 SVG (呼應 PDF 封面溫馨客廳、沙發與雙人床) -->
             <svg viewBox="0 0 340 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <!-- 房間牆面背景 -->
               <rect width="340" height="200" rx="12" fill="#FFF9F2" stroke="#3E3A39" stroke-width="3"/>
-              <!-- 地板 -->
               <polygon points="0,150 340,150 340,200 0,200" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/>
-              <!-- 窗簾深色 -->
               <rect x="140" y="20" width="70" height="110" rx="4" fill="#3E3A39"/>
               <line x1="175" y1="20" x2="175" y2="130" stroke="#FFFCF6" stroke-width="2"/>
-              <!-- 雙人床 (左側) -->
               <rect x="20" y="90" width="105" height="60" rx="8" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3"/>
               <rect x="20" y="115" width="105" height="35" rx="4" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2"/>
               <ellipse cx="45" cy="102" rx="14" ry="7" fill="#F2A497" stroke="#3E3A39" stroke-width="2"/>
               <ellipse cx="80" cy="102" rx="14" ry="7" fill="#F2A497" stroke="#3E3A39" stroke-width="2"/>
-              <!-- 舒適皮沙發 (右側) -->
               <rect x="230" y="95" width="90" height="55" rx="8" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/>
               <rect x="240" y="80" width="70" height="35" rx="6" fill="#F2A497" stroke="#3E3A39" stroke-width="2.5"/>
-              <!-- 小茶几與檯燈 -->
               <ellipse cx="215" cy="145" rx="16" ry="8" fill="#B9DAA5" stroke="#3E3A39" stroke-width="2"/>
-              <!-- 吊燈 -->
               <line x1="175" y1="0" x2="175" y2="25" stroke="#3E3A39" stroke-width="2"/>
               <polygon points="165,35 185,35 175,25" fill="#F6D27A" stroke="#3E3A39" stroke-width="2"/>
               <circle cx="175" cy="38" r="4" fill="#F6D27A"/>
@@ -1574,7 +1844,6 @@
           </div>
         </div>
 
-        <!-- 住宿周邊生活機能 (第一天實際考察名店) -->
         <div style="font-weight: 900; font-size: 1.05rem; margin-top: 10px; margin-bottom: 6px;">
           🛒 周邊生活機能生活圈（第 1 天實地探訪）
         </div>
@@ -1600,7 +1869,7 @@
     </section>
 
     <!-- ==========================================================================
-         可打勾的待辦清單 (Interactive Checklist with LocalStorage)
+         可打勾的待辦清單
          ========================================================================== -->
     <section id="checklist">
       <div class="section-title-wrap">
@@ -1624,11 +1893,8 @@
           </div>
         </div>
 
-        <div id="checklistContainer">
-          <!-- 由 JS 渲染分組打勾項目 -->
-        </div>
+        <div id="checklistContainer"></div>
 
-        <!-- 自訂待辦輸入 -->
         <form id="addTaskForm" class="add-task-form">
           <input type="text" id="newTaskInput" class="add-task-input" placeholder="＋ 新增你的專屬隨身提醒（例：買拍立得底片）..." required>
           <button type="submit" class="add-task-btn">加入</button>
@@ -1637,7 +1903,7 @@
     </section>
 
     <!-- ==========================================================================
-         旅行實用工具箱 (Travel Toolbox: 匯率換算 + 氣候穿搭指南)
+         旅行實用工具箱
          ========================================================================== -->
     <section id="toolbox">
       <div class="section-title-wrap">
@@ -1648,7 +1914,6 @@
       </div>
 
       <div class="toolbox-grid">
-        <!-- 日幣即時換算小計算機 -->
         <div class="tool-box-card">
           <div style="font-weight: 900; font-size: 1.1rem; margin-bottom: 12px; display: flex; align-items: center; gap: 6px;">
             <span>💴</span> 日圓 ⇄ 新台幣換算器
@@ -1667,7 +1932,6 @@
           </div>
         </div>
 
-        <!-- 秋季天氣穿搭指南 -->
         <div class="tool-box-card">
           <div style="font-weight: 900; font-size: 1.1rem; margin-bottom: 12px; display: flex; align-items: center; gap: 6px;">
             <span>🍂</span> 10月~11月 關西穿搭與天氣
@@ -1693,11 +1957,10 @@
   </main>
 
   <!-- ==========================================================================
-       頁尾 (Footer)
+       頁尾
        ========================================================================== -->
   <footer class="site-footer">
     <div class="footer-daruma anim-sway">
-      <!-- 迷你達摩祝福圖標 -->
       <svg viewBox="0 0 40 40" fill="none">
         <circle cx="20" cy="20" r="18" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/>
         <circle cx="20" cy="18" r="10" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2"/>
@@ -1717,852 +1980,13 @@
     </div>
   </footer>
 
-  <!-- ==========================================================================
-       JavaScript Logic (10天完整行程數據、互動切換、倒數、打勾清單、匯率)
-       ========================================================================== -->
   <script>
-    // 10 天全部完整行程資料 (完全依據 PDF 擷取之內容)
-    const ITINERARY_DATA = [
-      {
-        day: 1,
-        date: "10/26",
-        weekday: "週一",
-        title: "抵達關西・花園町周邊採買",
-        highlightName: "關西機場 & 花園町",
-        category: "抵達採買",
-        illuType: "plane",
-        notes: "下午班機抵達關西國際機場，搭乘南海電鐵至民宿花園町Check-in，傍晚採買生活用品、大國藥妝、三大生鮮超市與難波中心街漫步。",
-        items: [
-          {
-            time: "13:10",
-            title: "關西機場",
-            category: "交通樞紐",
-            type: "stay",
-            duration: "停留 00 時 40 分",
-            must: false,
-            desc: "搭乘航班順利降落關西國際機場（KIX），辦理入境手續與領取行李，在南海電鐵票閘口搭車。",
-            transitNext: { type: "train", text: "搭乘電車 01 時 08 分" }
-          },
-          {
-            time: "14:58",
-            title: "パラゴン花園町 (民宿)",
-            category: "住宿入宿",
-            type: "stay",
-            duration: "停留 01 時 00 分",
-            must: false,
-            desc: "抵達本次關西10天的溫馨大本營，辦理入住放下大件行李，整理稍作休息。",
-            transitNext: { type: "walk", text: "步行 00 時 04 分" }
-          },
-          {
-            time: "16:02",
-            title: "大國藥妝 地下鐵花園町站前店",
-            category: "購物採買",
-            type: "shop",
-            duration: "停留 01 時 00 分",
-            must: false,
-            desc: "就近採買日本旅行必備休足時間、防蚊液、常備保養品與免稅零食伴手禮。",
-            transitNext: { type: "walk", text: "步行 00 時 04 分" }
-          },
-          {
-            time: "17:05",
-            title: "Daily Qanat Izumiya 花園店",
-            category: "生鮮超市",
-            type: "shop",
-            duration: "停留 01 時 00 分",
-            must: false,
-            desc: "大型生鮮超市，採買這幾天的日本當季新鮮水果（麝香葡萄、蜜柑）、鮮奶優格與飲用水。",
-            transitNext: { type: "walk", text: "步行 00 時 03 分" }
-          },
-          {
-            time: "18:09",
-            title: "全家便利商店 花園町店",
-            category: "便利商店",
-            type: "food",
-            duration: "停留 01 時 00 分",
-            must: false,
-            desc: "來日本全家必買 Famichiki 脆皮多汁大炸雞排與熱咖啡點心充飢。",
-            transitNext: { type: "walk", text: "步行 00 時 05 分" }
-          },
-          {
-            time: "19:12",
-            title: "玉出超市 花園店",
-            category: "平價超市",
-            type: "shop",
-            duration: "停留 01 時 00 分",
-            must: false,
-            desc: "大阪最有名的招牌黃色霓虹燈24小時平價超市，感受濃濃的大阪庶民活力。",
-            transitNext: { type: "train", text: "搭乘地下鐵 00 時 10 分" }
-          },
-          {
-            time: "20:29",
-            title: "難波中心街",
-            category: "熱鬧市街",
-            type: "spot",
-            duration: "自由漫步",
-            must: false,
-            desc: "晚餐在難波熱鬧街區享用大阪在地美食，感受夜間大阪市區的蓬勃朝氣。"
-          }
-        ]
-      },
-      {
-        day: 2,
-        date: "10/27",
-        weekday: "週二",
-        title: "大阪經典老靈魂・黑門市場與日本橋",
-        highlightName: "難波八阪神社 & 黑門市場",
-        category: "神社市集",
-        illuType: "namba",
-        notes: "早晨到木津市場享用生魚片海鮮，參拜巨型獅子殿難波八阪神社吸走厄運，法善寺青苔不動明王潑水祈福，黑門市場吃和牛，漫步電器街。",
-        items: [
-          {
-            time: "07:30",
-            title: "パラゴン花園町 出發",
-            category: "出發",
-            type: "stay",
-            duration: "晨間整裝",
-            must: false,
-            transitNext: { type: "taxi", text: "車程約 00 時 10 分 (¥180)" }
-          },
-          {
-            time: "07:40",
-            title: "木津批發市場",
-            category: "市場美食",
-            type: "food",
-            duration: "停留 01 時 30 分",
-            must: true,
-            desc: "大家都知道黑門市場，但其實木津市場的歷史更悠久，已經超過300年！早在江戶時代（約1715年）就因靠近木津川成為水運物流中心。清晨來此享用新鮮生魚片海鮮丼、現烤鰻魚，價格親民又道地！",
-            transitNext: { type: "walk", text: "步行 00 時 09 分" }
-          },
-          {
-            time: "09:19",
-            title: "難波八阪神社",
-            category: "能量景點",
-            type: "spot",
-            duration: "停留 00 時 30 分",
-            must: true,
-            desc: "這座神社起源非常古老，據傳在平安時代就已經存在！最引人矚目的是高達12公尺的超巨大「獅子殿」，巨口張開象徵能把所有厄運吞噬，為信徒招來勝利與商賣繁盛的金運！",
-            transitNext: { type: "walk", text: "步行 00 時 06 分" }
-          },
-          {
-            time: "10:01",
-            title: "難波南海通",
-            category: "熱門商街",
-            type: "shop",
-            duration: "停留 01 時 00 分",
-            must: false,
-            desc: "連接難波車站的繁華拱廊街，林立著老字號糕餅店、551蓬萊肉包與老街咖啡館。",
-            transitNext: { type: "walk", text: "步行 00 時 01 分" }
-          },
-          {
-            time: "11:07",
-            title: "法善寺 (水掛不動明王)",
-            category: "祈願古寺",
-            type: "spot",
-            duration: "停留 01 時 00 分",
-            must: true,
-            desc: "戰火中奇蹟生還的「青苔不動明王」！法善寺建於1637年，見證了千日前一帶的歷史變遷。二戰大阪大空襲時整個寺廟幾乎全毀，唯獨這尊不動明王奇蹟留存，信徒不斷舀水祈福澆灌，全身覆蓋碧綠厚實的青苔，極具靈氣！",
-            transitNext: { type: "walk", text: "步行 00 時 03 分" }
-          },
-          {
-            time: "12:08",
-            title: "千日前商店街",
-            category: "商店街",
-            type: "shop",
-            duration: "停留 01 時 00 分",
-            must: false,
-            desc: "江戶時代曾是著名戲院與曲藝聚集地，如今是熱鬧的美食與道具廚具採買好去處。",
-            transitNext: { type: "walk", text: "步行 00 時 08 分" }
-          },
-          {
-            time: "13:17",
-            title: "黑門市場",
-            category: "美食天國",
-            type: "food",
-            duration: "停留 01 時 00 分",
-            must: true,
-            desc: "「黑門」其實是一扇不存在的門！市場有170年以上的歷史。江戶時代末期這裡原本叫做圓明寺市場，因為寺廟有一道塗成黑色的山門而得名。現點現烤神戶牛、巨無霸烤扇貝、海膽、哈密瓜是必吃饗宴！",
-            transitNext: { type: "walk", text: "步行 00 時 05 分" }
-          },
-          {
-            time: "14:25",
-            title: "大阪日本橋電器街 (Denden Town)",
-            category: "動漫電器",
-            type: "shop",
-            duration: "停留 03 時 00 分",
-            must: false,
-            desc: "大阪的秋葉原！從戰後的舊零件黑市發展成日本三大電器動漫重鎮，模型公仔扭蛋應有盡有。",
-            transitNext: { type: "train", text: "搭乘電車 00 時 19 分" }
-          },
-          {
-            time: "17:44",
-            title: "パラゴン花園町",
-            category: "歸宿休息",
-            type: "stay",
-            duration: "晚上放鬆",
-            must: false,
-            desc: "回民宿放戰利品，晚上可在附近品嚐老牌鶴屋壽喜燒或高島屋美食街。"
-          }
-        ]
-      },
-      {
-        day: 3,
-        date: "10/28",
-        weekday: "週三",
-        title: "泉州古社尋幽・大鳥大社散策",
-        highlightName: "大鳥大社",
-        category: "靜謐古社",
-        illuType: "torii",
-        notes: "前往和泉國一之宮大鳥大社，漫步在千年森林與古老木造大鳥造建築之中，度過悠閒靜心的大阪近郊上午。",
-        items: [
-          {
-            time: "09:00",
-            title: "パラゴン花園町 出發",
-            category: "出發",
-            type: "stay",
-            duration: "準備出發",
-            must: false,
-            transitNext: { type: "train", text: "搭乘電車 00 時 40 分" }
-          },
-          {
-            time: "09:40",
-            title: "大鳥大社",
-            category: "一之宮古社",
-            type: "spot",
-            duration: "停留 01 時 00 分",
-            must: true,
-            desc: "坐落在靜謐森林裡的宏偉神道教神社！作為和泉國最尊貴的「一之宮」，社殿採用日本古老特殊的「大鳥造」木造建築工法，參道上有大型木造鳥居與栩栩如生的俊美神馬銅像，神聖且莊嚴。",
-            transitNext: { type: "train", text: "搭乘電車 00 時 39 分" }
-          },
-          {
-            time: "11:19",
-            title: "パラゴン花園町 / 市區彈性行程",
-            category: "休息與自由漫步",
-            type: "stay",
-            duration: "午後放鬆",
-            must: false,
-            desc: "返回市區午餐，下午悠閒散步喝咖啡，儲備充沛體力迎接接下來滿滿的神戶與京都名所行程！"
-          }
-        ]
-      },
-      {
-        day: 4,
-        date: "10/29",
-        weekday: "週四",
-        title: "神戶港都一日遊・異人館與神戶港塔",
-        highlightName: "北野異人館 & 神戶港塔",
-        category: "洋風港都",
-        illuType: "kobe",
-        notes: "從大阪出發前往優雅的神戶！漫步北野異人館街洋風老洋房，參拜神戶之名起源生田神社，走訪元町老街，登上紅色神戶港塔眺望港灣，享用MIYAKOYA頂級燒肉！",
-        items: [
-          {
-            time: "09:00",
-            title: "パラゴン花園町 出發",
-            category: "出發",
-            type: "stay",
-            duration: "準時出發",
-            must: false,
-            transitNext: { type: "train", text: "搭乘阪神/JR電車直達神戶 00 時 58 分" }
-          },
-          {
-            time: "09:58",
-            title: "神戶北野異人館街",
-            category: "洋風古蹟群",
-            type: "spot",
-            duration: "停留 02 時 00 分",
-            must: true,
-            desc: "神戶近代歷史的起點！1868年神戶港開放後，為了安置大量湧入的外國商人和外交官，政府劃設了這片美麗的山丘居留地。風見雞館、萌黃之館等木造西洋建築群，充滿異國浪漫情調，必去拍照！",
-            transitNext: { type: "walk", text: "步行 00 時 11 分" }
-          },
-          {
-            time: "12:09",
-            title: "生田神社",
-            category: "結緣古社",
-            type: "spot",
-            duration: "停留 01 時 00 分",
-            must: true,
-            desc: "擁有超過1800年以上歷史的古老神社！「神戶」這個地名的由來，其實就是源自於生田神社——以前保護、供奉這座神社的幾十戶人家被稱為「神封（Kambe）」，演變至今成為今日神戶之名！祈求戀愛良緣特別靈驗。",
-            transitNext: { type: "walk", text: "步行 00 時 05 分" }
-          },
-          {
-            time: "13:20",
-            title: "三宮本通商店街",
-            category: "特色商街",
-            type: "shop",
-            duration: "停留 01 時 00 分",
-            must: false,
-            desc: "三宮地區在古代其實只是郊區，直到近代鐵路開通後取代元町成為神戶心臟地帶。這條商店街見證了日本昭和時代拱廊式街道的興起，不受風雨影響，聚集了洋菓子與時裝店。",
-            transitNext: { type: "walk", text: "步行 00 時 05 分" }
-          },
-          {
-            time: "14:25",
-            title: "神戶元町1番街商店街",
-            category: "百年商街",
-            type: "shop",
-            duration: "停留 01 時 00 分",
-            must: false,
-            desc: "「元町」顧名思義就是「原本的城鎮」，在三宮繁華之前曾是神戶最頂級的購物街，也是古代西國街道的必經之路，保留了許多大正與昭和時期的復古港都風情。",
-            transitNext: { type: "train", text: "搭乘電車 00 時 09 分" }
-          },
-          {
-            time: "15:34",
-            title: "神戶港塔 (Kobe Port Tower)",
-            category: "港都地標",
-            type: "spot",
-            duration: "停留 01 時 00 分",
-            must: true,
-            desc: "神戶的永恆象徵！建於1963年，外型設計靈感來自日本傳統樂器「鼓（Tsuzumi）」，這種雙曲面網狀結構在當時是世界首創！挺過阪神大地震，登上展望台可360度飽覽神戶港與六甲山海景致，必去！",
-            transitNext: { type: "walk", text: "步行 00 時 10 分" }
-          },
-          {
-            time: "16:47",
-            title: "燒肉 MIYAKOYA 三宮",
-            category: "神戶牛美味",
-            type: "food",
-            duration: "停留 01 時 00 分",
-            must: true,
-            desc: "在神戶不可錯過的極品燒肉！鮮嫩多汁的神戶黑毛和牛與特選牛舌，炭火現烤油脂香氣撲鼻，搭配白米飯絕品享受！",
-            transitNext: { type: "train", text: "搭乘電車回大阪 00 時 49 分" }
-          },
-          {
-            time: "18:36",
-            title: "パラゴン花園町",
-            category: "歸宿",
-            type: "stay",
-            duration: "晚間休息",
-            must: false,
-            desc: "回到花園町公寓，整理神戶伴手禮，洗去一日步行疲勞。"
-          }
-        ]
-      },
-      {
-        day: 5,
-        date: "10/30",
-        weekday: "週五",
-        title: "大阪之魂・天守閣、四天王寺與通天閣",
-        highlightName: "大阪城 & 通天閣遊艇",
-        category: "歷史名城",
-        illuType: "osaka",
-        notes: "大阪最重量級的經典一日！征服豐臣秀吉天下名城大阪城，參觀西之丸庭園與海洋堂公仔博物館，巡禮最古官方佛教四天王寺，探索昭和通天閣與道頓堀觀光遊艇。",
-        items: [
-          {
-            time: "08:30",
-            title: "パラゴン花園町 出發",
-            category: "出發",
-            type: "stay",
-            duration: "準時啟程",
-            must: false,
-            transitNext: { type: "train", text: "搭乘電車 00 時 32 分" }
-          },
-          {
-            time: "09:02",
-            title: "大阪城 (天守閣)",
-            category: "日本三大名城",
-            type: "spot",
-            duration: "停留 01 時 00 分",
-            must: true,
-            desc: "雖然是由豐臣秀吉在1583年下令建造，但你現在看到的高聳城牆和護城河，其實是後來德川幕府為了掩蓋豐臣家痕跡而重新填土築起的！最頂端的鋼筋混凝土天守閣則是1931年由大阪市民募資重建，巍峨壯觀，必去！",
-            transitNext: { type: "walk", text: "步行 00 時 10 分" }
-          },
-          {
-            time: "10:12",
-            title: "大阪城 西之丸庭園",
-            category: "名園美景",
-            type: "spot",
-            duration: "停留 01 時 00 分",
-            must: false,
-            desc: "原本是豐臣秀吉正室「北政所（寧寧）」的住所，現在則是一片擁有廣闊草坪的優美庭園。相比於天守閣前的喧囂，這裡保留了難得的寧靜綠意，也是眺望天守閣絕佳角度。",
-            transitNext: { type: "walk", text: "步行 00 時 05 分" }
-          },
-          {
-            time: "11:19",
-            title: "海洋堂模型博物館 MIRAIZA 大阪城",
-            category: "模型聖地",
-            type: "spot",
-            duration: "停留 00 時 35 分",
-            must: false,
-            desc: "所在的「MIRAIZA」建築本身就是古蹟，前身是1931年建造的大日本帝國陸軍第四師團司令部，羅馬式復古威嚴外觀裡藏著日本最強模型製造商海洋堂的超精緻手辦展覽！",
-            transitNext: { type: "train", text: "搭乘電車 00 時 20 分" }
-          },
-          {
-            time: "12:14",
-            title: "四天王寺",
-            category: "日本最古官寺",
-            type: "spot",
-            duration: "停留 00 時 35 分",
-            must: true,
-            desc: "日本最古老的官方佛教寺院！由聖德太子在西元593年建立，已有1400多年歷史。中門、五重塔、金堂、講堂呈一直線排列的「四天王寺式伽藍」震撼非凡。",
-            transitNext: { type: "train", text: "搭乘電車 00 時 11 分" }
-          },
-          {
-            time: "13:00",
-            title: "通天閣本通商店街",
-            category: "昭和懷舊",
-            type: "shop",
-            duration: "停留 01 時 00 分",
-            must: false,
-            desc: "帶你走入大阪「昭和懷舊宇宙」的隧道！連接天王寺與新世界，保留了濃厚的底層庶民生命力與著名的元祖串炸！",
-            transitNext: { type: "walk", text: "步行 00 時 08 分" }
-          },
-          {
-            time: "14:17",
-            title: "大阪市天王寺動物園",
-            category: "百年動物園",
-            type: "spot",
-            duration: "停留 02 時 00 分",
-            must: false,
-            desc: "天王寺動物園是日本第三座動物園（1915年開園），近年改造成「生態展示區」，讓北極熊、長頸鹿和奇異鳥在重現自然棲地的環境中生活。",
-            transitNext: { type: "walk", text: "步行 00 時 13 分" }
-          },
-          {
-            time: "16:30",
-            title: "通天閣 (Tsutenkaku)",
-            category: "新世界靈魂",
-            type: "spot",
-            duration: "停留 02 時 00 分",
-            must: true,
-            desc: "新世界商圈的靈魂！1912年初建時下半部模仿巴黎凱旋門、上半部模仿艾菲爾鐵塔。摸摸幸運之神「比利肯（Billiken）」腳底板招來好運，頂樓溜滑梯刺激好玩，必去！",
-            transitNext: { type: "walk", text: "步行至道頓堀 / 電車約 00 時 15 分" }
-          },
-          {
-            time: "18:30",
-            title: "大阪觀光遊艇 Wonder Cruise (道頓堀)",
-            category: "水都夜航",
-            type: "spot",
-            duration: "停留 01 時 00 分",
-            must: true,
-            desc: "從道頓堀日本橋船著場出發，從水上仰角感受水都繁華璀璨夜景！近距離穿過一座座橋墩，跟河岸兩旁的遊客與奔跑跑人格力高看板揮手打招呼！",
-            transitNext: { type: "train", text: "搭乘電車 00 時 20 分" }
-          },
-          {
-            time: "19:51",
-            title: "パラゴン花園町",
-            category: "歸宿休息",
-            type: "stay",
-            duration: "返回飯店",
-            must: false,
-            desc: "結束收穫滿滿的一天，回飯店敷面膜放鬆腳步。"
-          }
-        ]
-      },
-      {
-        day: 6,
-        date: "10/31",
-        weekday: "週六",
-        title: "梅田雲端天際線・任天堂旗艦與大阪港",
-        highlightName: "梅田空中庭園 & 聖瑪麗亞號",
-        category: "現代展望",
-        illuType: "wheel",
-        notes: "登頂梅田藍天大樓俯瞰雲端，參觀天空美術館，朝聖大丸梅田Nintendo OSAKA旗艦店，午後到大阪港搭乘聖瑪麗亞帆船與天保山大摩天輪看夕陽！",
-        items: [
-          {
-            time: "09:00",
-            title: "パラゴン花園町 出發",
-            category: "出發",
-            type: "stay",
-            duration: "早晨出發",
-            must: false,
-            transitNext: { type: "train", text: "搭乘地下鐵 00 時 25 分" }
-          },
-          {
-            time: "09:25",
-            title: "梅田藍天大樓 (空中庭園展望台)",
-            category: "現代建築",
-            type: "spot",
-            duration: "停留 01 時 00 分",
-            must: true,
-            desc: "誕生背景充滿了戲劇性！原名為 City of Air（空中城市），原本打算建造四棟摩天大樓在頂部相連。360度環形露天展望台能俯瞰整個大阪平原與淀川河口，必去打卡！",
-            transitNext: { type: "walk", text: "步行 00 時 00 分 (館內直達)" }
-          },
-          {
-            time: "10:25",
-            title: "絹谷幸二 天空美術館",
-            category: "藝術殿堂",
-            type: "spot",
-            duration: "停留 01 時 00 分",
-            must: false,
-            desc: "日本現代藝術國寶大師絹谷幸二的專屬美術館，深入鑽研古典濕壁畫技法，搭配震撼的3D立體影像技術，充滿色彩爆發力！",
-            transitNext: { type: "walk", text: "步行 00 時 08 分" }
-          },
-          {
-            time: "11:41",
-            title: "炸豬排 KYK 阪急三番街店",
-            category: "排隊美食",
-            type: "food",
-            duration: "停留 01 時 41 分",
-            must: true,
-            desc: "關西炸豬排名店！金黃香脆的外衣包裹厚實軟嫩的黑豬肉，搭配清甜的高麗菜絲與秘傳豬排醬汁，令人回味無窮！",
-            transitNext: { type: "walk", text: "步行 00 時 08 分" }
-          },
-          {
-            time: "13:30",
-            title: "Nintendo OSAKA (大丸梅田店 13F)",
-            category: "任天堂旗艦",
-            type: "shop",
-            duration: "停留 01 時 00 分",
-            must: true,
-            desc: "任天堂直營官方旗艦店！門口佇立巨大瑪利歐、薩爾達傳說林克與漆彈大作戰雕像，限定玩偶、文具與服飾周邊一次買齊，必去！",
-            transitNext: { type: "train", text: "搭乘電車至大阪港 00 時 32 分" }
-          },
-          {
-            time: "15:02",
-            title: "帆船型觀光船 聖瑪麗亞號",
-            category: "港灣航行",
-            type: "spot",
-            duration: "停留 01 時 00 分",
-            must: true,
-            desc: "按照1492年哥倫布發現美洲新大陸時所搭乘的旗艦「聖瑪麗亞號」，以兩倍比例放大復刻建造！揚起帆穿梭在大阪灣海風之中，巡遊港口極為愜意。",
-            transitNext: { type: "walk", text: "步行 00 時 05 分" }
-          },
-          {
-            time: "16:07",
-            title: "天保山大摩天輪",
-            category: "高空夕陽",
-            type: "spot",
-            duration: "停留 01 時 00 分",
-            must: true,
-            desc: "高達112.5公尺的巨型摩天輪！搭乘透明車廂緩緩升空，遠眺明石海峽大橋與大阪港落日金黃晚霞，浪漫指數破表，必去！",
-            transitNext: { type: "train", text: "搭乘電車 00 時 20 分" }
-          },
-          {
-            time: "17:27",
-            title: "咲洲宇宙塔展望台 (WTC)",
-            category: "夜景展望",
-            type: "spot",
-            duration: "停留 01 時 00 分",
-            must: false,
-            desc: "高達252公尺的摩天大樓，從55樓展望台能以無死角視野欣賞大阪灣區與繁華都會閃爍霓虹。",
-            transitNext: { type: "train", text: "搭乘電車 00 時 36 分" }
-          },
-          {
-            time: "19:03",
-            title: "パラゴン花園町",
-            category: "歸宿",
-            type: "stay",
-            duration: "夜間休息",
-            must: false,
-            desc: "滿載 Nintendo 戰利品回到飯店休息。"
-          }
-        ]
-      },
-      {
-        day: 7,
-        date: "11/01",
-        weekday: "週日",
-        title: "水都綠洲與天下廚房・天神橋筋與中之島",
-        highlightName: "天滿宮 & 中之島水岸",
-        category: "老街漫步",
-        illuType: "bridge",
-        notes: "早晨探訪在地天滿市場與日本最長天神橋筋商店街，參拜大阪天滿宮星合池祈福，午後在浪漫的中之島公園河畔野餐看紅磚洋館公會堂。",
-        items: [
-          {
-            time: "09:00",
-            title: "パラゴン花園町 出發",
-            category: "出發",
-            type: "stay",
-            duration: "早晨啟程",
-            must: false,
-            transitNext: { type: "train", text: "搭乘電車 00 時 28 分" }
-          },
-          {
-            time: "09:28",
-            title: "天滿市場",
-            category: "傳統市場",
-            type: "food",
-            duration: "停留 01 時 00 分",
-            must: false,
-            desc: "大阪市民的後廚房！滿滿接地氣的水果、漬物與海產乾貨，體驗真正的大阪主婦早市氣氛。",
-            transitNext: { type: "walk", text: "步行 00 時 07 分" }
-          },
-          {
-            time: "10:35",
-            title: "天神橋筋商店街",
-            category: "日本第一長街",
-            type: "shop",
-            duration: "停留 01 時 00 分",
-            must: true,
-            desc: "長達2.6公里、橫跨六個地鐵站的日本最長商店街！前身是大阪天滿宮的門前町參拜道，從1丁目走到7丁目，各式炸肉餅、鯛魚燒與古本屋琳瑯滿目，必去漫步！",
-            transitNext: { type: "walk", text: "步行 00 時 06 分" }
-          },
-          {
-            time: "11:56",
-            title: "大阪天滿宮",
-            category: "學問之神",
-            type: "spot",
-            duration: "停留 01 時 00 分",
-            must: true,
-            desc: "西元901年菅原道真被貶謫前往太宰府途中曾在此祈願。境內北側的「星合池」名字充滿浪漫色彩，七夕時牛郎織女相會，也是大阪天神祭的核心舞台！",
-            transitNext: { type: "walk", text: "步行 00 時 12 分" }
-          },
-          {
-            time: "13:08",
-            title: "中之島公園",
-            category: "河畔水景",
-            type: "spot",
-            duration: "停留 01 時 00 分",
-            must: false,
-            desc: "大阪市中心最優雅的沙洲水上綠洲！夾在堂島川與土佐堀川之間，秋季玫瑰園盛開，還能欣賞百年紅磚建造的大阪市中央公會堂古典之美。",
-            transitNext: { type: "train", text: "搭乘電車 00 時 32 分" }
-          },
-          {
-            time: "14:40",
-            title: "パラゴン花園町",
-            category: "歸宿休息",
-            type: "stay",
-            duration: "午後放鬆",
-            must: false,
-            desc: "下午回到花園町享受悠閒時光，整理行李與休息，準備明天一早前往京都古都！"
-          }
-        ]
-      },
-      {
-        day: 8,
-        date: "11/02",
-        weekday: "週一",
-        title: "千載古都風華・清水寺、二三年坂與祇園",
-        highlightName: "清水寺 & 祇園花見小路",
-        category: "京都古都",
-        illuType: "kiyomizu",
-        notes: "清晨從大阪搭車前往京都！參觀西元778年清水寺清水舞台與音羽瀑布，漫步二年坂、三年坂、八坂神社，穿梭花見小路，下午參觀京都鐵道博物館與京都塔！",
-        items: [
-          {
-            time: "07:00",
-            title: "パラゴン花園町 出發前往京都",
-            category: "早起出發",
-            type: "stay",
-            duration: "出發",
-            must: false,
-            desc: "步行至車站搭車，搭乘市巴士206號至「馬町站」下車，步行上清水坂。",
-            transitNext: { type: "train", text: "電車加巴士 01 時 29 分 (¥230)" }
-          },
-          {
-            time: "08:29",
-            title: "清水寺 (Kiyomizu-dera)",
-            category: "世界文化遺產",
-            type: "spot",
-            duration: "停留 01 時 00 分",
-            must: true,
-            desc: "建於西元778年的清水寺，歷史比平安京建都還要早！全木造沒有使用任何一根釘子的「清水舞台」懸空聳立在錦繡山谷間；「音羽之瀑」三道清泉分別象徵健康、學業、姻緣，門票¥500，超重點必去！",
-            transitNext: { type: "walk", text: "步行 00 時 10 分" }
-          },
-          {
-            time: "09:39",
-            title: "二寧坂 (二年坂)",
-            category: "石板古街",
-            type: "spot",
-            duration: "停留 01 時 00 分",
-            must: true,
-            desc: "據傳是因為豐臣秀吉的妻子「寧寧（北政所）」常走這條路前往清水寺祈求安產而得名。完整保留了江戶與明治時期的傳統木造町家建築，古韻盎然，必去拍照！",
-            transitNext: { type: "walk", text: "步行 00 時 05 分" }
-          },
-          {
-            time: "10:41",
-            title: "一念坂 (一年坂)",
-            category: "寧靜步道",
-            type: "spot",
-            duration: "停留 01 時 00 分",
-            must: false,
-            desc: "相較於二年坂與三年坂的熱鬧，一念坂更顯幽靜雅緻，兩旁是傳統茶屋、香鋪與手工藝小店。",
-            transitNext: { type: "walk", text: "步行 00 時 07 分" }
-          },
-          {
-            time: "11:50",
-            title: "京都八坂神社",
-            category: "祇園總本社",
-            type: "spot",
-            duration: "停留 01 時 00 分",
-            must: true,
-            desc: "建於西元656年的古老神社，是日本三大祭典之一「祇園祭」的主辦神社！境內的「美御前社」湧出美容水，據說滴在臉上能讓身心容光煥發，深受女性信徒喜愛！",
-            transitNext: { type: "walk", text: "步行 00 時 05 分" }
-          },
-          {
-            time: "12:57",
-            title: "祇園花見小路通",
-            category: "花街茶屋",
-            type: "spot",
-            duration: "停留 01 時 00 分",
-            must: true,
-            desc: "京都最具代表性的傳統花街！格子窗木造町家茶屋林立，石板路上有時能偶遇步履匆匆的優雅藝妓或舞妓，充滿夢幻的京都風雅。",
-            transitNext: { type: "train", text: "搭乘巴士/電車 00 時 20 分" }
-          },
-          {
-            time: "14:21",
-            title: "京都鐵道博物館",
-            category: "鐵道殿堂",
-            type: "spot",
-            duration: "停留 02 時 00 分",
-            must: true,
-            desc: "前身是「梅小路蒸汽機關車館」，保存了建於1914年的扇形車庫，是日本現存最古老完整的鋼筋混凝土扇形庫！陳列著一輛輛真實蒸汽火車頭，鐵道迷與拍照聖地！",
-            transitNext: { type: "train", text: "搭乘電車 00 時 15 分" }
-          },
-          {
-            time: "16:36",
-            title: "京都塔 (Kyoto Tower)",
-            category: "古都燈塔",
-            type: "spot",
-            duration: "停留 01 時 00 分",
-            must: true,
-            desc: "佇立於京都車站正前方，形似白色蠟燭守護古都！設有觀景台可俯瞰京都棋盤狀街道與群山，地下一樓是熱鬧的美食廣場。",
-            transitNext: { type: "train", text: "搭乘電車返回大阪 00 時 54 分" }
-          },
-          {
-            time: "18:30",
-            title: "パラゴン花園町",
-            category: "歸宿",
-            type: "stay",
-            duration: "夜間休息",
-            must: false,
-            desc: "順利完成京都朝聖之旅，回花園町舒服休息。"
-          }
-        ]
-      },
-      {
-        day: 9,
-        date: "11/03",
-        weekday: "週二",
-        title: "勝運達摩與道頓堀跑跑人・勝尾寺與心齋橋",
-        highlightName: "箕面勝尾寺 & 戎橋道頓堀",
-        category: "必勝許願",
-        illuType: "daruma",
-        notes: "早晨搭乘御堂筋線延長線至箕面萱野站，轉乘計程車抵達祈求勝運的勝尾寺，滿山遍野遍布數以萬計的紅色達摩不倒翁！午後回心齋橋、戎橋跑跑人打卡、吃一蘭拉麵！",
-        items: [
-          {
-            time: "07:00 / 08:00",
-            title: "パラゴン花園町 出門",
-            category: "出發",
-            type: "stay",
-            duration: "晨間出發",
-            must: false,
-            desc: "從難波站搭乘御堂筋線到「箕面萱野站」（車程加走路42分鐘），於南口排班計程車站搭車15分鐘直達勝尾寺（車資約3200円）。",
-            transitNext: { type: "train", text: "電車+計程車 00 時 58 分" }
-          },
-          {
-            time: "08:58",
-            title: "Yuzuru Kids Park",
-            category: "公園綠意",
-            type: "spot",
-            duration: "停留 00 時 25 分",
-            must: false,
-            desc: "箕面當地的可愛吉祥物公園，短暫停步拍照呼吸秋晨新鮮空氣。",
-            transitNext: { type: "taxi", text: "車程 00 時 20 分" }
-          },
-          {
-            time: "09:43",
-            title: "勝尾寺 (Katsuo-ji)",
-            category: "勝運之寺",
-            type: "spot",
-            duration: "停留 03 時 00 分",
-            must: true,
-            desc: "名震全日本的「勝運之寺」！擁有數百年歷史的古老佛寺與廣袤山林庭園，以秋季繽紛紅葉及數以千計的「紅色達摩不倒翁」聞名。石階、屋簷、林間到處都是信眾許願擺放的小達摩，超萌超壯觀！門票¥500，重點必去！",
-            transitNext: { type: "taxi", text: "搭車返回市區 00 時 40 分" }
-          },
-          {
-            time: "13:01",
-            title: "Yuzuru Kids Park / 回程",
-            category: "途經",
-            type: "spot",
-            duration: "停留 00 時 25 分",
-            must: false,
-            transitNext: { type: "train", text: "搭乘御堂筋線直達心齋橋 00 時 25 分" }
-          },
-          {
-            time: "13:26",
-            title: "心齋橋筋商店街",
-            category: "購物天國",
-            type: "shop",
-            duration: "停留 01 時 00 分",
-            must: true,
-            desc: "心齋橋與道頓堀的繁華完全建立在江戶時代大阪作為「商人自治城市」的底氣上。大丸百貨、各大名牌、潮流服飾應有盡有，必去逛街！",
-            transitNext: { type: "walk", text: "步行 00 時 05 分" }
-          },
-          {
-            time: "14:32",
-            title: "鈍屋拉麵 心齋橋店 (Zundoya)",
-            category: "濃郁拉麵",
-            type: "food",
-            duration: "停留 01 時 00 分",
-            must: true,
-            desc: "發源於姬路的超人氣背脂豚骨拉麵！醇厚濃郁的大骨高湯搭配特製細麵、炙燒叉燒與溏心蛋，加點辛子高菜更是絕配！",
-            transitNext: { type: "walk", text: "步行 00 時 06 分" }
-          },
-          {
-            time: "15:38",
-            title: "戎橋 (Ebisubashi)",
-            category: "跑跑人地標",
-            type: "spot",
-            duration: "停留 01 時 00 分",
-            must: true,
-            desc: "將視角拉回大阪南區心臟！站在戎橋上一定要擺出招牌姿勢跟「固力果跑跑人（Glico Man）」巨型看板同框合影，大阪旅遊最高潮打卡點！",
-            transitNext: { type: "walk", text: "步行 00 時 01 分" }
-          },
-          {
-            time: "16:39",
-            title: "道頓堀 (Dotonbori)",
-            category: "美食百老匯",
-            type: "spot",
-            duration: "停留 01 時 00 分",
-            must: true,
-            desc: "「巨型招牌林立、小吃吃不完」的世界名景！巨大的會動大螃蟹、章魚燒、河豚招牌，因為這裡在17世紀是全日本最大的百老匯歌舞伎文樂中心，濃縮了極致的大阪狂熱！",
-            transitNext: { type: "walk", text: "步行 00 時 03 分" }
-          },
-          {
-            time: "17:42",
-            title: "一蘭 道頓堀店別館",
-            category: "天然豚骨拉麵",
-            type: "food",
-            duration: "停留 01 時 00 分",
-            must: true,
-            desc: "坐在經典一人一格味集中座位，客製化喜愛的湯頭濃淡、蒜泥量、赤紅秘製醬汁與麵條硬度，旅程最後一晚的暖胃拉麵！",
-            transitNext: { type: "train", text: "搭乘電車 00 時 15 分" }
-          },
-          {
-            time: "18:56",
-            title: "パラゴン花園町",
-            category: "歸宿整理",
-            type: "stay",
-            duration: "最後打包",
-            must: false,
-            desc: "返回民宿打包行李箱，將十天來的紀念品與零食妥善裝箱，準備明天返程。"
-          }
-        ]
-      },
-      {
-        day: 10,
-        date: "11/04",
-        weekday: "週三",
-        title: "美好返程・關西機場與滿載回憶",
-        highlightName: "關西國際機場 KIX",
-        category: "平安返航",
-        illuType: "plane",
-        notes: "上午 10:00 退房前往關西機場，搭乘 AirAsia AK171 班機返台。在第一航廈免稅店最後衝刺採買生巧克力與伴手禮，帶著滿滿歡笑平安回家！",
-        items: [
-          {
-            time: "10:00",
-            title: "パラゴン花園町 (退房)",
-            category: "退房出發",
-            type: "stay",
-            duration: "準時退房",
-            must: false,
-            desc: "檢查隨身貴重物品、護照、充電線，鎖上門鎖告別住了九晚的溫馨公寓，前往天下茶屋搭乘南海電鐵。",
-            transitNext: { type: "train", text: "搭乘南海特急/急行電車 00 時 59 分" }
-          },
-          {
-            time: "12:00",
-            title: "關西國際機場 (KIX 第一航廈)",
-            category: "班機報到",
-            type: "stay",
-            duration: "停留 02 時 00 分",
-            must: true,
-            desc: "辦理 AirAsia AK171 班機報到與行李託運手續。通關後在免稅大街最後大採購：ROYCE生巧克力、薯條三兄弟、東京香蕉、關西限定宇治抹茶甜品，準備登機飛向台灣！"
-          }
-        ]
-      }
-    ];
+    const ITINERARY_DATA = [{"day": 1, "date": "10/26", "weekday": "週一", "title": "抵達關西・花園町周邊生活圈巡禮", "highlightName": "關西機場 & 花園町商圈", "category": "抵達採買", "illuType": "plane", "notes": "台北組（樂桃 MM24）與高雄組（亞航 AK170）皆於 13:10 同步降落關西國際機場！出關後搭乘南海電鐵至民宿花園町 Check-in。傍晚採買生活用品、大國藥妝、三大生鮮超市與難波中心街漫步。", "items": [{"time": "13:10", "title": "關西機場 (雙航班同刻抵達會師)", "category": "交通樞紐", "type": "stay", "duration": "停留 00 時 40 分", "must": false, "desc": "台北組搭乘樂桃 MM24（第二航廈 T2）與高雄組搭乘亞航 AK170（第一航廈 T1）於 13:10 同步降落關西國際機場（KIX），辦理入境手續後於關西機場車站領取車票相見歡，搭乘南海電鐵前往大阪市區！", "transitNext": {"type": "train", "text": "搭乘電車 01 時 08 分"}}, {"time": "14:58", "title": "パラゴン花園町 (民宿)", "category": "住宿入宿", "type": "stay", "duration": "停留 01 時 00 分", "must": false, "desc": "抵達本次關西10天的溫馨大本營，辦理入住放下大件行李，整理稍作休息。", "transitNext": {"type": "walk", "text": "步行 00 時 04 分"}}, {"time": "16:02", "title": "大國藥妝 地下鐵花園町站前店", "category": "購物採買", "type": "shop", "duration": "停留 01 時 00 分", "must": false, "desc": "就近採買日本旅行必備休足時間、常備藥品與免稅零食伴手禮。", "transitNext": {"type": "walk", "text": "步行 00 時 04 分"}}, {"time": "17:05", "title": "Daily Qanat Izumiya 花園店", "category": "生鮮超市", "type": "shop", "duration": "停留 01 時 00 分", "must": false, "desc": "大型生鮮超市，採買這幾天的日本當季新鮮水果（麝香葡萄、蜜柑）、鮮奶優格與飲用水。", "transitNext": {"type": "walk", "text": "步行 00 時 03 分"}}, {"time": "18:09", "title": "全家便利商店 花園町店", "category": "便利商店", "type": "food", "duration": "停留 01 時 00 分", "must": false, "desc": "來日本全家必買 Famichiki 脆皮多汁大炸雞排與熱咖啡點心充飢。", "transitNext": {"type": "walk", "text": "步行 00 時 05 分"}}, {"time": "19:12", "title": "玉出超市 花園店", "category": "平價超市", "type": "shop", "duration": "停留 01 時 00 分", "must": false, "desc": "大阪最有名的招牌黃色霓虹燈24小時平價超市，感受濃濃的大阪庶民活力。", "transitNext": {"type": "train", "text": "搭乘地下鐵 00 時 10 分"}}, {"time": "20:29", "title": "難波中心街", "category": "熱鬧市街", "type": "spot", "duration": "自由漫步", "must": false, "desc": "晚餐在難波熱鬧街區享用大阪在地美食，感受夜間大阪市區的蓬勃朝氣。"}], "spots": [{"num": "1", "name": "關西國際機場 (KIX)", "subTitle": "漂浮在大阪灣的人工島海上奇蹟・關西空運大門戶", "tag": "交通名勝", "must": false, "illu": "plane", "story": "世界上第一座完全以人工填海造陸建成的海上國際機場！於1994年正式啟用，徹底解決了都市噪音限制並實現24小時全天候營運。旅客下機通關後，可直接在機場車站無縫銜接南海電鐵特急列車直奔大阪市區。", "insider": "入境大廳一樓設有旅遊服務中心可領取各類交通地圖，二樓美食街與三樓購物區匯集了關西代表美食。推薦直接搭乘南海電鐵急行或特急Rapi:t，約40分鐘即可抵達天下茶屋轉乘地鐵前往花園町！"}, {"num": "2", "name": "大國藥妝 地下鐵花園町站前店", "subTitle": "免稅補貨第一站・在地採買免排隊秘密基地", "tag": "購物補給", "must": false, "illu": "shop", "story": "位於大阪地下鐵四橋線「花園町站」出口旁的大國藥妝，相比心齋橋與道頓堀觀光客摩肩擦踵的擁擠分店，這裡空間更加寬敞舒適，各類熱門藥妝、零食、保養品貨源充足且價格極為親民。", "insider": "抵達第一天先買好「休足時間」涼感貼布、花王蒸氣眼罩與提神維他命B群，為接下來九天每日破萬步的精彩關西散策做好最充分的腿部保養與體力準備！"}, {"num": "3", "name": "Daily Qanat Izumiya 花園店", "subTitle": "大阪在地老牌大型生鮮超市・產地直送鮮果與熟食", "tag": "生鮮市場", "must": false, "illu": "food", "story": "大阪在地老牌連鎖超市 Izumiya 旗下的優質旗艦店，提供極為豐富的日本產地直送鮮果、優質鮮奶、烘焙麵包以及種類繁多的現做日式熟食便當。", "insider": "傍晚5點過後，熟食區會陸續貼上「割引（特價折扣標籤）」，能用超級划算的價格品嚐到剛出爐的炸蝦天婦羅、和牛可樂餅與鮮甜多汁的長野或岡山當季麝香葡萄！"}, {"num": "4", "name": "玉出超市 花園店", "subTitle": "大阪傳奇黃色招牌・超狂24H平價庶民超市", "tag": "平價傳奇", "must": false, "illu": "shop", "story": "大阪最具代表性的傳奇黃色霓虹燈24小時平價超市！店面閃爍著如同柏青哥遊樂場般的歡樂燈飾，充滿濃濃的大阪底層庶民熱情與豪爽生命力。", "insider": "飲料、零食、便當價格便宜到令人難以置信！推薦買幾瓶伊藤園綠茶或午後紅茶冰在民宿冰箱，體驗最地道純樸的大阪家庭日常採買氣氛。"}, {"num": "5", "name": "難波中心街", "subTitle": "大阪南區繁華心臟・居酒屋與美食探索", "tag": "夜之市街", "must": false, "illu": "namba", "story": "連接難波車站、高島屋百貨與千日前的核心市街，林立著無數居酒屋、拉麵老店與章魚燒攤販，是感受大阪越夜越熱鬧的不二之選。", "insider": "第一晚在此放慢腳步散步，吃一份熱呼呼外酥內軟、柴魚片舞動的元祖章魚燒，搭配冰涼生啤酒，宣告關西十日漫遊正式啟程！"}]}, {"day": 2, "date": "10/27", "weekday": "週二", "title": "大阪經典老靈魂・黑門市場與日本橋", "highlightName": "難波八阪神社 & 黑門市場", "category": "老街市集", "illuType": "namba", "notes": "早晨到木津市場享用生魚片海鮮，參拜巨型獅子殿難波八阪神社吸走厄運，法善寺青苔不動明王潑水祈福，黑門市場吃和牛，漫步電器街。", "items": [{"time": "07:30", "title": "パラゴン花園町 出發", "category": "出發", "type": "stay", "duration": "晨間整裝", "must": false, "transitNext": {"type": "taxi", "text": "車程約 00 時 10 分 (¥180)"}}, {"time": "07:40", "title": "木津批發市場", "category": "市場美食", "type": "food", "duration": "停留 01 時 30 分", "must": true, "desc": "超過300年歷史！早在江戶時代就是水運樞紐，品嚐新鮮生魚片海鮮丼、現烤鰻魚。", "transitNext": {"type": "walk", "text": "步行 00 時 09 分"}}, {"time": "09:19", "title": "難波八阪神社", "category": "能量景點", "type": "spot", "duration": "停留 00 時 30 分", "must": true, "desc": "高達12公尺的巨大獅子殿，巨口張開象徵吸走所有厄運，招來勝利好運！", "transitNext": {"type": "walk", "text": "步行 00 時 06 分"}}, {"time": "10:01", "title": "難波南海通", "category": "熱門商街", "type": "shop", "duration": "停留 01 時 00 分", "must": false, "desc": "從古代刑場轉型成如今充滿美食點心的繁華拱廊街。", "transitNext": {"type": "walk", "text": "步行 00 時 01 分"}}, {"time": "11:07", "title": "法善寺 (水掛不動明王)", "category": "祈願古寺", "type": "spot", "duration": "停留 01 時 00 分", "must": true, "desc": "戰火中奇蹟生還的「青苔不動明王」，舀水澆灌祈福，長年累月覆蓋翠綠厚青苔。", "transitNext": {"type": "walk", "text": "步行 00 時 03 分"}}, {"time": "12:08", "title": "千日前商店街", "category": "商店街", "type": "shop", "duration": "停留 01 時 00 分", "must": false, "desc": "千日念佛之所演變成歡樂劇場繁華街，廚具街與老店林立。", "transitNext": {"type": "walk", "text": "步行 00 時 08 分"}}, {"time": "13:17", "title": "黑門市場", "category": "美食天國", "type": "food", "duration": "停留 01 時 00 分", "must": true, "desc": "170年歷史！因圓明寺黑色大門得名，享用現煎和牛、烤扇貝、海膽海鮮饗宴。", "transitNext": {"type": "walk", "text": "步行 00 時 05 分"}}, {"time": "14:25", "title": "大阪日本橋電器街 (Denden Town)", "category": "動漫電器", "type": "shop", "duration": "停留 03 時 00 分", "must": false, "desc": "大阪秋葉原！從戰後黑市發展成電器與動漫公仔扭蛋御宅族天堂。", "transitNext": {"type": "train", "text": "搭乘電車 00 時 19 分"}}, {"time": "17:44", "title": "パラゴン花園町", "category": "歸宿休息", "type": "stay", "duration": "晚上放鬆", "must": false, "desc": "回民宿放戰利品，晚上可在附近品嚐老牌鶴屋壽喜燒或高島屋美食街。"}], "spots": [{"num": "1", "name": "木津批發市場", "subTitle": "超過300年的批發歷史與清晨生鮮海產", "tag": "批發海鮮", "must": true, "illu": "food", "story": "大家都知道黑門市場，但其實木津市場的歷史更悠久，已經超過300年！早在江戶時代（約1715年），這裡就因為官國為私人設立跟官方指定的市場打過官司。經歷了兩次世界大戰的戰火與無數大火，木津市場依然屹立不搖。", "insider": "直到今天它仍然保留了濃厚的「批發」老靈魂，是許多大阪米其林名店大廚清晨親自來批貨的聖地。清晨來此享用新鮮生魚片海鮮丼與現烤鰻魚，價格親民又道地！"}, {"num": "2", "name": "難波八阪神社", "subTitle": "高達12公尺的巨大獅子殿・吸入厄運招來好運", "tag": "名勝神社", "must": true, "illu": "namba", "story": "這座神社的起源非常古老，據傳在平安時代就已經存在，當時還是個神佛習合（神道教與佛教混合）的大型寺廟群，但後來經歷了「神佛分離」運動加上二戰的大阪大空襲，整個神社幾乎被夷為平地。", "insider": "你去現場一定會被那顆高12公尺、寬11公尺的巨大「獅子頭」震撼！這其實是1974年（昭和49年）才做成獅子的，巨大的獅象徵著「將厄運、煞氣一口吞下」，並為信徒招來好運與商機。現在很多祈求學業進步、公司發展的人都會特地來此參拜！"}, {"num": "3", "name": "南海通", "subTitle": "千日前與難波南海通：從「刑場」到娛樂天堂的重生", "tag": "歷史街區", "must": false, "illu": "shop", "story": "當你走在熱鬧的「千日前商店街」和「南海通」時，可能很難想像——這裡在江戶時代，其實是大阪的刑場與大型墓地！", "insider": "明治維新之後，墓地搬遷，街道才逐漸轉變為商業街。如今滿布名產伴手禮店、老牌咖啡店與人氣蓬萊551包子，象徵了大阪無與倫比的重生生命力。"}, {"num": "4", "name": "千日前商店街", "subTitle": "千日念佛之所演變成歡樂劇場繁華街", "tag": "特色商街", "must": false, "illu": "shop", "story": "「千日前」這個名字，是因為過去這裡有兩座寺廟（法善寺與竹林寺），僧侶們在這裡進行「千日念佛」來超渡亡魂。到了明治時期，這裡開始蓋起了劇場、戲院和落語表演場，逐漸轉型為娛樂區。", "insider": "1912年一場被稱為「千日前大火」的災難燒毀了這一帶，但也促成了市街的重新規劃與現代化，造就了今天你看到的繁華商圈。漫步其中可以找到許多昭和風味老道具街與廚具行！"}, {"num": "5", "name": "法善寺", "subTitle": "戰火中奇蹟生還的「青苔不動明王」", "tag": "祈願古剎", "must": true, "illu": "temple", "story": "法善寺建於1637年，見證了千日前一帶的歷史變遷。在二戰的大阪大空襲中，整個寺廟幾乎全毀，唯獨這尊「水掛不動明王」奇蹟般地在戰火中倖存下來。", "insider": "不動明王本來是沒有青苔的。據說戰後有一位來參拜的女性，因為手邊沒有供品，就舀起旁邊的水澆在神像上祈求。後來大家紛紛效仿，長年累月下來，神像就長滿了厚厚的綠色青苔，連原本的面貌都看不清了。這裡也象徵著大阪人在戰後重建的韌性！"}, {"num": "6", "name": "黑門市場", "subTitle": "「黑門」其實是一扇不存在的門", "tag": "美食天國", "must": true, "illu": "food", "story": "黑門市場有170年以上的歷史，江戶時代末期這裡原本叫做「圓明寺市場」，因為市場附近有一座名叫圓明寺的大寺廟。這座寺廟有一扇非常顯眼的「黑色大門」。雖然圓明寺在1912年的千日前大火中被燒毀再也沒建，但「黑門」這個名字卻深深烙印在心裡，市場也正式改名為「黑門市場」。", "insider": "過去它是供應大阪高級料亭食材的「大阪的廚房」，現在則轉型為觀光客的美食聖地。現烤神戶牛串、活烤海膽、超大烤帆立貝與白草莓，香氣四溢！"}, {"num": "7", "name": "日本橋電器街 (Denden Town)", "subTitle": "大阪的秋葉原發展史・御宅族文化聖地", "tag": "動漫電玩", "must": false, "illu": "shop", "story": "日本橋在江戶時代是個熱鬧的「宿場町」（驛站）。到了二戰後，這裡最初是販賣二手衣物、舊書的黑市，隨著時代進步販賣電子零件和生活家電，這裡漸漸聚集了販賣電子零件和工具的商家。到了1970~80年代，日本橋正式成為與東京秋葉原齊名的「電器街（Denden Town）」。", "insider": "隨著大型連鎖家電量販店崛起，傳統電器街轉型引進動漫、模型、女僕咖啡廳等次文化產業，成為今天大阪最知名的「御宅族天堂」！尋找復古電玩或限量公仔絕不可錯過！"}]}, {"day": 3, "date": "10/28", "weekday": "週三", "title": "泉州古社尋幽・大鳥大社散策", "highlightName": "大鳥大社", "category": "靜謐古社", "illuType": "torii", "notes": "前往和泉國一之宮大鳥大社，漫步在千年森林與古老木造大鳥造建築之中，度過悠閒靜心的大阪近郊上午。", "items": [{"time": "09:00", "title": "パラゴン花園町 出發", "category": "出發", "type": "stay", "duration": "準備出發", "must": false, "transitNext": {"type": "train", "text": "搭乘電車 00 時 40 分"}}, {"time": "09:40", "title": "大鳥大社", "category": "一之宮古社", "type": "spot", "duration": "停留 01 時 00 分", "must": true, "desc": "坐落在靜謐森林裡的宏偉神道教神社！採用日本最古老「大鳥造」木造建築工法，參道上有大型木造鳥居與神馬銅像。", "transitNext": {"type": "train", "text": "搭乘電車 00 時 39 分"}}, {"time": "11:19", "title": "パラゴン花園町 / 市區彈性行程", "category": "休息與自由漫步", "type": "stay", "duration": "午後放鬆", "must": false, "desc": "返回市區午餐，下午悠閒散步喝咖啡，儲備充沛體力迎接接下來滿滿的神戶與京都名所行程！"}], "spots": [{"num": "1", "name": "大鳥大社", "subTitle": "和泉國一之宮・日本最古木造大鳥造建築樣式", "tag": "古社殿堂", "must": true, "illu": "torii", "story": "作為和泉國最尊貴的神社「一之宮」，相傳由日本武尊化身為白鳥降臨於此而創建。本殿建築採用日本極古老特殊的「大鳥造」樣式，切妻造、妻入、千木與鰹木古樸優雅，是日本神道建築史上的國寶級瑰寶。", "insider": "穿過木造大鳥居進入神域，參道被高聳千年的千種森綠林環抱，空氣瞬間清爽靜謐，是遠離大阪都會喧囂、沉澱心靈的最佳古社！"}, {"num": "2", "name": "大鳥大社 神馬銅像與神聖之森", "subTitle": "守護旅人交通安全與神願開運", "tag": "祈願亮點", "must": false, "illu": "torii", "story": "境內佇立著雄姿煥發的神馬銅像，神道教中神馬被視為神明乘騎傳遞神諭之聖物。信徒常前來祈求心願成就與出入平安。", "insider": "參拜後可求取一枚大鳥大社知名的「開運厄除神鳥御守」，細細感受神聖森林中的鳥鳴與微風。"}, {"num": "3", "name": "難波高島屋散策・市區慢活充電", "subTitle": "老牌百貨品味洋菓子與優雅生活", "tag": "慢活散策", "must": false, "illu": "shop", "story": "結束上午參拜返回市區，下午留出充裕的彈性時光。前往老牌高島屋百貨與難波City漫步，欣賞精緻洋菓子與設計良品。", "insider": "外國遊客在高島屋服務中心出示護照可免費領取「高島屋Hello Kitty購物卡」，享受95折購物優惠！"}]}, {"day": 4, "date": "10/29", "weekday": "週四", "title": "神戶港都一日遊・異人館與神戶港塔", "highlightName": "北野異人館 & 神戶港塔", "category": "洋風港都", "illuType": "kobe", "notes": "從大阪出發前往優雅的神戶！漫步北野異人館街洋風老洋房，參拜神戶之名起源生田神社，走訪元町老街，登上紅色神戶港塔眺望港灣，享用MIYAKOYA頂級燒肉！", "items": [{"time": "09:00", "title": "パラゴン花園町 出發", "category": "出發", "type": "stay", "duration": "準時出發", "must": false, "transitNext": {"type": "train", "text": "搭乘阪神/JR電車直達神戶 00 時 58 分"}}, {"time": "09:58", "title": "神戶北野異人館街", "category": "洋風古蹟群", "type": "spot", "duration": "停留 02 時 00 分", "must": true, "desc": "1868年神戶港開放異人居住地，風見雞館、萌黃之館洋式古蹟群，品嚐六甲山霜淇淋。", "transitNext": {"type": "walk", "text": "步行 00 時 11 分"}}, {"time": "12:09", "title": "生田神社", "category": "結緣古社", "type": "spot", "duration": "停留 01 時 00 分", "must": true, "desc": "1800年以上歷史，神戶地名由來「神封」守護，生田之森小溪「水籤」占卜靈驗！", "transitNext": {"type": "walk", "text": "步行 00 時 05 分"}}, {"time": "13:20", "title": "三宮本通商店街", "category": "特色商街", "type": "shop", "duration": "停留 01 時 00 分", "must": false, "desc": "昭和拱廊街道，品嚐烘焙咖啡豆老店手沖咖啡，感受日本早期復古風情。", "transitNext": {"type": "walk", "text": "步行 00 時 05 分"}}, {"time": "14:25", "title": "神戶元町商店街", "category": "百年商街", "type": "shop", "duration": "停留 01 時 00 分", "must": false, "desc": "原本的城鎮，排隊買森谷商店剛炸好的神戶牛可樂餅，散步南京町中華街。", "transitNext": {"type": "train", "text": "搭乘電車 00 時 09 分"}}, {"time": "15:34", "title": "神戶港塔 (Kobe Port Tower)", "category": "港都地標", "type": "spot", "duration": "停留 01 時 00 分", "must": true, "desc": "日本傳統樂器「鼓」雙曲面網狀結構，2024全新露天觀景台吹海風看港灣夕陽！", "transitNext": {"type": "walk", "text": "步行 00 時 10 分"}}, {"time": "16:47", "title": "燒肉 MIYAKOYA 三宮", "category": "神戶牛美味", "type": "food", "duration": "停留 01 時 00 分", "must": true, "desc": "在神戶不可錯過的極品燒肉！鮮嫩多汁神戶黑毛和牛炭火現烤。", "transitNext": {"type": "train", "text": "搭乘電車回大阪 00 時 49 分"}}, {"time": "18:36", "title": "パラゴン花園町", "category": "歸宿", "type": "stay", "duration": "晚間休息", "must": false, "desc": "回到花園町公寓，整理神戶伴手禮，洗去一日步行疲勞。"}], "spots": [{"num": "1", "name": "神戶北野異人館", "subTitle": "神戶近代歷史的起點・浪漫西洋建築群", "tag": "異國風情", "must": true, "illu": "kobe", "story": "是神戶近代歷史的起點。1868年神戶港開放後，為了安置大量湧入的外國商人和外交官，政府劃設了這片居住留地。「異人」在日文指的就是外國人。當時的老外們因為思鄉，特意選擇了能俯瞰海港的「北野」半山腰，建起了充滿各國風情的洋房。這裡不僅是拍照聖地，更是日本近代西洋文化（如西式甜點、麵包、洋服）的發源地。", "insider": "兩小時的時間，建議挑選最具代表性的「風見雞館（德國建築）」與「萌黃之館（美國建築）」參觀，並順道在石板坡道上品嚐六甲山牧場直送的濃郁鮮奶霜淇淋！"}, {"num": "2", "name": "生田神社", "subTitle": "1800年以上古老神社・「神戶」之名的起源", "tag": "結緣名社", "must": true, "illu": "temple", "story": "這可是擁有1800年以上歷史的古老神社！你可能不知道，「神戶」這個地名的由來，其實就是源自於生田神社。以前保護、供奉這座神社的幾十戶人家被稱為「神封（Kambe）」，後來發音演變，才成為今天神戶（Kobe）的名字。這座神社經歷了洪水、二戰大空襲與阪神大地震，每次都奇蹟般地重建，被當地人視為生命力與復甦的象徵。", "insider": "這裡現在以「祈求良緣」聞名。記得去買特殊的「水籤（水みくじ）」，把它放到生田之森的小溪裡，占卜的文字就會慢慢浮現出來，非常靈驗與神奇！"}, {"num": "3", "name": "三宮本通商店街", "subTitle": "從古代郊區到神戶心臟・洋風咖啡老店香氣", "tag": "特色老街", "must": false, "illu": "shop", "story": "三宮地區在古代其實只是郊區，直到近代鐵路開通後，才取代元町成為神戶的心臟地帶。這條商店街見證了日本昭和時代「拱廊式街道」的興起，讓居民買東西不用日曬雨淋。", "insider": "既然這趟你喜歡深度歷史，不妨在這裡留意那些融合了洋風特色的咖啡老店。神戶人非常講究咖啡豆的烘焙，感受一下日本早期咖啡廳的復古氣氛！"}, {"num": "4", "name": "神戶元町商店街", "subTitle": "原本的城鎮・大正昭和風情與神戶牛可樂餅", "tag": "百年街道", "must": false, "illu": "shop", "story": "「元町」顧名思義就是「原本的城鎮」，在三宮繁華之前，這裡曾是神戶最頂級的購物街，也是古代「西國街道」的必經之路。這裡保留了比三宮更多的大正、昭和復古風情，也是許多百年老字號和菓子、洋菓子店的發跡地。", "insider": "這裡很適合買伴手禮。別忘了去「森谷商店」排隊買一個剛炸好的「神戶牛可樂餅」，邊走邊吃是神戶人的經典日常！走到元町的盡頭附近，你還會經過「南京町（神戶中華街）」，可以順道感受一下日本三大中華街的獨特氣氛。"}, {"num": "5", "name": "神戶港塔", "subTitle": "神戶的永恆象徵・紅色雙曲面鼓型塔身", "tag": "港都地標", "must": true, "illu": "kobe", "story": "就是神戶的象徵神戶港塔。建於1963年，它的外型設計靈感來自日本傳統樂器「鼓（Tsuzumi）」，這種雙曲面網狀結構在當時是世界首創！它挺過了阪神大地震，並在2024年春天剛完成大規模翻修重新開放，頂樓新增了可以吹海風的露天觀景台！", "insider": "下午15:30到海邊剛好可以看到日落前的港灣風光，光線最柔和，拍塔最好看。塔旁邊的「美利堅公園」有一處「神戶港震災紀念公園」，保留了1995年地震時震歪破壞的碼頭原貌，非常值得一看，會讓你對神戶的重生感到由衷敬佩！"}]}, {"day": 5, "date": "10/30", "weekday": "週五", "title": "大阪之魂・天守閣、四天王寺與通天閣", "highlightName": "大阪城 & 通天閣遊艇", "category": "歷史名城", "illuType": "osaka", "notes": "大阪最重量級的經典一日！征服豐臣秀吉天下名城大阪城，參觀西之丸庭園與海洋堂公仔博物館，巡禮最古官方佛教四天王寺，探索昭和通天閣與道頓堀觀光遊艇。", "items": [{"time": "08:30", "title": "パラゴン花園町 出發", "category": "出發", "type": "stay", "duration": "準時啟程", "must": false, "transitNext": {"type": "train", "text": "搭乘電車 00 時 32 分"}}, {"time": "09:02", "title": "大阪城 (天守閣)", "category": "日本三大名城", "type": "spot", "duration": "停留 01 時 00 分", "must": true, "desc": "豐臣秀吉天下人名城，德川掩蓋重建城牆，城牆櫻門口「蛸石」巨石軍備競賽！", "transitNext": {"type": "walk", "text": "步行 00 時 10 分"}}, {"time": "10:12", "title": "大阪城 西之丸庭園", "category": "名園美景", "type": "spot", "duration": "停留 01 時 00 分", "must": false, "desc": "豐臣秀吉正室寧寧的住所，寬闊草坪無遮蔽拍攝天守閣完美角度。", "transitNext": {"type": "walk", "text": "步行 00 時 05 分"}}, {"time": "11:19", "title": "海洋堂模型博物館 MIRAIZA 大阪城", "category": "模型聖地", "type": "spot", "duration": "停留 00 時 35 分", "must": false, "desc": "1931年陸軍第四師團司令部羅馬式古蹟建築，展示日本最強模型公仔展覽！", "transitNext": {"type": "train", "text": "搭乘電車 00 時 20 分"}}, {"time": "12:14", "title": "四天王寺", "category": "日本最古官寺", "type": "spot", "duration": "停留 00 時 35 分", "must": true, "desc": "聖德太子西元593年建，四天王寺式伽藍一直線排列，罕見佛寺石鳥居神佛習合。", "transitNext": {"type": "train", "text": "搭乘電車 00 時 11 分"}}, {"time": "13:00", "title": "通天閣本通商店街", "category": "昭和懷舊", "type": "shop", "duration": "停留 01 時 00 分", "must": false, "desc": "走入大阪昭和懷舊宇宙，摸摸店門前比利肯神像腳底板招來好運！", "transitNext": {"type": "walk", "text": "步行 00 時 08 分"}}, {"time": "14:17", "title": "大阪市天王寺動物園", "category": "百年動物園", "type": "spot", "duration": "停留 02 時 00 分", "must": false, "desc": "1915年開園日本第三座動物園，改造成重現棲地的生態展示區。", "transitNext": {"type": "walk", "text": "步行 00 時 13 分"}}, {"time": "16:30", "title": "通天閣 (Tsutenkaku)", "category": "新世界靈魂", "type": "spot", "duration": "停留 02 時 00 分", "must": true, "desc": "凱旋門+艾菲爾鐵塔超狂合體，頂部霓虹燈氣象站，俯瞰新世界繁華！", "transitNext": {"type": "walk", "text": "步行至道頓堀 / 電車約 00 時 15 分"}}, {"time": "18:30", "title": "大阪觀光遊艇 Wonder Cruise (道頓堀)", "category": "水都夜航", "type": "spot", "duration": "停留 01 時 00 分", "must": true, "desc": "從水上仰角感受水都夜景，穿過橋墩近距離瘋狂搶拍固力果跑跑人！", "transitNext": {"type": "train", "text": "搭乘電車 00 時 20 分"}}, {"time": "19:51", "title": "パラゴン花園町", "category": "歸宿休息", "type": "stay", "duration": "返回飯店", "must": false, "desc": "結束收穫滿滿的一天，回飯店敷面膜放鬆腳步。"}], "spots": [{"num": "1", "name": "大阪城 (天守閣)", "subTitle": "三個時代縮影疊加・城牆巨石軍備競賽", "tag": "名城瑰寶", "must": true, "illu": "osaka", "story": "雖然是由豐臣秀吉在1583年下令建造，但你現在看到的高聳城牆和護城河，其實是後來德川幕府為了掩蓋豐臣家痕跡而重新填土築起的！而最頂端的鋼筋混凝土天守閣，則是1931年由大阪市民募資重建的。它身上疊加了三個時代的縮影。", "insider": "記得留意城牆上那些巨大的「巨石」（如櫻門口的蛸石），當年可都是靠人力從瀨戶內海運過來的，是各大名為了向幕府表忠誠的軍備競賽產物！"}, {"num": "2", "name": "大阪城 西之丸庭園", "subTitle": "寧寧正室的幽靜居所・茶會與無遮蔽絕景", "tag": "名園景致", "must": false, "illu": "osaka", "story": "原本是豐臣秀吉的正室「北政所（寧寧）」的住所，現在則是一片擁有廣闊草坪的優美庭園。相比於天守閣前的喧囂，這裡保留了難得的安靜。從這裡拍大阪城天守閣非常完美，沒有雜亂的建築遮擋。", "insider": "歷史餘韻：這裡春天是絕佳的賞櫻勝地，走在修剪整齊的草皮上，可以想像當年大名將領們在此地觀見、舉行茶會的風雅場景。"}, {"num": "3", "name": "海洋堂模型博物館 MIRAIZA 大阪城", "subTitle": "昭和陸軍司令部古蹟內的公仔模型聖地", "tag": "模型藝術", "must": false, "illu": "shop", "story": "所在的「MIRAIZA」建築本身就是古蹟，前身是1931年建造的「大日本帝國陸軍第四師團司令部」，外觀是充滿威嚴的羅馬式風格，裡面卻藏著日本最強模型製造商的展覽。", "insider": "這裡展示了極其精緻的微縮模型，從充滿日本復古美學的食玩、精巧的黏土人像，到拿著綠色光劍的星際大戰絕地武士公仔，各種精細的微縮世界絕對會讓你驚豔！"}, {"num": "4", "name": "四天王寺", "subTitle": "日本最古官方佛教寺院・四天王寺式伽藍與石鳥居", "tag": "古寺文化", "must": true, "illu": "temple", "story": "日本最古老的官方佛教寺院，由聖德太子在西元593年建立，已有1400多年歷史。它的建築佈局被稱為「四天王寺式伽藍」，中門、五重塔、金堂、講堂呈一直線排列，是受到古代中國與朝鮮半島影響的最早期建築樣式。", "insider": "寺內有一個「石鳥居」，雖然鳥居通常是神道教神社的象徵，但這裡卻出現在佛教寺廟，完美展現了日本早期「神佛習合」的獨特信仰文化。"}, {"num": "5", "name": "通天閣本通商店街", "subTitle": "走入昭和懷舊宇宙・摸摸比利肯神像招好運", "tag": "昭和懷舊", "must": false, "illu": "shop", "story": "帶領你走入大阪「昭和懷舊宇宙」的隧道！這裡連接了天王寺與新世界，過去是勞動階級與庶民的娛樂中心，保留了非常濃厚的「底層生命力」。", "insider": "非常適合用相機捕捉那種帶有日式濾鏡的復古街拍感。邊走邊找找各家店門口擺放的「比利肯（Billiken）」神像，據說摸摸祂的腳底板就能帶來好運！"}, {"num": "6", "name": "大阪市天王寺動物園", "subTitle": "1915年開園百年老牌動物園・生態展示園區", "tag": "動物自然", "must": false, "illu": "food", "story": "天王寺動物園是日本第三座動物園（1915年開園），歷史非常悠久。", "insider": "這裡近年來改造成「生態展示區」，讓動物盡量在重現原始棲地的自然環境中生活，近距離觀賞可愛動物。"}, {"num": "7", "name": "通天閣", "subTitle": "新世界商圈靈魂・凱旋門與鐵塔結合・霓虹燈天氣預報", "tag": "大阪象徵", "must": true, "illu": "kobe", "story": "新世界商圈的靈魂。1912年初建時，它可是當時東方最高的建築，設計理念超狂：下半部模仿巴黎凱旋門，上半部模仿艾菲爾鐵塔！雖然一代塔在二戰時被大火燒毀並拆解煉鋼，但現在這座1956年重建的二代塔，依然是大阪不屈不撓的象徵。", "insider": "塔頂會用不同顏色的霓虹燈來預報明天的天氣（白色是晴天、藍色是雨天），這是在沒有手機APP的年代，當地人最依賴的氣象站！"}, {"num": "8", "name": "大阪觀光遊艇 Wonder Cruise", "subTitle": "從水上仰角感受水都繁華夜景・與跑跑人同框", "tag": "夜航巡禮", "must": true, "illu": "bridge", "story": "出發的遊船，是從水上視角感受大阪這座「水都」繁華夜景的最佳方式。", "insider": "從新世界一帶，可以搭乘地鐵堺筋線到「日本橋站」走過去，非常順路。晚上搭船時，兩岸的霓虹燈倒影在水面上非常迷人，當船開到道頓堀經典的「固力果跑跑人」看板前時，導覽員通常會放慢速度讓大家瘋狂拍照，記得提早準備好相機！"}]}, {"day": 6, "date": "10/31", "weekday": "週六", "title": "梅田雲端天際線・任天堂旗艦與大阪港", "highlightName": "梅田空中庭園 & 聖瑪麗亞號", "category": "現代展望", "illuType": "wheel", "notes": "登頂梅田藍天大樓俯瞰雲端，參觀天空美術館，朝聖大丸梅田Nintendo OSAKA旗艦店，午後到大阪港搭乘聖瑪麗亞帆船與天保山大摩天輪看夕陽！", "items": [{"time": "09:00", "title": "パラゴン花園町 出發", "category": "出發", "type": "stay", "duration": "早晨出發", "must": false, "transitNext": {"type": "train", "text": "搭乘地下鐵 00 時 25 分"}}, {"time": "09:25", "title": "梅田藍天大樓 (空中庭園展望台)", "category": "現代建築", "type": "spot", "duration": "停留 01 時 00 分", "must": true, "desc": "泡沫經濟頂峰「空中城市」，提升工法千噸吊升，圓形鏤空空中庭園如星艦般震撼！", "transitNext": {"type": "walk", "text": "步行 00 時 00 分 (館內直達)"}}, {"time": "10:25", "title": "絹谷幸二 天空美術館", "category": "藝術殿堂", "type": "spot", "duration": "停留 01 時 00 分", "must": false, "desc": "國寶大師古典濕壁畫 Fresco 技法千年不褪色，融合3D立體影像技術色彩爆發！", "transitNext": {"type": "walk", "text": "步行 00 時 08 分"}}, {"time": "11:41", "title": "炸豬排 KYK 阪急三番街店", "category": "排隊美食", "type": "food", "duration": "停留 01 時 41 分", "must": true, "desc": "金黃酥脆黑豬肉炸豬排，搭配清甜高麗菜絲與秘傳豬排醬汁。", "transitNext": {"type": "walk", "text": "步行 00 時 08 分"}}, {"time": "13:30", "title": "Nintendo OSAKA (大丸梅田店 13F)", "category": "任天堂旗艦", "type": "shop", "duration": "停留 01 時 00 分", "must": true, "desc": "任天堂官方旗艦店！巨大瑪利歐、林克雕像，限定周邊一次買齊！", "transitNext": {"type": "train", "text": "搭乘電車至大阪港 00 時 32 分"}}, {"time": "15:02", "title": "帆船型觀光船 聖瑪麗亞號", "category": "港灣航行", "type": "spot", "duration": "停留 01 時 00 分", "must": true, "desc": "哥倫布旗艦2倍放大復刻，航行大阪灣呼應難波津遣唐使水都海棲歷史！", "transitNext": {"type": "walk", "text": "步行 00 時 05 分"}}, {"time": "16:07", "title": "天保山大摩天輪", "category": "高空夕陽", "type": "spot", "duration": "停留 01 時 00 分", "must": true, "desc": "天保二年疏浚挖出20米人工山，歌川廣重浮世繪名景，112.5米眺望明石海峽落日！", "transitNext": {"type": "train", "text": "搭乘電車 00 時 20 分"}}, {"time": "17:27", "title": "咲洲宇宙塔展望台 (WTC)", "category": "夜景展望", "type": "spot", "duration": "停留 01 時 00 分", "must": false, "desc": "高達252公尺摩天大樓，如同身處太空站俯瞰人工島與港灣璀璨燈火！", "transitNext": {"type": "train", "text": "搭乘電車 00 時 36 分"}}, {"time": "19:03", "title": "パラゴン花園町", "category": "歸宿", "type": "stay", "duration": "夜間休息", "must": false, "desc": "滿載 Nintendo 戰利品回到飯店休息。"}], "spots": [{"num": "1", "name": "梅田藍天大樓", "subTitle": "泡沫經濟巔峰的空中城市・提升工法千噸吊升創舉", "tag": "世界建築", "must": true, "illu": "wheel", "story": "這棟建築的誕生背景充滿了戲劇性！它孕育於1980年代末期日本「泡沫經濟」的最顛峰，最初的宏偉計畫被稱為「City of Air（空中城市）」，原本打算建造四棟摩天大樓，並在頂部用巨大的空中庭園將它們全部相連。但隨著90年代泡沫破裂，資金銳減，計畫最終縮水成了現在的「雙塔」結構。即使如此，建築大師原廣司的設計依然極具前瞻性。頂部那個有著巨大圓形鏤空的空中庭園，看起來就像是星際大戰星艦！", "insider": "當時為了建造頂部，工程團隊使用了極其罕見的「提升工法（Lift-up）」，在地面將重達上千噸的觀景台組裝好後，用鋼纜一口氣拉升到150公尺的高空與兩棟大樓接合，這在當年的建築界是一大創舉！"}, {"num": "2", "name": "絹谷幸二 天空美術館", "subTitle": "國寶大師的濕壁畫古典技法與3D視覺震撼", "tag": "現代藝術", "must": false, "illu": "shop", "story": "這座美術館的靈魂人物「絹谷幸二」是日本現代藝術界的國寶級大師。他在年輕時前往義大利留學，深入鑽研了古典的「濕壁畫（Fresco，日文稱『壁畫古典技法』）」。這種技法必須在牆壁的灰泥還未乾透時迅速作畫，讓顏料與壁完滿融合，色彩能歷經千年不褪色！", "insider": "絹谷幸二把這種歐洲古老的技法帶回日本，並融合了日本傳統神話、佛教神祇與現代風景。美術館內那些充滿立體感與濃烈色彩的作品，完美展現了和洋折衷的美學極致！"}, {"num": "3", "name": "Nintendo OSAKA (大丸梅田店 13F)", "subTitle": "任天堂直營官方旗艦店・瑪利歐與薩爾達天堂", "tag": "動漫旗艦", "must": true, "illu": "shop", "story": "關西第一家任天堂官方旗艦店！店門口矗立著超巨大的瑪利歐、薩爾達傳說林克、卡比與漆彈大作戰雕像，現場滿滿原創獨家限定商品。", "insider": "店內採整理券或人潮管控，建議提早前往領券。各式各樣的文具、T-Shirt、限定玩偶與旅行配件是送禮自用的首選！"}, {"num": "4", "name": "觀光船 聖瑪麗亞號", "subTitle": "哥倫布旗艦兩倍復刻・水都悠久海棲歷史", "tag": "港灣航行", "must": true, "illu": "bridge", "story": "這艘船是按照1492年哥倫布發現美洲新大陸時所搭乘的旗艦「聖瑪麗亞號」，以兩倍的比例放大復刻建造的！", "insider": "雖然它的外觀是西洋帆船，但航行在大阪灣上，呼應的卻是大阪作為「水都」的悠久海棲歷史。從古代被稱為「難波津」開始，大阪一直都是遣唐使、遣隋使出發前往亞洲大陸的門戶。搭乘這艘船，可以從海上的視角重新認識這座海洋都市！"}, {"num": "5", "name": "天保山大摩天輪", "subTitle": "天保二年疏浚挖出的人工山・歌川廣重浮世繪名景", "tag": "海灣地標", "must": true, "illu": "wheel", "story": "「天保山」這個地名有著非常嚴肅有趣的歷史。在江戶時代（1831年，天保2年），為了解決安治川河口泥沙淤積、導致大型商船無法駛入大阪城下的問題，政府下令大規模疏浚河道。當時挖出來的龐大泥沙堆積在岸邊，就一畝形建了一座高約20公尺的「人工山」，並以年號命名為「天保山」。", "insider": "這裡在江戶時代就已經是大阪市民賞櫻、看海的休閒勝地，浮世繪大師歌川廣重都曾畫過這裡的繁華景象。1997年建成的大摩天輪曾經是世界最高，它承接了江戶時代以來的娛樂血脈，繼續作為俯瞰現代化大阪港的最佳地標！"}, {"num": "6", "name": "咲洲宇宙塔展望台 (WTC)", "subTitle": "252公尺高空・泡沫經濟征服天空與海洋之夢", "tag": "極致夜景", "must": false, "illu": "wheel", "story": "這棟高達252公尺的摩天大樓，最初的名字是「大阪世界貿易中心（WTC）」，它同樣是日本泡沫經濟時期極度樂觀下的產物。當時大阪市政府規劃了龐大的「Technoport Osaka」海灣造鎮計畫，希望能打造一個全新的副都心，這棟大樓就是計畫的核心地標。然而隨著泡沫經濟破裂，招商困難加上交通配套未及時跟上，這棟建築一度面臨嚴重的財務危機，後來才由大阪府廳（市政府）收購部分樓層作為辦公室，並改名為咲洲宇宙塔。", "insider": "如今站在展望台上，看著腳下人工島為咲洲宇宙塔（木工島），腳下的人工島與港區燈火，那種居高臨下的視野宛如身處太空站的指揮樓，同時也能深刻感受到日本在80年代那股想要征服天空與海洋的強大野心！"}]}, {"day": 7, "date": "11/01", "weekday": "週日", "title": "水都綠洲與天下廚房・天神橋筋與中之島", "highlightName": "天滿宮 & 中之島水岸", "category": "老街漫步", "illuType": "bridge", "notes": "早晨探訪在地天滿市場與日本最長天神橋筋商店街，參拜大阪天滿宮星合池祈福，午後在浪漫的中之島公園河畔野餐看紅磚洋館公會堂。", "items": [{"time": "09:00", "title": "パラゴン花園町 出發", "category": "出發", "type": "stay", "duration": "早晨啟程", "must": false, "transitNext": {"type": "train", "text": "搭乘電車 00 時 28 分"}}, {"time": "09:28", "title": "天滿市場", "category": "傳統市場", "type": "food", "duration": "停留 01 時 00 分", "must": false, "desc": "大阪市民的後廚房！滿滿接地氣的水果、漬物與海產乾貨，體驗真正的大阪主婦早市氣氛。", "transitNext": {"type": "walk", "text": "步行 00 時 07 分"}}, {"time": "10:35", "title": "天神橋筋商店街", "category": "日本第一長街", "type": "shop", "duration": "停留 01 時 00 分", "must": true, "desc": "長達2.6公里、橫跨六個地鐵站！大川蔬菜船湧現自然膨脹，保留江戶草根商業基因。", "transitNext": {"type": "walk", "text": "步行 00 時 06 分"}}, {"time": "11:56", "title": "大阪天滿宮", "category": "學問之神", "type": "spot", "duration": "停留 01 時 00 分", "must": true, "desc": "菅原道真神靈發光梅樹由來，日本三大祭「天神祭」發祥地，水上船渡御壯麗！", "transitNext": {"type": "walk", "text": "步行 00 時 12 分"}}, {"time": "13:08", "title": "中之島公園", "category": "河畔水景", "type": "spot", "duration": "停留 01 時 00 分", "must": false, "desc": "星合池七夕相親地，各國大名藏屋敷天下米市金融中心，中央公會堂紅磚洋館。", "transitNext": {"type": "train", "text": "搭乘電車 00 時 32 分"}}, {"time": "14:40", "title": "パラゴン花園町", "category": "歸宿休息", "type": "stay", "duration": "午後放鬆", "must": false, "desc": "下午回到花園町享受悠閒時光，整理行李與休息，準備明天一早前往京都古都！"}], "spots": [{"num": "1", "name": "天滿市場・天神橋筋商店街", "subTitle": "長達2.6公里、橫跨六個地鐵站的日本第一長街", "tag": "第一長街", "must": true, "illu": "shop", "story": "天神橋筋商店街之所以能長達2.6公里、橫跨六個地鐵站，並非現代都市計畫的產物，而是自然膨脹的歷史結果！它的前身是大阪天滿宮的「門前町（參拜道）」。在江戶時代，大阪被譽為「天下廚房」，全國的物資都透過水路運送到此。當時的幕府在天滿宮附近設立了「天滿青物市場（蔬菜市場）」，與堂島的米市、雜貨州的魚市並列為大阪三大市場。", "insider": "這個蔬菜市場掌握了全大阪的農產品定價權。每天清晨，運送蔬菜的船隻擠滿了旁邊的大川，成千上萬的批發商、零售商與前來天滿宮參拜的信徒匯聚於此。為了解決這龐大人流的吃喝拉撒與購物需求，參拜道路兩旁的攤販與店家不斷向南延伸，最終長成了這條全日本最長的商店街，至今仍保留著江戶時代那種充滿活力、甚至帶點草根性的商業基因！"}, {"num": "2", "name": "大阪天滿宮", "subTitle": "發出奇異光芒的梅樹・天神祭發祥地", "tag": "學問總社", "must": true, "illu": "temple", "story": "這座神社的起源，必須追溯到平安時代的政治鬥爭。西元901年，一代奇才菅原道真在政爭中落敗，被貶謫至九州太宰府。在他淒涼的流放旅途中，曾途經大阪的「大將軍社」稍作休息與祈福。菅原道真過世約50年（西元949年），當時的村上天皇聽聞大將軍社前突然長出一棵「每晚都會發出奇異光芒的梅樹」。天皇認為這是菅原道真真的神靈顯靈，便下令在此地建立社殿，這就是大阪天滿宮的由來。這也是為什麼天滿宮的代表紋是「梅花」，且境內種滿梅樹的原因！", "insider": "此外，這裡也是日本三大祭典之一「天神祭」的誕生地。西元951年，為了驅除當時肆虐的瘟疫，神職人員將一把名為「神鉾」的兵器放入河中流放，兵器漂流到哪，就在哪裡設立祭壇。這項結合了大阪水都特性的儀式，演變成了今日每年七月吸引百萬人的華麗水上船渡御！"}, {"num": "3", "name": "中之島公園", "subTitle": "星合池七夕浪漫相親地・天下米市藏屋敷金融中心", "tag": "水都綠洲", "must": false, "illu": "bridge", "story": "位於天滿宮北側的「星合池」，名字充滿浪漫色彩。「星合」在日文中指的是七夕時牛郎與織女星相會。江戶時代的大阪人非常重視七夕，當時的信徒會在池畔舉辦盛大的歌會與祈福儀式，甚至相傳這裡曾是許多未婚男女藉由祭典「相親」的秘密場所！而往南步行的「中之島」，則是堂島川與土佐堀川沖積出的狹長沙洲。在江戶時代，這裡密密麻麻地建滿了各國大名的「藏屋敷」（兼具倉庫與宅邸功能的建築），全日本的稻米與財富都在此進行期貨交易，是當時日本真正的金融中心！", "insider": "到了明治與大正時代，隨著文明開化，藏屋敷被拆除，取而代之的是由當地富商（如股票經紀人岩本榮之助）捐款建造的大阪市中央公會堂、日本銀行大阪分行等紅磚西洋建築。中之島的這段轉變，完美濃縮了日本從封建商業過渡到近代資本主義的歷史軌跡！"}]}, {"day": 8, "date": "11/02", "weekday": "週一", "title": "千載古都風華・清水寺、二三年坂與祇園", "highlightName": "清水寺 & 祇園花見小路", "category": "京都古都", "illuType": "kiyomizu", "notes": "清晨從大阪搭車前往京都！參觀西元778年清水寺清水舞台與音羽瀑布，漫步二年坂、三年坂、八坂神社，穿梭花見小路，下午參觀京都鐵道博物館與京都塔！", "items": [{"time": "07:00", "title": "パラゴン花園町 出發前往京都", "category": "早起出發", "type": "stay", "duration": "出發", "must": false, "desc": "步行至車站搭車，搭乘市巴士206號至「馬町站」下車，步行上清水坂。", "transitNext": {"type": "train", "text": "電車加巴士 01 時 29 分 (¥230)"}}, {"time": "08:29", "title": "清水寺 (Kiyomizu-dera)", "category": "世界文化遺產", "type": "spot", "duration": "停留 01 時 00 分", "must": true, "desc": "懸造工法139根櫸木柱懸崖支撐，不使用一根釘子的木造結構抗震奇蹟！", "transitNext": {"type": "walk", "text": "步行 00 時 10 分"}}, {"time": "09:39", "title": "二寧坂 (二年坂)", "category": "石板古街", "type": "spot", "duration": "停留 01 時 00 分", "must": true, "desc": "豐臣秀吉妻子寧寧祈安產道，大正昭和傳統木造町家建築群，3:4復古視角拍照！", "transitNext": {"type": "walk", "text": "步行 00 時 05 分"}}, {"time": "10:41", "title": "一念坂 (一年坂)", "category": "寧靜步道", "type": "spot", "duration": "停留 01 時 00 分", "must": false, "desc": "相較熱鬧的二年坂與三年坂，一念坂更幽靜雅緻，傳統茶屋與手工藝小店。", "transitNext": {"type": "walk", "text": "步行 00 時 07 分"}}, {"time": "11:50", "title": "京都八坂神社", "category": "祇園總本社", "type": "spot", "duration": "停留 01 時 00 分", "must": true, "desc": "超過1350年歷史！美御前社美容水滴兩三滴美化容顏心靈，舞殿掛滿商家奉納燈籠！", "transitNext": {"type": "walk", "text": "步行 00 時 05 分"}}, {"time": "12:57", "title": "祇園花見小路通", "category": "花街茶屋", "type": "spot", "duration": "停留 01 時 00 分", "must": true, "desc": "京都最知名花街！格子窗暗色木造町家，偶遇藝伎穿梭，私巷嚴禁拍照守護隱私。", "transitNext": {"type": "train", "text": "搭乘巴士/電車 00 時 20 分"}}, {"time": "14:21", "title": "京都鐵道博物館", "category": "鐵道殿堂", "type": "spot", "duration": "停留 02 時 00 分", "must": true, "desc": "1914年古老扇形車庫，從蒸汽機關車連桿機械到新幹線流體力學文明開化！", "transitNext": {"type": "train", "text": "搭乘電車 00 時 15 分"}}, {"time": "16:36", "title": "京都塔 (Kyoto Tower)", "category": "古都燈塔", "type": "spot", "duration": "停留 01 時 00 分", "must": true, "desc": "高達131公尺京都最高地標，無鋼骨單殼圓筒結構，宛如沒有海的京都燈塔！", "transitNext": {"type": "train", "text": "搭乘電車返回大阪 00 時 54 分"}}, {"time": "18:30", "title": "パラゴン花園町", "category": "歸宿", "type": "stay", "duration": "夜間休息", "must": false, "desc": "順利完成京都朝聖之旅，回花園町舒服休息。"}], "spots": [{"num": "1", "name": "清水寺", "subTitle": "懸造工法139根櫸木支撐・不用一根釘子的木造奇蹟", "tag": "世界遺產", "must": true, "illu": "kiyomizu", "story": "建於西元778年的清水寺，歷史比平安京遷都還要早。它是延鎮上人在尋找清澈水源（音羽之瀑）時所開創，後來在征夷大將軍坂上田村麻呂的資助下擴建。經歷過十次以上的祝融之災，現在的建築多是1633年由德川家光重建。", "insider": "最具代表性的「清水舞台」，採用了名為「懸造（懸造り）」的傳統工法。它依靠139根巨大的櫸木柱子支撐在陡峭的懸崖上，整座結構沒有使用任何一顆釘子，完全透過木材的卡榫與精密計算的力學結構來抗震。邏輯若化作純粹的技術圖，其幾何對稱與承重設計絕對會令人著迷！"}, {"num": "2", "name": "二寧坂", "subTitle": "豐臣秀吉之妻寧寧的安產道・3:4復古視角拍照", "tag": "町家古道", "must": true, "illu": "temple", "story": "這幾條坡道是連接清水寺與高台寺、八坂神社的重要參拜道。「二寧坂」據傳是因為豐臣秀吉的妻子「寧寧（北政所）」常走這條路前往清水寺祈求安產而得名。這裡完整保留了京都大正時代到昭和初期的傳統町家建築群。", "insider": "這裡的光影與木造建築非常適合拍照。建議持相機畫面切換成3:4的復古比例，捕捉狹窄石板路與遠處八坂塔的襯托深感。溫潤的巷弄裡偶爾能遇見早起散步的在地居民，悠閒地走在青石板上的日常！"}, {"num": "3", "name": "京都八坂神社", "subTitle": "超過1350年歷史・美御前社美容水滴面生光", "tag": "祇園總社", "must": true, "illu": "torii", "story": "擁有超過1350年歷史，是日本全國八坂神社的總本社，在明治時期「神佛分離」前被稱為「祇園社」，如今是日本三大祭典之一「祇園祭」的主辦神社。", "insider": "來到這裡，別忘了去拜訪境內的「美御前社」，這裡供奉著守護美貌的女神。門前自然湧出的「美容水」，據說只要在臉上滴上兩三滴，不僅能美化肌膚，連心靈也會變得美麗。而巨大的舞殿上掛滿了無數由在地商家獻納的燈籠，黃昏點燈時格外壯觀！"}, {"num": "4", "name": "祇園花見小路通", "subTitle": "京都最具代表的花街茶屋・暗色木造町家與藝伎禮儀", "tag": "花街風華", "must": true, "illu": "temple", "story": "這裡是京都最知名的花街（Geisha District），也是體現京都傳統「藝伎文化」的中心。在江戶時代，這一帶曾是八坂神社與建仁寺的領地，後來逐漸發展成茶屋（Ochaya）與娛樂場所匯成的街道，兩旁是保存良好、帶有格子窗的暗色木造町家建築。", "insider": "傍晚時分，你可能有機會看見盛裝打扮、步履匆忙的藝伎（藝子與舞伎）穿梭茶屋之間。請注意：為了保護隱私，祇園的私有巷弄內嚴禁拍照，僅能在「花見小路」主街上拍照。細細觀察町家建築弄罐排護的傳統智慧！"}, {"num": "5", "name": "京都鐵道博物館", "subTitle": "1914年扇形車庫・從蒸汽機關車到新幹線的文明開化", "tag": "鐵道聖地", "must": true, "illu": "plane", "story": "這裡的前身是「梅小路蒸汽機關車館」，保存了日本鐵道發展史上最重要的火車頭，是鐵道迷與機械結構控的聖地。這裡完整保留了建於1914年的扇形車庫，是日本現存最古老完整的鋼筋混凝土扇形庫！", "insider": "從明治維新時期第一條連接新橋與橫濱的鐵路開始，鐵道就象徵著日本的「文明開化」。館內展示的不僅是火車，更是日本百年間的工業設計演進，從蒸汽機車的連桿機械構造，到新幹線流體力學的車頭設計！"}, {"num": "6", "name": "京都塔", "subTitle": "京都最高建築・無鋼骨單殼結構・古都夜景燈塔", "tag": "古都地標", "must": true, "illu": "kobe", "story": "於1964年落成的京都塔，高達131公尺，是京都市區最高的建築。它的建造時間剛好迎來了東海道新幹線開通與東京奧運（也有人說是象徵沒有海的京都之中的燈塔）。", "insider": "由於京都嚴格的歷史景觀保護法規（美觀地區限制），當時這座鋼骨與紅白相間的現代塔曾引發巨大爭議，然而它採用了極為獨特的「無鋼骨單殼結構」，將鋼板焊接成圓筒狀來支撐，矗立半世紀守護這座古老都城！"}]}, {"day": 9, "date": "11/03", "weekday": "週二", "title": "勝運達摩與道頓堀跑跑人・勝尾寺與心齋橋", "highlightName": "箕面勝尾寺 & 戎橋道頓堀", "category": "必勝許願", "illuType": "daruma", "notes": "早晨搭乘御堂筋線延長線至箕面萱野站，轉乘計程車抵達祈求勝運的勝尾寺，滿山遍野遍布數以萬計的紅色達摩不倒翁！午後回心齋橋、戎橋跑跑人打卡、吃一蘭拉麵！", "items": [{"time": "07:00 / 08:00", "title": "パラゴン花園町 出門", "category": "出發", "type": "stay", "duration": "晨間出發", "must": false, "desc": "從難波站搭乘御堂筋線到「箕面萱野站」（42分鐘），於南口搭計程車15分鐘直達勝尾寺（約3200円）。", "transitNext": {"type": "train", "text": "電車+計程車 00 時 58 分"}}, {"time": "08:58", "title": "Yuzuru Kids Park", "category": "公園綠意", "type": "spot", "duration": "停留 00 時 25 分", "must": false, "desc": "箕面當地的可愛吉祥物公園，短暫停步拍照呼吸秋晨新鮮空氣。", "transitNext": {"type": "taxi", "text": "車程 00 時 20 分"}}, {"time": "09:43", "title": "勝尾寺 (Katsuo-ji)", "category": "勝運之寺", "type": "spot", "duration": "停留 03 時 00 分", "must": true, "desc": "名震全日本求勝之寺！戰勝自我，滿山遍野岩石樹蔭塞滿數千紅色達摩不倒翁！", "transitNext": {"type": "taxi", "text": "搭車返回市區 00 時 40 分"}}, {"time": "13:01", "title": "Yuzuru Kids Park / 回程", "category": "途經", "type": "spot", "duration": "停留 00 時 25 分", "must": false, "transitNext": {"type": "train", "text": "搭乘御堂筋線直達心齋橋 00 時 25 分"}}, {"time": "13:26", "title": "心齋橋筋商店街", "category": "購物天國", "type": "shop", "duration": "停留 01 時 00 分", "must": true, "desc": "運河填平留其名，長達數百公尺拱廊街，傳承大阪商人郡（Akindo）平民商業文化！", "transitNext": {"type": "walk", "text": "步行 00 時 05 分"}}, {"time": "14:32", "title": "鈍屋拉麵 心齋橋店 (Zundoya)", "category": "濃郁拉麵", "type": "food", "duration": "停留 01 時 00 分", "must": true, "desc": "姬路超人氣背脂豚骨拉麵！醇厚大骨高湯配特製細麵、炙燒叉燒與辛子高菜。", "transitNext": {"type": "walk", "text": "步行 00 時 06 分"}}, {"time": "15:38", "title": "戎橋 (Ebisubashi)", "category": "跑跑人地標", "type": "spot", "duration": "停留 01 時 00 分", "must": true, "desc": "興建於1615年搭訕橋、球迷跳河慶祝聖地，1935年便在此守候的「固力果跑跑人」合影！", "transitNext": {"type": "walk", "text": "步行 00 時 01 分"}}, {"time": "16:39", "title": "道頓堀 (Dotonbori)", "category": "美食百老匯", "type": "spot", "duration": "停留 01 時 00 分", "must": true, "desc": "安井道頓開鑿運河，吃到倒在大阪（Kuidaore），巨大會動巨蟹與章魚立體招牌！", "transitNext": {"type": "walk", "text": "步行 00 時 03 分"}}, {"time": "17:42", "title": "一蘭 道頓堀店別館", "category": "天然豚骨拉麵", "type": "food", "duration": "停留 01 時 00 分", "must": true, "desc": "經典一人一格味集中座位，天然豚骨高湯與赤紅秘傳醬汁熱騰騰暖胃！", "transitNext": {"type": "train", "text": "搭乘電車 00 時 15 分"}}, {"time": "18:56", "title": "パラゴン花園町", "category": "歸宿整理", "type": "stay", "duration": "最後打包", "must": false, "desc": "返回民宿打包行李箱，將十天來的紀念品與零食妥善裝箱，準備明天返程。"}], "spots": [{"num": "1", "name": "勝尾寺", "subTitle": "以「求勝」聞名的古老佛寺・數以千計的必勝達摩不倒翁", "tag": "勝運勝地", "must": true, "illu": "daruma", "story": "這是一座以「求勝」聞名的古老寺廟。建於西元727年，因清和天皇在此祈願病癒，便御賜「勝王寺」之名，後來寺方為表達謙遜，將「王」改為音近的「尾」，意為「戰勝自我」，從此成為歷代將領與平民祈求勝運的聖地。", "insider": "寺內無處不在、密密麻麻的紅色「達摩（Daruma）」是這裡最震撼的奇景！信徒會買達摩來許願，並在願望達成後將其畫上雙眼。你可以看到岩石、燈籠甚至樹蔭下都塞滿了無數象徵百折不撓的小達摩，充滿了特殊的信仰生命力！"}, {"num": "2", "name": "心齋橋", "subTitle": "運河填平留其名・長達數百公尺的商人郡拱廊街", "tag": "購物商圈", "must": true, "illu": "shop", "story": "這裡曾是一條繁忙的運河與橋樑，名字源於1622年由商人岡田心齋在此建造的「心齋橋」。當時是為了連結商圈與住宅區，雖然運河在二戰後被填平，橋樑也已不復存在，但「心齋橋」這個名字卻作為大阪最具代表性的商業聖地被保留了下來。", "insider": "這條長達數百公尺的「拱廊式」商店街，繼承了大阪「商人郡（Akindo）」的歷史基因。街道上方覆蓋的棚頂能遮風避雨，兩旁則聚集了無數百年老鋪、百貨與潮流名店。走在這裡，可以深刻感受到大阪從江戶時代延續至今、極具活力與韌性的平民商業文化！"}, {"num": "3", "name": "戎橋", "subTitle": "道頓堀最靈魂地標・今宮戎神社參道・固力果跑跑人", "tag": "打卡地標", "must": true, "illu": "namba", "story": "興建於1615年，是橫跨道頓堀川最著名的步道橋。這座橋最初是為了方便北邊的商人與百姓，跨河前往南邊的「今宮戎神社」參拜商賣之神（惠比壽，Ebisu）而建造，因而得名「戎橋」。", "insider": "這裡現在是大阪最繁華的交叉點，俗稱「搭訕橋」或「慶祝聖地」（如棒球奪冠時球迷會集體跳河慶祝）。站在橋上，你可以用絕佳的角度與1935年便在此守候的「固力果跑跑人」看板合影。這座橋見證了大阪人幾百年的歡樂、狂歡與日常，是道頓堀川最具靈魂的地標！"}, {"num": "4", "name": "道頓堀", "subTitle": "安井道頓開鑿運河・吃倒在大阪與巨大會動招牌", "tag": "美食天堂", "must": true, "illu": "food", "story": "這是一條開鑿於1612年的人工運河。當時富商安井道頓傾盡家產與生命開挖，雖然在1615年的大阪之役中戰死，其族人仍完成了這項壯舉。領主為感念他，便以「道頓堀」命名。幕府後來將此地規劃為戲院與娛樂區，造就了「吃到倒在大阪（Kuidaore）」的飲食與庶民文化！", "insider": "兩岸五彩繽紛、巨大無比且會動的立體招牌（如巨蟹、大章魚）是這裡的經典招牌。可以漫步在繁華的河岸，或在法善寺橫丁的石板小路間尋找江戶時代的「大阪廚房」兼娛樂天堂的獨特魅力！"}, {"num": "5", "name": "鈍屋拉麵 心齋橋店", "subTitle": "姬路極濃背脂豚骨・炙燒叉燒與辛子高菜絕品", "tag": "排隊名店", "must": true, "illu": "food", "story": "誕生於兵庫姬路的濃厚拉麵霸王！使用精選豬大骨長達二十小時以上熬煮出濃郁膠質高湯，炙燒叉燒香氣四溢。", "insider": "可依個人喜好自選背脂油脂厚度（清爽、普通、濃厚），大口吃麵同時夾入隨桌附贈的辛子高菜，微辣提鮮直衝味蕾！"}, {"num": "6", "name": "一蘭 道頓堀店別館", "subTitle": "一人一格味集中座位・天然豚骨與赤紅秘傳醬汁", "tag": "拉麵傳奇", "must": true, "illu": "food", "story": "全球最具代表性的日本豚骨拉麵之一，以一人一格的「味集中座位」專注品嚐拉麵原味。", "insider": "別館座位多且空間舒適，推薦勾選麵條超硬、大蒜特量、赤紅秘傳辣醬一倍，感受豚骨油脂與唐辛子在舌尖交織的完美平衡！"}]}, {"day": 10, "date": "11/04", "weekday": "週三", "title": "美好返程・關西機場與滿載回憶", "highlightName": "關西國際機場 KIX", "category": "平安返航", "illuType": "plane", "notes": "上午 10:00 退房前往關西機場。高雄組搭乘 AirAsia AK171（14:10 起飛）返航小港，台北組搭乘樂桃航空 MM27（15:25 起飛）返航桃園。在第一與第二航廈免稅店最後衝刺採買伴手禮，帶著滿載美好回憶平安返家！", "items": [{"time": "10:00", "title": "パラゴン花園町 (退房)", "category": "退房出發", "type": "stay", "duration": "準時退房", "must": false, "desc": "檢查隨身貴重物品、護照、充電線，鎖上門鎖告別住了九晚的溫馨公寓，前往天下茶屋搭乘南海電鐵。", "transitNext": {"type": "train", "text": "搭乘南海特急/急行電車 00 時 59 分"}}, {"time": "11:40", "title": "關西國際機場 (雙航線返航報到)", "category": "班機報到", "type": "stay", "duration": "停留 02 時 30 分", "must": true, "desc": "【高雄組】第一航廈 (T1) 辦理 AirAsia AK171 班機報到（14:10 日本起飛 ➔ 16:30 抵高雄）。\n【台北組】第二航廈 (T2) 辦理樂桃航空 MM27 班機報到（15:25 日本起飛 ➔ 17:55 抵桃園）。通關後採買生巧克力與名產，平安返抵台灣！"}], "spots": [{"num": "1", "name": "パラゴン花園町 (退房感念)", "subTitle": "九晚溫馨歸宿・花園町早晨漫步道別", "tag": "告別溫宿", "must": false, "illu": "stay", "story": "陪伴了整整十天關西探索的溫暖據點。走出公寓，看著花園町站前的大阪居民騎著自行車通勤，感受最後一份大阪晨間日常。", "insider": "10:00 前辦理退房，檢查隨身護照、錢包與所有充電器，步行至天下茶屋站搭乘南海電鐵特急前往關西機場。"}, {"num": "2", "name": "關西國際機場 (雙班機返程與伴手禮最後衝刺)", "subTitle": "T1 亞航 AK171 ＋ T2 樂桃 MM27・幸福滿載平安返航", "tag": "伴手禮掃貨", "must": true, "illu": "plane", "story": "旅途的終點也是美好回憶的起點！高雄組於第一航廈辦理 AirAsia AK171 班機報到（14:10 起飛）；台北組搭乘接駁車前往第二航廈辦理樂桃航空 MM27 班機報到（15:25 起飛）。兩組人在十天滿滿足跡後互道珍重！", "insider": "進入管制區後前往免稅商店街，ROYCE 生巧克力、白色戀人、東京香蕉、關西限定宇治抹茶年輪蛋糕一應俱全。用滿滿的伴手禮和十天豐富的相片回憶，為本次關西之旅畫下最完美的句點！"}]}];
 
-    // 待辦清單預設資料 (支援 LocalStorage 儲存)
     const DEFAULT_CHECKLIST = [
       { id: "c1", text: "護照正本（效期 6 個月以上）", group: "證件與票券", checked: true },
       { id: "c2", text: "Visit Japan Web 入境審查填寫完畢", group: "證件與票券", checked: true },
-      { id: "c3", text: "機票確認信 / 電子登機證截圖", group: "證件與票券", checked: true },
+      { id: "c3", text: "機票確認信 / 電子登機證截圖 (樂桃 MM24/27、亞航 AK170/171)", group: "證件與票券", checked: true },
       { id: "c4", text: "日本網卡 / eSIM 設定開通", group: "證件與票券", checked: true },
       { id: "c5", text: "日幣現金（木津市場/勝尾寺投錢備用）", group: "隨身物品", checked: false },
       { id: "c6", text: "ICOCA 交通卡（綁定 Apple Pay 或實體卡）", group: "隨身物品", checked: false },
@@ -2574,131 +1998,33 @@
       { id: "c12", text: "折疊大提袋（裝免稅伴手禮用）", group: "隨身物品", checked: false }
     ];
 
-    // 初始化狀態
     let currentActiveDay = 1;
     let currentFilter = "all";
+    let currentViewMode = "both"; // 'both', 'spots', 'timeline'
     let checklistData = JSON.parse(localStorage.getItem("kansai_checklist_2026")) || DEFAULT_CHECKLIST;
 
-    // SVG 插圖庫 (日系繪本純平塗向量)
+    // SVG 插畫庫
     const ICONS_SVG = {
-      plane: `
-        <svg viewBox="0 0 100 100" fill="none">
-          <ellipse cx="50" cy="50" rx="36" ry="12" transform="rotate(-30 50 50)" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/>
-          <polygon points="50,25 35,45 65,45" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3"/>
-          <polygon points="45,60 40,75 55,75" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2"/>
-          <circle cx="65" cy="40" r="3" fill="#FFFFFF"/>
-        </svg>
-      `,
-      osaka: `
-        <svg viewBox="0 0 100 100" fill="none">
-          <polygon points="20,85 10,95 90,95 80,85" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/>
-          <rect x="25" y="65" width="50" height="20" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3"/>
-          <path d="M15 65 Q 50 55 85 65 L 75 50 L 25 50 Z" fill="#B9DAA5" stroke="#3E3A39" stroke-width="3"/>
-          <rect x="32" y="32" width="36" height="18" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3"/>
-          <polygon points="50,15 30,32 70,32" fill="#B9DAA5" stroke="#3E3A39" stroke-width="3"/>
-          <circle cx="50" cy="14" r="3" fill="#F6D27A" stroke="#3E3A39" stroke-width="2"/>
-        </svg>
-      `,
-      kobe: `
-        <svg viewBox="0 0 100 100" fill="none">
-          <path d="M40 25 Q 50 60 38 92 L 62 92 Q 50 60 60 25 Z" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/>
-          <ellipse cx="50" cy="25" rx="14" ry="7" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3"/>
-          <rect x="48" y="8" width="4" height="17" fill="#3E3A39"/>
-          <circle cx="50" cy="6" r="3" fill="#F6D27A" stroke="#3E3A39" stroke-width="2"/>
-          <line x1="41" y1="35" x2="59" y2="80" stroke="#3E3A39" stroke-width="2"/>
-          <line x1="59" y1="35" x2="41" y2="80" stroke="#3E3A39" stroke-width="2"/>
-        </svg>
-      `,
-      kiyomizu: `
-        <svg viewBox="0 0 100 100" fill="none">
-          <!-- 三重塔 -->
-          <rect x="44" y="65" width="12" height="25" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2.5"/>
-          <path d="M25 65 Q 50 55 75 65 L 68 52 L 32 52 Z" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/>
-          <rect x="44" y="42" width="12" height="10" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2"/>
-          <path d="M30 42 Q 50 34 70 42 L 64 30 L 36 30 Z" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/>
-          <rect x="45" y="24" width="10" height="6" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2"/>
-          <polygon points="50,14 38,24 62,24" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/>
-          <line x1="50" y1="4" x2="50" y2="14" stroke="#F6D27A" stroke-width="3"/>
-          <circle cx="50" cy="4" r="2.5" fill="#F6D27A"/>
-        </svg>
-      `,
-      daruma: `
-        <svg viewBox="0 0 100 100" fill="none">
-          <ellipse cx="50" cy="52" rx="36" ry="40" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/>
-          <circle cx="50" cy="42" r="22" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2.5"/>
-          <circle cx="42" cy="38" r="4.5" fill="#3E3A39"/>
-          <circle cx="58" cy="38" r="4.5" fill="#3E3A39"/>
-          <circle cx="43.5" cy="36.5" r="1.5" fill="#FFFFFF"/>
-          <circle cx="59.5" cy="36.5" r="1.5" fill="#FFFFFF"/>
-          <path d="M35 28 Q 42 32 46 30" stroke="#3E3A39" stroke-width="3" stroke-linecap="round"/>
-          <path d="M65 28 Q 58 32 54 30" stroke="#3E3A39" stroke-width="3" stroke-linecap="round"/>
-          <path d="M46 50 Q 50 54 54 50" stroke="#3E3A39" stroke-width="2.5" stroke-linecap="round"/>
-          <rect x="38" y="68" width="24" height="15" rx="4" fill="#F6D27A" stroke="#3E3A39" stroke-width="2"/>
-          <text x="50" y="79" font-size="11" font-weight="900" fill="#3E3A39" text-anchor="middle">勝</text>
-        </svg>
-      `,
-      namba: `
-        <svg viewBox="0 0 100 100" fill="none">
-          <!-- 難波八阪 獅子殿 -->
-          <ellipse cx="50" cy="50" rx="38" ry="34" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/>
-          <circle cx="20" cy="28" r="10" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/>
-          <circle cx="80" cy="28" r="10" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/>
-          <!-- 眼睛雙瞳 -->
-          <circle cx="36" cy="40" r="7" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2.5"/>
-          <circle cx="64" cy="40" r="7" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2.5"/>
-          <circle cx="36" cy="40" r="3.5" fill="#3E3A39"/>
-          <circle cx="64" cy="40" r="3.5" fill="#3E3A39"/>
-          <!-- 獅子大口 (吸入厄運) -->
-          <path d="M30 58 Q 50 54 70 58 Q 65 78 50 78 Q 35 78 30 58 Z" fill="#3E3A39" stroke="#3E3A39" stroke-width="2"/>
-          <!-- 獠牙 -->
-          <polygon points="34,58 38,58 36,65" fill="#FFFFFF"/>
-          <polygon points="66,58 62,58 64,65" fill="#FFFFFF"/>
-        </svg>
-      `,
-      torii: `
-        <svg viewBox="0 0 100 100" fill="none">
-          <rect x="15" y="20" width="70" height="9" rx="3" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/>
-          <rect x="22" y="29" width="56" height="5" rx="1" fill="#3E3A39"/>
-          <rect x="30" y="34" width="8" height="56" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/>
-          <rect x="62" y="34" width="8" height="56" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/>
-          <rect x="24" y="48" width="52" height="7" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/>
-          <rect x="46" y="34" width="8" height="14" fill="#F6D27A" stroke="#3E3A39" stroke-width="2"/>
-        </svg>
-      `,
-      wheel: `
-        <svg viewBox="0 0 100 100" fill="none">
-          <circle cx="50" cy="45" r="32" stroke="#3E3A39" stroke-width="3" fill="#FFFDF9"/>
-          <circle cx="50" cy="45" r="18" stroke="#3E3A39" stroke-width="2"/>
-          <line x1="50" y1="13" x2="50" y2="77" stroke="#3E3A39" stroke-width="2"/>
-          <line x1="18" y1="45" x2="82" y2="45" stroke="#3E3A39" stroke-width="2"/>
-          <polygon points="46,45 32,92 68,92 54,45" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.5"/>
-          <circle cx="50" cy="13" r="4" fill="#F2A497" stroke="#3E3A39" stroke-width="1.5"/>
-          <circle cx="82" cy="45" r="4" fill="#A8D3E6" stroke="#3E3A39" stroke-width="1.5"/>
-          <circle cx="50" cy="77" r="4" fill="#B9DAA5" stroke="#3E3A39" stroke-width="1.5"/>
-          <circle cx="18" cy="45" r="4" fill="#F6D27A" stroke="#3E3A39" stroke-width="1.5"/>
-        </svg>
-      `,
-      bridge: `
-        <svg viewBox="0 0 100 100" fill="none">
-          <path d="M15 65 Q 50 35 85 65" stroke="#3E3A39" stroke-width="4" fill="none"/>
-          <rect x="10" y="65" width="80" height="8" rx="2" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/>
-          <line x1="28" y1="55" x2="28" y2="65" stroke="#3E3A39" stroke-width="2"/>
-          <line x1="50" y1="45" x2="50" y2="65" stroke="#3E3A39" stroke-width="2"/>
-          <line x1="72" y1="55" x2="72" y2="65" stroke="#3E3A39" stroke-width="2"/>
-          <path d="M5 80 Q 25 75 50 80 T 95 80" stroke="#A8D3E6" stroke-width="3" fill="none"/>
-        </svg>
-      `
+      plane: `<svg viewBox="0 0 100 100" fill="none"><ellipse cx="50" cy="50" rx="36" ry="12" transform="rotate(-30 50 50)" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/><polygon points="50,25 35,45 65,45" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3"/><polygon points="45,60 40,75 55,75" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2"/><circle cx="65" cy="40" r="3" fill="#FFFFFF"/></svg>`,
+      osaka: `<svg viewBox="0 0 100 100" fill="none"><polygon points="20,85 10,95 90,95 80,85" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/><rect x="25" y="65" width="50" height="20" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3"/><path d="M15 65 Q 50 55 85 65 L 75 50 L 25 50 Z" fill="#B9DAA5" stroke="#3E3A39" stroke-width="3"/><rect x="32" y="32" width="36" height="18" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3"/><polygon points="50,15 30,32 70,32" fill="#B9DAA5" stroke="#3E3A39" stroke-width="3"/><circle cx="50" cy="14" r="3" fill="#F6D27A" stroke="#3E3A39" stroke-width="2"/></svg>`,
+      kobe: `<svg viewBox="0 0 100 100" fill="none"><path d="M40 25 Q 50 60 38 92 L 62 92 Q 50 60 60 25 Z" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/><ellipse cx="50" cy="25" rx="14" ry="7" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3"/><rect x="48" y="8" width="4" height="17" fill="#3E3A39"/><circle cx="50" cy="6" r="3" fill="#F6D27A" stroke="#3E3A39" stroke-width="2"/><line x1="41" y1="35" x2="59" y2="80" stroke="#3E3A39" stroke-width="2"/><line x1="59" y1="35" x2="41" y2="80" stroke="#3E3A39" stroke-width="2"/></svg>`,
+      kiyomizu: `<svg viewBox="0 0 100 100" fill="none"><rect x="44" y="65" width="12" height="25" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2.5"/><path d="M25 65 Q 50 55 75 65 L 68 52 L 32 52 Z" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/><rect x="44" y="42" width="12" height="10" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2"/><path d="M30 42 Q 50 34 70 42 L 64 30 L 36 30 Z" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/><rect x="45" y="24" width="10" height="6" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2"/><polygon points="50,14 38,24 62,24" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/><line x1="50" y1="4" x2="50" y2="14" stroke="#F6D27A" stroke-width="3"/><circle cx="50" cy="4" r="2.5" fill="#F6D27A"/></svg>`,
+      daruma: `<svg viewBox="0 0 100 100" fill="none"><ellipse cx="50" cy="52" rx="36" ry="40" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/><circle cx="50" cy="42" r="22" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2.5"/><circle cx="42" cy="38" r="4.5" fill="#3E3A39"/><circle cx="58" cy="38" r="4.5" fill="#3E3A39"/><circle cx="43.5" cy="36.5" r="1.5" fill="#FFFFFF"/><circle cx="59.5" cy="36.5" r="1.5" fill="#FFFFFF"/><path d="M35 28 Q 42 32 46 30" stroke="#3E3A39" stroke-width="3" stroke-linecap="round"/><path d="M65 28 Q 58 32 54 30" stroke="#3E3A39" stroke-width="3" stroke-linecap="round"/><path d="M46 50 Q 50 54 54 50" stroke="#3E3A39" stroke-width="2.5" stroke-linecap="round"/><rect x="38" y="68" width="24" height="15" rx="4" fill="#F6D27A" stroke="#3E3A39" stroke-width="2"/><text x="50" y="79" font-size="11" font-weight="900" fill="#3E3A39" text-anchor="middle">勝</text></svg>`,
+      namba: `<svg viewBox="0 0 100 100" fill="none"><ellipse cx="50" cy="50" rx="38" ry="34" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/><circle cx="20" cy="28" r="10" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/><circle cx="80" cy="28" r="10" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/><circle cx="36" cy="40" r="7" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2.5"/><circle cx="64" cy="40" r="7" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2.5"/><circle cx="36" cy="40" r="3.5" fill="#3E3A39"/><circle cx="64" cy="40" r="3.5" fill="#3E3A39"/><path d="M30 58 Q 50 54 70 58 Q 65 78 50 78 Q 35 78 30 58 Z" fill="#3E3A39" stroke="#3E3A39" stroke-width="2"/><polygon points="34,58 38,58 36,65" fill="#FFFFFF"/><polygon points="66,58 62,58 64,65" fill="#FFFFFF"/></svg>`,
+      torii: `<svg viewBox="0 0 100 100" fill="none"><rect x="15" y="20" width="70" height="9" rx="3" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/><rect x="22" y="29" width="56" height="5" rx="1" fill="#3E3A39"/><rect x="30" y="34" width="8" height="56" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/><rect x="62" y="34" width="8" height="56" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/><rect x="24" y="48" width="52" height="7" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/><rect x="46" y="34" width="8" height="14" fill="#F6D27A" stroke="#3E3A39" stroke-width="2"/></svg>`,
+      wheel: `<svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="45" r="32" stroke="#3E3A39" stroke-width="3" fill="#FFFDF9"/><circle cx="50" cy="45" r="18" stroke="#3E3A39" stroke-width="2"/><line x1="50" y1="13" x2="50" y2="77" stroke="#3E3A39" stroke-width="2"/><line x1="18" y1="45" x2="82" y2="45" stroke="#3E3A39" stroke-width="2"/><polygon points="46,45 32,92 68,92 54,45" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.5"/><circle cx="50" cy="13" r="4" fill="#F2A497" stroke="#3E3A39" stroke-width="1.5"/><circle cx="82" cy="45" r="4" fill="#A8D3E6" stroke="#3E3A39" stroke-width="1.5"/><circle cx="50" cy="77" r="4" fill="#B9DAA5" stroke="#3E3A39" stroke-width="1.5"/><circle cx="18" cy="45" r="4" fill="#F6D27A" stroke="#3E3A39" stroke-width="1.5"/></svg>`,
+      bridge: `<svg viewBox="0 0 100 100" fill="none"><path d="M15 65 Q 50 35 85 65" stroke="#3E3A39" stroke-width="4" fill="none"/><rect x="10" y="65" width="80" height="8" rx="2" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/><line x1="28" y1="55" x2="28" y2="65" stroke="#3E3A39" stroke-width="2"/><line x1="50" y1="45" x2="50" y2="65" stroke="#3E3A39" stroke-width="2"/><line x1="72" y1="55" x2="72" y2="65" stroke="#3E3A39" stroke-width="2"/><path d="M5 80 Q 25 75 50 80 T 95 80" stroke="#A8D3E6" stroke-width="3" fill="none"/></svg>`,
+      food: `<svg viewBox="0 0 100 100" fill="none"><path d="M15 48 Q 50 85 85 48 Z" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/><ellipse cx="50" cy="48" rx="35" ry="12" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3"/><circle cx="42" cy="45" r="5" fill="#F2A497"/><circle cx="56" cy="46" r="4" fill="#B9DAA5"/><circle cx="50" cy="40" r="3" fill="#3E3A39"/><line x1="20" y1="30" x2="75" y2="20" stroke="#3E3A39" stroke-width="2.5"/><line x1="20" y1="36" x2="75" y2="26" stroke="#3E3A39" stroke-width="2.5"/></svg>`,
+      shop: `<svg viewBox="0 0 100 100" fill="none"><rect x="18" y="42" width="64" height="46" rx="4" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3"/><polygon points="12,42 22,20 78,20 88,42" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/><rect x="36" y="58" width="28" height="30" fill="#F6D27A" stroke="#3E3A39" stroke-width="2"/><circle cx="70" cy="30" r="6" fill="#F6D27A" stroke="#3E3A39" stroke-width="2"/></svg>`,
+      temple: `<svg viewBox="0 0 100 100" fill="none"><polygon points="50,15 20,40 80,40" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/><rect x="28" y="40" width="44" height="48" fill="#FFFFFF" stroke="#3E3A39" stroke-width="3"/><rect x="42" y="56" width="16" height="32" fill="#F6D27A" stroke="#3E3A39" stroke-width="2"/><line x1="15" y1="40" x2="85" y2="40" stroke="#3E3A39" stroke-width="3"/></svg>`,
+      stay: `<svg viewBox="0 0 100 100" fill="none"><rect x="16" y="25" width="68" height="60" rx="8" fill="#FFF9F2" stroke="#3E3A39" stroke-width="3"/><rect x="26" y="52" width="48" height="26" rx="4" fill="#FFFFFF" stroke="#3E3A39" stroke-width="2"/><rect x="26" y="62" width="48" height="16" rx="2" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2"/><circle cx="38" cy="56" r="4" fill="#F2A497"/><circle cx="62" cy="56" r="4" fill="#F2A497"/></svg>`
     };
 
-    // 1. 初始化出發倒數計時器
     function initCountdown() {
-      // 出發目標時間：2026-10-26 13:10:00 (日本時間)
       const targetDate = new Date("2026-10-26T13:10:00+09:00").getTime();
-
       function updateClock() {
         const now = new Date().getTime();
         const distance = targetDate - now;
-
         if (distance <= 0) {
           document.getElementById("cdDays").textContent = "0";
           document.getElementById("cdHours").textContent = "00";
@@ -2707,7 +2033,6 @@
           document.getElementById("cdStatus").textContent = "🎉 旅程已經正式啟航！盡情享受關西每一刻吧！";
           return;
         }
-
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
@@ -2718,16 +2043,13 @@
         document.getElementById("cdMins").textContent = String(minutes).padStart(2, '0');
         document.getElementById("cdSecs").textContent = String(seconds).padStart(2, '0');
       }
-
       updateClock();
       setInterval(updateClock, 1000);
     }
 
-    // 2. 渲染上方 10 天日期切換按鈕
     function renderDateTabs() {
       const container = document.getElementById("dateTabsContainer");
       container.innerHTML = "";
-
       ITINERARY_DATA.forEach(item => {
         const btn = document.createElement("button");
         btn.className = `date-tab-btn ${item.day === currentActiveDay ? 'active' : ''}`;
@@ -2744,12 +2066,8 @@
       });
     }
 
-    // 3. 切換選定天數（含彈跳動畫）
     function switchDay(dayNum) {
-      if (currentActiveDay === dayNum) return;
       currentActiveDay = dayNum;
-
-      // 更新按鈕 active 樣式
       document.querySelectorAll(".date-tab-btn").forEach(btn => {
         const btnDay = parseInt(btn.getAttribute("data-day"), 10);
         btn.classList.toggle("active", btnDay === dayNum);
@@ -2757,24 +2075,22 @@
           btn.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
         }
       });
-
       renderDayContent();
     }
 
-    // 4. 渲染當日行程主內容
+    // 渲染當日內容：時間軸 + 專屬景點區域
     function renderDayContent() {
       const dayData = ITINERARY_DATA.find(d => d.day === currentActiveDay);
       if (!dayData) return;
 
       const area = document.getElementById("dayContentArea");
-      // 重新觸發彈跳動畫
       area.classList.remove("daily-schedule-view");
-      void area.offsetWidth; // 強制重繪
+      void area.offsetWidth;
       area.classList.add("daily-schedule-view");
 
       const illuSvg = ICONS_SVG[dayData.illuType] || ICONS_SVG.osaka;
 
-      // 篩選行程項目
+      // 1. 篩選時間軸項目
       const filteredItems = dayData.items.filter(item => {
         if (currentFilter === "all") return true;
         if (currentFilter === "must") return item.must === true;
@@ -2784,77 +2100,161 @@
         return true;
       });
 
-      let itemsHtml = "";
-      if (filteredItems.length === 0) {
-        itemsHtml = `
-          <div style="background-color: var(--card-white); border: 2px solid var(--border-ink); border-radius: var(--radius-lg); padding: 24px; text-align: center; margin-top: 10px;">
-            <div style="font-size: 2rem; margin-bottom: 6px;">🍃</div>
-            <div style="font-weight: 900;">此篩選條件下無符合項目</div>
-            <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">請切換回「全部行程」或嘗試其他標籤。</div>
-          </div>
-        `;
-      } else {
-        itemsHtml = `
-          <div class="timeline-container">
-            <div class="timeline-line"></div>
-            ${filteredItems.map((item, index) => {
-              // 類別標籤樣式
-              let tagClass = "tag-culture";
-              if (item.type === "food") tagClass = "tag-food";
-              if (item.type === "shop") tagClass = "tag-shop";
-              if (item.type === "stay") tagClass = "tag-stay";
+      // 2. 篩選景點專欄項目
+      const filteredSpots = (dayData.spots || []).filter(spot => {
+        if (currentFilter === "all") return true;
+        if (currentFilter === "must") return spot.must === true;
+        if (currentFilter === "food") return spot.tag.includes("海鮮") || spot.tag.includes("美味") || spot.tag.includes("拉麵") || spot.tag.includes("美食");
+        if (currentFilter === "spot") return spot.tag.includes("名勝") || spot.tag.includes("神社") || spot.tag.includes("古剎") || spot.tag.includes("世界遺產") || spot.tag.includes("古都");
+        if (currentFilter === "shop") return spot.tag.includes("購物") || spot.tag.includes("商街") || spot.tag.includes("電玩") || spot.tag.includes("旗艦");
+        return true;
+      });
 
-              // 交通方式區塊
-              let transitHtml = "";
-              if (item.transitNext && currentFilter === "all") {
-                let tClass = "transit-walk";
-                let tIcon = "🚶";
-                if (item.transitNext.type === "train") { tClass = "transit-train"; tIcon = "🚇"; }
-                if (item.transitNext.type === "bus") { tClass = "transit-bus"; tIcon = "🚌"; }
-                if (item.transitNext.type === "taxi") { tClass = "transit-taxi"; tIcon = "🚕"; }
+      // 構建時間軸 HTML
+      let timelineHtml = "";
+      if (currentViewMode === "both" || currentViewMode === "timeline") {
+        if (filteredItems.length === 0) {
+          timelineHtml = `
+            <div style="background-color: var(--card-white); border: 2px solid var(--border-ink); border-radius: var(--radius-lg); padding: 18px; text-align: center; margin-bottom: 20px;">
+              <div style="font-size: 1.5rem; margin-bottom: 4px;">🍃</div>
+              <div style="font-weight: 900;">此篩選條件下無時間軸行程</div>
+            </div>
+          `;
+        } else {
+          timelineHtml = `
+            <div style="margin-bottom: 12px; font-weight: 900; font-size: 1.15rem; display: flex; align-items: center; gap: 6px;">
+              <span>⏱️</span> <span>本日行程時間軸（路線與交通）</span>
+            </div>
+            <div class="timeline-container">
+              <div class="timeline-line"></div>
+              ${filteredItems.map((item, index) => {
+                let tagClass = "tag-culture";
+                if (item.type === "food") tagClass = "tag-food";
+                if (item.type === "shop") tagClass = "tag-shop";
+                if (item.type === "stay") tagClass = "tag-stay";
 
-                transitHtml = `
-                  <div class="transit-segment ${tClass}">
-                    <span>${tIcon}</span>
-                    <span>${item.transitNext.text}</span>
+                let transitHtml = "";
+                if (item.transitNext && currentFilter === "all") {
+                  let tClass = "transit-walk";
+                  let tIcon = "🚶";
+                  if (item.transitNext.type === "train") { tClass = "transit-train"; tIcon = "🚇"; }
+                  if (item.transitNext.type === "bus") { tClass = "transit-bus"; tIcon = "🚌"; }
+                  if (item.transitNext.type === "taxi") { tClass = "transit-taxi"; tIcon = "🚕"; }
+
+                  transitHtml = `
+                    <div class="transit-segment ${tClass}">
+                      <span>${tIcon}</span>
+                      <span>${item.transitNext.text}</span>
+                    </div>
+                  `;
+                }
+
+                return `
+                  <div class="timeline-node">
+                    <div class="timeline-dot">${index + 1}</div>
+                    <div class="timeline-card">
+                      <div class="card-top-row">
+                        <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                          <span class="time-badge">⏰ ${item.time}</span>
+                          <span class="spot-category-tag ${tagClass}">${item.category}</span>
+                        </div>
+                        ${item.must ? '<span class="must-visit-stamp">★ 必去亮點</span>' : ''}
+                      </div>
+
+                      <div class="spot-name">
+                        <span>${item.title}</span>
+                      </div>
+
+                      ${item.duration ? `<div class="spot-duration">⏳ 停留預估：${item.duration}</div>` : ''}
+                      ${item.desc ? `<div class="spot-story">📖 ${item.desc}</div>` : ''}
+                    </div>
+                    ${transitHtml}
                   </div>
                 `;
-              }
-
-              return `
-                <div class="timeline-node">
-                  <div class="timeline-dot">${index + 1}</div>
-                  <div class="timeline-card">
-                    <div class="card-top-row">
-                      <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-                        <span class="time-badge">⏰ ${item.time}</span>
-                        <span class="spot-category-tag ${tagClass}">${item.category}</span>
-                      </div>
-                      ${item.must ? '<span class="must-visit-stamp">★ 必去亮點</span>' : ''}
-                    </div>
-
-                    <div class="spot-name">
-                      <span>${item.title}</span>
-                    </div>
-
-                    ${item.duration ? `<div class="spot-duration">⏳ 停留預估：${item.duration}</div>` : ''}
-
-                    ${item.desc ? `<div class="spot-story">📖 ${item.desc}</div>` : ''}
-                  </div>
-                  ${transitHtml}
-                </div>
-              `;
-            }).join("")}
-          </div>
-        `;
+              }).join("")}
+            </div>
+          `;
+        }
       }
 
+      // 構建景點區域專欄 HTML (仿 PDF 繪本專欄版型，每一天都有！)
+      let spotsZoneHtml = "";
+      if (currentViewMode === "both" || currentViewMode === "spots") {
+        if (filteredSpots.length === 0) {
+          spotsZoneHtml = `
+            <div style="background-color: var(--card-white); border: 2px solid var(--border-ink); border-radius: var(--radius-lg); padding: 18px; text-align: center; margin-bottom: 20px;">
+              <div style="font-size: 1.5rem; margin-bottom: 4px;">🍃</div>
+              <div style="font-weight: 900;">此篩選條件下無符合景點專欄</div>
+            </div>
+          `;
+        } else {
+          spotsZoneHtml = `
+            <div class="spot-zone-wrapper">
+              <div class="spot-zone-header-card">
+                <div class="spot-zone-title">
+                  <span>🏛️</span>
+                  <span>Day ${dayData.day} 景點深度專欄與內行看門道（共 ${filteredSpots.length} 處景點）</span>
+                </div>
+                <span class="section-badge" style="background-color: var(--card-white);">繪本手帳版</span>
+              </div>
+
+              <div class="spot-cards-grid">
+                ${filteredSpots.map(spot => {
+                  const spotSvg = ICONS_SVG[spot.illu] || ICONS_SVG.osaka;
+                  return `
+                    <div class="spot-book-card">
+                      <div class="spot-banner-header ${spot.must ? 'pink' : 'brown'}">
+                        <div class="spot-banner-title">
+                          <span>【第${dayData.day}天】</span>
+                          <span>${spot.num}. ${spot.name}</span>
+                        </div>
+                        <div style="display: flex; gap: 6px; align-items: center;">
+                          <span class="pill-tag pill-yellow" style="font-size: 0.72rem; padding: 2px 8px; color: var(--text-main);">${spot.tag}</span>
+                          ${spot.must ? '<span class="must-visit-stamp" style="font-size: 0.72rem; padding: 2px 7px;">★ 必去</span>' : ''}
+                        </div>
+                      </div>
+
+                      <div class="spot-book-body">
+                        <div class="spot-illu-col">
+                          <div class="spot-illu-box anim-float">
+                            ${spotSvg}
+                          </div>
+                        </div>
+
+                        <div class="spot-content-col">
+                          <div class="spot-headline-title">
+                            ${spot.subTitle}
+                          </div>
+
+                          <div class="spot-narrative">
+                            ${spot.story}
+                          </div>
+
+                          ${spot.insider ? `
+                            <div class="spot-insider-box">
+                              <span class="spot-insider-badge">💡 內行看門道：</span>
+                              <span>${spot.insider}</span>
+                            </div>
+                          ` : ''}
+                        </div>
+                      </div>
+                    </div>
+                  `;
+                }).join("")}
+              </div>
+            </div>
+          `;
+        }
+      }
+
+      // 組合總覽卡片與各區塊
       area.innerHTML = `
         <div class="day-overview-card">
           <div class="day-overview-main">
             <div class="day-badge-row">
               <span class="pill-tag pill-yellow">Day ${dayData.day} · ${dayData.date} (${dayData.weekday})</span>
               <span class="pill-tag pill-pink">${dayData.category}</span>
+              <span class="pill-tag pill-blue">收錄 ${dayData.spots ? dayData.spots.length : 0} 處專屬景點</span>
             </div>
             <div class="day-title-text">${dayData.title}</div>
             <div class="day-notes-text">${dayData.notes}</div>
@@ -2864,16 +2264,28 @@
           </div>
         </div>
 
-        ${itemsHtml}
+        ${timelineHtml}
+        ${spotsZoneHtml}
       `;
     }
 
-    // 5. 初始化分類過濾按鈕
-    function initFilterBar() {
-      const buttons = document.querySelectorAll(".filter-chip");
-      buttons.forEach(btn => {
+    function initFilterAndModes() {
+      // 檢視模式按鈕 (全部 / 景點區域 / 時間軸)
+      const modeButtons = document.querySelectorAll(".mode-switch-btn");
+      modeButtons.forEach(btn => {
         btn.addEventListener("click", () => {
-          buttons.forEach(b => b.classList.remove("active"));
+          modeButtons.forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          currentViewMode = btn.getAttribute("data-mode");
+          renderDayContent();
+        });
+      });
+
+      // 景點分類過濾
+      const filterButtons = document.querySelectorAll(".filter-chip");
+      filterButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+          filterButtons.forEach(b => b.classList.remove("active"));
           btn.classList.add("active");
           currentFilter = btn.getAttribute("data-filter");
           renderDayContent();
@@ -2881,18 +2293,15 @@
       });
     }
 
-    // 6. 待辦清單互動 (Checklist Logic + LocalStorage)
+    // 待辦清單
     function renderChecklist() {
       const container = document.getElementById("checklistContainer");
       container.innerHTML = "";
-
-      // 分組渲染
       const groups = [...new Set(checklistData.map(item => item.group))];
 
       groups.forEach(groupName => {
         const groupEl = document.createElement("div");
         groupEl.className = "checklist-group";
-
         const titleEl = document.createElement("div");
         titleEl.className = "checklist-group-title";
         titleEl.innerHTML = `<span>📌</span> <span>${groupName}</span>`;
@@ -2918,7 +2327,6 @@
         groupEl.appendChild(itemsWrap);
         container.appendChild(groupEl);
       });
-
       updateChecklistProgress();
     }
 
@@ -2979,9 +2387,9 @@
       });
     }
 
-    // 7. 日幣即時換算小工具
+    // 匯率
     function initCurrencyConverter() {
-      const rate = 0.215; // 1 JPY = 0.215 TWD
+      const rate = 0.215;
       const jpyInput = document.getElementById("jpyInput");
       const twdInput = document.getElementById("twdInput");
 
@@ -3004,16 +2412,14 @@
       });
     }
 
-    // 8. 減少動態效果 (Reduce Motion) 切換開關
+    // 動態效果開關
     function initMotionToggle() {
       const btn = document.getElementById("motionToggle");
       const icon = document.getElementById("motionIcon");
       const text = document.getElementById("motionText");
 
-      // 檢查系統 prefers-reduced-motion 或 localStorage
       const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       const savedPref = localStorage.getItem("kansai_reduce_motion");
-
       let isReduced = savedPref !== null ? savedPref === "true" : prefersReduced;
 
       function applyState() {
@@ -3037,12 +2443,11 @@
       });
     }
 
-    // 啟動所有功能模組
     document.addEventListener("DOMContentLoaded", () => {
       initCountdown();
       renderDateTabs();
+      initFilterAndModes();
       renderDayContent();
-      initFilterBar();
       renderChecklist();
       initChecklistForm();
       initCurrencyConverter();
