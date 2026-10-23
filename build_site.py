@@ -1374,6 +1374,297 @@ DAYS_DATA = [
 
 days_json = json.dumps(DAYS_DATA, ensure_ascii=False)
 
+FOOD_PLACES_DATA = [
+    {
+        "id": "food_1",
+        "name": "Shake Shack 大丸心齋橋店",
+        "address": "大阪市中央區心齋橋筋1-7-1 大丸心齋橋本館 1F",
+        "lat": 34.673088,
+        "lng": 135.500815,
+        "region": "shinsaibashi",
+        "area": "大阪・心齋橋",
+        "category": "美式漢堡",
+        "icon": "🍔",
+        "highlight": "大丸心齋橋 1F 紐約人氣頂級波浪薯條與香濃奶昔漢堡，逛街必吃！",
+        "maps_link": "https://www.google.com/maps/search/?api=1&query=Shake%20Shack%20%E5%A4%A7%E4%B8%B8%E5%BF%83%E9%BD%8B%E6%A9%8B%E5%BA%97"
+    },
+    {
+        "id": "food_2",
+        "name": "千代松勝蓋飯 (千代松)",
+        "address": "大阪市中央區千日前1-1-10",
+        "lat": 34.668266,
+        "lng": 135.505293,
+        "region": "nanba",
+        "area": "大阪・千日前",
+        "category": "超厚切炸豬排丼",
+        "icon": "🥩",
+        "highlight": "日本社群爆紅！5cm 巨無霸特厚低溫熟成24小時炸豬排蓋飯，肉汁狂溢！",
+        "maps_link": "https://www.google.com/maps/search/?api=1&query=%E5%8D%83%E4%BB%A3%E6%9D%BE%E5%8B%9D%E8%93%8B%E9%A3%AF"
+    },
+    {
+        "id": "food_3",
+        "name": "Shabuzen Umedaten (しゃぶ善 梅田店)",
+        "address": "大阪市北區堂島1-6-20 堂島アバンザ B1F",
+        "lat": 34.696904,
+        "lng": 135.496397,
+        "region": "umeda",
+        "area": "大阪・梅田商圈",
+        "category": "壽喜燒・涮涮鍋",
+        "icon": "🍲",
+        "highlight": "梅田商圈頂級黑毛和牛與霜降牛壽喜燒/涮涮鍋吃到飽，肉質入口即化！",
+        "maps_link": "https://www.google.com/maps/search/?api=1&query=Shabuzen%20Umedaten"
+    },
+    {
+        "id": "food_4",
+        "name": "一蘭 道頓堀店別館",
+        "address": "大阪市中央區道頓堀1-4-16",
+        "lat": 34.668422,
+        "lng": 135.503224,
+        "region": "nanba",
+        "area": "大阪・道頓堀",
+        "category": "天然豚骨拉麵",
+        "icon": "🍜",
+        "highlight": "道頓堀河畔經典豚骨湯頭＋專屬味集中座位＋客製化秘傳辣醬！",
+        "maps_link": "https://www.google.com/maps/search/?api=1&query=%E4%B8%80%E8%98%AD%20%E9%81%93%E9%A0%93%E5%A0%80%E5%BA%97%E5%88%A5%E9%A4%A8"
+    },
+    {
+        "id": "food_5",
+        "name": "烤肉力丸 難波湊町店",
+        "address": "大阪市浪速區難波中1-10-4 南海野村大樓 4F",
+        "lat": 34.666943,
+        "lng": 135.497004,
+        "region": "nanba",
+        "area": "大阪・難波/湊町",
+        "category": "人氣燒肉吃到飽",
+        "icon": "🥩",
+        "highlight": "關西自由行必訪平價炭火和牛燒肉，名物厚切牛舌與極上牛五花狂點！",
+        "maps_link": "https://www.google.com/maps/search/?api=1&query=%E7%83%A4%E8%82%89%E5%8A%9B%E4%B8%B8%20%E9%9B%A3%E6%B3%A2%E6%B9%8A%E7%94%BA%E5%BA%97"
+    },
+    {
+        "id": "food_6",
+        "name": "燒肉力丸 千日前店",
+        "address": "大阪市中央區千日前2-9-17 アムザ1000 2F",
+        "lat": 34.666755,
+        "lng": 135.503472,
+        "region": "nanba",
+        "area": "大阪・千日前",
+        "category": "人氣燒肉吃到飽",
+        "icon": "🥩",
+        "highlight": "千日前商店街熱門分店，高品質現切牛肉、冷麵與甜點吃到飽。",
+        "maps_link": "https://www.google.com/maps/search/?api=1&query=%E7%87%92%E8%82%89%E5%8A%9B%E4%B8%B8_%E5%8D%83%E6%97%A5%E5%89%8D%E5%BA%97"
+    },
+    {
+        "id": "food_7",
+        "name": "Taishu Sukiyaki Hokuto GEMS 難波店",
+        "address": "大阪市中央區難波3-7-19 GEMS難波 7F",
+        "lat": 34.666173,
+        "lng": 135.500683,
+        "region": "nanba",
+        "area": "大阪・難波",
+        "category": "大眾壽喜燒",
+        "icon": "🍲",
+        "highlight": "大眾壽喜燒北斗！平實價格大啖頂級牛肉、特調醬汁沾新鮮生蛋黃超滿足。",
+        "maps_link": "https://www.google.com/maps/search/?api=1&query=Taishu%20Sukiyaki%20Hokuto%20GEMS%20Namba%20Branch"
+    },
+    {
+        "id": "food_8",
+        "name": "Unagi Nosuke Tenjinbashi (鰻の成瀬 天神橋店)",
+        "address": "大阪市北區天神橋3-2-22",
+        "lat": 34.699223,
+        "lng": 135.511696,
+        "region": "umeda",
+        "area": "大阪・天神橋筋",
+        "category": "炭火鰻魚飯",
+        "icon": "🍱",
+        "highlight": "平價炭火鰻魚飯奇蹟！外皮烤至金黃微焦，魚肉肥美厚嫩無細刺，淋滿鹹甜醬汁。",
+        "maps_link": "https://www.google.com/maps/search/?api=1&query=Unagi%20Nosuke%20Tenjinbashi"
+    },
+    {
+        "id": "food_9",
+        "name": "Okonomiyaki AT THE 21 Namba (お好み焼き AT THE 21)",
+        "address": "大阪市中央區難波千日前13-10",
+        "lat": 34.664251,
+        "lng": 135.505289,
+        "region": "nanba",
+        "area": "大阪・難波/千日前",
+        "category": "大阪燒・炒麵",
+        "icon": "🥞",
+        "highlight": "在地人極推的鐵板大阪燒！厚實高麗菜絲香脆鮮甜，特製醬汁香氣四溢。",
+        "maps_link": "https://www.google.com/maps/search/?api=1&query=Okonomiyaki%20AT%20THE%2021%20Namba"
+    },
+    {
+        "id": "food_10",
+        "name": "BOTEJYU 道頓堀總本店 (ぼてぢゅう)",
+        "address": "大阪市中央區道頓堀1-6-15 ドウトンビル 2F",
+        "lat": 34.668828,
+        "lng": 135.501762,
+        "region": "nanba",
+        "area": "大阪・道頓堀",
+        "category": "元祖大阪燒老店",
+        "icon": "🥞",
+        "highlight": "1946年創業元祖名店！首創將美乃滋淋在大阪燒上的傳奇老店，摩登燒必吃！",
+        "maps_link": "https://www.google.com/maps/search/?api=1&query=BOTEJYU%20Flagship%20Store%20Dotonbori"
+    },
+    {
+        "id": "food_11",
+        "name": "北野坂にしむら(西村)珈琲店",
+        "address": "兵庫縣神戶市中央區山本通2-1-20",
+        "lat": 34.698318,
+        "lng": 135.191122,
+        "region": "kobe",
+        "area": "神戶・北野坂",
+        "category": "復古名門咖啡館",
+        "icon": "☕",
+        "highlight": "日本第一家引進自家烘焙的傳奇會員制紅磚洋樓，精緻歐風早餐與極品咖啡。",
+        "maps_link": "https://www.google.com/maps/search/?api=1&query=%E5%8C%97%E9%87%8E%E5%9D%82%E3%81%AB%E3%81%97%E3%82%80%E3%82%89%28%E8%A5%BF%E6%9D%91%29%E7%8F%88%E7%90%B2%E5%BA%97"
+    },
+    {
+        "id": "food_12",
+        "name": "next shikaku (NEXT□ 難波店)",
+        "address": "大阪市中央區難波千日前9-12",
+        "lat": 34.664265,
+        "lng": 135.503486,
+        "region": "nanba",
+        "area": "大阪・難波/千日前",
+        "category": "潮流牡蠣白湯拉麵",
+        "icon": "🍜",
+        "highlight": "新潮系牡蠣湯頭濃縮拉麵！視覺震撼的方形設計與炙燒低溫熟成叉燒。",
+        "maps_link": "https://www.google.com/maps/search/?api=1&query=next%20shikaku%20%E9%9B%A3%E6%B3%A2"
+    },
+    {
+        "id": "food_13",
+        "name": "Sukiyaki Syabu-Syabu 日本橋鶴屋",
+        "address": "大阪市中央區日本橋2-5-4",
+        "lat": 34.665008,
+        "lng": 135.505924,
+        "region": "nanba",
+        "area": "大阪・日本橋",
+        "category": "壽喜燒・涮涮鍋",
+        "icon": "🍲",
+        "highlight": "黑門市場周邊老饕隱藏版壽喜燒，油花細密均勻的黑毛和牛大滿足！",
+        "maps_link": "https://www.google.com/maps/search/?api=1&query=Sukiyaki%20Syabu-Syabu%20Nihonbashi%20Tsuruya"
+    },
+    {
+        "id": "food_14",
+        "name": "可樂餅 中村屋 (コロッケの中村屋)",
+        "address": "大阪市北區天神橋2-3-21",
+        "lat": 34.697100,
+        "lng": 135.511647,
+        "region": "umeda",
+        "area": "大阪・天神橋筋",
+        "category": "排隊銅板可樂餅",
+        "icon": "🥔",
+        "highlight": "日本搞笑天王濱田雅功激讚！一顆百圓日幣現炸牛肉洋蔥可樂餅，外酥內甜。",
+        "maps_link": "https://www.google.com/maps/search/?api=1&query=%E5%8F%AF%E6%A8%82%E9%A4%85%20%E4%B8%AD%E6%9D%91%E5%B1%8B"
+    },
+    {
+        "id": "food_15",
+        "name": "神戶六甲牧場 北野本店",
+        "address": "兵庫縣神戶市中央區北野町3-11-4",
+        "lat": 34.701042,
+        "lng": 135.189865,
+        "region": "kobe",
+        "area": "神戶・北野異人館",
+        "category": "特濃牛乳冰淇淋",
+        "icon": "🍦",
+        "highlight": "走訪風見雞館必嚐！全日本知名六甲山純淨特濃生乳與白巧克力綜合霜淇淋。",
+        "maps_link": "https://www.google.com/maps/search/?api=1&query=%E7%A5%9E%E6%88%B6%E5%85%AD%E7%94%B2%E7%89%A7%E5%A0%B4%20%E5%8C%97%E9%87%8E%E6%9C%AC%E5%BA%97"
+    },
+    {
+        "id": "food_16",
+        "name": "Premium All-You-Can-Eat Wagyu Yakiniku 298 (燒肉298 難波店)",
+        "address": "大阪市中央區千日前1-7-9 あじびる南 4F",
+        "lat": 34.668100,
+        "lng": 135.503607,
+        "region": "nanba",
+        "area": "大阪・千日前",
+        "category": "超平價和牛燒肉",
+        "icon": "🥩",
+        "highlight": "難波千日前超高CP值燒肉吃到飽！狂嗑牛五花、牛舌與咖哩飯毫無負擔。",
+        "maps_link": "https://www.google.com/maps/search/?api=1&query=Wagyu%20Yakiniku%20298%20Namba"
+    },
+    {
+        "id": "food_17",
+        "name": "Takoyaki Tachibana (明石燒 たちばな 三宮店)",
+        "address": "兵庫縣神戶市中央區三宮町1-8-1 さんプラザ B1F",
+        "lat": 34.691792,
+        "lng": 135.193150,
+        "region": "kobe",
+        "area": "神戶・三宮",
+        "category": "明石燒 (玉子燒)",
+        "icon": "🐙",
+        "highlight": "神戶在地三宮地下街現煎鬆軟蛋香明石燒！吸飽金黃熱高湯的滑嫩章魚料理。",
+        "maps_link": "https://www.google.com/maps/search/?api=1&query=Takoyaki%20Tachibana%20Kobe"
+    },
+    {
+        "id": "food_18",
+        "name": "Shabucho (しゃぶ長 心齋橋)",
+        "address": "大阪市中央區東心齋橋1-15-25",
+        "lat": 34.672668,
+        "lng": 135.503416,
+        "region": "shinsaibashi",
+        "area": "大阪・心齋橋",
+        "category": "單人黑毛和牛涮涮鍋",
+        "icon": "🍲",
+        "highlight": "心齋橋巷弄內低調老鋪！一人一鍋銅鍋涮頂級和牛，芝麻醬與柑橘醋香氣撲鼻。",
+        "maps_link": "https://www.google.com/maps/search/?api=1&query=Shabucho%20Shinsaibashi"
+    },
+    {
+        "id": "food_19",
+        "name": "Rikuro’s Namba (りくろーおじさんの店 難波本店)",
+        "address": "大阪市中央區難波3-2-28",
+        "lat": 34.666127,
+        "lng": 135.501566,
+        "region": "nanba",
+        "area": "大阪・難波",
+        "category": "現烤老爺爺起司蛋糕",
+        "icon": "🧀",
+        "highlight": "難波總本店搖鈴出爐！底部鋪滿糖漬葡萄乾的蓬鬆空氣感舒芙蕾乳酪蛋糕。",
+        "maps_link": "https://www.google.com/maps/search/?api=1&query=Rikuro%E2%80%99s%20Namba%20Japanese%20Cheese%20Cake"
+    },
+    {
+        "id": "food_20",
+        "name": "grenier 梅田店 (グルニエ)",
+        "address": "大阪市北區角田町8-47 阪急格蘭大廈 1F",
+        "lat": 34.703542,
+        "lng": 135.499191,
+        "region": "umeda",
+        "area": "大阪・梅田商圈",
+        "category": "爆餡千層酥專門店",
+        "icon": "🥐",
+        "highlight": "梅田排隊甜點第一把交椅！現烤超酥脆法式千層酥擠入爆漿香草烤布蕾卡士達！",
+        "maps_link": "https://www.google.com/maps/search/?api=1&query=grenier%20%E6%A2%85%E7%94%B0%E5%BA%97"
+    },
+    {
+        "id": "food_21",
+        "name": "belle-ville pancake cafe Whity梅田店",
+        "address": "大阪市北區小松原町梅田地下街4-5 Whity梅田 East Mall H-22",
+        "lat": 34.701932,
+        "lng": 135.500662,
+        "region": "umeda",
+        "area": "大阪・梅田商圈",
+        "category": "8層搖晃厚舒芙蕾鬆餅",
+        "icon": "🥞",
+        "highlight": "現點現煎的浮誇八層搖晃厚鬆餅！淋上楓糖漿與鮮奶油，如雲朵般入口即化。",
+        "maps_link": "https://www.google.com/maps/search/?api=1&query=belle-ville%20pancake%20cafe%20%E3%83%9B%E3%83%AF%E3%82%A4%E3%83%86%E3%82%A3%E3%81%86%E3%82%81%E3%81%A0%E5%BA%97"
+    },
+    {
+        "id": "food_22",
+        "name": "森谷商店 元町本店 (本神戶肉森谷商店)",
+        "address": "兵庫縣神戶市中央區元町通1-7-2",
+        "lat": 34.689186,
+        "lng": 135.189387,
+        "region": "kobe",
+        "area": "神戶・元町",
+        "category": "百年神戶牛排隊肉鋪",
+        "icon": "🥩",
+        "highlight": "創業超過150年！每天排隊人潮不斷的平價現炸神戶牛肉可樂餅與多汁肉餅。",
+        "maps_link": "https://www.google.com/maps/search/?api=1&query=%E6%9C%AC%E7%A5%9E%E6%88%B6%E8%82%89%E6%A3%AE%E8%B0%B7%E5%95%86%E5%BA%97"
+    }
+]
+
+food_json = json.dumps(FOOD_PLACES_DATA, ensure_ascii=False)
+
 HTML_TEMPLATE = r'''<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
@@ -2929,6 +3220,337 @@ HTML_TEMPLATE = r'''<!DOCTYPE html>
       display: block;
     }
 
+    /* ==========================================================================
+       關西美食踩點小地圖 (Food Map Widget)
+       ========================================================================== */
+    .foodmap-section {
+      width: 100%;
+      margin-bottom: 30px;
+    }
+    .food-map-banner {
+      background-color: var(--card-white);
+      border: var(--border-width) solid var(--border-ink);
+      border-radius: var(--radius-xl);
+      padding: clamp(14px, 3.5vw, 22px);
+      box-shadow: var(--shadow-comic);
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .food-map-banner-header {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding-bottom: 16px;
+      border-bottom: 2px dashed var(--border-ink);
+      margin-bottom: 18px;
+    }
+    @media (min-width: 620px) {
+      .food-map-banner-header {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+    .gmaps-direct-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background-color: var(--yamabuki-yellow);
+      color: var(--text-main);
+      border: 2px solid var(--border-ink);
+      border-radius: var(--radius-md);
+      padding: 8px 16px;
+      font-weight: 900;
+      font-size: 0.88rem;
+      text-decoration: none;
+      box-shadow: var(--shadow-comic-sm);
+      transition: transform 0.1s ease;
+      white-space: nowrap;
+    }
+    .gmaps-direct-btn:hover {
+      transform: translate(1px, 1px);
+      box-shadow: 1px 1px 0 var(--border-ink);
+    }
+
+    /* 區域地圖看板 */
+    .food-mini-map-board {
+      background-color: var(--card-warm);
+      border: 2px solid var(--border-ink);
+      border-radius: var(--radius-lg);
+      padding: 14px 16px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow-comic-sm);
+    }
+    .food-board-title {
+      font-weight: 900;
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .food-region-pins {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .food-region-pin {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: var(--card-white);
+      border: 2px solid var(--border-ink);
+      border-radius: var(--radius-md);
+      padding: 6px 12px;
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: var(--shadow-comic-sm);
+      transition: background-color 0.15s ease, transform 0.1s ease;
+    }
+    .food-region-pin .pin-badge {
+      background-color: var(--water-blue);
+      color: var(--text-main);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.72rem;
+    }
+    .food-region-pin:hover {
+      background-color: var(--card-warm);
+    }
+    .food-region-pin.active {
+      background-color: var(--yamabuki-yellow);
+      border-color: var(--border-ink);
+      transform: translate(1px, 1px);
+      box-shadow: 1px 1px 0 var(--border-ink);
+    }
+    .food-region-pin.active .pin-badge {
+      background-color: var(--border-ink);
+      color: #FFFFFF;
+    }
+
+    /* 美食進度條 */
+    .food-progress-box {
+      background-color: var(--card-warm);
+      border: 2px solid var(--border-ink);
+      border-radius: var(--radius-lg);
+      padding: 12px 16px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow-comic-sm);
+    }
+    .food-progress-encourage {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 4px;
+    }
+
+    /* 狀態過濾 */
+    .food-filter-bar {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .food-filter-btn {
+      border: 2px solid var(--border-ink);
+      background-color: var(--card-white);
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: var(--shadow-comic-sm);
+      transition: background-color 0.15s ease, transform 0.1s ease;
+    }
+    .food-filter-btn:hover {
+      background-color: var(--card-warm);
+    }
+    .food-filter-btn.active {
+      background-color: var(--coral-pink);
+      color: #FFFFFF;
+      transform: translate(1px, 1px);
+      box-shadow: 1px 1px 0 var(--border-ink);
+    }
+
+    /* 美食卡片網格 */
+    .food-cards-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .food-item-card {
+      background-color: var(--card-white);
+      border: 2px solid var(--border-ink);
+      border-radius: var(--radius-lg);
+      padding: 14px 16px;
+      box-shadow: var(--shadow-comic-sm);
+      transition: background-color 0.2s ease, transform 0.15s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      position: relative;
+    }
+    .food-item-card:hover {
+      transform: translateY(-2px);
+    }
+    .food-item-card.eaten {
+      background-color: #F3F8F1;
+      border-color: #6C8E68;
+    }
+    .food-item-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .food-checkbox-btn {
+      width: 28px;
+      height: 28px;
+      border: 2px solid var(--border-ink);
+      border-radius: 8px;
+      background-color: var(--card-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      font-weight: 900;
+      font-size: 1.1rem;
+      transition: background-color 0.15s ease, transform 0.1s ease;
+      user-select: none;
+      box-shadow: 1px 1px 0 var(--border-ink);
+    }
+    .food-item-card.eaten .food-checkbox-btn {
+      background-color: var(--wakatake-green);
+      color: var(--border-ink);
+    }
+    .food-content-wrap {
+      flex: 1;
+      min-width: 0;
+    }
+    .food-tags-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 4px;
+    }
+    .food-pill {
+      font-size: 0.72rem;
+      font-weight: 900;
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1.5px solid var(--border-ink);
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .food-pill-area { background-color: var(--water-blue); }
+    .food-pill-cat { background-color: var(--yamabuki-yellow); }
+    .food-pill-eaten { background-color: var(--wakatake-green); color: var(--border-ink); }
+    
+    .food-name-title {
+      font-size: 1.05rem;
+      font-weight: 900;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .food-item-card.eaten .food-name-title {
+      text-decoration: line-through;
+      color: var(--text-muted);
+    }
+    .food-highlight-text {
+      font-size: 0.85rem;
+      color: var(--text-main);
+      margin-top: 4px;
+      line-height: 1.45;
+    }
+    .food-address-text {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+      word-break: break-all;
+    }
+
+    /* 完食日系印章 */
+    .eaten-stamp {
+      display: none;
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      border: 2px solid #D9483B;
+      color: #D9483B;
+      border-radius: 6px;
+      padding: 2px 8px;
+      font-size: 0.75rem;
+      font-weight: 900;
+      transform: rotate(6deg);
+      pointer-events: none;
+      background-color: rgba(255, 255, 255, 0.85);
+      box-shadow: 1px 1px 0 #D9483B;
+      animation: stampIn 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    @keyframes stampIn {
+      0% { transform: scale(1.6) rotate(-15deg); opacity: 0; }
+      100% { transform: scale(1) rotate(6deg); opacity: 1; }
+    }
+    .food-item-card.eaten .eaten-stamp {
+      display: inline-block;
+    }
+
+    .food-action-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 4px;
+      padding-top: 8px;
+      border-top: 1px dashed #E2DACB;
+      flex-wrap: wrap;
+    }
+    .food-nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background-color: var(--card-warm);
+      border: 1.5px solid var(--border-ink);
+      border-radius: var(--radius-md);
+      padding: 4px 10px;
+      font-size: 0.78rem;
+      font-weight: 900;
+      text-decoration: none;
+      color: var(--text-main);
+      box-shadow: 1px 1px 0 var(--border-ink);
+      transition: background-color 0.15s ease;
+    }
+    .food-nav-link:hover {
+      background-color: var(--water-blue);
+    }
+    .food-copy-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: none;
+      border: 1.5px solid var(--border-ink);
+      border-radius: var(--radius-md);
+      padding: 4px 10px;
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: background-color 0.15s ease;
+    }
+    .food-copy-btn:hover {
+      background-color: var(--card-warm);
+      color: var(--text-main);
+    }
+
     /* Footer */
     .site-footer {
       text-align: center;
@@ -2967,6 +3589,7 @@ HTML_TEMPLATE = r'''<!DOCTYPE html>
         <li class="nav-item"><a href="#spotZone">🏛️ 景點區域</a></li>
         <li class="nav-item"><a href="#flights">✈️ 航班</a></li>
         <li class="nav-item"><a href="#hotel">🏨 住宿</a></li>
+        <li class="nav-item"><a href="#foodmap">🍴 美食地圖</a></li>
         <li class="nav-item"><a href="#checklist">✅ 待辦</a></li>
         <li class="nav-item"><a href="#toolbox">🧰 工具</a></li>
       </ul>
@@ -3687,6 +4310,95 @@ HTML_TEMPLATE = r'''<!DOCTYPE html>
     </section>
 
     <!-- ==========================================================================
+         🍴 關西必吃美食踩點小地圖 (Google 地圖清單小工具)
+         ========================================================================== -->
+    <section id="foodmap" class="foodmap-section">
+      <div class="section-title-wrap">
+        <h2 class="section-title">
+          <span>🍴</span> 關西美食踩點小地圖
+        </h2>
+        <span class="section-badge" id="foodCounterBadge">已吃過 0 / 22 間</span>
+      </div>
+
+      <!-- Google Maps 官方清單連結卡片 -->
+      <div class="food-map-banner">
+        <div class="food-map-banner-header">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="font-size: 1.8rem; flex-shrink: 0;">🗺️</span>
+            <div>
+              <strong style="font-size: 1.1rem; color: var(--text-main);">【來關西花錢就都沒關係・來都來了美食】</strong>
+              <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 2px;">
+                收錄 Google 地圖清單精選 22 間大阪、神戶超人氣名店・品嚐後打勾紀錄！
+              </div>
+            </div>
+          </div>
+          <a href="https://maps.app.goo.gl/GEVZCL8bznFbceJF8" target="_blank" rel="noopener noreferrer" class="gmaps-direct-btn" title="在 Google Maps App 中打開清單">
+            <span>🗺️ 開啟 Google Maps 清單 ↗</span>
+          </a>
+        </div>
+
+        <!-- 繪本風關西美食區域地圖看板 -->
+        <div class="food-mini-map-board">
+          <div class="food-board-title">
+            <span>📍</span> <span>快速依區域篩選美食地標</span>
+          </div>
+          <div class="food-region-pins">
+            <button type="button" class="food-region-pin active" data-region="all">
+              <span class="pin-badge">全區域</span>
+              <span class="pin-name">全部 22 間</span>
+            </button>
+            <button type="button" class="food-region-pin" data-region="nanba">
+              <span class="pin-badge">大阪南區</span>
+              <span class="pin-name">難波・道頓堀・千日前 (11間)</span>
+            </button>
+            <button type="button" class="food-region-pin" data-region="shinsaibashi">
+              <span class="pin-badge">心齋橋</span>
+              <span class="pin-name">大丸・美國村 (2間)</span>
+            </button>
+            <button type="button" class="food-region-pin" data-region="umeda">
+              <span class="pin-badge">大阪北區</span>
+              <span class="pin-name">梅田商圈・天神橋 (5間)</span>
+            </button>
+            <button type="button" class="food-region-pin" data-region="kobe">
+              <span class="pin-badge">神戶港區</span>
+              <span class="pin-name">三宮・元町・北野 (4間)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 美食進度條 -->
+        <div class="food-progress-box">
+          <div style="display: flex; justify-content: space-between; font-weight: 900; font-size: 0.92rem; margin-bottom: 6px;">
+            <span>🍽️ 關西美食攻略進度</span>
+            <span id="foodProgressPercent">0%</span>
+          </div>
+          <div class="progress-bar-outer">
+            <div class="progress-bar-inner" id="foodProgressBar" style="width: 0%;"></div>
+          </div>
+          <div class="food-progress-encourage" id="foodEncourageText">
+            準備開動！吃過的美食記得打勾標記，留下滿滿回憶～😋
+          </div>
+        </div>
+
+        <!-- 狀態過濾標籤 -->
+        <div class="food-filter-bar">
+          <button type="button" class="food-filter-btn active" data-status="all">全部 (<span id="countAll">22</span>)</button>
+          <button type="button" class="food-filter-btn" data-status="uneaten">尚未品嚐 (<span id="countUneaten">22</span>)</button>
+          <button type="button" class="food-filter-btn" data-status="eaten">已完食 🎉 (<span id="countEaten">0</span>)</button>
+        </div>
+
+        <!-- 美食卡片清單列表 -->
+        <div class="food-cards-container" id="foodCardsContainer"></div>
+
+        <!-- 新增自訂美食店家 -->
+        <form id="addFoodForm" class="add-task-form" style="margin-top: 18px;">
+          <input type="text" id="newFoodName" class="add-task-input" placeholder="＋ 想吃的其他私房名單（例：木地大阪燒、HARBS水果千層）..." required>
+          <button type="submit" class="add-task-btn">加入踩點清單</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
          旅行實用工具箱
          ========================================================================== -->
     <section id="toolbox">
@@ -3797,6 +4509,7 @@ HTML_TEMPLATE = r'''<!DOCTYPE html>
 
   <script>
     const ITINERARY_DATA = ''' + days_json + r''';
+    const DEFAULT_FOOD_LIST = ''' + food_json + r''';
 
     const DEFAULT_CHECKLIST = [
       { id: "c1", text: "護照正本（效期 6 個月以上）", group: "證件與票券", checked: true },
@@ -4258,6 +4971,214 @@ HTML_TEMPLATE = r'''<!DOCTYPE html>
       });
     }
 
+    // ==========================================================================
+    // 關西美食踩點小地圖 (Google 地圖清單小工具)
+    // ==========================================================================
+    let foodListData = [];
+    let currentFoodRegion = "all";
+    let currentFoodStatus = "all";
+
+    function loadFoodList() {
+      const saved = localStorage.getItem("kansai_food_checklist_v1");
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved);
+          const savedMap = new Map(parsed.map(item => [item.id || item.name, item]));
+          foodListData = DEFAULT_FOOD_LIST.map(def => {
+            const s = savedMap.get(def.id) || savedMap.get(def.name);
+            return s ? { ...def, eaten: !!s.eaten } : { ...def, eaten: false };
+          });
+          parsed.forEach(p => {
+            if (p.isCustom && !foodListData.some(f => f.id === p.id)) {
+              foodListData.push(p);
+            }
+          });
+        } catch(e) {
+          foodListData = DEFAULT_FOOD_LIST.map(f => ({ ...f, eaten: false }));
+        }
+      } else {
+        foodListData = DEFAULT_FOOD_LIST.map(f => ({ ...f, eaten: false }));
+      }
+    }
+
+    function saveFoodList() {
+      localStorage.setItem("kansai_food_checklist_v1", JSON.stringify(foodListData));
+      updateFoodStats();
+    }
+
+    function toggleFoodEaten(id) {
+      const target = foodListData.find(f => f.id === id);
+      if (target) {
+        target.eaten = !target.eaten;
+        saveFoodList();
+        renderFoodCards();
+      }
+    }
+
+    function updateFoodStats() {
+      const total = foodListData.length;
+      const eatenCount = foodListData.filter(f => f.eaten).length;
+      const percent = total > 0 ? Math.round((eatenCount / total) * 100) : 0;
+
+      const badge = document.getElementById("foodCounterBadge");
+      const percentEl = document.getElementById("foodProgressPercent");
+      const barEl = document.getElementById("foodProgressBar");
+      const encourageEl = document.getElementById("foodEncourageText");
+      const countAll = document.getElementById("countAll");
+      const countUneaten = document.getElementById("countUneaten");
+      const countEaten = document.getElementById("countEaten");
+
+      if (badge) badge.textContent = `已吃過 ${eatenCount} / ${total} 間`;
+      if (percentEl) percentEl.textContent = `${percent}%`;
+      if (barEl) barEl.style.width = `${percent}%`;
+      if (countAll) countAll.textContent = total;
+      if (countUneaten) countUneaten.textContent = total - eatenCount;
+      if (countEaten) countEaten.textContent = eatenCount;
+
+      if (encourageEl) {
+        if (eatenCount === 0) {
+          encourageEl.textContent = "準備開動！每吃過一家就打勾標記，留下滿滿回憶～😋";
+        } else if (eatenCount < 5) {
+          encourageEl.textContent = `太棒了！已品嚐 ${eatenCount} 間關西美食，吃貨之旅持續前進！🎉`;
+        } else if (eatenCount < 12) {
+          encourageEl.textContent = `美食達人就是你！已征服 ${eatenCount} 間，肚子裝滿幸福！✨`;
+        } else if (eatenCount < total) {
+          encourageEl.textContent = `太厲害了！已完成 ${eatenCount} 間，距離關西美食大滿貫不遠啦！🍢`;
+        } else {
+          encourageEl.textContent = `🎊 恭喜達成關西美食大滿貫！22 間人氣名店全部征服完食！🈵`;
+        }
+      }
+    }
+
+    function renderFoodCards() {
+      const container = document.getElementById("foodCardsContainer");
+      if (!container) return;
+
+      let filtered = foodListData;
+
+      // Filter by Region
+      if (currentFoodRegion !== "all") {
+        filtered = filtered.filter(f => f.region === currentFoodRegion);
+      }
+
+      // Filter by Status
+      if (currentFoodStatus === "eaten") {
+        filtered = filtered.filter(f => f.eaten);
+      } else if (currentFoodStatus === "uneaten") {
+        filtered = filtered.filter(f => !f.eaten);
+      }
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div style="text-align: center; padding: 24px 16px; background-color: var(--card-warm); border: 2px dashed var(--border-ink); border-radius: var(--radius-lg); color: var(--text-muted); font-size: 0.9rem;">
+            🍴 目前這個分類沒有符合的店家喔～可以切換看看其他區域！
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filtered.map(item => `
+        <div class="food-item-card ${item.eaten ? 'eaten' : ''}" id="card_${item.id}">
+          <div class="eaten-stamp">完食・ごちそうさま</div>
+          <div class="food-item-header">
+            <button type="button" class="food-checkbox-btn" onclick="toggleFoodEaten('${item.id}')" aria-label="標記為已吃過">
+              ${item.eaten ? '✓' : ''}
+            </button>
+            <div class="food-content-wrap">
+              <div class="food-tags-row">
+                <span class="food-pill food-pill-area">📍 ${item.area}</span>
+                <span class="food-pill food-pill-cat">${item.icon} ${item.category}</span>
+                ${item.eaten ? '<span class="food-pill food-pill-eaten">已完食 🎉</span>' : ''}
+              </div>
+              <div class="food-name-title">
+                <span>${item.name}</span>
+              </div>
+              <div class="food-highlight-text">${item.highlight}</div>
+              ${item.address ? `<div class="food-address-text">🏠 ${item.address}</div>` : ''}
+              <div class="food-action-row">
+                <a href="${item.maps_link}" target="_blank" rel="noopener noreferrer" class="food-nav-link" title="在 Google Maps 開啟">
+                  <span>🗺️ Google 導航</span>
+                </a>
+                ${item.address ? `
+                  <button type="button" class="food-copy-btn" onclick="copyFoodAddress(this, '${item.address.replace(/'/g, "\\'")}')">
+                    <span>📋 複製地址</span>
+                  </button>
+                ` : ''}
+              </div>
+            </div>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function initFoodMapWidget() {
+      loadFoodList();
+
+      const regionBtns = document.querySelectorAll(".food-region-pin");
+      regionBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+          regionBtns.forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          currentFoodRegion = btn.getAttribute("data-region");
+          renderFoodCards();
+        });
+      });
+
+      const statusBtns = document.querySelectorAll(".food-filter-btn");
+      statusBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+          statusBtns.forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          currentFoodStatus = btn.getAttribute("data-status");
+          renderFoodCards();
+        });
+      });
+
+      const form = document.getElementById("addFoodForm");
+      if (form) {
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const input = document.getElementById("newFoodName");
+          const name = input.value.trim();
+          if (!name) return;
+
+          const newPlace = {
+            id: "food_custom_" + Date.now(),
+            name: name,
+            address: "",
+            lat: null,
+            lng: null,
+            area: "自訂私房清單",
+            category: "私房美食",
+            icon: "🍴",
+            region: "all",
+            highlight: "旅途中發掘的專屬美食店家",
+            maps_link: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(name + ' 大阪')}`,
+            eaten: false,
+            isCustom: true
+          };
+
+          foodListData.push(newPlace);
+          saveFoodList();
+          renderFoodCards();
+          input.value = "";
+        });
+      }
+
+      renderFoodCards();
+      updateFoodStats();
+    }
+
+    function copyFoodAddress(btn, address) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(address).then(() => {
+          const orig = btn.innerHTML;
+          btn.innerHTML = "<span>✅ 已複製！</span>";
+          setTimeout(() => { btn.innerHTML = orig; }, 1500);
+        });
+      }
+    }
+
     // 吉伊卡哇互動懸浮小夥伴
     function initChiikawaMascot() {
       const btn = document.getElementById("chiikawaBtn");
@@ -4299,6 +5220,7 @@ HTML_TEMPLATE = r'''<!DOCTYPE html>
       renderDayContent();
       renderChecklist();
       initChecklistForm();
+      initFoodMapWidget();
       initCurrencyConverter();
       initMotionToggle();
       initChiikawaMascot();
